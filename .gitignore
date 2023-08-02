@@ -1,0 +1,7 @@
+### rocky-d ###
+*.iml
+.idea/
+archive/
+draft/
+code/**/out/
+code/**/src/draft/

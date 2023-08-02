@@ -1,0 +1,4 @@
+# gcc .\code\cpp\src\draft\main.c -o .\code\cpp\out\production\draft\main
+g++ .\code\cpp\src\draft\main.cpp -o .\code\cpp\out\production\draft\main
+
+.\code\cpp\out\production\draft\main.exe
