@@ -3,5 +3,11 @@
 .idea/
 archive/
 draft/
-code/**/out/
-code/**/src/draft/
+code/
+!code/**/src/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
