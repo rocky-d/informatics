@@ -1,6 +1,6 @@
 def main():
     n = int(input())
-    a = list(map(int, input().split()))
+    a = list(map(int, input().split(' ')))
     res = 0
     tmp = -1
     for ai in a:
