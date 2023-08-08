@@ -1,13 +1,13 @@
 ### rocky-d ###
-*.iml
-.idea/
-archive/
 draft/
-code/
-!code/**/src/
 
-### VS Code ###
-.vscode/
+/informatics.iml
+/.idea/
+/archive/
 
-### Mac OS ###
-.DS_Store
+/code/cpp/*
+!/code/cpp/src/
+/code/java/*
+!/code/java/src/
+/code/py/*
+!/code/py/src/
