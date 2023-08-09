@@ -1,8 +1,12 @@
 ### rocky-d ###
+
+*.classpath
+*.iml
+
+.idea/
+.vscode/
 draft/
 
-/informatics.iml
-/.idea/
 /archive/
 
 /code/cpp/*
