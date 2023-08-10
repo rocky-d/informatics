@@ -8,10 +8,5 @@
 draft/
 
 /archive/
-
-/code/cpp/*
-!/code/cpp/src/
-/code/java/*
-!/code/java/src/
-/code/py/*
-!/code/py/src/
+/code/*/*
+!/code/*/src/
