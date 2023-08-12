@@ -1,7 +1,7 @@
 def main():
     h, t = map(int, input().split(' '))
 
-    dp = [[0 for _ in range(t + 1)] for _ in range(h + 1)]
+    dp = [[0 for _ in range(1 + t)] for _ in range(1 + h)]
 
     for _ in range(int(input()) - 1):
         hi, ti, ki = map(int, input().split(' '))

@@ -5,7 +5,7 @@ def main():
     score_m = list(map(int, input().strip().split(' ')))
 
     res = 0
-    dp = [0] * (r + 1)
+    dp = [0 for _ in range(1 + r)]
     for i in range(0, m - 1):
         for j in range(r, time_m[i] - 1, -1):
             dp[j] = max(dp[j], dp[j - time_m[i]] + score_m[i])

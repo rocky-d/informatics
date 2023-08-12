@@ -1,7 +1,7 @@
 def main():
     n, m, c = map(int, input().split())
 
-    dp = [0 for _ in range(c + 1)]
+    dp = [0 for _ in range(1 + c)]
 
     for _ in range(n):
         vv, ww, dd = map(int, input().split())
