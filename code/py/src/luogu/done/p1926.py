@@ -1,8 +1,8 @@
 def main():
-    n, m, k, r = map(int, input().strip().split(' '))
-    time_n = sorted(list(map(int, input().strip().split(' '))))
-    time_m = list(map(int, input().strip().split(' ')))
-    score_m = list(map(int, input().strip().split(' ')))
+    n, m, k, r = map(int, input().split())
+    time_n = sorted(list(map(int, input().split())))
+    time_m = list(map(int, input().split()))
+    score_m = list(map(int, input().split()))
 
     res = 0
     dp = [0 for _ in range(1 + r)]
