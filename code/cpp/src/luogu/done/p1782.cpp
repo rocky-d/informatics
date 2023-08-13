@@ -8,7 +8,7 @@ int main() {
     long i, j, n, m, c, vv, ww, dd, count, v, w, aa, bb, cc, x;
     cin >> n >> m >> c;
 
-    vector<long> dp(c + 1, 0);
+    vector<long> dp(1 + c, 0);
 
     for (i = 0; i < n; i++) {
         cin >> vv >> ww >> dd;
