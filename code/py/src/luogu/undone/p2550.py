@@ -1,10 +1,10 @@
 def main():
     res = [0, 0, 0, 0, 0, 0, 0]
     n = int(input())
-    target = list(map(int, input().split()))
+    target = input().split()
     for _ in range(n):
         i = 7
-        nums = set(map(int, input().split()))
+        nums = set(input().split())
         for num in nums:
             if num in target:
                 i -= 1
