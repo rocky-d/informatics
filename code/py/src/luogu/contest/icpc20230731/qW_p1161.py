@@ -1,4 +1,4 @@
-import math
+from math import floor
 
 
 def main():
@@ -9,7 +9,7 @@ def main():
         a = float(a)
         t = int(t)
         for ti in range(1, t + 1):
-            num = math.floor(a * ti)
+            num = floor(a * ti)
             if num in opened:
                 opened.remove(num)
             else:

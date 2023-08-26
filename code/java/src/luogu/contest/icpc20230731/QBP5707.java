@@ -2,7 +2,7 @@ package luogu.contest.icpc20230731;
 
 import java.util.Scanner;
 
-class QB {
+class QBP5707 {
     static int s, v;
 
     static void input() {
