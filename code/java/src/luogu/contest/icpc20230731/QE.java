@@ -1,8 +1,8 @@
-package luogu.done;
+package luogu.contest.icpc20230731;
 
 import java.util.Scanner;
 
-class P5709 {
+class QE {
     private static String mainMethod() {
         Scanner scanner = new Scanner(System.in);
 
