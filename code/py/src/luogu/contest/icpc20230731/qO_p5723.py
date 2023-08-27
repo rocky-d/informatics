@@ -29,10 +29,10 @@ def main() -> None:
                 print(i)
                 primes.append(i)
         for p in primes:
-            if l < i * p:
+            if (ip := i * p) > l:
                 break
-            is_prime[i * p] = False
-            if 0 == i % p:
+            is_prime[ip] = False
+            if i % p == 0:
                 break
     print(len(primes))
 
