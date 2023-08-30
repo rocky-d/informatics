@@ -3,6 +3,7 @@
 *.classpath
 *.iml
 
+.git/
 .idea/
 .vscode/
 draft/
