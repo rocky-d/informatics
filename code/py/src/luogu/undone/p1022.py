@@ -1,5 +1,8 @@
 def main() -> None:
-    print()
+    equation = input()
+    left, right = equation.split('=')
+    print(left, right)
+    # have been busy these days, so tired🥱
 
 
 if __name__ == '__main__':
