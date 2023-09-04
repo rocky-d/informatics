@@ -3,16 +3,11 @@ def main() -> None:
 
     if left0[0] == '-':
         left0 = '0' + left0
-    elif left0[0] == '+':
-        left0 = left0[1:]
     if right0[0] == '-':
         right0 = '0' + right0
-    elif right0[0] == '+':
-        right0 = right0[1:]
 
-    ch: str = ''
-    left1: list = []
-    right1: list = []
+    left1 = []
+    right1 = []
 
     for x in [x.split('-') for x in left0.split('+')]:
         if x[0][-1].isalpha():
