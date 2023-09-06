@@ -1,5 +1,5 @@
 def main() -> None:
-    n_ls = [int(ch) for ch in input().strip()]
+    n_ls = [int(ch) for ch in input()[:-1]]
     for _ in range(int(input())):
         for i in range(len(n_ls) - 1):
             if n_ls[i] > n_ls[i + 1]:
