@@ -1,6 +1,6 @@
 # informatics
 
-This project is mean to serve as a record of my code for solving informatics problems. 😃
+This project is meant to serve as a record of my code for solving informatics problems. 😃
 
 Welcome everyone to offer opinions! 😊
 
