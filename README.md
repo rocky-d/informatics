@@ -1,6 +1,8 @@
 # informatics
 
-~~~
+### Tree
+
+```
 ├─code
 │  ├─cpp
 │  │  └─src
@@ -58,4 +60,4 @@
 ├─problem
 │  └─luogu
 └─template
-~~~
+```
