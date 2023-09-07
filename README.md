@@ -1,8 +1,10 @@
 # informatics
 
-This project is used to record the programming problems I do. 😃
+This project is mean to serve as a record of my code for solving informatics problems. 😃
 
-### Tree
+Welcome everyone to offer opinions! 😊
+
+### Directory Tree (07/09/2023)
 
 ```
 ├─code
