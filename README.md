@@ -1,5 +1,7 @@
 # informatics
 
+This project is used to record the programming problems I do. 😃
+
 ### Tree
 
 ```
