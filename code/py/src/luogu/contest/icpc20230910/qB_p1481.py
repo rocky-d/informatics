@@ -4,12 +4,13 @@ def main() -> None:
     dp = [1 for _ in range(n)]
     for i in range(n):
         prefix = words[i]
-        tag = False
         for j in range(i + 1, n):
             if words[j].startswith(prefix):
                 dp[j] += 1
-                tag = True
-            elif tag:
+                j += 1
+                while j < n and words[j].startswith(prefix):
+                    dp[j] += 1
+                    j += 1
                 break
     print(max(dp))
 
