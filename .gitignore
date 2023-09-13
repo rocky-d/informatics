@@ -3,8 +3,8 @@
 *.classpath
 *.iml
 
-.git/
 .idea/
+.ipynb_checkpoints/
 .vscode/
 draft/
 
