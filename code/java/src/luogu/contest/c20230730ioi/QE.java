@@ -1,4 +1,4 @@
-package luogu.contest.c30072023ioi;
+package luogu.contest.c20230730ioi;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
