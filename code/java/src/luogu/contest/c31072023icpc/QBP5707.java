@@ -1,4 +1,4 @@
-package luogu.contest.icpc20230731;
+package luogu.contest.c31072023icpc;
 
 import java.util.Scanner;
 

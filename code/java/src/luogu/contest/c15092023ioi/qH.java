@@ -1,4 +1,4 @@
-package luogu.contest.ioi20230915;
+package luogu.contest.c15092023ioi;
 
 import java.util.*;
 
