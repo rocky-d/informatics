@@ -14,4 +14,6 @@ class Solution:
         return res
 
 
-print(Solution.removeElement(..., [3, 2, 2, 3], 3))
+ls = [3, 2, 2, 3]
+Solution.removeElement(..., ls, 3)
+print(ls)
