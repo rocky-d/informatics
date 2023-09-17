@@ -10,9 +10,7 @@ class Solution:
                     res = i
                     break
                 else:
-                    tmp = nums[i]
-                    nums[i] = nums[j]
-                    nums[j] = tmp
+                    nums[i], nums[j] = nums[j], nums[i]
         return res
 
 
