@@ -17,4 +17,4 @@ class Solution:
 
 
 ls = ListNode(1, ListNode(2, ListNode(3, ListNode(4, None))))
-ln_to_list(Solution.swapPairs(None, ls))
+ln_to_list(Solution.swapPairs(..., ls))
