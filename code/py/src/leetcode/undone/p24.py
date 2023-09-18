@@ -1,35 +1,20 @@
-# Definition for singly-linked list.
 from typing import Optional
 
-
-class ListNode:
-    def __init__(self, val = 0, next = None):
-        self.val = val
-        self.next = next
+from leetcode.ln import *
 
 
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        res = head.next
-        old_head = head
-        while head is not None and old_head.next is not None:
-            # print(head.val)
-            old_head = head
-            old_next = head.next
-            head.next = old_head.next.next.next
-            old_next.next = head
-            head = head.next
-            # output(head)
-        output(head)
-        return res
-# 3, 4, None
-
-def output(head):
-    while head is not None:
-        print(head.val, end = ' > ')
-        head = head.next
-    print('')
+        res = pre_head = ListNode(next = head)
+        while pre_head.next and pre_head.next.next:
+            node1 = pre_head.next
+            node2 = pre_head.next.next
+            pre_head.next = node2
+            node1.next = node2.next
+            node2.next = node1
+            pre_head = node1
+        return res.next
 
 
 ls = ListNode(1, ListNode(2, ListNode(3, ListNode(4, None))))
-output(Solution.swapPairs(None, ls))
+ln_to_list(Solution.swapPairs(None, ls))
