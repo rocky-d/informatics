@@ -17,5 +17,6 @@ class Solution:
 
 
 sol = Solution()
+
 ls = [1, 2, 3, 4, 5]
 print(ln_to_list(sol.swapPairs(list_to_ln(ls))))

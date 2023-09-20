@@ -14,6 +14,8 @@ class Solution:
         return res
 
 
+sol = Solution()
+
 ls = [3, 2, 2, 3]
-Solution.removeElement(..., ls, 3)
+sol.removeElement(ls, 3)
 print(ls)
