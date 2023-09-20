@@ -24,7 +24,7 @@ class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         res = dummy = ListNode(next = head)
         k1 = k - 1
-        while Solution.is_long_enough1(dummy, k):
+        while Solution.is_long_enough2(dummy, k):
             first = dummy.next
             node0 = dummy
             node1 = node0.next
