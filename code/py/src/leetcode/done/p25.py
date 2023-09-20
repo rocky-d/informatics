@@ -23,12 +23,13 @@ class Solution:
 
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         res = dummy = ListNode(next = head)
+        k -= 1
         while Solution.is_long_enough1(dummy, k):
             first = dummy.next
             node0 = dummy
             node1 = node0.next
             node2 = node1.next
-            for _ in range(k - 1):
+            for _ in range(k):
                 node0 = node1
                 node1 = node2
                 node2 = node2.next
