@@ -5,16 +5,16 @@ from leetcode.ln import *
 
 class Solution:
     @staticmethod
-    def is_long_enough1(node: Optional[ListNode], length: int) -> bool:
+    def is_long_enough_recu(node: Optional[ListNode], length: int) -> bool:
         if length < 1:
             return True
         if node.next:
-            return Solution.is_long_enough1(node.next, length - 1)
+            return Solution.is_long_enough_recu(node.next, length - 1)
         else:
             return False
 
     @staticmethod
-    def is_long_enough2(node: Optional[ListNode], length: int) -> bool:
+    def is_long_enough_iter(node: Optional[ListNode], length: int) -> bool:
         for _ in range(length):
             node = node.next
             if not node:
@@ -24,7 +24,7 @@ class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         res = dummy = ListNode(next = head)
         k1 = k - 1
-        while Solution.is_long_enough2(dummy, k):
+        while Solution.is_long_enough_iter(dummy, k):
             first = dummy.next
             node0 = dummy
             node1 = node0.next
