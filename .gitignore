@@ -6,6 +6,7 @@
 .idea/
 .ipynb_checkpoints/
 .vscode/
+__pycache__/
 draft/
 
 /archive/
