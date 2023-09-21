@@ -1,5 +1,8 @@
+from leetcode.util import *
+
+
 class Solution:
-    def removeElement(self, nums: list[int], val: int) -> int:
+    def removeElement(self, nums: List[int], val: int) -> int:
         res = len_nums = len(nums)
         j = len_nums - 1
         for i in range(len_nums):

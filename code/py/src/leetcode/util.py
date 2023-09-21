@@ -1,3 +1,6 @@
+from typing import *
+
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val = 0, next = None):
@@ -5,7 +8,7 @@ class ListNode:
         self.next = next
 
 
-def list_to_ln(ls: list[int]) -> ListNode:
+def list_to_ln(ls: List[int]) -> Optional[ListNode]:
     pre_head = node = ListNode()
     for num in ls:
         node.next = ListNode(val = num, next = None)
@@ -13,7 +16,7 @@ def list_to_ln(ls: list[int]) -> ListNode:
     return pre_head.next
 
 
-def ln_to_list(node: ListNode) -> list[int]:
+def ln_to_list(node: Optional[ListNode]) -> List[int]:
     ls = []
     while node:
         ls.append(node.val)

@@ -1,6 +1,4 @@
-from typing import Optional
-
-from leetcode.ln import *
+from leetcode.util import *
 
 
 class Solution:
