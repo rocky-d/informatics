@@ -3,7 +3,7 @@ chcp 65001
 setlocal enabledelayedexpansion
 
 rem 设置脚本名称（用于输出报错信息）
-set "script_name=runcpp"
+set "script_name=cpprun"
 
 rem 检查是否提供了文件路径参数
 if "%~1"=="" (
