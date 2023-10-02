@@ -25,15 +25,13 @@ class Solution:
                     else:
                         ls[num] = True
 
-        for i in range(3):
-            for j in range(3):
-                iii = 3 * i
-                jjj = 3 * j
+        for i_origin in range(0, 7, 3):
+            for j_origin in range(0, 7, 3):
                 ls = empty_ls.copy()
-                for ii in range(iii, iii + 3):
-                    for jj in range(jjj, jjj + 3):
-                        if board[ii][jj] != '.':
-                            num = int(board[ii][jj])
+                for i in range(i_origin, i_origin + 3):
+                    for j in range(j_origin, j_origin + 3):
+                        if board[i][j] != '.':
+                            num = int(board[i][j])
                             if ls[num]:
                                 return False
                             else:
