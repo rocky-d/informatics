@@ -3,7 +3,6 @@ from leetcode.util import *
 
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        num_dict = {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
         rows = [
             [True, True, True, True, True, True, True, True, True, True],
             [True, True, True, True, True, True, True, True, True, True],
@@ -51,9 +50,10 @@ class Solution:
 
         for row in range(9):
             for column in range(9):
-                if board[row][column] == '.':
+                num = board[row][column]
+                if '.' == num:
                     continue
-                num = num_dict[board[row][column]]
+                num = int(num)
 
                 if rows[row][num]:
                     rows[row][num] = False
