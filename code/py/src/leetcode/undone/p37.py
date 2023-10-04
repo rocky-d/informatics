@@ -61,7 +61,7 @@ class Solution:
             for column in range(9):
                 if 1 == tag_map[row][column][0]:
                     stack.append((row, column))
-        print(stack)
+
         while stack:
             row, column = stack.pop()
             num = 1 + tag_map[row][column][1:].index(True)
@@ -72,6 +72,15 @@ class Solution:
                 for column in range(9):
                     if 1 == tag_map[row][column][0] and (row, column) not in stack:
                         stack.append((row, column))
+
+        for i in range(9):
+            for j in range(9):
+                tags = ''
+                for k in range(1, 10):
+                    if tag_map[i][j][k]:
+                        tags += str(k)
+                print(tags, end = ', ')
+            print()
 
 
 sol = Solution()
