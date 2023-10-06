@@ -1,6 +1,6 @@
 class Solution:
     def tribonacci(self, n: int) -> int:
-        dp = [0, 1, 1]
+        first, second, third = 0, 1, 1
         for _ in range(n - 2):
-            dp.append(dp[-1] + dp[-2] + dp[-3])
-        return dp[n]
+            first, second, third = second, third, first + second + third
+        return n if n < 2 else third
