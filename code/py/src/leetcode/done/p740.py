@@ -3,26 +3,18 @@ from leetcode.util import *
 
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
-        nums.sort()
-        index = 0
-        last_num = nums[0]
-        while last_num == nums[index]:
-            index += 1
-            if index == len(nums):
-                return index * last_num
-        first, second = 0, index * last_num
-        cnt = 0
-        curr_num = nums[index]
-        for num in nums[index:]:
-            if curr_num == num:
-                cnt += 1
-            else:
-                first, second = second, max(second, first + cnt * curr_num) if last_num + 1 == curr_num else second + cnt * curr_num
-                cnt = 1
-                last_num = curr_num
-                curr_num = num
-        first, second = second, max(second, first + cnt * curr_num) if last_num + 1 == curr_num else second + cnt * curr_num
-        return second
+        def rob(nums_: List[int]) -> int:
+            first, second = 0, 0
+            for num_ in nums_:
+                first, second = second, max(second, first + num_)
+            return second
+
+        new_nums = []
+        for num in nums:
+            if num >= len(new_nums):
+                new_nums += [0 for _ in range(num - len(new_nums) + 1)]
+            new_nums[num] += num
+        return rob(new_nums)
 
 
 sol = Solution()
