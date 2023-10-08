@@ -8,4 +8,5 @@ class Solution:
 
 
 sol = Solution()
+
 print(sol.uniquePaths(3, 7))
