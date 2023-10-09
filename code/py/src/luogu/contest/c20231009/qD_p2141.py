@@ -1,14 +1,14 @@
 def main() -> None:
-    res = 0
+    ans = 0
     input()
     nums = sorted(map(int, input().split()))
     for i, numi in enumerate(nums):
         for j in range(i):
             diff = numi - nums[j]
             if not diff == nums[j] and diff in nums:
-                res += 1
+                ans += 1
                 break
-    print(res)
+    print(ans)
 
 
 if __name__ == '__main__':
