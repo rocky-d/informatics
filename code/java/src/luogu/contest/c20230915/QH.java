@@ -1,8 +1,8 @@
-package luogu.contest.c20230915ioi;
+package luogu.contest.c20230915;
 
 import java.util.*;
 
-class qH {
+class QH {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();

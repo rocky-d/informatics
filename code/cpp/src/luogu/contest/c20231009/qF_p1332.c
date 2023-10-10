@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main(void) {
     int n, m, a, b;
     scanf("%d %d %d %d", &n, &m, &a, &b);
     int sourceList[100001][2];
