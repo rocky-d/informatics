@@ -4,24 +4,29 @@ This project is meant to serve as a record of my code for solving informatics pr
 
 Welcome everyone to offer opinions! 😊
 
-### Directory Tree (07/09/2023)
+### Directory Tree (13/10/2023)
 
 ```
+informatics
 ├─code
 │  ├─cpp
 │  │  └─src
 │  │      └─luogu
 │  │          ├─contest
+│  │          │  └─c20231009
 │  │          ├─done
 │  │          └─undone
 │  ├─java
 │  │  └─src
+│  │      ├─codeforces
+│  │      │  └─contest
 │  │      ├─lanqiao
 │  │      ├─leetcode
 │  │      ├─luogu
 │  │      │  ├─contest
-│  │      │  │  ├─icpc20230731
-│  │      │  │  └─ioi20230730
+│  │      │  │  ├─c20230730
+│  │      │  │  ├─c20230731
+│  │      │  │  └─c20230915
 │  │      │  ├─done
 │  │      │  └─undone
 │  │      ├─nowcoder
@@ -43,8 +48,18 @@ Welcome everyone to offer opinions! 😊
 │  │          │  │  └─graphsearch
 │  │          │  └─numbertheory
 │  │          └─datastructure
+│  ├─js
+│  │  └─src
+│  │      └─leetcode
+│  │          ├─contest
+│  │          ├─done
+│  │          └─undone
 │  └─py
 │      └─src
+│          ├─codeforces
+│          │  └─contest
+│          │      ├─c20230920
+│          │      └─c20230927
 │          ├─lanqiao
 │          │  ├─contest
 │          │  ├─done
@@ -55,8 +70,11 @@ Welcome everyone to offer opinions! 😊
 │          │  └─undone
 │          ├─luogu
 │          │  ├─contest
-│          │  │  ├─icpc20230731
-│          │  │  └─ioi20230730
+│          │  │  ├─c20230730
+│          │  │  ├─c20230731
+│          │  │  ├─c20230910
+│          │  │  ├─c20230915
+│          │  │  └─c20231009
 │          │  ├─done
 │          │  └─undone
 │          ├─nowcoder
