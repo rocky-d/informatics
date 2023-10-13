@@ -2,11 +2,5 @@ from leetcode.util import *
 
 
 def find_employees(employee: pd.DataFrame) -> pd.DataFrame:
-    ans_ls = []
-    for i in range(employee.shape[0]):
-        manager_id = employee.iloc[i, 3]
-        if not pd.isnull(manager_id):
-            tmp_df = employee.loc[employee['id'] == manager_id]
-            if 0 < tmp_df.shape[0] and employee.iloc[i, 2] > tmp_df.iloc[0, 2]:
-                ans_ls.append(employee.iloc[i, 1])
-    return pd.DataFrame({'Employee': ans_ls})
+    employee_with_manager = employee.merge(employee, left_on = 'managerId', right_on = 'id', suffixes = ('_emp', '_mgr'))
+    return employee_with_manager[employee_with_manager['salary_emp'] > employee_with_manager['salary_mgr']][['name_emp']].rename(columns = {'name_emp': 'Employee'})
