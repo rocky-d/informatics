@@ -12,12 +12,12 @@ def main() -> None:
             cnt = 2
         last_day = day
     day_ls.append(cnt)
-    table = [(lambda k_, s_: (2 ** int(k_), int(s_)))(*input().split()) for _ in range(m)]
+    ks_ls = [(lambda k_, s_: (2 ** int(k_), int(s_)))(*input().split()) for _ in range(m)]
 
     ans = 0
     for day in day_ls:
         dp = [0 for _ in range(day)]
-        for k, s in table:
+        for k, s in ks_ls:
             for j in range(k, day):
                 dp[j] = max(dp[j], dp[j - k] + s)
         ans += dp[-1]
