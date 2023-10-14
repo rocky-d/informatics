@@ -16,9 +16,10 @@ def main() -> None:
 
     ans = 0
     for day in day_ls:
-        dp = [0 for _ in range(1 + day)]
+        day1 = day + 1
+        dp = [0 for _ in range(day1)]
         for k, s in table:
-            for j in range(k, 1 + day):
+            for j in range(k, day1):
                 dp[j] = max(dp[j], dp[j - k] + s)
         ans += dp[-1]
     print(ans)
