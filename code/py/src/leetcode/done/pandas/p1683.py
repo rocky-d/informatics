@@ -2,4 +2,4 @@ from leetcode.util import *
 
 
 def invalid_tweets(tweets: pd.DataFrame) -> pd.DataFrame:
-    return tweets[15 < tweets['content'].str.len()][['tweet_id']]
+    return tweets[['tweet_id']][15 < tweets['content'].str.len()]
