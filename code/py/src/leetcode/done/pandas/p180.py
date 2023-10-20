@@ -1,4 +1,4 @@
-from leetcode.util import *
+from leetcode.leetcode import *
 
 
 def consecutive_numbers(logs: pd.DataFrame) -> pd.DataFrame:

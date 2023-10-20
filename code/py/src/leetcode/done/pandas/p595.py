@@ -1,4 +1,4 @@
-from leetcode.util import *
+from leetcode.leetcode import *
 
 
 def big_countries(world: pd.DataFrame) -> pd.DataFrame:

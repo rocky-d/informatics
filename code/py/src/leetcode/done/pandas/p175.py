@@ -1,4 +1,4 @@
-from leetcode.util import *
+from leetcode.leetcode import *
 
 
 def combine_two_tables(person: pd.DataFrame, address: pd.DataFrame) -> pd.DataFrame:

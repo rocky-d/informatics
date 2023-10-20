@@ -1,4 +1,4 @@
-from leetcode.util import *
+from leetcode.leetcode import *
 
 
 def order_scores(scores: pd.DataFrame) -> pd.DataFrame:

@@ -1,4 +1,4 @@
-from leetcode.util import *
+from leetcode.leetcode import *
 
 
 def find_products(products: pd.DataFrame) -> pd.DataFrame:

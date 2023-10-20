@@ -1,4 +1,4 @@
-from leetcode.util import *
+from leetcode.leetcode import *
 
 
 def second_highest_salary(employee: pd.DataFrame) -> pd.DataFrame:

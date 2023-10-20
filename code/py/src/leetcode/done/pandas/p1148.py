@@ -1,4 +1,4 @@
-from leetcode.util import *
+from leetcode.leetcode import *
 
 
 def article_views(views: pd.DataFrame) -> pd.DataFrame:
