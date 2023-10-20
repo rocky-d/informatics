@@ -1,4 +1,4 @@
-from leetcode.leetcode import *
+from rockyutil.leetcode import *
 
 
 def order_scores(scores: pd.DataFrame) -> pd.DataFrame:

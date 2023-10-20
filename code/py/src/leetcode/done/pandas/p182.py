@@ -1,4 +1,4 @@
-from leetcode.leetcode import *
+from rockyutil.leetcode import *
 
 
 def duplicate_emails(person: pd.DataFrame) -> pd.DataFrame:

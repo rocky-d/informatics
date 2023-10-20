@@ -1,4 +1,4 @@
-from leetcode.leetcode import *
+from rockyutil.leetcode import *
 
 
 def nth_highest_salary(employee: pd.DataFrame, N: int) -> pd.DataFrame:

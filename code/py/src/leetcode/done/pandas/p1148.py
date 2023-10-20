@@ -1,4 +1,4 @@
-from leetcode.leetcode import *
+from rockyutil.leetcode import *
 
 
 def article_views(views: pd.DataFrame) -> pd.DataFrame:

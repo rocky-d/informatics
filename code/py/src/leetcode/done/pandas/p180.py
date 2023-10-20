@@ -1,4 +1,4 @@
-from leetcode.leetcode import *
+from rockyutil.leetcode import *
 
 
 def consecutive_numbers(logs: pd.DataFrame) -> pd.DataFrame:

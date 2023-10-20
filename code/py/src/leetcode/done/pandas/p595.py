@@ -1,4 +1,4 @@
-from leetcode.leetcode import *
+from rockyutil.leetcode import *
 
 
 def big_countries(world: pd.DataFrame) -> pd.DataFrame:
