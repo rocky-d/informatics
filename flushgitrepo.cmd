@@ -10,7 +10,7 @@ if not "informatics"=="%current_dir:~-11%" (
     exit /b 1
 )
 
-git rm -r --cached .
+git rm -r --cached --quiet .
 git add .
 
 echo Git repository flushed.
