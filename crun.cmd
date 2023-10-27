@@ -13,7 +13,7 @@ rem Get file name (without suffix)
 rem for %%i in ("%~1") do set "output_name=%%~ni"
 set "output_name=main"
 
-set "output_dir=.\code\cpp\out"
+set "output_dir=.\code\c\out"
 
 gcc "%~1" -o "%output_dir%\!output_name!.exe"
 
