@@ -1,10 +1,11 @@
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        dp = [[0 for _j in range(1 + len(text2))] for _i in range(1 + len(text1))]
-        for i, text1_i in enumerate(text1):
+        dp1, dp2 = [0] + [0 for _ in text2], [0] + [0 for _ in text2]
+        for text1_i in text1:
             for j, text2_j in enumerate(text2):
-                dp[i + 1][j + 1] = dp[i][j] + 1 if text1_i == text2_j else max(dp[i][j + 1], dp[i + 1][j])
-        return dp[-1][-1]
+                dp2[j + 1] = dp1[j] + 1 if text1_i == text2_j else max(dp1[j + 1], dp2[j])
+            dp1, dp2 = dp2, dp1
+        return dp1[-1]
 
 
 sol = Solution()
