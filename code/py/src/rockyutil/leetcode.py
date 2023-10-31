@@ -1,8 +1,5 @@
 from typing import *
 
-import numpy as np
-import pandas as pd
-
 
 # Definition for singly-linked list.
 class ListNode:
@@ -29,7 +26,7 @@ def ln_to_list(node: Optional[ListNode]) -> List[int]:
 
 # Definition for a binary tree node.
 class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
+    def __init__(self, val = 0, left = None, right = None):
         self.val = val
         self.left = left
         self.right = right
