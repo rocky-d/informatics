@@ -25,3 +25,11 @@ def ln_to_list(node: Optional[ListNode]) -> List[int]:
         ls.append(node.val)
         node = node.next
     return ls
+
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
