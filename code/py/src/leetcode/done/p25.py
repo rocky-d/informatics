@@ -41,4 +41,4 @@ class Solution:
 sol = Solution()
 
 ls = [1, 2, 3, 4, 5, 6, 7]
-print(ln_to_list(sol.reverseKGroup(list_to_ln(ls), 3)))
+print(ListNode.ln_to_list(sol.reverseKGroup(ListNode.list_to_ln(ls), 3)))
