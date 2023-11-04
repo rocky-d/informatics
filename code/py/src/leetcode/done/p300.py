@@ -3,7 +3,7 @@ from rockyutil.leetcode import *
 
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        ans = 1
+        ans = 0
         dp = []
         for i, nums_i in enumerate(nums):
             dp.append(1)
