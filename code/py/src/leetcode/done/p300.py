@@ -8,7 +8,7 @@ class Solution:
             dp.append(1)
             for j, nums_j in enumerate(nums[:i]):
                 if nums_j < nums_i:
-                    dp[i] = max(dp[i], dp[j] + 1)
+                    dp[-1] = max(dp[-1], dp[j] + 1)
         return max(dp)
 
 
