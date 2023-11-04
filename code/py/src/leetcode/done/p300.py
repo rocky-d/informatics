@@ -3,17 +3,13 @@ from rockyutil.leetcode import *
 
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        ans = 1
-        dp = [(nums[0], 1)]
-        for nums_i in nums[1:]:
-            max_ = 0
-            for dp_j in dp:
-                if nums_i > dp_j[0]:
-                    max_ = max(max_, dp_j[1])
-            max_ += 1
-            dp.append((nums_i, max_))
-            ans = max(ans, max_)
-        return ans
+        dp = []
+        for i, nums_i in enumerate(nums):
+            dp.append(1)
+            for j, nums_j in enumerate(nums[:i]):
+                if nums_j < nums_i:
+                    dp[i] = max(dp[i], dp[j] + 1)
+        return max(dp)
 
 
 sol = Solution()
