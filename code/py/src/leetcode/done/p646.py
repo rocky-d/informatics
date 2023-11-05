@@ -16,4 +16,4 @@ class Solution:
 sol = Solution()
 
 eg_pairs = [[1, 2], [7, 8], [4, 5]]
-sol.findLongestChain(pairs = eg_pairs)
+print(sol.findLongestChain(pairs = eg_pairs))
