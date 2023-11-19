@@ -1,8 +1,6 @@
 # informatics
 
-This project is meant to serve as a record of my code for solving informatics problems. 😃
-
-Welcome everyone to offer opinions! 😊
+This project is meant to serve as a record of my code for solving informatics problems. 📝
 
 ### Directory Tree (2023/11/05)
 
