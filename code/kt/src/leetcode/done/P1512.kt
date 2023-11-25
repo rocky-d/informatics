@@ -20,9 +20,9 @@ class P1512 {
     }
 }
 
-fun main() {
-    val sol: P1512 = P1512()
-
-    val egNums: IntArray = intArrayOf(1, 2, 3, 1, 1, 3)
-    println(sol.numIdenticalPairs(nums = egNums))
-}
+//fun main() {
+//    val sol: P1512 = P1512()
+//
+//    val egNums: IntArray = intArrayOf(1, 2, 3, 1, 1, 3)
+//    println(sol.numIdenticalPairs(nums = egNums))
+//}
