@@ -4,7 +4,7 @@ class P1512 {
     fun numIdenticalPairs(nums: IntArray): Int {
         var ans: Int = 0
         val notVed: BooleanArray = BooleanArray(nums.size) { true }
-        for (i in nums.indices) {
+        for (i in 0..nums.lastIndex) {
             if (notVed[i]) {
                 var cnt: Int = 1
                 for (j in i + 1..nums.lastIndex) {
