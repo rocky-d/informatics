@@ -1,6 +1,6 @@
 # informatics
 
-This repository is meant to serve as a record of my code for solving informatics problems. 📝
+[This repository](https://github.com/rocky-d/informatics) is meant to serve as a record of my code for solving informatics problems. 📝
 
 ### Directory Tree (2023/12/01)
 
