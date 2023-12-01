@@ -2,7 +2,7 @@
 
 This repository is meant to serve as a record of my code for solving informatics problems. 📝
 
-### Directory Tree (2023/11/25)
+### Directory Tree (2023/12/01)
 
 ```
 informatics
