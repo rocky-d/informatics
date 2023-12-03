@@ -10,10 +10,14 @@ class P1423 {
         for (i in cardPoints.indices) {
             prefixSum[i + 1] = prefixSum[i] + cardPoints[i]
         }
-        var minWindow: Int = prefixSum[n]
-        for (i in 0..k) {
-            minWindow = min(minWindow, prefixSum[i + l] - prefixSum[i])
+        return if (0 == l) {
+            prefixSum[n]
+        } else {
+            var minWindow: Int = prefixSum[n]
+            for (i in 0..k) {
+                minWindow = min(minWindow, prefixSum[i + l] - prefixSum[i])
+            }
+            prefixSum[n] - minWindow
         }
-        return prefixSum[n] - minWindow
     }
 }
