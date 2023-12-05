@@ -14,10 +14,5 @@ class Solution:
             go_through(node.left)
             return node.val
 
-        if root is None:
-            return root
-        go_through(root.right)
-        root.val += self.max_value
-        self.max_value = root.val
-        go_through(root.left)
+        go_through(root)
         return root
