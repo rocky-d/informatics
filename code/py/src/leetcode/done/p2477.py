@@ -29,8 +29,7 @@ class Solution:
             self.ans += math.ceil(members / seats)
             return members
 
-        last = dfs(0, -1)
-        return self.ans - math.ceil(last / seats)
+        return -math.ceil(dfs(0, -1) / seats) + self.ans
 
 
 sol = Solution()
