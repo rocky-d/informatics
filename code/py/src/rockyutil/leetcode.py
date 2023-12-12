@@ -1,5 +1,7 @@
 # from array import *
 # from bisect import *
+import heapq
+import math
 from collections import *
 from typing import *
 
@@ -37,3 +39,7 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+
+
+if __name__ == '__main__':
+    ...
