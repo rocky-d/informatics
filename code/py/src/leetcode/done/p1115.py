@@ -4,7 +4,8 @@ from rockyutil.leetcode import *
 class FooBar:
     def __init__(self, n):
         self.n = n
-        self.s1, self.s2 = threading.BoundedSemaphore(1), threading.BoundedSemaphore(1)
+        self.s1 = threading.BoundedSemaphore(1)
+        self.s2 = threading.BoundedSemaphore(1)
         self.s2.acquire()
 
     def foo(self, printFoo: 'Callable[[], None]') -> None:
