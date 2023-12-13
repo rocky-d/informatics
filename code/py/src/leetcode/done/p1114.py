@@ -3,20 +3,20 @@ from rockyutil.leetcode import *
 
 class Foo:
     def __init__(self):
-        self.first_lock = threading.Semaphore(1)
-        self.second_lock = threading.Semaphore(1)
-        self.first_lock.acquire()
-        self.second_lock.acquire()
+        self.s1 = threading.Semaphore(1)
+        self.s2 = threading.Semaphore(1)
+        self.s1.acquire()
+        self.s2.acquire()
 
     def first(self, printFirst: 'Callable[[], None]') -> None:
         printFirst()
-        self.first_lock.release()
+        self.s1.release()
 
     def second(self, printSecond: 'Callable[[], None]') -> None:
-        self.first_lock.acquire()
+        self.s1.acquire()
         printSecond()
-        self.second_lock.release()
+        self.s2.release()
 
     def third(self, printThird: 'Callable[[], None]') -> None:
-        self.second_lock.acquire()
+        self.s2.acquire()
         printThird()
