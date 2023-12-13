@@ -3,8 +3,8 @@ from rockyutil.leetcode import *
 
 class Foo:
     def __init__(self):
-        self.first_lock = threading.Lock()
-        self.second_lock = threading.Lock()
+        self.first_lock = threading.Semaphore(1)
+        self.second_lock = threading.Semaphore(1)
         self.first_lock.acquire()
         self.second_lock.acquire()
 
