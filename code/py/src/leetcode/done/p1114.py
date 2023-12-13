@@ -3,10 +3,8 @@ from rockyutil.leetcode import *
 
 class Foo:
     def __init__(self):
-        self.s1 = threading.Semaphore(1)
-        self.s2 = threading.Semaphore(1)
-        self.s1.acquire()
-        self.s2.acquire()
+        self.s1 = threading.Semaphore(0)
+        self.s2 = threading.Semaphore(0)
 
     def first(self, printFirst: 'Callable[[], None]') -> None:
         printFirst()
