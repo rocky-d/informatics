@@ -30,3 +30,24 @@ class ZeroEvenOdd:
             self.s3.acquire()
             printNumber(self.count)
             self.s1.release()
+
+
+eg_n = 5
+instance = ZeroEvenOdd(n = eg_n)
+
+
+def print_number(number):
+    print(number, end = '')
+
+
+threads = (
+    threading.Thread(target = instance.zero, args = (print_number,)),
+    threading.Thread(target = instance.even, args = (print_number,)),
+    threading.Thread(target = instance.odd, args = (print_number,))
+)
+
+for thread in threads:
+    thread.start()
+
+# for thread in threads:
+#     thread.join()
