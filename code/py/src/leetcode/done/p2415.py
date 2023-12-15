@@ -8,8 +8,8 @@ class Solution:
                 return
             if is_odd_level:
                 left_node.val, right_node.val = right_node.val, left_node.val
-            dfs(left_node.left, right_node.right, not is_odd_level)
-            dfs(left_node.right, right_node.left, not is_odd_level)
+            dfs(left_node = left_node.left, right_node = right_node.right, is_odd_level = not is_odd_level)
+            dfs(left_node = left_node.right, right_node = right_node.left, is_odd_level = not is_odd_level)
 
-        dfs(root.left, root.right, True)
+        dfs(left_node = root.left, right_node = root.right, is_odd_level = True)
         return root
