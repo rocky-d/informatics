@@ -1,36 +1,36 @@
 import math
+from timeit import timeit
 
 
-def is_prime_slower(n: int) -> bool:
+def is_prime_1(n: int) -> bool:
     if n < 2:
-        ans = False
+        res = False
     else:
         for i in range(2, n):
             if 0 == n % i:
-                ans = False
+                res = False
                 break
         else:
-            ans = True
-    return ans
+            res = True
+    return res
 
 
-def is_prime_faster(n: int) -> bool:
+def is_prime_2(n: int) -> bool:
     if n < 2:
-        ans = False
+        res = False
     else:
-        for i in range(2, math.floor(math.sqrt(n)) + 1):
+        for i in range(2, math.isqrt(n) + 1):
             if 0 == n % i:
-                ans = False
+                res = False
                 break
         else:
-            ans = True
-    return ans
+            res = True
+    return res
 
 
-def primes_before_slower(n: int) -> list[int]:
+def primes_before_1(n: int) -> list[int]:
     res = []
-    tags = [True for _ in range(n)]
-    tags[0], tags[1] = False, False
+    tags = [False for _ in range(0, 2)] + [True for _ in range(2, n)]
     for i in range(2, n):
         if tags[i]:
             res.append(i)
@@ -39,16 +39,32 @@ def primes_before_slower(n: int) -> list[int]:
     return res
 
 
-def primes_before_faster(n: int) -> list[int]:
+def primes_before_2(n: int) -> list[int]:
     res = []
-    tags = [True for _ in range(n)]
-    tags[0], tags[1] = False, False
-    ...
+    tags = [False for _ in range(0, n)]
+    for i in range(2, n):
+        if not tags[i]:
+            res.append(i)
+        for prime in res:
+            index = i * prime
+            if index < n:
+                tags[index] = True
+                if 0 == i % prime:
+                    break
+            else:
+                break
     return res
 
 
 if __name__ == '__main__':
-    print(is_prime_slower(133))
-    print(is_prime_faster(133))
-    print(primes_before_slower(133))
-    print(primes_before_faster(133))
+    eg_n, repeats = int(1e5), int(1e2)
+    which = 4
+    match which:
+        case 1:
+            print(timeit(lambda: list(filter(is_prime_1, range(eg_n))), number = repeats))
+        case 2:
+            print(timeit(lambda: list(filter(is_prime_2, range(eg_n))), number = repeats))
+        case 3:
+            print(timeit(lambda: primes_before_1(n = eg_n), number = repeats))
+        case 4:
+            print(timeit(lambda: primes_before_2(n = eg_n), number = repeats))
