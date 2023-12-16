@@ -34,21 +34,21 @@ def primes_before_1(n: int) -> list[int]:
     for i in range(2, n):
         if tags[i]:
             res.append(i)
-            for j in range(i ** 2, n, i):
-                tags[j] = False
+            for composite in range(i ** 2, n, i):
+                tags[composite] = False
     return res
 
 
 def primes_before_2(n: int) -> list[int]:
     res = []
-    tags = [False for _ in range(n)]
+    tags = [False for _ in range(2)] + [True for _ in range(2, n)]
     for i in range(2, n):
-        if not tags[i]:
+        if tags[i]:
             res.append(i)
         for prime in res:
-            index = i * prime
-            if index < n:
-                tags[index] = True
+            composite = i * prime
+            if composite < n:
+                tags[composite] = False
                 if 0 == i % prime:
                     break
             else:
