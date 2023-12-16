@@ -30,7 +30,7 @@ def is_prime_2(n: int) -> bool:
 
 def primes_before_1(n: int) -> list[int]:
     res = []
-    tags = [False for _ in range(0, 2)] + [True for _ in range(2, n)]
+    tags = [False for _ in range(2)] + [True for _ in range(2, n)]
     for i in range(2, n):
         if tags[i]:
             res.append(i)
@@ -41,7 +41,7 @@ def primes_before_1(n: int) -> list[int]:
 
 def primes_before_2(n: int) -> list[int]:
     res = []
-    tags = [False for _ in range(0, n)]
+    tags = [False for _ in range(n)]
     for i in range(2, n):
         if not tags[i]:
             res.append(i)
@@ -57,8 +57,8 @@ def primes_before_2(n: int) -> list[int]:
 
 
 if __name__ == '__main__':
-    eg_n, repeats = int(1e5), int(1e2)
-    which = 4
+    eg_n, repeats = int(1e8), int(1e0)
+    which = 3
     match which:
         case 1:
             print(timeit(lambda: list(filter(is_prime_1, range(eg_n))), number = repeats))
