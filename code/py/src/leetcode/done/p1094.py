@@ -4,11 +4,11 @@ from rockyutil.leetcode import *
 class Solution:
     def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
         diffs = [capacity]
-        for trip in trips:
-            while len(diffs) <= trip[2]:
+        for trip_passengers, trip_from, trip_to in trips:
+            while len(diffs) <= trip_to:
                 diffs.append(0)
-            diffs[trip[1]] -= trip[0]
-            diffs[trip[2]] += trip[0]
+            diffs[trip_from] -= trip_passengers
+            diffs[trip_to] += trip_passengers
         seats = 0
         for diff in diffs:
             seats += diff
