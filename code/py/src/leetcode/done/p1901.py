@@ -10,9 +10,7 @@ class Solution:
         for i in range(1, 1 + m):
             for j in range(1, 1 + n):
                 if mat[i][j - 1] < mat[i][j] and mat[i][j] > mat[i][j + 1] and mat[i - 1][j] < mat[i][j] and mat[i][j] > mat[i + 1][j]:
-                    ans = [i - 1, j - 1]
-                    break
-        return ans
+                    return [i - 1, j - 1]
 
 
 eg_mat = [
