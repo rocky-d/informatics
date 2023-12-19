@@ -34,7 +34,7 @@ def primes_before_1(n: int) -> list[int]:
     for i in range(2, n):
         if tags[i]:
             res.append(i)
-            for composite in range(i ** 2, n, i):
+            for composite in range(i * i, n, i):
                 tags[composite] = False
     return res
 
