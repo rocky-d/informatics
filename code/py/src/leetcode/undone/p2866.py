@@ -5,28 +5,19 @@ class Solution:
     def maximumSumOfHeights(self, maxHeights: List[int]) -> int:
         n = len(maxHeights)
         ans = 0
-        left_stack, stack_sum, left_sums = [0], 0, []
+        prefix, suffix = [0 for _ in range(n)], [0 for _ in range(n)]
+        stack1, stack2 = [], []
         for i in range(0, n, +1):
-            pop_times = 0
-            while left_stack[-1] > maxHeights[i]:
-                stack_sum -= left_stack.pop()
-                pop_times += 1
-            left_stack += [maxHeights[i] for _ in range(pop_times)]
-            stack_sum += pop_times * left_stack[-1]
-            left_sums.append(stack_sum)
-            left_stack.append(maxHeights[i])
-            stack_sum += left_stack[-1]
-        right_stack, stack_sum = [0], 0
+            while 0 < len(stack1) and maxHeights[i] < maxHeights[stack1[-1]]:
+                stack1.pop()
+            prefix[i] = (1 + i) * maxHeights[i] if 0 == len(stack1) else prefix[stack1[-1]] + (i - stack1[-1]) * maxHeights[i]
+            stack1.append(i)
         for i in range(n - 1, -1, -1):
-            pop_times = 0
-            while right_stack[-1] > maxHeights[i]:
-                stack_sum -= right_stack.pop()
-                pop_times += 1
-            right_stack += [maxHeights[i] for _ in range(pop_times)]
-            stack_sum += pop_times * right_stack[-1]
-            right_stack.append(maxHeights[i])
-            stack_sum += right_stack[-1]
-            ans = max(ans, left_sums[i] + stack_sum)
+            while 0 < len(stack2) and maxHeights[i] < maxHeights[stack2[-1]]:
+                stack2.pop()
+            suffix[i] = (n - i) * maxHeights[i] if 0 == len(stack2) else suffix[stack2[-1]] + (stack2[-1] - i) * maxHeights[i]
+            stack2.append(i)
+            ans = max(ans, prefix[i] + suffix[i] - maxHeights[i])
         return ans
 
 
