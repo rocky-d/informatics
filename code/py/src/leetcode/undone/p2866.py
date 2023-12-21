@@ -12,7 +12,7 @@ class Solution:
                 pop_times += 1
             for _ in range(pop_times):
                 left_stack.append(maxHeights[i])
-                stack_sum += left_stack[-1]
+            stack_sum += pop_times * left_stack[-1]
             left_sums.append(stack_sum)
             left_stack.append(maxHeights[i])
             stack_sum += left_stack[-1]
@@ -24,7 +24,7 @@ class Solution:
                 pop_times += 1
             for _ in range(pop_times):
                 right_stack.append(maxHeights[i])
-                stack_sum += right_stack[-1]
+            stack_sum += pop_times * right_stack[-1]
             right_sums.append(stack_sum)
             right_stack.append(maxHeights[i])
             stack_sum += right_stack[-1]
