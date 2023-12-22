@@ -10,5 +10,3 @@ __pycache__/
 draft/
 
 /archive/
-/code/*/*
-!/code/*/src/
