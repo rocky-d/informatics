@@ -4,10 +4,11 @@ import rockyutil.Examination;
 
 import java.util.Random;
 
-class DisjointSetUnion {
+class UnionFindSets {
+
     int[] array;
 
-    DisjointSetUnion() {
+    UnionFindSets() {
         int n = 100;
         this.array = new int[n];
         for (int i = 0; i < n; i++) {
@@ -15,11 +16,11 @@ class DisjointSetUnion {
         }
     }
 
-    DisjointSetUnion(int[] array) {
+    UnionFindSets(int[] array) {
         this.array = array;
     }
 
-    DisjointSetUnion(int n) {
+    UnionFindSets(int n) {
         this.array = new int[n];
         for (int i = 0; i < n; i++) {
             this.array[i] = i;
@@ -43,7 +44,7 @@ class DisjointSetUnion {
         int m = 20000000;
         int[][] inputArray = new int[m][2];
         Random random = new Random(19891213);
-        DisjointSetUnion dsu = new DisjointSetUnion(n);
+        UnionFindSets unionFindSets = new UnionFindSets(n);
 
         Examination.start();
         for (int i = 0; i < m; i++) {
@@ -55,7 +56,7 @@ class DisjointSetUnion {
 
         Examination.start();
         for (int i = 0; i < m; i++) {
-            union(dsu.array, inputArray[i][0], inputArray[i][1]);
+            union(unionFindSets.array, inputArray[i][0], inputArray[i][1]);
         }
         Examination.end();
         System.out.println("Union Done!");
