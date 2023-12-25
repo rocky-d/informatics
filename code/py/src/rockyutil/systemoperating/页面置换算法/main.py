@@ -104,7 +104,6 @@ class PageExchanger(object):
                 pointer = (pointer + 1) % self.len_frames
                 while tags[pointer]:
                     tags[pointer] = False
-                    pointer += 1
                     pointer = (pointer + 1) % self.len_frames
                 else:
                     frames[pointer] = num
@@ -150,6 +149,8 @@ if __name__ == '__main__':
     print(f"{pageExchanger.fifo() = }")
     print()
     print(f"{pageExchanger.lru() = }")
+    print()
+    print(f"{pageExchanger.sc() = }")
     print()
     print(f"{pageExchanger.clock() = }")
     print()
