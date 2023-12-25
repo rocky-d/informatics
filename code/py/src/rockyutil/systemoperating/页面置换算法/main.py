@@ -106,7 +106,6 @@ def random_pages(max_page: int, len_pages: int, show_details: bool) -> list[int]
     if show_details:
         print('页面调用顺序：')
         print(f"{pages = }")
-        print()
     return pages
 
 
@@ -123,12 +122,7 @@ if __name__ == '__main__':
     )
     print('缺页中断率：')
     print(f"{pageExchanger.opt() = }")
-    print()
     print(f"{pageExchanger.fifo() = }")
-    print()
     print(f"{pageExchanger.lru() = }")
-    print()
     print(f"{pageExchanger.sc() = }")
-    print()
     print(f"{pageExchanger.clock() = }")
-    print()
