@@ -116,14 +116,14 @@ def random_pages(max_page: int, len_pages: int, show_details: bool) -> list[int]
 
 if __name__ == '__main__':
     pageExchanger = PageExchanger(
-        len_frames = int(input('主存页框数：')),
+        len_frames = int(input('主存页框数 > ')),
         # pages = [6, 7, 6, 5, 9, 6, 8, 9, 7, 6, 9, 6],
         pages = random_pages(
-            max_page = int(input('总页面数：')),
-            len_pages = int(input('页面随机调用次数：')),
-            show_details = bool(input('输入任何内容以展示页面调用顺序（直接按下回车键以忽略页面调用顺序）：'))
+            max_page = int(input('总页面数 > ')),
+            len_pages = int(input('页面随机调用次数 > ')),
+            show_details = bool(input('输入任何内容以展示页面调用顺序（直接按下回车键以忽略页面调用顺序） > '))
         ),
-        show_details = bool(input('输入任何内容以展示页面置换过程（直接按下回车键以忽略页面置换过程）：'))
+        show_details = bool(input('输入任何内容以展示页面置换过程（直接按下回车键以忽略页面置换过程） > '))
     )
     print('缺页中断率：')
     print(f"{pageExchanger.opt() = }")
