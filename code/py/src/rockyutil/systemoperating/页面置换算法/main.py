@@ -124,16 +124,12 @@ def random_pages(max_page: int, len_pages: int) -> list[int]:
 
 
 if __name__ == '__main__':
-    len_frames_ = int(input('主存页框数：'))
-    max_page_ = int(input('总页面数：'))
-    len_pages_ = int(input('页面随机调用次数：'))
-
     pageExchanger = PageExchanger(
-        len_frames = len_frames_,
+        len_frames = int(input('主存页框数：')),
         # pages = [6, 7, 6, 5, 9, 6, 8, 9, 7, 6, 9, 6],
         pages = random_pages(
-            max_page = max_page_,
-            len_pages = len_pages_
+            max_page = int(input('总页面数：')),
+            len_pages = int(input('页面随机调用次数：'))
         ),
         debug = False
     )
