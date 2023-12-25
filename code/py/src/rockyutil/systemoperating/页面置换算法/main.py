@@ -133,16 +133,16 @@ if __name__ == '__main__':
     # print(f"{pages_ = }")
     # print()
 
-    pageExchanger = PageExchanger(
-        len_frames = len_frames_,
-        pages = [6, 7, 6, 5, 9, 6, 8, 9, 7, 6, 9, 6],
-        debug = True
-    )
     # pageExchanger = PageExchanger(
     #     len_frames = len_frames_,
-    #     pages = pages_,
-    #     debug = False
+    #     pages = [6, 7, 6, 5, 9, 6, 8, 9, 7, 6, 9, 6],
+    #     debug = True
     # )
+    pageExchanger = PageExchanger(
+        len_frames = len_frames_,
+        pages = pages_,
+        debug = False
+    )
     print('缺页中断率：')
     print(f"{pageExchanger.opt() = }")
     print()
