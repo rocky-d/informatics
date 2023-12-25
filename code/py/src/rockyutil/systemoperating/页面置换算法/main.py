@@ -17,10 +17,7 @@ class PageExchanger(object):
         frames: list[int | None] = [None for _ in range(self.len_frames)]
         indexes: list[int | None] = [None for _ in range(self.len_frames)]
         for i, num in enumerate(self.pages):
-            self.__print(frames)
-            if num in frames:
-                continue
-            else:  # elif num not in frames:
+            if num not in frames:
                 page_loss += 1
                 longest = -1, -1
                 for j in range(self.len_frames):
@@ -32,7 +29,6 @@ class PageExchanger(object):
                         longest = indexes[j], j
                 frames.pop(longest[1])
                 frames.insert(0, num)
-        else:
             self.__print(frames)
         return page_loss / len(self.pages)
 
@@ -40,14 +36,10 @@ class PageExchanger(object):
         page_loss: int = 0
         frames: list[int | None] = [None for _ in range(self.len_frames)]
         for i, num in enumerate(self.pages):
-            self.__print(frames)
-            if num in frames:
-                continue
-            else:  # elif num not in frames:
+            if num not in frames:
                 page_loss += 1
                 frames.pop(-1)
                 frames.insert(0, num)
-        else:
             self.__print(frames)
         return page_loss / len(self.pages)
 
@@ -55,7 +47,6 @@ class PageExchanger(object):
         page_loss: int = 0
         frames: list[int | None] = [None for _ in range(self.len_frames)]
         for i, num in enumerate(self.pages):
-            self.__print(frames)
             if num in frames:
                 frames.remove(num)
                 frames.insert(0, num)
@@ -63,7 +54,6 @@ class PageExchanger(object):
                 page_loss += 1
                 frames.pop(-1)
                 frames.insert(0, num)
-        else:
             self.__print(frames)
         return page_loss / len(self.pages)
 
@@ -72,7 +62,6 @@ class PageExchanger(object):
         frames: list[int | None] = [None for _ in range(self.len_frames)]
         tags: list[bool] = [False for _ in range(self.len_frames)]
         for i, num in enumerate(self.pages):
-            self.__print(frames)
             if num in frames:
                 tags[frames.index(num)] = True
             else:  # elif num not in frames:
@@ -86,7 +75,6 @@ class PageExchanger(object):
                     frames.insert(0, num)
                     tags.pop(-1)
                     tags.insert(0, True)
-        else:
             self.__print(frames)
         return page_loss / len(self.pages)
 
@@ -96,7 +84,6 @@ class PageExchanger(object):
         tags: list[bool] = [False for _ in range(self.len_frames)]
         pointer = 0
         for i, num in enumerate(self.pages):
-            self.__print(frames)
             if num in frames:
                 tags[frames.index(num)] = True
             else:  # elif num not in frames:
@@ -108,7 +95,6 @@ class PageExchanger(object):
                     frames[pointer] = num
                     tags[pointer] = True
                     pointer = (pointer + 1) % self.len_frames
-        else:
             self.__print(frames)
         return page_loss / len(self.pages)
 
