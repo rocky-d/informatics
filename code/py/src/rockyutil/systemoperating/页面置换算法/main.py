@@ -125,7 +125,7 @@ if __name__ == '__main__':
         ),
         show_details = bool(input('输入任何内容以展示页面置换过程（直接按下回车键以忽略页面置换过程） > '))
     )
-    print('缺页中断率：')
+    print('页面置换过程，缺页中断率：')
     print(f"{pageExchanger.opt() = }")
     print(f"{pageExchanger.fifo() = }")
     print(f"{pageExchanger.lru() = }")
