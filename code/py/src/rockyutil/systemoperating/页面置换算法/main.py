@@ -3,13 +3,13 @@ from random import randint
 
 class PageExchanger(object):
 
-    def __init__(self, len_frames: int, pages: list[int], debug = False) -> None:
+    def __init__(self, len_frames: int, pages: list[int], show_details: bool) -> None:
         self.len_frames: int = len_frames
         self.pages: list[int] = pages
-        self.debug: bool = debug
+        self.show_details: bool = show_details
 
     def __print(self, *args, **kwargs) -> None:
-        if self.debug:
+        if self.show_details:
             print(*args, **kwargs)
 
     def opt(self) -> float:
@@ -99,13 +99,14 @@ class PageExchanger(object):
         return page_loss / len(self.pages)
 
 
-def random_pages(max_page: int, len_pages: int) -> list[int]:
+def random_pages(max_page: int, len_pages: int, show_details: bool) -> list[int]:
     pages = []
     for _ in range(len_pages):
         pages.append(randint(a = 1, b = max_page))
-    # print('页面调用顺序：')
-    # print(f"{pages = }")
-    # print()
+    if show_details:
+        print('页面调用顺序：')
+        print(f"{pages = }")
+        print()
     return pages
 
 
@@ -115,9 +116,10 @@ if __name__ == '__main__':
         # pages = [6, 7, 6, 5, 9, 6, 8, 9, 7, 6, 9, 6],
         pages = random_pages(
             max_page = int(input('总页面数：')),
-            len_pages = int(input('页面随机调用次数：'))
+            len_pages = int(input('页面随机调用次数：')),
+            show_details = bool(input('：'))
         ),
-        debug = False
+        show_details = bool(input('：'))
     )
     print('缺页中断率：')
     print(f"{pageExchanger.opt() = }")
