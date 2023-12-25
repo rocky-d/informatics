@@ -70,7 +70,7 @@ class PageExchanger(object):
     def sc(self) -> float:
         page_loss: int = 0
         frames: list[int | None] = [None for _ in range(self.len_frames)]
-        tags: list[bool] = [True for _ in range(self.len_frames)]
+        tags: list[bool] = [False for _ in range(self.len_frames)]
         for i, num in enumerate(self.pages):
             self.__print(frames)
             if num in frames:
@@ -93,21 +93,21 @@ class PageExchanger(object):
     def clock(self) -> float:
         page_loss: int = 0
         frames: list[int | None] = [None for _ in range(self.len_frames)]
-        tags: list[bool] = [True for _ in range(self.len_frames)]
-        pointer = self.len_frames - 1
+        tags: list[bool] = [False for _ in range(self.len_frames)]
+        pointer = 0
         for i, num in enumerate(self.pages):
             self.__print(frames)
             if num in frames:
                 tags[frames.index(num)] = True
             else:  # elif num not in frames:
                 page_loss += 1
-                pointer = (pointer + 1) % self.len_frames
                 while tags[pointer]:
                     tags[pointer] = False
                     pointer = (pointer + 1) % self.len_frames
                 else:
                     frames[pointer] = num
                     tags[pointer] = True
+                    pointer = (pointer + 1) % self.len_frames
         else:
             self.__print(frames)
         return page_loss / len(self.pages)
