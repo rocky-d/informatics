@@ -67,6 +67,29 @@ class PageExchanger(object):
             self.__print(frames)
         return page_loss / len(self.pages)
 
+    def sc(self) -> float:
+        page_loss: int = 0
+        frames: list[int | None] = [None for _ in range(self.len_frames)]
+        tags: list[bool] = [True for _ in range(self.len_frames)]
+        for i, num in enumerate(self.pages):
+            self.__print(frames)
+            if num in frames:
+                tags[frames.index(num)] = True
+            else:  # elif num not in frames:
+                page_loss += 1
+                while tags[-1]:
+                    frames.insert(0, frames.pop(-1))
+                    tags.pop(-1)
+                    tags.insert(0, False)
+                else:
+                    frames.pop(-1)
+                    frames.insert(0, num)
+                    tags.pop(-1)
+                    tags.insert(0, True)
+        else:
+            self.__print(frames)
+        return page_loss / len(self.pages)
+
     def clock(self) -> float:
         page_loss: int = 0
         frames: list[int | None] = [None for _ in range(self.len_frames)]
