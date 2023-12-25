@@ -117,6 +117,9 @@ def random_pages(max_page: int, len_pages: int) -> list[int]:
     pages = []
     for _ in range(len_pages):
         pages.append(randint(a = 1, b = max_page))
+    # print('页面调用顺序：')
+    # print(f"{pages = }")
+    # print()
     return pages
 
 
@@ -125,22 +128,13 @@ if __name__ == '__main__':
     max_page_ = int(input('总页面数：'))
     len_pages_ = int(input('页面随机调用次数：'))
 
-    pages_ = random_pages(
-        max_page = max_page_,
-        len_pages = len_pages_
-    )
-    # print('页面调用顺序：')
-    # print(f"{pages_ = }")
-    # print()
-
-    # pageExchanger = PageExchanger(
-    #     len_frames = len_frames_,
-    #     pages = [6, 7, 6, 5, 9, 6, 8, 9, 7, 6, 9, 6],
-    #     debug = True
-    # )
     pageExchanger = PageExchanger(
         len_frames = len_frames_,
-        pages = pages_,
+        # pages = [6, 7, 6, 5, 9, 6, 8, 9, 7, 6, 9, 6],
+        pages = random_pages(
+            max_page = max_page_,
+            len_pages = len_pages_
+        ),
         debug = False
     )
     print('缺页中断率：')
