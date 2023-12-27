@@ -9,7 +9,7 @@ if ""=="%~1" (
     exit /b 1
 )
 
-set "output_name=main"
+set "output_name=out"
 set "output_dir=%~dp0\code\c\out"
 
 for %%i in ("%~1") do (
