@@ -12,7 +12,7 @@ if ""=="%~1" (
 set "output_name=main"
 set "output_dir=%~dp0\code\c\out"
 
-for %%I in ("%~1") do cd "%%~dpI"
+for %%i in ("%~1") do cd "%%~dpi"
 for %%i in ("%~1") do g++ "%%~nxi" -o "%output_dir%\%output_name%.exe"
 
 if errorlevel 1 (
