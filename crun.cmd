@@ -9,6 +9,9 @@ if ""=="%~1" (
     exit /b 1
 )
 
+for %%I in ("%~1") do set "PATH=%PATH%;%%~dpI"
+echo %PATH%
+
 rem Get file name (without suffix)
 rem for %%i in ("%~1") do set "output_name=%%~ni"
 set "output_name=main"
