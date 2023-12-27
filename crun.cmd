@@ -9,22 +9,17 @@ if ""=="%~1" (
     exit /b 1
 )
 
-for %%I in ("%~1") do set "PATH=%%~dpI;%PATH%"
-echo %PATH%
-
-rem Get file name (without suffix)
-rem for %%i in ("%~1") do set "output_name=%%~ni"
 set "output_name=main"
+set "output_dir=%~dp0\code\c\out"
 
-set "output_dir=.\code\c\out"
-
-gcc "%~1" -o "%output_dir%\!output_name!.exe"
+for %%I in ("%~1") do cd "%%~dpI"
+for %%i in ("%~1") do gcc "%%~nxi" -o "%output_dir%\!output_name!.exe"
 
 if errorlevel 1 (
     echo !script_name! ^>^> Fail to compile. :(
     exit /b 1
 )
 
-"%output_dir%\!output_name!.exe"
+"%output_dir%\%output_name%.exe"
 
 endlocal

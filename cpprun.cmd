@@ -2,26 +2,24 @@
 chcp 65001
 setlocal enabledelayedexpansion
 
-set "script_name=cpprun"
+set "script_name=crun"
 
 if ""=="%~1" (
     echo !script_name! ^>^> One parameter missing. :(
     exit /b 1
 )
 
-rem Get file name (without suffix)
-rem for %%i in ("%~1") do set "output_name=%%~ni"
 set "output_name=main"
+set "output_dir=%~dp0\code\c\out"
 
-set "output_dir=.\code\cpp\out"
-
-g++ "%~1" -o "%output_dir%\!output_name!.exe"
+for %%I in ("%~1") do cd "%%~dpI"
+for %%i in ("%~1") do g++ "%%~nxi" -o "%output_dir%\!output_name!.exe"
 
 if errorlevel 1 (
     echo !script_name! ^>^> Fail to compile. :(
     exit /b 1
 )
 
-"%output_dir%\!output_name!.exe"
+"%output_dir%\%output_name%.exe"
 
 endlocal
