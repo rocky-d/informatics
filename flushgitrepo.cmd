@@ -6,7 +6,7 @@ set "script_name=flushgitrepo"
 set "current_dir=%cd%"
 
 if not "informatics"=="%current_dir:~-11%" (
-    echo !script_name! ^>^> Current directory mismatch. :(
+    echo %script_name% ^>^> Current directory mismatch. :(
     exit /b 1
 )
 
