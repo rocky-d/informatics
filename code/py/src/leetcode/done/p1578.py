@@ -14,8 +14,7 @@ class Solution:
                     total_time += neededTime[i]
                     max_time = max(max_time, neededTime[i])
                     i += 1
-                total_time += neededTime[i]
-                ans += total_time - max(max_time, neededTime[i])
+                ans += total_time + neededTime[i] - max(max_time, neededTime[i])
             i += 1
         return ans
 
