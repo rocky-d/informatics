@@ -9,7 +9,7 @@ if ""=="%~1" (
     exit /b 1
 )
 
-for %%I in ("%~1") do set "PATH=%PATH%;%%~dpI"
+for %%I in ("%~1") do set "PATH=%%~dpI;%PATH%"
 echo %PATH%
 
 rem Get file name (without suffix)
