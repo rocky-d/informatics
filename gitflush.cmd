@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-set "script_name=flushgitrepo"
+set "script_name=gitflush"
 
 set "current_dir=%cd%"
 
