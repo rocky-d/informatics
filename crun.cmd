@@ -1,6 +1,8 @@
 @echo off
+
 chcp 65001
 cls
+
 setlocal enabledelayedexpansion
 
 set "script_name=crun"
