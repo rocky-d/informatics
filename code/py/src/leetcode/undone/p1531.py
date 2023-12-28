@@ -14,7 +14,6 @@ class Solution:
             encoded_s_list.append((char, times))
         print(encoded_s_list)
 
-
         dp = [0 for _ in range(1 + k)]
         for i, item in enumerate(encoded_s_list):
             if 1 <= i <= len(encoded_s_list) - 2 and encoded_s_list[i - 1][0] == encoded_s_list[i + 1][0]:
@@ -25,18 +24,20 @@ class Solution:
                 extra = 0
             for j in range(k, 0, -1):
                 if 1 == item[1]:
-                    for k_ in range(1, j + 1):
-                        dp[j] = max(dp[j], dp[j - k_] + 1 + extra)
+                    cost = 1
+                    dp[j] = max(dp[j], dp[j - cost] + 1 + extra)
                 else:
-                    for k_ in range(1, 1 + min(item[1] - 2, j)):
-                        dp[j] = max(dp[j], dp[j - k_] + len(str(item[1])) - len(str(item[1] - k_)))
+                    for cost in range(1, 1 + min(item[1] - 2, j)):
+                        dp[j] = max(dp[j], dp[j - cost] + len(str(item[1])) - len(str(item[1] - cost)))
                     if j >= item[1] - 1:
-                        k_ = item[1] - 1
-                        dp[j] = max(dp[j], dp[j - k_] + len(str(item[1])))
-                    for k_ in range(item[1], 1 + j):
-                        dp[j] = max(dp[j], dp[j - k_] + 1 + len(str(item[1])) + extra)
+                        cost = item[1] - 1
+                        dp[j] = max(dp[j], dp[j - cost] + len(str(item[1])))
+                        if j >= item[1]:
+                            cost = item[1]
+                            dp[j] = max(dp[j], dp[j - cost] + 1 + len(str(item[1])) + extra)
             print(dp)
         return len_encoded_s - dp[-1]
+
 
 # a2ba2b2cb3ac3
 eg_s = 'aabaabbcbbbaccc'
