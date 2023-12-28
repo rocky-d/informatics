@@ -23,4 +23,4 @@ class Solution:
                     move_cost += x
                     if cost <= move_cost:
                         break
-        return max_move_cost + sum(costs)
+        return sum(costs) + max_move_cost
