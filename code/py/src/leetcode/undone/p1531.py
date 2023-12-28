@@ -18,8 +18,7 @@ class Solution:
         for i, item in enumerate(encoded_s_list):
             if 1 <= i <= len(encoded_s_list) - 2 and encoded_s_list[i - 1][0] == encoded_s_list[i + 1][0]:
                 left, right = encoded_s_list[i - 1][1], encoded_s_list[i + 1][1]
-                extra = 1 + len('' if 1 == left else str(left)) + len('' if 1 == right else str(right)) - len(
-                    str(encoded_s_list[i - 1][1] + encoded_s_list[i + 1][1]))
+                extra = 1 + len('' if 1 == left else str(left)) + len('' if 1 == right else str(right)) - len(str(encoded_s_list[i - 1][1] + encoded_s_list[i + 1][1]))
             else:
                 extra = 0
             for j in range(k, 0, -1):
@@ -39,7 +38,10 @@ class Solution:
         return len_encoded_s - dp[-1]
 
 
-# a2ba2b2cb3ac3
 eg_s = 'aabaabbcbbbaccc'
 eg_k = 6
 print(Solution().getLengthOfOptimalCompression(s = eg_s, k = eg_k))
+
+# aabaabbcbbbaccc
+# a2ba2b2cb3ac3
+# a4b5
