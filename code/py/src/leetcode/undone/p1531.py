@@ -29,11 +29,11 @@ class Solution:
                 else:
                     for cost in range(1, 1 + min(item[1] - 2, j)):
                         dp[j] = max(dp[j], dp[j - cost] + len(str(item[1])) - len(str(item[1] - cost)))
-                    if j >= item[1] - 1:
-                        cost = item[1] - 1
+                    cost = item[1] - 1
+                    if cost <= j:
                         dp[j] = max(dp[j], dp[j - cost] + len(str(item[1])))
-                        if j >= item[1]:
-                            cost = item[1]
+                        cost = item[1]
+                        if cost <= j:
                             dp[j] = max(dp[j], dp[j - cost] + 1 + len(str(item[1])) + extra)
             print(dp)
         return len_encoded_s - dp[-1]
