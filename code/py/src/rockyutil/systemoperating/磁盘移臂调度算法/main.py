@@ -116,11 +116,11 @@ if __name__ == '__main__':
         total_cylinders = int(input('磁盘柱面数 > ')),
         # cylinders = [11, 9, 17, 11, 22, 9, 11],
         cylinders = random_cylinders(
-            max_cylinder = int(input('最大调用柱面数 > ')),
+            max_cylinder = int(input('最大调用柱面 > ')),
             len_cylinders = int(input('柱面随机调用次数 > ')),
             show_details = bool(input('输入任何内容以展示柱面调用顺序（直接按下回车键以忽略柱面调用顺序） > '))
         ),
-        start = int(input()),
+        start = int(input('移动臂起始所在柱面 > ')),
         show_details = bool(input('输入任何内容以展示移动臂移动过程（直接按下回车键以忽略移动臂移动过程） > '))
     )
     print('移动臂移动过程，移动距离：')
