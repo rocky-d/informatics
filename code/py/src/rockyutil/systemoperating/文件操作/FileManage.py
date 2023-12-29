@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Yang'
 
+import os
 from tkinter import *
 from tkinter import ttk, messagebox, filedialog
-import os
+
+
 # from PIL import Image, ImageTk
 
 class Application_UI(object):
-
     # path = r"E:\\python开发工具\\project\\tkinter"
     path = os.path.abspath(".")
     file_types = [".png", ".jpg", ".jpeg", ".ico", ".gif"]
@@ -33,8 +34,8 @@ class Application_UI(object):
         window.config(menu = menu)
 
         selct_path = Menu(menu, tearoff = 0)
-        selct_path.add_command(label = "打开", accelerator="Ctrl + O", command = self.open_dir)
-        selct_path.add_command(label = "保存", accelerator="Ctrl + S", command = self.save_file)
+        selct_path.add_command(label = "打开", accelerator = "Ctrl + O", command = self.open_dir)
+        selct_path.add_command(label = "保存", accelerator = "Ctrl + S", command = self.save_file)
 
         menu.add_cascade(label = "文件", menu = selct_path)
 
@@ -54,8 +55,7 @@ class Application_UI(object):
         label_path = Label(top_frame, textvariable = self.path_var, bg = "#fff", fg = "red", height = 2)
         label_path.pack(anchor = W)
 
-
-        paned_window = PanedWindow(window, showhandle = False, orient=HORIZONTAL)
+        paned_window = PanedWindow(window, showhandle = False, orient = HORIZONTAL)
         paned_window.pack(expand = 1, fill = BOTH)
 
         # 左侧frame
@@ -68,7 +68,6 @@ class Application_UI(object):
         self.tree.config(yscrollcommand = tree_y_scroll_bar.set)
         self.tree.pack(expand = 1, fill = BOTH)
 
-
         # 右侧frame
         right_frame = Frame(paned_window)
         paned_window.add(right_frame)
@@ -77,9 +76,9 @@ class Application_UI(object):
         right_top_frame = Frame(right_frame)
         right_top_frame.pack(expand = 1, fill = BOTH)
 
-        self.number_line = Text(right_top_frame, width = 0, takefocus = 0, border = 0, font = (self.font_type, self.font), cursor = "")
+        self.number_line = Text(right_top_frame, width = 0, takefocus = 0, border = 0,
+                                font = (self.font_type, self.font), cursor = "")
         self.number_line.pack(side = LEFT, fill = Y)
-
 
         # 右上角Text
         text = Text(right_top_frame, font = (self.font_type, self.font), state = DISABLED, cursor = "", wrap = NONE)
@@ -92,7 +91,6 @@ class Application_UI(object):
         text_x_scroll.pack(side = BOTTOM, fill = X)
         text.pack(expand = 1, fill = BOTH)
 
-
         # 右下角frame
         right_bottom_frame = Frame(right_frame)
         right_bottom_frame.pack(side = BOTTOM, fill = X)
@@ -104,14 +102,14 @@ class Application_UI(object):
         python_img = PhotoImage(file = r"./image/python.png")
         image_img = PhotoImage(file = r"./image/img.png")
 
-
         # 设置文件图标
-        self.icon = {".php": php_img, ".py": python_img, ".pyc": python_img, ".png": image_img, ".jpg": image_img, ".jpeg": image_img, ".gif": image_img, ".ico": image_img}
+        self.icon = {".php": php_img, ".py": python_img, ".pyc": python_img, ".png": image_img, ".jpg": image_img,
+                     ".jpeg": image_img, ".gif": image_img, ".ico": image_img}
 
         # 加载目录文件
         self.load_tree("", self.path)
         self.tree.bind("<<TreeviewSelect>>", lambda event: self.select_tree())
-        text.bind("<MouseWheel>", lambda event : self.update_line())
+        text.bind("<MouseWheel>", lambda event: self.update_line())
 
         self.number_line.bind("<FocusIn>", self.focus_in_event)
         self.number_line.bind('<Button-1>', self.button_ignore)
@@ -131,12 +129,13 @@ class Application_UI(object):
 
         window.mainloop()
 
+
 class Application(Application_UI):
     def __init__(self):
         Application_UI.__init__(self)
 
-
     ''' 保存文件'''
+
     def save_file(self):
         # 判断是否是文件
         path = self.path_var.get()
@@ -154,21 +153,24 @@ class Application(Application_UI):
             messagebox.showwarning("提示", "不能保存目录")
 
     ''' 设置默认搜索路径'''
+
     def open_dir(self):
         path = filedialog.askdirectory(title = u"设置目录", initialdir = self.path)
-        print("设置路径："+path)
+        print("设置路径：" + path)
         self.path = path
         # 删除所有目录
         self.delete_tree()
         self.load_tree("", self.path)
 
     ''' 判断是否为文件'''
+
     def is_file(self, path):
         if os.path.isfile(path):
-           return True
+            return True
         return False
 
     ''' 判断是否是图片类型'''
+
     def is_type_in(self, path):
         ext = self.file_extension(path)
         if ext in self.file_types:
@@ -176,22 +178,25 @@ class Application(Application_UI):
         return False
 
     ''' 删除树'''
+
     def delete_tree(self):
         self.tree.delete(self.tree.get_children())
 
-    def focus_in_event(self, event=None):
+    def focus_in_event(self, event = None):
         self.text_obj.focus_set()
 
-    def button_ignore(self, ev=None):
+    def button_ignore(self, ev = None):
         return "break"
 
     ''' 加载目录'''
+
     def load_tree(self, root, path):
         is_open = False
         if root == "":
             is_open = True
 
-        root = self.tree.insert(root, END, text = " " + self.dir_name(path), values = (path,), open = is_open, image = self.folder_img)
+        root = self.tree.insert(root, END, text = " " + self.dir_name(path), values = (path,), open = is_open,
+                                image = self.folder_img)
 
         try:
             for file in os.listdir(path):
@@ -208,16 +213,19 @@ class Application(Application_UI):
             print(e)
 
     ''' 获取文件后缀'''
+
     def file_extension(self, file):
         file_info = os.path.splitext(file)
         return file_info[-1]
 
     ''' 获取目录名称'''
+
     def dir_name(self, path):
         path_list = os.path.split(path)
         return path_list[-1]
 
     ''' 更新行数'''
+
     def update_line(self):
         if not self.scroll_visiblity:
             return
@@ -240,6 +248,7 @@ class Application(Application_UI):
         self.number_line.yview_moveto(self.text_obj.yview()[0])
 
     ''' 选中item回调'''
+
     def select_tree(self):
         for item in self.tree.selection():
             item_text = self.tree.item(item, "values")
@@ -264,6 +273,7 @@ class Application(Application_UI):
                 self.text_obj.config(state = DISABLED, cursor = "")
 
     ''' 查看图片'''
+
     def look_image(self, select_path):
         try:
             image = Image.open(select_path)
@@ -273,10 +283,11 @@ class Application(Application_UI):
             print(e)
 
     ''' 打开文件写入内容'''
+
     def open_file(self, select_path, mode, encoding = None):
         with open(select_path, mode = mode, encoding = encoding) as f:
             self.text_obj.insert(1.0, f.read())
 
+
 if __name__ == "__main__":
     Application()
-
