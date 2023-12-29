@@ -122,10 +122,34 @@ class ApplicationUI(object):
 
         text.bind("<Control-Key-s>", lambda event: self.save_file())
         text.bind("<Control-Key-S>", lambda event: self.save_file())
-        text.bind("<Control-Key-Z>", lambda event: self.toUndo())
-        text.bind("<Control-Key-Y>", lambda event: self.toRedo())
+        # text.bind("<Control-Key-Z>", lambda event: self.toUndo())
+        # text.bind("<Control-Key-Y>", lambda event: self.toRedo())
 
         window.mainloop()
+
+    def load_tree(self, *args, **kwargs):
+        pass
+
+    def select_tree(self, *args, **kwargs):
+        pass
+
+    def update_line(self, *args, **kwargs):
+        pass
+
+    def focus_in_event(self, *args, **kwargs):
+        pass
+
+    def button_ignore(self, *args, **kwargs):
+        pass
+
+    def save_file(self, *args, **kwargs):
+        pass
+
+    # def toUndo(self, *args, **kwargs):
+    #     pass
+
+    # def toRedo(self, *args, **kwargs):
+    #     pass
 
 
 class Application(ApplicationUI):
