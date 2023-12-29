@@ -7,8 +7,6 @@ from tkinter import *
 from tkinter import ttk, messagebox, filedialog
 
 
-# from PIL import Image, ImageTk
-
 class ApplicationUI(object):
     path = os.path.abspath(".")
     file_types = [".png", ".jpg", ".jpeg", ".ico", ".gif"]
