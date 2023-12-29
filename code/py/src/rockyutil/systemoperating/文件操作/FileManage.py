@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-__author__ = 'Yang'
+# __author__ = 'Yang'
+__author__ = 'Rocky Haotian Du'
 
 import os
 from tkinter import *
@@ -9,7 +10,6 @@ from tkinter import ttk, messagebox, filedialog
 # from PIL import Image, ImageTk
 
 class ApplicationUI(object):
-    # path = r"E:\\python开发工具\\project\\tkinter"
     path = os.path.abspath(".")
     file_types = [".png", ".jpg", ".jpeg", ".ico", ".gif"]
     scroll_visibility = True
