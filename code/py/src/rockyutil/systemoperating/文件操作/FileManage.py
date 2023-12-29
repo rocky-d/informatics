@@ -4,7 +4,7 @@ __author__ = 'Yang'
 from tkinter import *
 from tkinter import ttk, messagebox, filedialog
 import os
-from PIL import Image, ImageTk
+# from PIL import Image, ImageTk
 
 class Application_UI(object):
 
@@ -267,7 +267,7 @@ class Application(Application_UI):
     def look_image(self, select_path):
         try:
             image = Image.open(select_path)
-            self.look_photo = ImageTk.PhotoImage(image)
+            # self.look_photo = ImageTk.PhotoImage(image)
             self.text_obj.image_create(END, image = self.look_photo)
         except Exception as e:
             print(e)
