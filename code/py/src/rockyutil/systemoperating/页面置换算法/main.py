@@ -30,7 +30,6 @@ class PageExchanger(object):
                 frames.pop(longest[1])
                 frames.insert(0, num)
             self.__print(frames)
-        self.__print()
         return page_loss / len(self.pages)
 
     def fifo(self) -> float:
@@ -42,7 +41,6 @@ class PageExchanger(object):
                 frames.pop(-1)
                 frames.insert(0, num)
             self.__print(frames)
-        self.__print()
         return page_loss / len(self.pages)
 
     def lru(self) -> float:
@@ -57,7 +55,6 @@ class PageExchanger(object):
                 frames.pop(-1)
                 frames.insert(0, num)
             self.__print(frames)
-        self.__print()
         return page_loss / len(self.pages)
 
     def sc(self) -> float:
@@ -79,7 +76,6 @@ class PageExchanger(object):
                     tags.pop(-1)
                     tags.insert(0, True)
             self.__print(frames)
-        self.__print()
         return page_loss / len(self.pages)
 
     def clock(self) -> float:
@@ -100,7 +96,6 @@ class PageExchanger(object):
                     tags[pointer] = True
                     pointer = (pointer + 1) % self.len_frames
             self.__print(frames)
-        self.__print()
         return page_loss / len(self.pages)
 
 

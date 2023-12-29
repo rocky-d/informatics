@@ -23,7 +23,6 @@ class MovingArm(object):
             sequence.append(cylinder)
             current = cylinder
         self.__print(sequence)
-        self.__print()
         return distance
 
     def shortest_seek_time_first(self) -> int:
@@ -38,7 +37,6 @@ class MovingArm(object):
             sequence.append(cylinder)
             current = cylinder
         self.__print(sequence)
-        self.__print()
         return distance
 
     def uni_scan(self) -> int:
@@ -61,7 +59,6 @@ class MovingArm(object):
             sequence.append(cylinder)
             current = cylinder
         self.__print(sequence)
-        self.__print()
         return distance - self.total_cylinders + 2 if gap else distance
 
     def double_scan(self) -> int:
@@ -80,7 +77,6 @@ class MovingArm(object):
             sequence.append(cylinder)
             current = cylinder
         self.__print(sequence)
-        self.__print()
         return distance
 
     def elevator(self) -> int:
@@ -97,7 +93,6 @@ class MovingArm(object):
             sequence.append(cylinder)
             current = cylinder
         self.__print(sequence)
-        self.__print()
         return distance
 
 
