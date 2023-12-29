@@ -127,13 +127,10 @@ class ApplicationUI(object):
 
         window.mainloop()
 
-    def load_tree(self, *args, **kwargs):
+    def save_file(self, *args, **kwargs):
         pass
 
-    def select_tree(self, *args, **kwargs):
-        pass
-
-    def update_line(self, *args, **kwargs):
+    def open_dir(self, *args, **kwargs):
         pass
 
     def focus_in_event(self, *args, **kwargs):
@@ -142,7 +139,13 @@ class ApplicationUI(object):
     def button_ignore(self, *args, **kwargs):
         pass
 
-    def save_file(self, *args, **kwargs):
+    def load_tree(self, *args, **kwargs):
+        pass
+
+    def update_line(self, *args, **kwargs):
+        pass
+
+    def select_tree(self, *args, **kwargs):
         pass
 
     # def toUndo(self, *args, **kwargs):
