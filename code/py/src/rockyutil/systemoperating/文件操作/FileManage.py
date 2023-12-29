@@ -8,7 +8,7 @@ from tkinter import ttk, messagebox, filedialog
 
 # from PIL import Image, ImageTk
 
-class Application_UI(object):
+class ApplicationUI(object):
     # path = r"E:\\python开发工具\\project\\tkinter"
     path = os.path.abspath(".")
     file_types = [".png", ".jpg", ".jpeg", ".ico", ".gif"]
@@ -130,9 +130,9 @@ class Application_UI(object):
         window.mainloop()
 
 
-class Application(Application_UI):
+class Application(ApplicationUI):
     def __init__(self):
-        Application_UI.__init__(self)
+        ApplicationUI.__init__(self)
 
     ''' 保存文件'''
 
