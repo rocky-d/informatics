@@ -180,7 +180,8 @@ class Application(ApplicationUI):
     ''' 删除树'''
 
     def delete_tree(self):
-        self.tree.delete(self.tree.get_children())
+        # self.tree.delete(self.tree.get_children())
+        pass
 
     def focus_in_event(self, event = None):
         self.text_obj.focus_set()
@@ -279,7 +280,7 @@ class Application(ApplicationUI):
             # image = Image.open(select_path)
             # self.look_photo = ImageTk.PhotoImage(image)
             # self.text_obj.image_create(END, image = self.look_photo)
-            ...
+            pass
         except Exception as e:
             print(e)
 
