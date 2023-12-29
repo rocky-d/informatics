@@ -12,7 +12,7 @@ class ApplicationUI(object):
     # path = r"E:\\python开发工具\\project\\tkinter"
     path = os.path.abspath(".")
     file_types = [".png", ".jpg", ".jpeg", ".ico", ".gif"]
-    scroll_visiblity = True
+    scroll_visibility = True
 
     font = 11
     font_type = "Courier New"
@@ -33,11 +33,11 @@ class ApplicationUI(object):
         menu = Menu(window)
         window.config(menu = menu)
 
-        selct_path = Menu(menu, tearoff = 0)
-        selct_path.add_command(label = "打开", accelerator = "Ctrl + O", command = self.open_dir)
-        selct_path.add_command(label = "保存", accelerator = "Ctrl + S", command = self.save_file)
+        select_path = Menu(menu, tearoff = 0)
+        select_path.add_command(label = "打开", accelerator = "Ctrl + O", command = self.open_dir)
+        select_path.add_command(label = "保存", accelerator = "Ctrl + S", command = self.save_file)
 
-        menu.add_cascade(label = "文件", menu = selct_path)
+        menu.add_cascade(label = "文件", menu = select_path)
 
         about = Menu(menu, tearoff = 0)
         about.add_command(label = "版本", accelerator = "v1.0.0")
@@ -228,7 +228,7 @@ class Application(ApplicationUI):
     ''' 更新行数'''
 
     def update_line(self):
-        if not self.scroll_visiblity:
+        if not self.scroll_visibility:
             return
         self.number_line.delete(1.0, END)
         text_h, text_l = map(int, str.split(self.text_obj.index(END), "."))
