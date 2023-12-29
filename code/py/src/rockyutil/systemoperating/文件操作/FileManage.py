@@ -1,3 +1,4 @@
+# https://github.com/yangsphp/file-manager-mask/tree/master
 # -*- coding: utf-8 -*-
 # __author__ = 'Yang'
 __author__ = 'Rocky Haotian Du'
@@ -8,7 +9,7 @@ from tkinter import ttk, messagebox, filedialog
 
 
 class ApplicationUI(object):
-    path = os.path.abspath('.')
+    path = os.path.abspath(r'./../../../../../..')
     file_types = ['.png', '.jpg', '.jpeg', '.ico', '.gif']
     scroll_visibility = True
 
@@ -50,7 +51,7 @@ class ApplicationUI(object):
 
         self.path_var = StringVar()
         self.path_var.set('无')
-        label_path = Label(top_frame, textvariable = self.path_var, bg = '#fff', fg = 'red', height = 2)
+        label_path = Label(top_frame, textvariable = self.path_var, bg = '#fff', fg = 'blue', height = 2)
         label_path.pack(anchor = W)
 
         paned_window = PanedWindow(window, showhandle = False, orient = HORIZONTAL)
