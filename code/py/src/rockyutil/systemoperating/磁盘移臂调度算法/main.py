@@ -118,10 +118,10 @@ if __name__ == '__main__':
         cylinders = random_cylinders(
             max_cylinder = int(input('最大调用柱面 > ')),
             len_cylinders = int(input('柱面随机调用次数 > ')),
-            show_details = bool(input('输入任何内容以展示柱面调用顺序（直接按下回车键以忽略柱面调用顺序） > '))
+            show_details = bool(input('输入任何内容以展示柱面调用顺序（直接按下回车键以忽略） > '))
         ),
         start = int(input('移动臂起始所在柱面 > ')),
-        show_details = bool(input('输入任何内容以展示移动臂移动过程（直接按下回车键以忽略移动臂移动过程） > '))
+        show_details = bool(input('输入任何内容以展示移动臂移动过程（直接按下回车键以忽略） > '))
     )
     print('移动臂移动过程，移动距离：')
     print(f"{movingArm.first_come_first_served() = }")
