@@ -16,8 +16,15 @@ class Heap(object):
     ) -> None:
         self._heap: list = list()
         if key is None:
-
+            if not reverse:
+                ...
+            else:
+                ...
         else:
+            if not reverse:
+                ...
+            else:
+                ...
 
     def push(self, item: _T) -> None:
         heappush(self._heap, item)
