@@ -1,11 +1,11 @@
 class Solution:
     def maxLengthBetweenEqualCharacters(self, s: str) -> int:
-        len_s = len(s)
+        n = len(s)
         first, last = dict(), dict()
-        for i, char in zip(range(len_s), s):
+        for i, char in zip(range(n), s):
             if char not in first.keys():
                 first[char] = i
-        for i, char in zip(range(len_s - 2, -2, -1), s[::-1]):
+        for i, char in zip(range(n - 2, -2, -1), s[::-1]):
             if char not in last.keys():
                 last[char] = i
         ans = -1
