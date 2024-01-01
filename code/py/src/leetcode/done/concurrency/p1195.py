@@ -11,7 +11,7 @@ class FizzBuzz:
 
     def fizz(self, printFizz: 'Callable[[], None]') -> None:
         for i in range(3, self.n1, 3):
-            if 0 == i % 5:
+            if 0 == i % 15:
                 continue
             self.s_fizz.acquire()
             printFizz()
@@ -19,7 +19,7 @@ class FizzBuzz:
 
     def buzz(self, printBuzz: 'Callable[[], None]') -> None:
         for i in range(5, self.n1, 5):
-            if 0 == i % 3:
+            if 0 == i % 15:
                 continue
             self.s_buzz.acquire()
             printBuzz()
