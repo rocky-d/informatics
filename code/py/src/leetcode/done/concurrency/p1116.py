@@ -32,7 +32,7 @@ class ZeroEvenOdd:
             self.s1.release()
 
 
-def print_(number):
+def print_(number: int) -> None:
     print(number, end = '')
 
 
