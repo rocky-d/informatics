@@ -99,6 +99,7 @@ def random_cylinders(max_cylinder: int, len_cylinders: int, show_details: bool) 
     for _ in range(len_cylinders):
         cylinders.append(randint(a = 1, b = max_cylinder))
     if show_details:
+        print()
         print('柱面调用顺序：')
         print(f"{cylinders = }")
     return cylinders
@@ -106,18 +107,19 @@ def random_cylinders(max_cylinder: int, len_cylinders: int, show_details: bool) 
 
 if __name__ == '__main__':
     movingArm = MovingArm(
-        total_cylinders = int(input('磁盘柱面数 > ')),
+        total_cylinders = int(input('\n磁盘柱面数 > ')),
         # cylinders = [11, 9, 17, 11, 22, 9, 11],
         # cylinders = [86, 147, 91, 177, 94, 150, 102, 175, 130],
         cylinders = random_cylinders(
-            max_cylinder = int(input('最大调用柱面 > ')),
-            len_cylinders = int(input('柱面随机调用次数 > ')),
-            show_details = bool(input('直接按下回车键以忽略/输入任何内容以展示 柱面调用顺序 > '))
+            max_cylinder = int(input('\n最大调用柱面 > ')),
+            len_cylinders = int(input('\n柱面随机调用次数 > ')),
+            show_details = bool(input('\n直接按下回车键以忽略/输入任何内容以展示 柱面调用顺序 > '))
         ),
-        start = int(input('移动臂起始所在柱面 > ')),
-        decreasing = bool(input('移动臂正在向 内/外（最大号柱面/1号柱面） 扫描（直接按下回车以选择向内，输入任何内容以选择向外） > ')),
-        show_details = bool(input('直接按下回车键以忽略/输入任何内容以展示 移动臂移动过程 > '))
+        start = int(input('\n移动臂起始所在柱面 > ')),
+        decreasing = bool(input('\n移动臂正在向 内/外（最大号柱面/1号柱面） 扫描（直接按下回车以选择向内，输入任何内容以选择向外） > ')),
+        show_details = bool(input('\n直接按下回车键以忽略/输入任何内容以展示 移动臂移动过程 > '))
     )
+    print()
     print('移动臂移动过程，移动距离：')
     print(f"{movingArm.first_come_first_served() = }\n")
     print(f"{movingArm.shortest_seek_time_first() = }\n")
