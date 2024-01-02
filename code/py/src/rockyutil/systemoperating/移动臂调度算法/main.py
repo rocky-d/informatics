@@ -51,7 +51,8 @@ class MovingArm(object):
             cylinders.append((1, len(self.cylinders)))
         else:
             gap = False
-        pivot = bisect_left([cylinder for cylinder, i in sorted(cylinders, key = lambda x: (x[0], x[1]))], current)
+        cylinders = [cylinder for cylinder, i in sorted(cylinders, key = lambda x: (x[0], x[1]))]
+        pivot = bisect_left(cylinders, current)
         cylinders = cylinders[pivot:] + cylinders[:pivot]
         for cylinder in cylinders:
             distance += abs(current - cylinder)
@@ -67,7 +68,8 @@ class MovingArm(object):
         cylinders = [(cylinder, i) for i, cylinder in enumerate(self.cylinders)]
         if min(self.cylinders) < current:
             cylinders.append((self.total_cylinders if self.increasing else 1, len(self.cylinders)))
-        pivot = bisect_left([cylinder for cylinder, i in sorted(cylinders, key = lambda x: (x[0], x[1]))], current)
+        cylinders = [cylinder for cylinder, i in sorted(cylinders, key = lambda x: (x[0], x[1]))]
+        pivot = bisect_left(cylinders, current)
         cylinders = cylinders[pivot:] + cylinders[:pivot][::-1] if self.increasing else cylinders[:pivot][::-1] + cylinders[pivot:]
         for cylinder in cylinders:
             distance += abs(current - cylinder)
@@ -81,7 +83,8 @@ class MovingArm(object):
         sequence = []
         current = self.start
         cylinders = [(cylinder, i) for i, cylinder in enumerate(self.cylinders)]
-        pivot = bisect_left([cylinder for cylinder, i in sorted(cylinders, key = lambda x: (x[0], x[1]))], current)
+        cylinders = [cylinder for cylinder, i in sorted(cylinders, key = lambda x: (x[0], x[1]))]
+        pivot = bisect_left(cylinders, current)
         cylinders = cylinders[pivot:] + cylinders[:pivot][::-1] if self.increasing else cylinders[:pivot][::-1] + cylinders[pivot:]
         for cylinder in cylinders:
             distance += abs(current - cylinder)
