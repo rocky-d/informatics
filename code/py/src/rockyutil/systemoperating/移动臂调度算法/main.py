@@ -88,8 +88,7 @@ class MovingArm(object):
         cylinders.sort(key = lambda x: (x[0], x[1]))
         cylinders = [cylinder for cylinder, i in cylinders]
         pivot = bisect_left(cylinders, current)
-        cylinders = cylinders[pivot:] + cylinders[:pivot][::-1]
-        cylinders = cylinders[:pivot][::-1] + cylinders[pivot:]
+        cylinders = cylinders[pivot:] + cylinders[:pivot][::-1] if self.increasing else cylinders[:pivot][::-1] + cylinders[pivot:]
         for cylinder in cylinders:
             distance += abs(current - cylinder)
             sequence.append(cylinder)
