@@ -100,7 +100,7 @@ class PageExchanger(object):
 
 
 def random_pages(max_page: int, len_pages: int, show_details: bool) -> list[int]:
-    pages = []
+    pages: list[int] = []
     for _ in range(len_pages):
         pages.append(randint(a = 1, b = max_page))
     if show_details:
