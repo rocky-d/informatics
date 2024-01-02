@@ -4,11 +4,11 @@ from random import randint
 
 class MovingArm(object):
 
-    def __init__(self, total_cylinders: int, cylinders: list[int], start: int, increasing: bool, show_details: bool) -> None:
+    def __init__(self, total_cylinders: int, cylinders: list[int], start: int, decreasing: bool, show_details: bool) -> None:
         self.total_cylinders: int = total_cylinders
         self.cylinders: list[int] = cylinders
         self.start: int = start
-        self.increasing: bool = increasing
+        self.increasing: bool = not decreasing
         self.show_details: bool = show_details
 
     def __print(self, *args, **kwargs) -> None:
@@ -118,7 +118,7 @@ if __name__ == '__main__':
         #     show_details = bool(input('直接按下回车键以忽略/输入任何内容以展示 柱面调用顺序 > '))
         # ),
         start = int(input('移动臂起始所在柱面 > ')),
-        increasing = bool(input('移动臂正在向 内/外（最大号柱面/1号柱面） 扫描（直接按下回车以选择向内，输入任何内容以选择向外） > ')),
+        decreasing = bool(input('移动臂正在向 内/外（最大号柱面/1号柱面） 扫描（直接按下回车以选择向内，输入任何内容以选择向外） > ')),
         show_details = bool(input('直接按下回车键以忽略/输入任何内容以展示 移动臂移动过程 > '))
     )
     print('移动臂移动过程，移动距离：')
