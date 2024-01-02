@@ -16,9 +16,9 @@ class MovingArm(object):
             print(*args, **kwargs)
 
     def first_come_first_served(self) -> int:
-        distance = 0
-        sequence = []
-        current = self.start
+        distance: int = 0
+        sequence: list[int] = []
+        current: int = self.start
         for cylinder in self.cylinders:
             distance += abs(current - cylinder)
             sequence.append(cylinder)
@@ -27,9 +27,9 @@ class MovingArm(object):
         return distance
 
     def shortest_seek_time_first(self) -> int:
-        distance = 0
-        sequence = []
-        current = self.start
+        distance: int = 0
+        sequence: list[int] = []
+        current: int = self.start
         cylinders = [(cylinder, i) for i, cylinder in enumerate(self.cylinders)]
         while 0 < len(cylinders):
             cylinders.sort(key = lambda x: (abs(current - x[0]), x[1]))
@@ -41,9 +41,9 @@ class MovingArm(object):
         return distance
 
     def uni_scan(self) -> int:
-        distance = 0
-        sequence = []
-        current = self.start
+        distance: int = 0
+        sequence: list[int] = []
+        current: int = self.start
         cylinders = [(cylinder, i) for i, cylinder in enumerate(self.cylinders)]
         if min(self.cylinders) < current:
             gap = True
@@ -62,9 +62,9 @@ class MovingArm(object):
         return distance - self.total_cylinders + 2 if gap else distance
 
     def double_scan(self) -> int:
-        distance = 0
-        sequence = []
-        current = self.start
+        distance: int = 0
+        sequence: list[int] = []
+        current: int = self.start
         cylinders = [(cylinder, i) for i, cylinder in enumerate(self.cylinders)]
         if min(self.cylinders) < current:
             cylinders.append((self.total_cylinders if self.increasing else 1, len(self.cylinders)))
@@ -79,9 +79,9 @@ class MovingArm(object):
         return distance
 
     def elevator(self) -> int:
-        distance = 0
-        sequence = []
-        current = self.start
+        distance: int = 0
+        sequence: list[int] = []
+        current: int = self.start
         cylinders = [(cylinder, i) for i, cylinder in enumerate(self.cylinders)]
         cylinders = [cylinder for cylinder, i in sorted(cylinders, key = lambda x: (x[0], x[1]))]
         pivot = bisect_left(cylinders, current)
@@ -95,7 +95,7 @@ class MovingArm(object):
 
 
 def random_cylinders(max_cylinder: int, len_cylinders: int, show_details: bool) -> list[int]:
-    cylinders = []
+    cylinders: list[int] = []
     for _ in range(len_cylinders):
         cylinders.append(randint(a = 1, b = max_cylinder))
     if show_details:
