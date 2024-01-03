@@ -240,14 +240,14 @@ int addMember(structMI* addP){ //F_1
         addP->lastName=(char*)calloc(strlen(spaceP)+1,sizeof(char));//free
             testMemory(addP->lastName);
         strcpy(addP->lastName,spaceP+1);
-        
+
         printf("Give member number > ");
         scanf("%d",&addP->memberNumber);
             clearBuffer();
         printf("Give year joined > ");
         scanf("%d",&addP->yearJoined);
             clearBuffer();
-        
+
         if(years[0]<addP->yearJoined)
             addP->note=addP->yearJoined-years[0];
         else
@@ -284,7 +284,7 @@ void updateMember(structMI* updateP){ //F_3
     scanf("%d",&updateSelection);
         clearBuffer();
     printf("\n");
-    
+
     int i;
     int yearSelection;
     char name[NAME]={0};
