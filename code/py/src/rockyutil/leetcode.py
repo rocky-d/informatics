@@ -20,15 +20,16 @@ class ListNode:
 
     @staticmethod
     def list_to_ln(ls: List[int]) -> Optional['ListNode']:
-        pre_head = node = ListNode()
+        dummy_head = node = ListNode()
         for num in ls:
             node.next = ListNode(val = num, next = None)
             node = node.next
-        return pre_head.next
+        return dummy_head.next
 
     @staticmethod
-    def ln_to_list(node: Optional['ListNode']) -> List[int]:
+    def ln_to_list(head: Optional['ListNode']) -> List[int]:
         ls = []
+        node = head
         while node is not None:
             ls.append(node.val)
             node = node.next
