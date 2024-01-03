@@ -29,7 +29,7 @@ class ListNode:
     @staticmethod
     def ln_to_list(node: Optional['ListNode']) -> List[int]:
         ls = []
-        while node:
+        while node is not None:
             ls.append(node.val)
             node = node.next
         return ls
