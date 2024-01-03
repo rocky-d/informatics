@@ -7,7 +7,7 @@ class Solution:
         node = head
         while node is not None:
             while node.next is not None and node.val < node.next.val:
-                parent = decreasing_stack.pop()
+                parent = decreasing_stack.pop(-1)
                 parent.next = node.next
                 node = parent
             decreasing_stack.append(node)
