@@ -20,11 +20,11 @@ class ListNode:
 
     @staticmethod
     def list_to_ln(ls: List[int]) -> Optional['ListNode']:
-        dummy_head = node = ListNode()
+        dummy = node = ListNode()
         for num in ls:
             node.next = ListNode(val = num, next = None)
             node = node.next
-        return dummy_head.next
+        return dummy.next
 
     @staticmethod
     def ln_to_list(head: Optional['ListNode']) -> List[int]:
