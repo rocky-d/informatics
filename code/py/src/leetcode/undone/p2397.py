@@ -2,9 +2,6 @@ from rockyutil.leetcode import *
 
 
 class Solution:
-    def __init__(self):
-        self.ans = 0
-
     def maximumRows(self, matrix: List[List[int]], numSelect: int) -> int:
         m, n = len(matrix), len(matrix[0])
 
@@ -15,14 +12,16 @@ class Solution:
                     for r in range(m):
                         if 1 == matrix[r][c]:
                             rows_having_1_free_cols.add(r)
-                self.ans = max(self.ans, m - len(rows_having_1_free_cols))
+                nonlocal ans
+                ans = max(ans, m - len(rows_having_1_free_cols))
             else:
                 depth -= 1
                 for c in range(len(free_cols)):
                     dfs(depth, free_cols[:c] + free_cols[c + 1:])
 
+        ans = 0
         dfs(numSelect, list(range(n)))
-        return self.ans
+        return ans
 
 
 eg_matrix = [
