@@ -3,10 +3,7 @@ from rockyutil.leetcode import *
 
 class Solution:
     def findMatrix(self, nums: List[int]) -> List[List[int]]:
-        nums_times = dict()
-        for num in nums:
-            nums_times[num] = 1 + nums_times.get(num, 0)
-        nums_times = sorted(nums_times.items(), key = lambda item: item[1], reverse = True)
+        nums_times = sorted(Counter(nums).items(), key = lambda item: item[1], reverse = True)
         len_nums_times = len(nums_times)
         ans = []
         i = 0

@@ -3,11 +3,8 @@ from rockyutil.leetcode import *
 
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
-        nums_times = dict()
-        for num in nums:
-            nums_times[num] = 1 + nums_times.get(num, 0)
         ans = 0
-        for times in nums_times.values():
+        for times in Counter(nums).values():
             if 1 == times:
                 ans = -1
                 break
