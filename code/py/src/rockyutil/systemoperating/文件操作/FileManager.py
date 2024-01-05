@@ -192,8 +192,7 @@ class FileManager(FileManagerUI):
 
     # 判断是否是图片类型
     def is_type_in(self, path):
-        ext = self.file_extension(path)
-        if ext in self.file_types:
+        if self.file_extension(path) in self.file_types:
             return True
         return False
 
