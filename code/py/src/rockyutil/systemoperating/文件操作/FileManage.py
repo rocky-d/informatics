@@ -159,8 +159,7 @@ class Application(ApplicationUI):
     def __init__(self):
         ApplicationUI.__init__(self)
 
-    ''' 保存文件'''
-
+    # 保存文件
     def save_file(self):
         # 判断是否是文件
         path = self.path_var.get()
@@ -177,8 +176,7 @@ class Application(ApplicationUI):
         else:
             messagebox.showwarning('提示', '不能保存目录')
 
-    ''' 设置默认搜索路径'''
-
+    # 设置默认搜索路径
     def open_dir(self):
         path = filedialog.askdirectory(title = u'设置目录', initialdir = self.path)
         print('设置路径：' + path)
@@ -187,23 +185,20 @@ class Application(ApplicationUI):
         self.delete_tree()
         self.load_tree('', self.path)
 
-    ''' 判断是否为文件'''
-
+    # 判断是否为文件
     def is_file(self, path):
         if os.path.isfile(path):
             return True
         return False
 
-    ''' 判断是否是图片类型'''
-
+    # 判断是否是图片类型
     def is_type_in(self, path):
         ext = self.file_extension(path)
         if ext in self.file_types:
             return True
         return False
 
-    ''' 删除树'''
-
+    # 删除树
     def delete_tree(self):
         # self.tree.delete(self.tree.get_children())
         pass
@@ -214,8 +209,7 @@ class Application(ApplicationUI):
     def button_ignore(self, ev = None):
         return 'break'
 
-    ''' 加载目录'''
-
+    # 加载目录
     def load_tree(self, root, path):
         is_open = False
         if root == '':
@@ -238,20 +232,17 @@ class Application(ApplicationUI):
         except Exception as e:
             print(e)
 
-    ''' 获取文件后缀'''
-
+    # 获取文件后缀
     def file_extension(self, file):
         file_info = os.path.splitext(file)
         return file_info[-1]
 
-    ''' 获取目录名称'''
-
+    # 获取目录名称
     def dir_name(self, path):
         path_list = os.path.split(path)
         return path_list[-1]
 
-    ''' 更新行数'''
-
+    # 更新行数
     def update_line(self):
         if not self.scroll_visibility:
             return
@@ -273,8 +264,7 @@ class Application(ApplicationUI):
         self.number_line.configure(width = width)
         self.number_line.yview_moveto(self.text_obj.yview()[0])
 
-    ''' 选中item回调'''
-
+    # 选中item回调
     def select_tree(self):
         for item in self.tree.selection():
             item_text = self.tree.item(item, 'values')
@@ -298,8 +288,7 @@ class Application(ApplicationUI):
             else:
                 self.text_obj.config(state = DISABLED, cursor = '')
 
-    ''' 查看图片'''
-
+    # 查看图片
     def look_image(self, select_path):
         try:
             # image = Image.open(select_path)
@@ -309,8 +298,7 @@ class Application(ApplicationUI):
         except Exception as e:
             print(e)
 
-    ''' 打开文件写入内容'''
-
+    # 打开文件写入内容
     def open_file(self, select_path, mode, encoding = None):
         with open(select_path, mode = mode, encoding = encoding) as f:
             self.text_obj.insert(1.0, f.read())
