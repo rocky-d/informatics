@@ -4,7 +4,7 @@
 __author__ = 'Rocky Haotian Du'
 
 import os
-from tkinter import ttk, messagebox, filedialog, Menu, Frame, Label, TOP, StringVar, LEFT, W, PanedWindow, BOTH, HORIZONTAL, Scrollbar, RIGHT, SUNKEN, Y, Text, BOTTOM, X, PhotoImage, END, DISABLED, NORMAL, NONE, Tk
+from tkinter import BOTH, BOTTOM, DISABLED, END, filedialog, Frame, HORIZONTAL, Label, LEFT, Menu, messagebox, NONE, NORMAL, PanedWindow, PhotoImage, RIGHT, Scrollbar, StringVar, SUNKEN, Text, Tk, TOP, ttk, W, X, Y
 
 
 class ApplicationUI(object):
