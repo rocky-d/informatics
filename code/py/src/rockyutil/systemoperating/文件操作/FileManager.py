@@ -37,7 +37,7 @@ class FileManagerUI(object):
         menu.add_cascade(label = '文件', menu = select_path)
 
         about = Menu(menu, tearoff = 0)
-        about.add_command(label = '版本', accelerator = 'v1.0.0')
+        about.add_command(label = '版本', accelerator = 'v1.1.0')
         about.add_command(label = '作者', accelerator = 'Rocky Haotian Du')
         menu.add_cascade(label = '关于', menu = about)
 
