@@ -8,7 +8,7 @@ from tkinter import BOTH, BOTTOM, DISABLED, END, filedialog, Frame, HORIZONTAL, 
 
 class FileManagerUI(object):
     path = os.path.abspath(r'./../../../../../..')
-    file_types = ['.png', '.jpg', '.jpeg', '.ico', '.gif']
+    image_types = ['.png', '.jpg', '.jpeg', '.ico', '.gif']
     scroll_visibility = True
 
     font = 11
@@ -199,7 +199,7 @@ class FileManager(FileManagerUI):
 
     # 判断是否是图片类型
     def is_type_in(self, path):
-        if self.file_extension(path) in self.file_types:
+        if self.file_extension(path) in self.image_types:
             return True
         return False
 
