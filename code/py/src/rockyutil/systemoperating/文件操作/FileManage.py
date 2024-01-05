@@ -7,7 +7,7 @@ import os
 from tkinter import BOTH, BOTTOM, DISABLED, END, filedialog, Frame, HORIZONTAL, Label, LEFT, Menu, messagebox, NONE, NORMAL, PanedWindow, PhotoImage, RIGHT, Scrollbar, StringVar, SUNKEN, Text, Tk, TOP, ttk, W, X, Y
 
 
-class ApplicationUI(object):
+class FileManagerUI(object):
     path = os.path.abspath(r'./../../../../../..')
     file_types = ['.png', '.jpg', '.jpeg', '.ico', '.gif']
     scroll_visibility = True
@@ -155,9 +155,9 @@ class ApplicationUI(object):
     #     pass
 
 
-class Application(ApplicationUI):
+class FileManager(FileManagerUI):
     def __init__(self):
-        ApplicationUI.__init__(self)
+        FileManagerUI.__init__(self)
 
     # 保存文件
     def save_file(self):
@@ -305,4 +305,4 @@ class Application(ApplicationUI):
 
 
 if __name__ == '__main__':
-    Application()
+    FileManager()
