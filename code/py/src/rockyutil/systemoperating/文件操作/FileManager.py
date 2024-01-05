@@ -215,8 +215,7 @@ class FileManager(FileManagerUI):
         if root == '':
             is_open = True
 
-        root = self.tree.insert(root, END, text = ' ' + self.dir_name(path), values = (path,), open = is_open,
-                                image = self.folder_img)
+        root = self.tree.insert(root, END, text = ' ' + self.dir_name(path), values = (path,), open = is_open, image = self.folder_img)
 
         try:
             for file in os.listdir(path):
