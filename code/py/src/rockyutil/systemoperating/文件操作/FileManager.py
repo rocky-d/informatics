@@ -172,7 +172,7 @@ class FileManager(FileManagerUI):
         print(path)
         if self.is_file(path) is True:
             # 判断是否为图片
-            if self.is_type_in(path) is False:
+            if self.is_image(path) is False:
                 content = self.text_obj.get(1.0, END)[:-1]
                 with open(path, 'w', encoding = 'utf-8') as f:
                     f.write(content)
@@ -198,7 +198,7 @@ class FileManager(FileManagerUI):
         return False
 
     # 判断是否是图片类型
-    def is_type_in(self, path):
+    def is_image(self, path):
         if self.file_extension(path) in self.image_types:
             return True
         return False
@@ -280,7 +280,7 @@ class FileManager(FileManagerUI):
             self.text_obj.delete(1.0, END)
             self.update_line()
             if self.is_file(select_path) is True:
-                if self.is_type_in(select_path) is True:
+                if self.is_image(select_path) is True:
                     self.text_obj.config(state = DISABLED, cursor = '')
                     self.look_image(select_path)
                 else:
