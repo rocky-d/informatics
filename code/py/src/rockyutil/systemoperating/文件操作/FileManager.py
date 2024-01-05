@@ -1,6 +1,4 @@
 # https://github.com/yangsphp/file-manager-mask/tree/master
-# -*- coding: utf-8 -*-
-# __author__ = 'Yang'
 __author__ = 'Rocky Haotian Du'
 
 import os
