@@ -73,8 +73,7 @@ class FileManagerUI(object):
         right_top_frame = Frame(right_frame)
         right_top_frame.pack(expand = 1, fill = BOTH)
 
-        self.number_line = Text(right_top_frame, width = 0, takefocus = 0, border = 0,
-                                font = (self.font_type, self.font), cursor = '')
+        self.number_line = Text(right_top_frame, width = 0, takefocus = 0, border = 0, font = (self.font_type, self.font), cursor = '')
         self.number_line.pack(side = LEFT, fill = Y)
 
         # 右上角Text
@@ -100,8 +99,16 @@ class FileManagerUI(object):
         image_img = PhotoImage(file = r'./image/img.png')
 
         # 设置文件图标
-        self.icon = {'.php': php_img, '.py': python_img, '.pyc': python_img, '.png': image_img, '.jpg': image_img,
-                     '.jpeg': image_img, '.gif': image_img, '.ico': image_img}
+        self.icon = {
+            '.php': php_img,
+            '.py': python_img,
+            '.pyc': python_img,
+            '.png': image_img,
+            '.jpg': image_img,
+            '.jpeg': image_img,
+            '.gif': image_img,
+            '.ico': image_img
+        }
 
         # 加载目录文件
         self.load_tree('', self.path)
