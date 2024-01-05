@@ -24,7 +24,7 @@ class FileManagerUI(object):
         screen_width, screen_height = window.maxsize()
         x = (screen_width - win_width) // 2
         y = (screen_height - win_height) // 2
-        window.title('文件管理工具')
+        window.title('Python文件管理器')
         window.geometry('%sx%s+%s+%s' % (win_width, win_height, x, y))
 
         menu = Menu(window)
