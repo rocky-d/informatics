@@ -1,5 +1,5 @@
-import time
-from threading import *
+from threading import Thread
+from time import sleep
 
 
 class ColorThread(Thread):
@@ -19,7 +19,7 @@ class ColorThread(Thread):
     def print_color(self) -> None:
         for _ in range(50):
             print(f'{self.color}{ColorThread.char}\033[0m,', end = '')
-            time.sleep(self.delay)
+            sleep(self.delay)
 
 
 if __name__ == '__main__':
