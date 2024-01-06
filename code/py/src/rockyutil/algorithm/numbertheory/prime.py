@@ -1,4 +1,4 @@
-import math
+from math import isqrt
 from timeit import timeit
 
 
@@ -19,7 +19,7 @@ def is_prime_2(n: int) -> bool:
     if n < 2:
         res = False
     else:
-        for i in range(2, math.isqrt(n) + 1):
+        for i in range(2, isqrt(n) + 1):
             if 0 == n % i:
                 res = False
                 break
