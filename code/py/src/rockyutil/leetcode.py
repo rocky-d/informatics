@@ -1,8 +1,10 @@
+import bisect
+import collections
 import datetime
 import heapq
 import math
 import threading
-from array import *
+# from array import *
 from bisect import *
 from collections import *
 from math import *
