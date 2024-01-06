@@ -2,14 +2,14 @@ from random import randint
 from threading import Thread
 
 
-def is_prime(n):
+def is_prime(n: int) -> bool:
     for i in range(2, n):
         if n % i == 0:
             return False
     return True
 
 
-def filter_primes(nums):
+def filter_primes(nums: list[int]) -> list[int]:
     return [is_prime(num) for num in nums]
 
 
