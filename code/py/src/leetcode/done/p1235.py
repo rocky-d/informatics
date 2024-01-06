@@ -3,12 +3,10 @@ from rockyutil.leetcode import *
 
 class Solution:
     def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
-        n = len(profit)
         jobs = sorted(zip(startTime, endTime, profit), key = lambda x: x[1])
-        dp = [0 for _ in range(1 + n)]
-        dp[1] = jobs[0][2]
-        for i in range(1, n):
-            dp[i + 1] = max(dp[i], dp[bisect_right(jobs, jobs[i][0], key = lambda x: x[1])] + jobs[i][2])
+        dp = [0]
+        for i, job in enumerate(jobs):
+            dp.append(max(dp[i], dp[bisect_right(jobs, job[0], key = lambda x: x[1])] + job[2]))
         return dp[-1]
 
 
