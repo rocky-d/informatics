@@ -24,11 +24,11 @@ class ColorThread(Thread):
 
 if __name__ == '__main__':
     threads = [
-        ColorThread('1号粉色线程', '\033[95m', 0.1),
-        ColorThread('2号蓝色线程', '\033[94m', 0.2),
+        ColorThread('1号红色线程', '\033[91m', 0.1),
+        ColorThread('2号绿色线程', '\033[92m', 0.2),
         ColorThread('3号黄色线程', '\033[93m', 0.3),
-        ColorThread('4号绿色线程', '\033[92m', 0.4),
-        ColorThread('5号红色线程', '\033[91m', 0.5)
+        ColorThread('4号蓝色线程', '\033[94m', 0.4),
+        ColorThread('5号粉色线程', '\033[95m', 0.5)
     ]
 
     for thread in threads:
