@@ -1,5 +1,5 @@
 from random import randint
-from threading import *
+from threading import Thread
 
 
 def is_prime(n):
