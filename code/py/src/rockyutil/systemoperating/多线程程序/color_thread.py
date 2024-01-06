@@ -3,13 +3,13 @@ from time import sleep
 
 
 class ColorThread(Thread):
-    char = '0'
 
     def __init__(self, name: str, color: str, delay: float) -> None:
         super().__init__()
         self.name = name
         self.color = color
         self.delay = delay
+        self.count = 0
 
     def run(self) -> None:
         print(f'\n{self.color}线程“{self.name}”启动\033[0m\n', end = '')
@@ -18,7 +18,8 @@ class ColorThread(Thread):
 
     def print_color(self) -> None:
         for _ in range(50):
-            print(f'{self.color}{ColorThread.char}\033[0m,', end = '')
+            self.count += 1
+            print(f'{self.color}{self.count}\033[0m,', end = '')
             sleep(self.delay)
 
 
