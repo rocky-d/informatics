@@ -19,7 +19,7 @@ if __name__ == "__main__":
     threads = [
         Thread(target = filter_primes, args = (nums,)),
         Thread(target = filter_primes, args = (nums,)),
-        Thread(target = filter_primes, args = (nums,))
+        Thread(target = filter_primes, args = (nums,)),
     ]
 
     for thread in threads:
