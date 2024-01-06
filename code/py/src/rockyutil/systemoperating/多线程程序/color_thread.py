@@ -11,9 +11,9 @@ class ColorThread(Thread):
         self.delay = delay
 
     def run(self) -> None:
-        print(f'\n{self.color}线程“{self.name}”启动\033[0m\n', end = '')
+        print(f'\n“{self.color}{self.name}\033[0m”启动\n', end = '')
         self.print_color()
-        print(f'\n{self.color}线程“{self.name}”结束\033[0m\n', end = '')
+        print(f'\n“{self.color}{self.name}\033[0m”结束\n', end = '')
 
     def print_color(self) -> None:
         for i in range(50):
@@ -32,6 +32,4 @@ if __name__ == '__main__':
 
     for thread in threads:
         thread.start()
-
-    for thread in threads:
         thread.join()
