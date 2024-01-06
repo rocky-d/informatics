@@ -1,73 +1,29 @@
-from math import isqrt
-from threading import Thread
+from random import randint
+from threading import *
 
 
-def is_prime_1(n: int) -> bool:
-    if n < 2:
-        res = False
-    else:
-        for i in range(2, n):
-            if 0 == n % i:
-                res = False
-                break
-        else:
-            res = True
-    return res
-
-
-def is_prime_2(n: int) -> bool:
-    if n < 2:
-        res = False
-    else:
-        for i in range(2, isqrt(n) + 1):
-            if 0 == n % i:
-                res = False
-                break
-        else:
-            res = True
-    return res
-
-
-def primes_before_1(n: int) -> list[int]:
-    res = []
-    tags = [False for _ in range(2)] + [True for _ in range(2, n)]
+def is_prime(n):
     for i in range(2, n):
-        if tags[i]:
-            res.append(i)
-            for composite in range(i * i, n, i):
-                tags[composite] = False
-    return res
+        if n % i == 0:
+            return False
+    return True
 
 
-def primes_before_2(n: int) -> list[int]:
-    res = []
-    tags = [False for _ in range(2)] + [True for _ in range(2, n)]
-    for i in range(2, n):
-        if tags[i]:
-            res.append(i)
-        for prime in res:
-            composite = i * prime
-            if composite < n:
-                tags[composite] = False
-                if 0 == i % prime:
-                    break
-            else:
-                break
-    return res
+def get_primes(nums):
+    return [is_prime(num) for num in nums]
 
 
-if __name__ == '__main__':
-    eg_n = int(1e5)
+if __name__ == "__main__":
+    nums_ = [randint(100, 10000) for i in range(2000)]
 
-    threads = [
-        Thread(target = lambda: list(filter(is_prime_1, range(eg_n)))),
-        Thread(target = lambda: list(filter(is_prime_2, range(eg_n)))),
-        Thread(target = lambda: primes_before_1(n = eg_n)),
-        Thread(target = lambda: primes_before_2(n = eg_n)),
-    ]
+    thread1 = Thread(target = get_primes, args = (nums_,))
+    thread2 = Thread(target = get_primes, args = (nums_,))
+    thread3 = Thread(target = get_primes, args = (nums_,))
 
-    for thread in threads:
-        thread.start()
+    thread1.start()
+    thread2.start()
+    thread3.start()
 
-    for thread in threads:
-        thread.join()
+    thread1.join()
+    thread2.join()
+    thread3.join()
