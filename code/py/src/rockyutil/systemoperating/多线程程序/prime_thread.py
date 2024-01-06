@@ -9,21 +9,21 @@ def is_prime(n):
     return True
 
 
-def get_primes(nums):
+def filter_primes(nums):
     return [is_prime(num) for num in nums]
 
 
 if __name__ == "__main__":
-    nums_ = [randint(100, 10000) for i in range(2000)]
+    nums = [randint(100, 10000) for i in range(2000)]
 
-    thread1 = Thread(target = get_primes, args = (nums_,))
-    thread2 = Thread(target = get_primes, args = (nums_,))
-    thread3 = Thread(target = get_primes, args = (nums_,))
+    threads = [
+        Thread(target = filter_primes, args = (nums,)),
+        Thread(target = filter_primes, args = (nums,)),
+        Thread(target = filter_primes, args = (nums,))
+    ]
 
-    thread1.start()
-    thread2.start()
-    thread3.start()
+    for thread in threads:
+        thread.start()
 
-    thread1.join()
-    thread2.join()
-    thread3.join()
+    for thread in threads:
+        thread.join()

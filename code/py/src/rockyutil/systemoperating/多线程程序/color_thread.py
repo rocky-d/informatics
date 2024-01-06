@@ -23,20 +23,16 @@ class ColorThread(Thread):
 
 
 if __name__ == '__main__':
-    thread1 = ColorThread('1号粉色线程', '\033[95m', 0.1)
-    thread2 = ColorThread('2号蓝色线程', '\033[94m', 0.2)
-    thread3 = ColorThread('3号黄色线程', '\033[93m', 0.3)
-    thread4 = ColorThread('4号绿色线程', '\033[92m', 0.4)
-    thread5 = ColorThread('5号红色线程', '\033[91m', 0.5)
+    threads = [
+        ColorThread('1号粉色线程', '\033[95m', 0.1),
+        ColorThread('2号蓝色线程', '\033[94m', 0.2),
+        ColorThread('3号黄色线程', '\033[93m', 0.3),
+        ColorThread('4号绿色线程', '\033[92m', 0.4),
+        ColorThread('5号红色线程', '\033[91m', 0.5)
+    ]
 
-    thread1.start()
-    thread2.start()
-    thread3.start()
-    thread4.start()
-    thread5.start()
+    for thread in threads:
+        thread.start()
 
-    thread1.join()
-    thread2.join()
-    thread3.join()
-    thread4.join()
-    thread5.join()
+    for thread in threads:
+        thread.join()
