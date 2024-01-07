@@ -39,11 +39,11 @@ def print_number(number: int) -> None:
 eg_n = 5
 instance = ZeroEvenOdd(n = eg_n)
 
-threads = (
+threads = [
     threading.Thread(target = instance.zero, args = (print_number,)),
     threading.Thread(target = instance.even, args = (print_number,)),
     threading.Thread(target = instance.odd, args = (print_number,))
-)
+]
 
 for thread in threads:
     thread.start()
