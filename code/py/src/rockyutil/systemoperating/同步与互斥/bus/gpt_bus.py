@@ -2,10 +2,9 @@ import threading
 import time
 
 
-class Semaphore:
+class Semaphore(object):
     def __init__(self):
         self.lock = threading.Lock()
-        self.value = 0
         self.lock.acquire()
 
     def p(self):
@@ -16,6 +15,7 @@ class Semaphore:
 
 
 class Driver(threading.Thread):
+
     def __init__(self, door, stop):
         super().__init__()
         self.door = door
@@ -34,6 +34,7 @@ class Driver(threading.Thread):
 
 
 class Conductor(threading.Thread):
+
     def __init__(self, door, stop):
         super().__init__()
         self.door = door
@@ -58,7 +59,13 @@ class Conductor(threading.Thread):
 
 
 if __name__ == '__main__':
-    dor, stp = Semaphore(), Semaphore()
+    door, stop = Semaphore(), Semaphore()
 
-    Driver(dor, stp).start()
-    Conductor(dor, stp).start()
+    conductor = Conductor(door = door, stop = stop)
+    driver = Driver(door = door, stop = stop)
+
+    conductor.start()
+    driver.start()
+
+    conductor.join()
+    driver.join()
