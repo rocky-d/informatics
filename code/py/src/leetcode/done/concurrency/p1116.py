@@ -32,7 +32,7 @@ class ZeroEvenOdd:
             self.s1.release()
 
 
-eg_n = 5
+eg_n = 10
 instance = ZeroEvenOdd(n = eg_n)
 
 threads = [
