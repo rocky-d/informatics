@@ -32,17 +32,13 @@ class ZeroEvenOdd:
             self.s1.release()
 
 
-def eg_printNumber(number: int) -> None:
-    print(number, end = '')
-
-
 eg_n = 5
 instance = ZeroEvenOdd(n = eg_n)
 
 threads = [
-    threading.Thread(target = instance.zero, args = (eg_printNumber,)),
-    threading.Thread(target = instance.even, args = (eg_printNumber,)),
-    threading.Thread(target = instance.odd, args = (eg_printNumber,)),
+    threading.Thread(target = instance.zero, args = (lambda number: print(number, end = ''),)),
+    threading.Thread(target = instance.even, args = (lambda number: print(number, end = ''),)),
+    threading.Thread(target = instance.odd, args = (lambda number: print(number, end = ''),)),
 ]
 
 for thread in threads:
