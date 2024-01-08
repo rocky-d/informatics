@@ -36,9 +36,9 @@ eg_n = 10
 instance = ZeroEvenOdd(n = eg_n)
 
 threads = [
-    threading.Thread(target = instance.zero, args = (lambda number: print(number, end = ''),)),
-    threading.Thread(target = instance.even, args = (lambda number: print(number, end = ''),)),
-    threading.Thread(target = instance.odd, args = (lambda number: print(number, end = ''),)),
+    threading.Thread(target = instance.zero, args = (lambda number: print(number, end = ','),)),
+    threading.Thread(target = instance.even, args = (lambda number: print(number, end = ','),)),
+    threading.Thread(target = instance.odd, args = (lambda number: print(number, end = ','),)),
 ]
 
 for thread in threads:
