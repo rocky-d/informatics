@@ -1,20 +1,18 @@
+from math import ceil
+
+
 def main() -> None:
     a, b, n = map(int, input().split())
+
     weeks = n // (5 * a + 2 * b)
     days = 7 * weeks
-    lasting = n % (5 * a + 2 * b)
+    lasting = n - weeks * (5 * a + 2 * b)
+
+    days += min(5, ceil(lasting / a))
+    lasting = lasting - 5 * a
+
     if 0 < lasting:
-        for day in range(5):
-            days += 1
-            lasting -= a
-            if lasting <= 0:
-                break
-        else:
-            for day in range(2):
-                days += 1
-                lasting -= b
-                if lasting <= 0:
-                    break
+        days += ceil(lasting / b)
     print(days)
 
 
