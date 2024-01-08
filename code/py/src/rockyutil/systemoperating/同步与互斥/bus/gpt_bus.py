@@ -16,7 +16,7 @@ class Semaphore(object):
 
 class Driver(threading.Thread):
 
-    def __init__(self, door, stop):
+    def __init__(self, door: Semaphore, stop: Semaphore):
         super().__init__()
         self.door = door
         self.stop = stop
@@ -35,7 +35,7 @@ class Driver(threading.Thread):
 
 class Conductor(threading.Thread):
 
-    def __init__(self, door, stop):
+    def __init__(self, door: Semaphore, stop: Semaphore):
         super().__init__()
         self.door = door
         self.stop = stop
