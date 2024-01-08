@@ -30,7 +30,7 @@ class Driver(threading.Thread):
             print('\033[92mDriver: 停车\n', end = '')
             time.sleep(2)
 
-            self.stop.v()  # 告知Conductor已停车
+            self.stop.v()  # 唤醒Conductor
 
 
 class Conductor(threading.Thread):
@@ -47,7 +47,7 @@ class Conductor(threading.Thread):
             print('\033[93mConductor: 关门\n', end = '')
             time.sleep(0.5)
 
-            self.door.v()  # 告知Driver已关门
+            self.door.v()  # 唤醒Driver
 
             print('\033[93mConductor: 售票\n', end = '')
             time.sleep(0.5)
