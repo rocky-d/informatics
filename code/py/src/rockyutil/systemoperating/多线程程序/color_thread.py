@@ -23,11 +23,11 @@ class ColorThread(Thread):
 
 if __name__ == '__main__':
     threads = [
-        ColorThread('1号红色线程', '\033[91m', 0.1),
-        ColorThread('2号绿色线程', '\033[92m', 0.2),
-        ColorThread('3号黄色线程', '\033[93m', 0.3),
-        ColorThread('4号蓝色线程', '\033[94m', 0.4),
-        ColorThread('5号粉色线程', '\033[95m', 0.5),
+        ColorThread(name = '1号红色线程', color = '\033[91m', delay = 0.1),
+        ColorThread(name = '2号绿色线程', color = '\033[92m', delay = 0.2),
+        ColorThread(name = '3号黄色线程', color = '\033[93m', delay = 0.3),
+        ColorThread(name = '4号蓝色线程', color = '\033[94m', delay = 0.4),
+        ColorThread(name = '5号粉色线程', color = '\033[95m', delay = 0.5),
     ]
 
     for thread in threads:
