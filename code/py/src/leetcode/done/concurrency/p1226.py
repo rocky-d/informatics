@@ -27,7 +27,7 @@ class DiningPhilosophers:
         self.dining.release()
 
 
-eg_n = 1
+eg_n = 2
 instance = DiningPhilosophers()
 
 for _ in range(eg_n):
