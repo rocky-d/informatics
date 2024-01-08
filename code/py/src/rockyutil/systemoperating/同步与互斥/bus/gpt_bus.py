@@ -6,18 +6,12 @@ class Semaphore:
     def __init__(self):
         self.lock = threading.Lock()
         self.value = 0
+        self.lock.acquire()
 
     def p(self):
         self.lock.acquire()
-        while self.value <= 0:
-            self.lock.release()
-            self.lock.acquire()
-        self.value -= 1
-        self.lock.release()
 
     def v(self):
-        self.lock.acquire()
-        self.value += 1
         self.lock.release()
 
 
