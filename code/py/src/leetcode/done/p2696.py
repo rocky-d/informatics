@@ -1,8 +1,24 @@
 class Solution:
     def minLength(self, s: str) -> int:
-        last_len_s = len(s) + 1
-        while len(s) < last_len_s:
-            last_len_s = len(s)
-            s = s.replace('AB', '')
-            s = s.replace('CD', '')
-        return last_len_s
+        ans = len(s)
+        stack = []
+        for char in s:
+            if 'A' == char or 'C' == char:
+                stack.append(char)
+                continue
+            elif 'B' == char:
+                if 0 < len(stack) and 'A' == stack[-1]:
+                    stack.pop(-1)
+                    ans -= 2
+                    continue
+            elif 'D' == char:
+                if 0 < len(stack) and 'C' == stack[-1]:
+                    stack.pop(-1)
+                    ans -= 2
+                    continue
+            stack.clear()
+        return ans
+
+
+eg_s = 'ABFCACDB'
+print(Solution().minLength(s = eg_s))
