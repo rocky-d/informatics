@@ -1,5 +1,6 @@
 import bisect
 import collections
+import copy
 import datetime
 import heapq
 import math
@@ -8,6 +9,7 @@ import threading
 # from array import *
 from bisect import *
 from collections import *
+from copy import *
 from datetime import *
 from heapq import *
 from math import *
