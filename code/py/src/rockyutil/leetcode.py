@@ -26,7 +26,7 @@ class ListNode:
         self.next = next
 
     @staticmethod
-    def list_to_ln(ls: List[int]) -> Optional['ListNode']:
+    def list_to_ln(ls: List[Any]) -> Optional['ListNode']:
         dummy = node = ListNode()
         for num in ls:
             node.next = ListNode(val = num, next = None)
@@ -34,7 +34,7 @@ class ListNode:
         return dummy.next
 
     @staticmethod
-    def ln_to_list(head: Optional['ListNode']) -> List[int]:
+    def ln_to_list(head: Optional['ListNode']) -> List[Any]:
         ls = []
         node = head
         while node is not None:
