@@ -8,7 +8,7 @@ class Solution:
             players.add(winner)
             players.add(loser)
             losers[loser] += 1
-        return [sorted(players - losers.keys()), sorted(loser for loser, count in losers.items() if 1 == count)]
+        return list(sorted(players - losers.keys()), sorted(loser for loser, count in losers.items() if 1 == count))
 
 
 eg_matches = [
