@@ -1,3 +1,4 @@
+import array
 import bisect
 import collections
 import copy
