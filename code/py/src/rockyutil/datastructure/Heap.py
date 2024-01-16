@@ -9,7 +9,7 @@ class Heap(object):
 
     def __init__(
             self,
-            iterable: Iterable[_T],
+            __iterable: Iterable[_T],
             *,
             key: Callable[[_T], SupportsRichComparison] | None = None,
             reverse: bool = False
