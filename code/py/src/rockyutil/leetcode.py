@@ -3,6 +3,7 @@ import bisect
 import collections
 import copy
 import datetime
+import functools
 import heapq
 import math
 import random
@@ -13,6 +14,7 @@ from bisect import *
 from collections import *
 from copy import *
 from datetime import *
+from functools import *
 from heapq import *
 from math import *
 from random import *
