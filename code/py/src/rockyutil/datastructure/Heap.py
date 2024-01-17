@@ -57,21 +57,21 @@ class Heap(object):
 
     def peekn(self, n):
         items = []
-        heap = self._heap.copy()
-        for _ in range(min(n, len(heap))):
-            items.append(self._origin[heappop(heap)[1]])
+        heap_ = self._heap.copy()
+        for _ in range(min(n, len(heap_))):
+            items.append(self._origin[heappop(heap_)[1]])
         return items
 
     def peekall(self):
         items = []
-        heap = self._heap.copy()
-        for _ in range(len(heap)):
-            items.append(self._origin[heappop(heap)[1]])
+        heap_ = self._heap.copy()
+        for _ in range(len(heap_)):
+            items.append(self._origin[heappop(heap_)[1]])
         return items
 
 
 if __name__ == '__main__':
-    h = Heap([9, 13, 8, 1, 2, 3, 4, 5], key = lambda x: x - 10, reverse = True)
-    print(h.peekall())
-    h.push(7)
-    print(h.peekall())
+    heap = Heap([9, 13, 8, 1, 2, 3, 4, 5], reverse = True)
+    print(heap.peekall())
+    heap.push(7)
+    print(heap.peekall())
