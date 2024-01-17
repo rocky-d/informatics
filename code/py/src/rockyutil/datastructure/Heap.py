@@ -8,19 +8,17 @@ class Heap(object):
         return -item
 
     def __init__(self, __iterable, *, key = None, reverse = False):
-        self._key = key
-        self._reverse = reverse
         self._origin = list(__iterable)
-        if self._key is None:
-            if not self._reverse:
+        if key is None:
+            if not reverse:
                 self._convert = lambda item_: item_
             else:
                 self._convert = lambda item_: Heap._converse(item_)
         else:
-            if not self._reverse:
-                self._convert = lambda item_: self._key(item_)
+            if not reverse:
+                self._convert = lambda item_: key(item_)
             else:
-                self._convert = lambda item_: Heap._converse(self._key(item_))
+                self._convert = lambda item_: Heap._converse(key(item_))
         self._heap = list(zip((self._convert(item) for item in self._origin), range(len(self._origin))))
         heapify(self._heap)
 
@@ -38,14 +36,24 @@ class Heap(object):
                 break
         return item
 
-    def replace(self, item):
+    def replace(self, item):  # TODO
         return heapreplace(self._heap, item)
 
-    def pushpop(self, item):
+    def pushpop(self, item):  # TODO
         return heappushpop(self._heap, item)
 
-    def peek(self, n = 1):
-        return ...
+    def peek(self):
+        return self._origin[self._heap[0][1]]
+
+    def peekn(self, n):
+        items = []
+        pops = []
+        for _ in range(min(n, len(self._heap))):
+            pops.append(heappop(self._heap))
+            items.append(self._origin[pops[-1][1]])
+        while 0 < len(pops):
+            heappush(self._heap, pops.pop(-1))
+        return items
 
 
 if __name__ == '__main__':
@@ -53,5 +61,4 @@ if __name__ == '__main__':
     print(heap._heap)
     heap.push(4)
     print(heap._heap)
-
     print(heap.pop())
