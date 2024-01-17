@@ -13,26 +13,38 @@ class Heap(object):
         self._origin = list(__iterable)
         if self._key is None:
             if not self._reverse:
-                self._heap = list(zip((item for item in self._origin), range(len(self._origin))))
+                heap_items = (item for item in self._origin)
             else:
-                self._heap = list(zip((Heap._converse(item) for item in self._origin), range(len(self._origin))))
+                heap_items = (Heap._converse(item) for item in self._origin)
         else:
             if not self._reverse:
-                self._heap = list(zip((self._key(item) for item in self._origin), range(len(self._origin))))
+                heap_items = (self._key(item) for item in self._origin)
             else:
-                self._heap = list(zip((Heap._converse(self._key(item)) for item in self._origin), range(len(self._origin))))
+                heap_items = (Heap._converse(self._key(item)) for item in self._origin)
+        self._heap = list(zip(heap_items, range(len(self._origin))))
         heapify(self._heap)
 
     def push(self, item):
         self._origin.append(item)
-        heappush(self._heap, (item, len(self._heap)))
+        if self._key is None:
+            if not self._reverse:
+                heap_item = item
+            else:
+                heap_item = Heap._converse(item)
+        else:
+            if not self._reverse:
+                heap_item = self._key(item)
+            else:
+                heap_item = Heap._converse(self._key(item))
+        heappush(self._heap, (heap_item, len(self._heap)))
 
     def pop(self):
-        item, i = heappop(self._heap)
-        self._origin[i] = self._origin.pop(-1)
-        for item_, i_ in self._heap:
-            if i_ == len(self._heap):
-                self._heap[i_] = item_, i
+        _, index = heappop(self._heap)
+        item = self._origin[index]
+        self._origin[index] = self._origin.pop(-1)
+        for heap_item, i in self._heap:
+            if i == len(self._heap):
+                self._heap[i] = heap_item, index
         return item
 
     def replace(self, item):
@@ -46,4 +58,7 @@ class Heap(object):
 
 
 if __name__ == '__main__':
-    ...
+    heap = Heap([1, 2, 3, 4, 5], key = lambda x: -x)
+    print(heap._heap)
+    heap.push(4)
+    print(heap._heap)
