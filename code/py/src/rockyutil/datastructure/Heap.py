@@ -1,4 +1,4 @@
-from heapq import heappush, heappop, heapreplace, heappushpop, heapify
+from heapq import heapify, heappop, heappush, heappushpop, heapreplace
 
 
 class Heap(object):
@@ -58,7 +58,7 @@ class Heap(object):
 
 
 if __name__ == '__main__':
-    heap = Heap([1, 2, 3, 4, 5], key = lambda x: x - 10)
+    heap = Heap([1, 2, 3, 4, 5], key = lambda x: x - 10, reverse = True)
     print(heap._heap)
     heap.push(4)
     print(heap._heap)
