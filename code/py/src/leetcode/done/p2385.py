@@ -9,14 +9,14 @@ class Solution:
             nonlocal ans
             left, right = dfs(node.left), dfs(node.right)
             if left[1] is not None:
-                ans = max(ans, 1 + right[0] + left[1])
+                ans = max(ans, right[0] + left[1])
                 res = 1 + right[0], 1 + left[1]
             elif right[1] is not None:
-                ans = max(ans, 1 + left[0] + right[1])
+                ans = max(ans, left[0] + right[1])
                 res = 1 + left[0], 1 + right[1]
             elif start == node.val:
                 ans = max(left[0], right[0])
-                res = None, 0
+                res = None, 1
             else:
                 res = 1 + max(left[0], right[0]), None
             return res
