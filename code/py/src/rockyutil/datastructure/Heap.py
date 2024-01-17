@@ -48,6 +48,13 @@ class Heap(object):
     def peek(self):
         return self._origin[self._heap[0][1]]
 
+    def peekall(self):
+        items = []
+        heap_ = self._heap.copy()
+        for _ in range(len(heap_)):
+            items.append(self._origin[heappop(heap_)[1]])
+        return items
+
     # def peekn(self, n):
     #     items = []
     #     pops = []
@@ -62,13 +69,6 @@ class Heap(object):
         items = []
         heap_ = self._heap.copy()
         for _ in range(min(n, len(heap_))):
-            items.append(self._origin[heappop(heap_)[1]])
-        return items
-
-    def peekall(self):
-        items = []
-        heap_ = self._heap.copy()
-        for _ in range(len(heap_)):
             items.append(self._origin[heappop(heap_)[1]])
         return items
 
