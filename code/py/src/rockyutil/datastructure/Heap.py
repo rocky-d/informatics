@@ -51,7 +51,7 @@ class Heap(object):
     #     for _ in range(min(n, len(self._heap))):
     #         pops.append(heappop(self._heap))
     #         items.append(self._origin[pops[-1][1]])
-    #     while 0 < len(pops):
+    #     for _ in range(len(pops)):
     #         heappush(self._heap, pops.pop(-1))
     #     return items
 
@@ -71,7 +71,7 @@ class Heap(object):
 
 
 if __name__ == '__main__':
-    h = Heap([9,13,8,1, 2, 3, 4, 5], key = lambda x: x - 10, reverse = True)
+    h = Heap([9, 13, 8, 1, 2, 3, 4, 5], key = lambda x: x - 10, reverse = True)
     print(h.peekall())
     h.push(7)
     print(h.peekall())
