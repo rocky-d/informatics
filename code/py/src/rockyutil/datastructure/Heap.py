@@ -46,19 +46,25 @@ class Heap(object):
         return self._origin[self._heap[0][1]]
 
     def peekn(self, n):
+        # items = []
+        # pops = []
+        # for _ in range(min(n, len(self._heap))):
+        #     pops.append(heappop(self._heap))
+        #     items.append(self._origin[pops[-1][1]])
+        # while 0 < len(pops):
+        #     heappush(self._heap, pops.pop(-1))
+        # return items
+
         items = []
-        pops = []
-        for _ in range(min(n, len(self._heap))):
-            pops.append(heappop(self._heap))
-            items.append(self._origin[pops[-1][1]])
-        while 0 < len(pops):
-            heappush(self._heap, pops.pop(-1))
+        heap = self._heap.copy()
+        for _ in range(min(n, len(heap))):
+            items.append(self._origin[heappop(heap)[1]])
         return items
 
 
 if __name__ == '__main__':
-    heap = Heap([1, 2, 3, 4, 5], key = lambda x: x - 10, reverse = True)
-    print(heap._heap)
-    heap.push(4)
-    print(heap._heap)
-    print(heap.pop())
+    heap_ = Heap([1, 2, 3, 4, 5], key = lambda x: x - 10, reverse = True)
+    print(heap_._heap)
+    heap_.push(4)
+    print(heap_._heap)
+    print(heap_.pop())
