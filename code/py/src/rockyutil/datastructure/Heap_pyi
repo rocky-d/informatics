@@ -1,0 +1,30 @@
+from _typeshed import SupportsRichComparison, SupportsRichComparisonT
+from typing import Callable, TypeVar, Iterable, overload
+
+_T = TypeVar('_T')
+
+
+class Heap(object):
+
+    def __converse(self, item: ...) -> ...: ...
+
+    @overload
+    def __init__(self, __iterable: Iterable[SupportsRichComparisonT], *, key: None = None,
+                 reverse: bool = False) -> None:
+        self._origin: list[...] = list()
+        self._heap: list[...] = list()
+        ...
+
+    @overload
+    def __init__(self, __iterable: Iterable[_T], *, key: Callable[[_T], SupportsRichComparison],
+                 reverse: bool = False) -> None: ...
+
+    def push(self, item: _T) -> None: ...
+
+    def pop(self) -> _T: ...
+
+    def replace(self, item: _T) -> _T: ...
+
+    def pushpop(self, item: _T) -> _T: ...
+
+    def peek(self, n: int = 1) -> list[_T]: ...
