@@ -40,10 +40,10 @@ class Heap(object):
         heappush(self._heap, (self._convert(item), len(self._heap)))
 
     def pushpop(self, item):  # TODO
-        return heappushpop(self._heap, item)
+        return ...
 
     def replace(self, item):  # TODO
-        return heapreplace(self._heap, item)
+        return ...
 
     def peek(self):
         return self._origin[self._heap[0][1]]
