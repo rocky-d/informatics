@@ -45,6 +45,7 @@ class Heap(object):
         for i in range(len(self._heap)):
             if len(self._heap) == self._heap[i][1]:
                 self._heap[i] = self._heap[i][0], index
+                break
         return item
 
     def replace(self, item):
