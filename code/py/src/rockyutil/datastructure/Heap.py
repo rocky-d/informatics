@@ -42,9 +42,9 @@ class Heap(object):
         _, index = heappop(self._heap)
         item = self._origin[index]
         self._origin[index] = self._origin.pop(-1)
-        for heap_item, i in self._heap:
-            if i == len(self._heap):
-                self._heap[i] = heap_item, index
+        for i in range(len(self._heap)):
+            if len(self._heap) == self._heap[i][1]:
+                self._heap[i] = self._heap[i][0], index
         return item
 
     def replace(self, item):
@@ -58,7 +58,9 @@ class Heap(object):
 
 
 if __name__ == '__main__':
-    heap = Heap([1, 2, 3, 4, 5], key = lambda x: -x)
+    heap = Heap([1, 2, 3, 4, 5], key = lambda x: x - 10)
     print(heap._heap)
     heap.push(4)
     print(heap._heap)
+
+    print(heap.pop())
