@@ -22,6 +22,9 @@ class Heap(object):
         self._heap = list(zip((self._convert(item) for item in self._origin), range(len(self._origin))))
         heapify(self._heap)
 
+    def __len__(self):
+        return len(self._heap)
+
     def push(self, item):
         self._origin.append(item)
         heappush(self._heap, (self._convert(item), len(self._heap)))
