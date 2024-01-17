@@ -25,10 +25,6 @@ class Heap(object):
     def __len__(self):
         return len(self._heap)
 
-    def push(self, item):
-        self._origin.append(item)
-        heappush(self._heap, (self._convert(item), len(self._heap)))
-
     def pop(self):
         _, index = heappop(self._heap)
         item = self._origin[index]
@@ -39,11 +35,15 @@ class Heap(object):
                 break
         return item
 
-    def replace(self, item):  # TODO
-        return heapreplace(self._heap, item)
+    def push(self, item):
+        self._origin.append(item)
+        heappush(self._heap, (self._convert(item), len(self._heap)))
 
     def pushpop(self, item):  # TODO
         return heappushpop(self._heap, item)
+
+    def replace(self, item):  # TODO
+        return heapreplace(self._heap, item)
 
     def peek(self):
         return self._origin[self._heap[0][1]]
