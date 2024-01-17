@@ -62,10 +62,16 @@ class Heap(object):
             items.append(self._origin[heappop(heap)[1]])
         return items
 
+    def peekall(self):
+        items = []
+        heap = self._heap.copy()
+        for _ in range(len(heap)):
+            items.append(self._origin[heappop(heap)[1]])
+        return items
+
 
 if __name__ == '__main__':
-    h = Heap([1, 2, 3, 4, 5], key = lambda x: x - 10, reverse = True)
-    print(h._heap)
-    h.push(4)
-    print(h._heap)
-    print(h.pop())
+    h = Heap([9,13,8,1, 2, 3, 4, 5], key = lambda x: x - 10, reverse = True)
+    print(h.peekall())
+    h.push(7)
+    print(h.peekall())
