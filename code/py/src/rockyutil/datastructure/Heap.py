@@ -4,7 +4,7 @@ from heapq import heapify, heappop, heappush, heappushpop, heapreplace
 class Heap(object):
 
     @staticmethod
-    def _converse(item):
+    def _converse(item):  # TODO
         return -item
 
     def __init__(self, __iterable, *, key = None, reverse = False):
