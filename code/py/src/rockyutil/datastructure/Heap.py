@@ -13,30 +13,20 @@ class Heap(object):
         self._origin = list(__iterable)
         if self._key is None:
             if not self._reverse:
-                heap_items = (item for item in self._origin)
+                self._convert = lambda item_: item_
             else:
-                heap_items = (Heap._converse(item) for item in self._origin)
+                self._convert = lambda item_: Heap._converse(item_)
         else:
             if not self._reverse:
-                heap_items = (self._key(item) for item in self._origin)
+                self._convert = lambda item_: self._key(item_)
             else:
-                heap_items = (Heap._converse(self._key(item)) for item in self._origin)
-        self._heap = list(zip(heap_items, range(len(self._origin))))
+                self._convert = lambda item_: Heap._converse(self._key(item_))
+        self._heap = list(zip((self._convert(item) for item in self._origin), range(len(self._origin))))
         heapify(self._heap)
 
     def push(self, item):
         self._origin.append(item)
-        if self._key is None:
-            if not self._reverse:
-                heap_item = item
-            else:
-                heap_item = Heap._converse(item)
-        else:
-            if not self._reverse:
-                heap_item = self._key(item)
-            else:
-                heap_item = Heap._converse(self._key(item))
-        heappush(self._heap, (heap_item, len(self._heap)))
+        heappush(self._heap, (self._convert(item), len(self._heap)))
 
     def pop(self):
         _, index = heappop(self._heap)
