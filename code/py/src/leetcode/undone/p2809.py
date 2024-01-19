@@ -10,7 +10,7 @@ class Solution:
                 dp[j] = max(dp[j], dp[j - 1] + j * num2 + num1)
         nums1_sum, nums2_sum = sum(nums1), sum(nums2)
         for i in range(1 + n):
-            if nums2_sum * i + nums1_sum - dp[i] <= x:
+            if nums1_sum + i * nums2_sum - dp[i] <= x:
                 ans = i
                 break
         else:
