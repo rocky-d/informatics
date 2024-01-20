@@ -3,7 +3,7 @@ from rockyutil.leetcode import *
 
 class Solution:
     def splitWordsBySeparator(self, words: List[str], separator: str) -> List[str]:
-        return reduce(list.__add__, [[w for w in word.split(separator) if 0 < len(w)] for word in words])
+        return [word for word in separator.join(words).split(separator) if 0 < len(word)]
 
 
 eg_words = ['$easy$', '$no$problem$']
