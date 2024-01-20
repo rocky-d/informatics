@@ -3,15 +3,14 @@ from rockyutil.leetcode import *
 
 class Solution:
     def sumSubarrayMins(self, arr: List[int]) -> int:
-        n = len(arr)
         ans = 0
-        dp = [0 for _ in range(n)]
+        dp = [0 for _ in range(len(arr))]
         stack = []
-        for i, x in enumerate(arr):
-            while 0 < len(stack) and x < arr[stack[-1]]:
+        for i, num in enumerate(arr):
+            while 0 < len(stack) and num < arr[stack[-1]]:
                 stack.pop(-1)
             k = i - stack[-1] if 0 < len(stack) else 1 + i
-            dp[i] = k * x + (dp[i - k] if 0 < len(stack) else 0)
+            dp[i] = k * num + (dp[i - k] if 0 < len(stack) else 0)
             ans += dp[i]
             stack.append(i)
         return ans % 1_000_000_007
