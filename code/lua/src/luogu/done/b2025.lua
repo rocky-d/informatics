@@ -1,1 +1,5 @@
-print('  *\n ***\n*****\n ***\n  *')
+function main()
+    print('  *\n ***\n*****\n ***\n  *')
+end
+
+main()
