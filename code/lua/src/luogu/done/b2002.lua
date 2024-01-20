@@ -1,4 +1,4 @@
-function main()
+local function main()
     print('Hello,World!')
 end
 
