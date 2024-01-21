@@ -7,4 +7,6 @@ var sum = function (num1, num2) {
     return num1 + num2;
 };
 
-console.log(sum(12, 5));
+eg_num1 = 12
+eg_num2 = 5
+console.log(sum(eg_num1, eg_num2));
