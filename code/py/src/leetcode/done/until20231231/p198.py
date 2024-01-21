@@ -3,7 +3,7 @@ from rockyutil.leetcode import *
 
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        first, second = 0, 0
+        dp0, dp1 = 0, 0
         for num in nums:
-            first, second = second, max(second, first + num)
-        return second
+            dp0, dp1 = dp1, max(dp1, dp0 + num)
+        return dp1
