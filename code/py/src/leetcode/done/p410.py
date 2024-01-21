@@ -9,7 +9,7 @@ class Solution:
         for i in range(1, 1 + n):
             for j in range(1, 1 + min(i, m)):
                 sum_ = 0
-                for k in reversed(range(j - 1, i)):
+                for k in range(i - 1, j - 2, -1):
                     sum_ += nums[k]
                     dp[i][j] = min(dp[i][j], max(dp[k][j - 1], sum_))
         return dp[-1][-1]
