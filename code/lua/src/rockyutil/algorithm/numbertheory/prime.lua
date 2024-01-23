@@ -1,4 +1,5 @@
 function is_prime_1(n)
+    local res
     if n < 2 then
         res = false
     else
@@ -15,6 +16,14 @@ end
 
 local function main()
     print(is_prime_1(13))
+
+    for key in pairs(_G) do
+        if 'main' == key then
+            print('Found:', key)
+            print(_G[key])
+        end
+    end
+
 end
 
 main()
