@@ -13,5 +13,8 @@ function is_prime_1(n)
     return res
 end
 
+local function main()
+    print(is_prime_1(13))
+end
 
-print(is_prime_1(13))
+main()
