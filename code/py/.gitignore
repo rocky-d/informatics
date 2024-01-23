@@ -3,3 +3,6 @@
 /*
 !/.gitignore
 !/src/
+
+!/environment*
+!/requirement*
