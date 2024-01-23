@@ -5,11 +5,11 @@ class Solution:
     def maxLength(self, arr: List[str]) -> int:
         dp = ['']
         for s in arr:
-            if len(s) == len(set(s)):
+            if len(s) == len(frozenset(s)):
                 dp.append(s)
                 for prefix in dp[1:-1]:
                     new_s = prefix + s
-                    if len(new_s) == len(set(new_s)):
+                    if len(new_s) == len(frozenset(new_s)):
                         dp.append(new_s)
         return len(max(dp, key = len))
 
