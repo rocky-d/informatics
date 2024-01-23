@@ -3,3 +3,7 @@
 /*
 !/.gitignore
 !/src/
+
+!/package.json
+!/package-lock.json
+!/yarn.lock
