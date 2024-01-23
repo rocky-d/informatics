@@ -7,8 +7,8 @@ class Solution:
         for s in arr:
             if len(s) == len(frozenset(s)):
                 dp.append(s)
-                for prefix in dp[1:-1]:
-                    new_s = prefix + s
+                for pre in dp[1:-1]:
+                    new_s = pre + s
                     if len(new_s) == len(frozenset(new_s)):
                         dp.append(new_s)
         return len(max(dp, key = len))
