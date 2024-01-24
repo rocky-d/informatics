@@ -9,12 +9,12 @@ class Solution:
         stack1, stack2 = [], []
         for i in range(0, n, +1):
             while 0 < len(stack1) and maxHeights[i] < maxHeights[stack1[-1]]:
-                stack1.pop()
+                stack1.pop(-1)
             pre[i] = (1 + i) * maxHeights[i] if 0 == len(stack1) else pre[stack1[-1]] + (i - stack1[-1]) * maxHeights[i]
             stack1.append(i)
         for i in range(n - 1, -1, -1):
             while 0 < len(stack2) and maxHeights[i] < maxHeights[stack2[-1]]:
-                stack2.pop()
+                stack2.pop(-1)
             suf[i] = (n - i) * maxHeights[i] if 0 == len(stack2) else suf[stack2[-1]] + (stack2[-1] - i) * maxHeights[i]
             stack2.append(i)
             ans = max(ans, pre[i] + suf[i] - maxHeights[i])
