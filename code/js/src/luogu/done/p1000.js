@@ -1,3 +1,6 @@
+/**
+ * @return {void}
+ */
 function main() {
     console.log(`                ********
                ************
