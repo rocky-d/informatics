@@ -23,3 +23,7 @@ class Solution:
                     last = maxHeights[j]
             ans = max(ans, sum_)
         return ans
+
+
+eg_maxHeights = [6, 5, 3, 9, 2, 7]
+print(Solution().maximumSumOfHeights(maxHeights = eg_maxHeights))
