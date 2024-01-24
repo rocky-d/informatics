@@ -13,11 +13,11 @@ if ""=="%~1" (
 )
 
 set "output_name=out"
-set "output_dir=%~dp0\code\c\out"
+set "output_dir=%~dp0\code\ts\out"
 
 for %%i in ("%~1") do (
     cd "%%~dpi"
-    gcc "%%~nxi" -o "%output_dir%\%output_name%.exe"
+    npx tsc "%%~nxi" --outFile "%output_dir%\%output_name%.js"
 )
 
 if errorlevel 1 (
@@ -25,6 +25,6 @@ if errorlevel 1 (
     exit /b 1
 )
 
-"%output_dir%\%output_name%.exe"
+node "%output_dir%\%output_name%.js"
 
 endlocal
