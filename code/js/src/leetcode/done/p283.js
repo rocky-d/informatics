@@ -2,7 +2,7 @@
  * @param {number[]} nums
  * @return {void}
  */
-var moveZeroes = function (nums) {
+function moveZeroes(nums) {
     let n = nums.length;
     let i = 0;
     while (i < n) {
@@ -14,4 +14,4 @@ var moveZeroes = function (nums) {
             i += 1
         }
     }
-};
+}
