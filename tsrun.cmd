@@ -5,7 +5,7 @@ cls
 
 setlocal enabledelayedexpansion
 
-set "script_name=cpprun"
+set "script_name=tsrun"
 
 if ""=="%~1" (
     echo %script_name% ^>^> One parameter missing. :(
@@ -17,7 +17,7 @@ set "output_dir=%~dp0\code\c\out"
 
 for %%i in ("%~1") do (
     cd "%%~dpi"
-    g++ "%%~nxi" -o "%output_dir%\%output_name%.exe"
+    gcc "%%~nxi" -o "%output_dir%\%output_name%.exe"
 )
 
 if errorlevel 1 (
