@@ -1,6 +1,6 @@
 function moveZeroes(nums: number[]): void {
-    let n: number = nums.length;
-    let i: number = 0;
+    let n = nums.length;
+    let i = 0;
     while (i < n) {
         if (0 === nums[i]) {
             nums.splice(i, 1);
