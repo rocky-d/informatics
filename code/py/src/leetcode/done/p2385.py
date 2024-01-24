@@ -36,28 +36,28 @@ eg_root = TreeNode(
             left = TreeNode(
                 val = 9,
                 left = None,
-                right = None
+                right = None,
             ),
             right = TreeNode(
                 val = 2,
                 left = None,
-                right = None
-            )
-        )
+                right = None,
+            ),
+        ),
     ),
     right = TreeNode(
         val = 3,
         left = TreeNode(
             val = 10,
             left = None,
-            right = None
+            right = None,
         ),
         right = TreeNode(
             val = 6,
             left = None,
-            right = None
-        )
-    )
+            right = None,
+        ),
+    ),
 )
 eg_start = 3
 print(Solution().amountOfTime(root = eg_root, start = eg_start))
