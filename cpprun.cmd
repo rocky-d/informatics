@@ -13,7 +13,7 @@ if ""=="%~1" (
 )
 
 set "output_name=out"
-set "output_dir=%~dp0\code\c\out"
+set "output_dir=%~dp0\code\cpp\out"
 
 for %%i in ("%~1") do (
     cd "%%~dpi"
