@@ -2,135 +2,98 @@
 
 [This repository](https://github.com/rocky-d/informatics) is meant to serve as a record of my code for solving informatics problems. 📝
 
-### Directory Tree (2023/12/31)
+### Directory Tree (2024/01/24)
 
 ```
 informatics
+│  .gitignore
+│  cpprun.cmd
+│  crun.cmd
+│  gitflush.cmd
+│  README.md
+│  tree.txt
+│  tsrun.cmd
 ├─code
 │  ├─c
+│  │  │  .gitignore
 │  │  └─src
 │  │      ├─luogu
-│  │      │  ├─contest
-│  │      │  │  └─c20231009
-│  │      │  ├─done
-│  │      │  └─undone
+│  │      │  └─contest
 │  │      └─rockyutil
-│  │          ├─DSA23_assignment_HaotianDu
+│  │          ├─datastructuresandalgorithms
 │  │          └─programming1
 │  ├─cpp
+│  │  │  .gitignore
+│  │  └─src
+│  │      └─luogu
+│  │          └─done
+│  ├─java
+│  │  │  .gitignore
 │  │  └─src
 │  │      ├─luogu
 │  │      │  ├─contest
 │  │      │  ├─done
 │  │      │  └─undone
-│  │      └─nowcoder
-│  │          ├─contest
-│  │          ├─done
-│  │          └─undone
-│  ├─java
+│  │      ├─nowcoder
+│  │      │  └─contest
+│  │      └─rockyutil
+│  │          ├─algorithm
+│  │          └─datastructure
+│  ├─js
+│  │  │  .gitignore
+│  │  └─src
+│  │      ├─leetcode
+│  │      │  └─done
+│  │      └─luogu
+│  │          └─done
+│  ├─kt
+│  │  │  .gitignore
+│  │  └─src
+│  │      ├─leetcode
+│  │      │  └─done
+│  │      └─rockyutil
+│  ├─lua
+│  │  │  .gitignore
+│  │  └─src
+│  │      ├─luogu
+│  │      │  └─done
+│  │      └─rockyutil
+│  │          └─algorithm
+│  ├─py
+│  │  │  .gitignore
+│  │  │  requirements.txt
 │  │  └─src
 │  │      ├─codeforces
 │  │      │  └─contest
 │  │      ├─lanqiao
+│  │      │  ├─contest
+│  │      │  ├─done
+│  │      │  └─undone
 │  │      ├─leetcode
+│  │      │  ├─contest
+│  │      │  ├─done
 │  │      │  └─undone
 │  │      ├─luogu
 │  │      │  ├─contest
-│  │      │  │  ├─c20230730
-│  │      │  │  ├─c20230731
-│  │      │  │  └─c20230915
 │  │      │  ├─done
 │  │      │  └─undone
 │  │      ├─nowcoder
 │  │      │  ├─contest
-│  │      │  │  ├─c20231203
-│  │      │  │  ├─cows20230717
-│  │      │  │  ├─cows20230721
-│  │      │  │  ├─cows20230724
-│  │      │  │  ├─cows20230728
-│  │      │  │  ├─cows20230731
-│  │      │  │  ├─cows20230804
-│  │      │  │  ├─cows20230807
-│  │      │  │  ├─cows20230811
-│  │      │  │  └─week20230723
-│  │      │  ├─done
-│  │      │  └─undone
+│  │      │  └─done
 │  │      └─rockyutil
 │  │          ├─algorithm
-│  │          │  ├─graphtheory
-│  │          │  │  └─graphsearch
-│  │          │  └─numbertheory
-│  │          └─datastructure
-│  ├─js
-│  │  └─src
-│  │      └─leetcode
-│  │          ├─contest
-│  │          ├─done
-│  │          └─undone
-│  ├─kt
-│  │  └─src
-│  │      ├─leetcode
-│  │      │  ├─contest
-│  │      │  ├─done
-│  │      │  └─undone
-│  │      └─rockyutil
-│  └─py
+│  │          ├─compiling
+│  │          ├─cryptography
+│  │          ├─datastructure
+│  │          └─systemoperating
+│  └─ts
+│      │  .gitignore
+│      │  package-lock.json
+│      │  package.json
+│      │  tsconfig.json
 │      └─src
-│          ├─codeforces
-│          │  └─contest
-│          │      ├─c20230920
-│          │      ├─c20230927
-│          │      ├─c20231019
-│          │      └─c20231023
-│          ├─lanqiao
-│          │  ├─contest
-│          │  │  ├─c20231014
-│          │  │  ├─c20231110
-│          │  │  └─c20231124
-│          │  ├─done
-│          │  └─undone
-│          ├─leetcode
-│          │  ├─contest
-│          │  ├─done
-│          │  │  ├─concurrency
-│          │  │  ├─pandas
-│          │  │  └─until20231231
-│          │  └─undone
-│          │      └─until20231231
-│          ├─luogu
-│          │  ├─contest
-│          │  │  ├─c20230730
-│          │  │  ├─c20230731
-│          │  │  ├─c20230910
-│          │  │  ├─c20230915
-│          │  │  ├─c20231009
-│          │  │  ├─c20231102
-│          │  │  └─c20231114
-│          │  ├─done
-│          │  └─undone
-│          ├─nowcoder
-│          │  ├─contest
-│          │  │  ├─c20231126
-│          │  │  ├─c20231217
-│          │  │  └─c20231223
-│          │  ├─done
-│          │  └─undone
-│          └─rockyutil
-│              ├─algorithm
-│              │  └─numbertheory
-│              ├─compiling
-│              │  ├─词法分析程序的实现
-│              │  ├─语义分析及中间代码生成
-│              │  └─语法分析程序的实现
-│              ├─cryptography
-│              ├─datastructure
-│              └─systemoperating
-│                  ├─同步与互斥
-│                  │  └─bus
-│                  ├─多线程程序
-│                  ├─文件操作
-│                  ├─移臂调度算法
-│                  └─页面置换算法
+│          └─leetcode
+│              └─done
 └─problem
     ├─codeforces
     ├─lanqiao
