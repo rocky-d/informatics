@@ -4,11 +4,11 @@ def main() -> None:
     while True:
         char = input()[0]
         if 'B' == char:
-            actions.append('B')
+            actions.append(0)
         elif 'C' == char:
-            actions.append('C')
+            actions.append(1)
         elif 'J' == char:
-            actions.append('J')
+            actions.append(2)
         else:
             break
 
@@ -23,7 +23,7 @@ def main() -> None:
     patterns = i
     i = 0
     for action in actions:
-        ans.append({'B': ('ChuiZi', 'JianDao'), 'C': ('JianDao', 'Bu'), 'J': ('Bu', 'ChuiZi')}[action][0b1 & (pattern >> i)])
+        ans.append((('ChuiZi', 'JianDao'), ('JianDao', 'Bu'), ('Bu', 'ChuiZi'))[action][0b1 & (pattern >> i)])
         i = (i + 1) % patterns
     print(*ans, sep = '\n')
 
