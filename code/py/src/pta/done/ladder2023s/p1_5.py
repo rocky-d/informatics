@@ -4,6 +4,7 @@ from math import log2
 def main() -> None:
     dice = list(map(int, input().split()))
     n = int(input())
+
     dice_s = list(0b1 << (6 - die) for die in dice)
     for _ in range(n):
         for i in range(6):
