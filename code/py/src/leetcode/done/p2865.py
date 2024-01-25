@@ -6,22 +6,22 @@ class Solution:
         n = len(maxHeights)
         ans = 0
         for i in range(n):
-            sum_ = maxHeights[i]
+            total = maxHeights[i]
             last = maxHeights[i]
             for j in range(i - 1, -1, -1):
                 if last < maxHeights[j]:
-                    sum_ += last
+                    total += last
                 else:
-                    sum_ += maxHeights[j]
+                    total += maxHeights[j]
                     last = maxHeights[j]
             last = maxHeights[i]
             for j in range(i + 1, n, +1):
                 if last < maxHeights[j]:
-                    sum_ += last
+                    total += last
                 else:
-                    sum_ += maxHeights[j]
+                    total += maxHeights[j]
                     last = maxHeights[j]
-            ans = max(ans, sum_)
+            ans = max(ans, total)
         return ans
 
 
