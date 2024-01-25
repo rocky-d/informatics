@@ -10,7 +10,8 @@ class Solution:
         def dfs(nums: int, remain: int) -> bool:
             for i in range(maxChoosableInteger):
                 if 0b0 == 0b1 & (nums >> i):
-                    if remain - i - 1 <= 0 or not dfs(nums = nums | (1 << i), remain = remain - i - 1):
+                    new_remain = remain - i - 1
+                    if new_remain <= 0 or not dfs(nums = nums | (1 << i), remain = new_remain):
                         res = True
                         break
             else:
