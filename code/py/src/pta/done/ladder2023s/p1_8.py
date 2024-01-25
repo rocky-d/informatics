@@ -13,17 +13,17 @@ def main() -> None:
             break
 
     ans = []
-    reactions = {'B': ('ChuiZi', 'JianDao'), 'C': ('JianDao', 'Bu'), 'J': ('Bu', 'ChuiZi')}
     pattern = 0b0
+    i = 0
     for ki in nk[1:]:
         for _ in range(ki):
-            pattern <<= 1
-            pattern |= 0b1
-        pattern <<= 1
-    patterns = len(bin(pattern)) - 2
+            pattern |= 0b1 << i
+            i += 1
+        i += 1
+    patterns = i
     i = 0
     for action in actions:
-        ans.append(reactions[action][0b1 & (pattern >> (patterns - i - 1))])
+        ans.append({'B': ('ChuiZi', 'JianDao'), 'C': ('JianDao', 'Bu'), 'J': ('Bu', 'ChuiZi')}[action][0b1 & (pattern >> i)])
         i = (i + 1) % patterns
     print(*ans, sep = '\n')
 
