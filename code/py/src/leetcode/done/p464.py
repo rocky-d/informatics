@@ -11,7 +11,7 @@ class Solution:
             for i in range(maxChoosableInteger):
                 if 0b0 == 0b1 & (nums >> i):
                     new_remain = remain - i - 1
-                    if new_remain <= 0 or not dfs(nums = nums | (1 << i), remain = new_remain):
+                    if new_remain <= 0 or not dfs(nums = nums | (0b1 << i), remain = new_remain):
                         res = True
                         break
             else:
