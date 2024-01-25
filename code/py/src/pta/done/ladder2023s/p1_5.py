@@ -1,20 +1,15 @@
-from math import log2
-
-
 def main() -> None:
     dice = list(map(int, input().split()))
     n = int(input())
 
-    dice_s = list(0b1 << (6 - die) for die in dice)
+    dice_s = list(0b1 << (die - 1) for die in dice)
     for _ in range(n):
-        for i in range(6):
-            p = 0b1
-            while True:
-                if 0b0 == p & dice_s[i]:
-                    dice_s[i] |= p
-                    dice[i] = 6 - int(log2(p))
+        for j in range(6):
+            for k in range(6, 0, -1):
+                if 0b0 == 0b1 & (dice_s[j] >> (k - 1)):
+                    dice_s[j] |= 0b1 << (k - 1)
+                    dice[j] = k
                     break
-                p <<= 1
     print(*dice)
 
 
