@@ -18,3 +18,8 @@ class Solution:
             return res
 
         return dfs(nums = 0, total = 0)
+
+
+eg_maxChoosableInteger = 22
+eg_desiredTotal = 242
+print(Solution().canIWin(maxChoosableInteger = eg_maxChoosableInteger, desiredTotal = eg_desiredTotal))
