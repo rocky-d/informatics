@@ -8,9 +8,9 @@ class Solution:
                 dp.append([])
                 for k in range(n):
                     dp[-1].append(0)
-                    dp[-1][-1] += 1 if 0 == j else dp_last[j - 1][k]
+                    dp[-1][-1] += 1 if j == 0 else dp_last[j - 1][k]
                     dp[-1][-1] += 1 if j == m - 1 else dp_last[j + 1][k]
-                    dp[-1][-1] += 1 if 0 == k else dp_last[j][k - 1]
+                    dp[-1][-1] += 1 if k == 0 else dp_last[j][k - 1]
                     dp[-1][-1] += 1 if k == n - 1 else dp_last[j][k + 1]
         return dp[startRow][startColumn] % 1_000_000_007
 
