@@ -1,4 +1,4 @@
-function is_prime_1(n)
+local function is_prime_1(n)
     local res
     if n < 2 then
         res = false
