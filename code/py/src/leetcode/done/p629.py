@@ -8,7 +8,6 @@ class Solution:
             pre_last = pre
             pre = [0, 1]
             for j in range(1, 1 + k):
-                # dp.append(sum(dp_last[max(0, j - i):j + 1]))
                 dp.append(pre_last[1 + j] - pre_last[max(0, j - i)])
                 pre.append(pre[-1] + dp[-1])
         return dp[-1] % 1_000_000_007
