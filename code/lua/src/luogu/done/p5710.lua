@@ -1,6 +1,8 @@
 local function main()
-    local x, property1, property2, a, b, c, d
+    local x
     x = io.read('*n')
+
+    local property1, property2, a, b, c, d
     property1 = 0 == x % 2
     property2 = 4 < x and x <= 12
     if property1 and property2 then

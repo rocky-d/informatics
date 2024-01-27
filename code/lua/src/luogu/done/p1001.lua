@@ -1,5 +1,8 @@
 local function main()
-    print(io.read('*n') + io.read('*n'))
+    local a, b
+    a, b = io.read('*n'), io.read('*n')
+
+    print(a + b)
 end
 
 main()
