@@ -1,6 +1,6 @@
 local function main()
     local x
-    x = io.read('*n')
+    x = io.read('n')
 
     local property1, property2, a, b, c, d
     property1 = 0 == x % 2
