@@ -33,7 +33,7 @@ local function main()
         end
     end
     print(table.concat(shape, '\n'))
-    print(n - (1 + spaces * (4 + 2 * spaces)))
+    print(n - 1 - spaces * (4 + 2 * spaces))
 end
 
 main()
