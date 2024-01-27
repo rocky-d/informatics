@@ -1,12 +1,12 @@
 class Solution:
     def kInversePairs(self, n: int, k: int) -> int:
-        pre = [0] + [1 for _ in range(1 + k)]
+        dp = [0] + [1 for _ in range(1 + k)]
         for i in range(1, n):
-            pre_last = pre
-            pre = [0, 1]
+            dp_last = dp
+            dp = [0, 1]
             for j in range(1, 1 + k):
-                pre.append(pre[-1] + pre_last[1 + j] - pre_last[max(0, j - i)])
-        return (pre[-1] - pre[-2]) % 1_000_000_007
+                dp.append(dp[-1] + dp_last[1 + j] - dp_last[max(0, j - i)])
+        return (dp[-1] - dp[-2]) % 1_000_000_007
 
 
 eg_n = 3
