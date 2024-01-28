@@ -2,7 +2,7 @@ def main() -> None:
     dice = list(map(int, input().split()))
     n = int(input())
 
-    dice_s = list(0b1 << die for die in dice)
+    dice_s = [0b1 << die for die in dice]
     for _ in range(n):
         for j in range(6):
             for k in range(6, 0, -1):
