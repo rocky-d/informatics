@@ -3,6 +3,8 @@ from rockyutil.leetcode import *
 
 class Solution:
     def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
+        ans = 0
+
         def dfs(node: Optional[TreeNode]) -> Tuple[Optional[int], Optional[int]]:
             if node is None:
                 return 0, None
@@ -21,7 +23,6 @@ class Solution:
                 res = 1 + max(left[0], right[0]), None
             return res
 
-        ans = 0
         dfs(root)
         return ans
 
