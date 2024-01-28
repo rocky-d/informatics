@@ -5,12 +5,12 @@ def main() -> None:
     n = len(s)
     i = 0
     while i < n:
-        add = s[i]
         cnt = 0
         while i < n and '6' == s[i]:
             cnt += 1
             i += 1
         if 0 == cnt:
+            add = s[i]
             i += 1
         else:
             if cnt <= 3:
