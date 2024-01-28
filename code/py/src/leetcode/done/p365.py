@@ -2,7 +2,7 @@ class Solution:
     def canMeasureWater(self, jug1Capacity: int, jug2Capacity: int, targetCapacity: int) -> bool:
         seen = set()
 
-        def dfs(jug1, jug2) -> bool:
+        def dfs(jug1: int, jug2: int) -> bool:
             if (jug1, jug2) in seen:
                 return False
             seen.add((jug1, jug2))
