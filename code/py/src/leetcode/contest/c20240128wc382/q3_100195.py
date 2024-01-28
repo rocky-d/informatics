@@ -1,6 +1,6 @@
 class Solution:
     def flowerGame(self, n: int, m: int) -> int:
-        return (m // 2) * ((n + 1) // 2) + (n // 2) * ((m + 1) // 2)
+        return n * m // 2
 
 
 eg_n = 1
