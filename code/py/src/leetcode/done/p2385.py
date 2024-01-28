@@ -9,7 +9,7 @@ class Solution:
             if node is None:
                 return 0, None
             nonlocal ans
-            left, right = dfs(node.left), dfs(node.right)
+            left, right = dfs(node = node.left), dfs(node = node.right)
             if left[1] is not None:
                 ans = max(ans, right[0] + left[1])
                 res = 1 + right[0], 1 + left[1]
@@ -23,7 +23,7 @@ class Solution:
                 res = 1 + max(left[0], right[0]), None
             return res
 
-        dfs(root)
+        dfs(node = root)
         return ans
 
 
