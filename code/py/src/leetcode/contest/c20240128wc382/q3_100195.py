@@ -1,8 +1,6 @@
 class Solution:
     def flowerGame(self, n: int, m: int) -> int:
-        n_odds, n_evens = (n + 1) // 2, n // 2
-        m_odds, m_evens = (m + 1) // 2, m // 2
-        return n_odds * m_evens + n_evens * m_odds
+        return (m // 2) * ((n + 1) // 2) + (n // 2) * ((m + 1) // 2)
 
 
 eg_n = 1
