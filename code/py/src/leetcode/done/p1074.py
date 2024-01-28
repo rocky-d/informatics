@@ -3,8 +3,8 @@ from rockyutil.leetcode import *
 
 class Solution:
     def numSubmatrixSumTarget(self, matrix: List[List[int]], target: int) -> int:
-        m, n = len(matrix), len(matrix[0])
         ans = 0
+        m, n = len(matrix), len(matrix[0])
         pre = [[0 for _ in range(1 + n)] for _ in range(1 + m)]
         for i in range(m):
             for j in range(n):
