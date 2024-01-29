@@ -1,5 +1,6 @@
 def main() -> None:
-    nk = list(map(int, input().split()))
+    n, k = input().split(maxsplit = 1)
+    n, k = int(n), map(int, k.split())
     actions = []
     while True:
         char = input()[0]
@@ -15,7 +16,7 @@ def main() -> None:
     ans = []
     pattern = 0b0
     i = 0
-    for ki in nk[1:]:
+    for ki in k:
         for _ in range(ki):
             pattern |= 0b1 << i
             i += 1
