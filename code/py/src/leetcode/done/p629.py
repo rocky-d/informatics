@@ -2,8 +2,7 @@ class Solution:
     def kInversePairs(self, n: int, k: int) -> int:
         dp = [0] + [1 for _ in range(1 + k)]
         for i in range(2, 1 + n):
-            dp_last = dp
-            dp = [0, 1]
+            dp_last, dp = dp, [0, 1]
             for j in range(1, 1 + k):
                 dp.append(dp[-1] + dp_last[1 + j] - dp_last[max(0, j - i + 1)])
         return (dp[-1] - dp[-2]) % 1_000_000_007

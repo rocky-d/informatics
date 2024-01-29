@@ -2,8 +2,7 @@ class Solution:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
         dp = [[0 for _ in range(n)] for _ in range(m)]
         for _ in range(maxMove):
-            dp_last = dp
-            dp = []
+            dp_last, dp = dp, []
             for j in range(m):
                 dp.append([])
                 for k in range(n):
