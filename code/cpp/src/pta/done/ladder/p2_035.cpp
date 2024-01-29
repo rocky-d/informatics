@@ -14,8 +14,9 @@ void fill(int index) {
 int main() {
     cin >> n;
     fill(0);
-    for (int i = 0; i < n; i += 1){
-        cout << tree[i] << ' ';
+    cout << tree[0];
+    for (int i = 1; i < n; i += 1){
+        cout << ' ' << tree[i];
     }
     return 0;
 }
