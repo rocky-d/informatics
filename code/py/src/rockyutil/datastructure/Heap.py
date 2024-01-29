@@ -19,25 +19,25 @@ class Heap(object):
                 self._convert = lambda item_: key(item_)
             else:
                 self._convert = lambda item_: Heap._converse(key(item_))
-        self._list = list(zip((self._convert(item) for item in self._origin), range(len(self._origin))))
-        heapify(self._list)
+        self._table = list(zip((self._convert(item) for item in self._origin), range(len(self._origin))))
+        heapify(self._table)
 
     def __len__(self):
-        return len(self._list)
+        return len(self._table)
 
     def pop(self):
-        _, index = heappop(self._list)
+        _, index = heappop(self._table)
         item = self._origin[index]
         self._origin[index] = self._origin.pop(-1)
-        for i in range(len(self._list)):
-            if len(self._list) == self._list[i][1]:
-                self._list[i] = self._list[i][0], index
+        for i in range(len(self._table)):
+            if len(self._table) == self._table[i][1]:
+                self._table[i] = self._table[i][0], index
                 break
         return item
 
     def push(self, item):
         self._origin.append(item)
-        heappush(self._list, (self._convert(item), len(self._list)))
+        heappush(self._table, (self._convert(item), len(self._table)))
 
     def pushpop(self, item):  # TODO
         return ...
@@ -46,30 +46,30 @@ class Heap(object):
         return ...
 
     def peek(self):
-        return self._origin[self._list[0][1]]
+        return self._origin[self._table[0][1]]
 
     def peekall(self):
         items = []
-        list_ = self._list.copy()
-        for _ in range(len(list_)):
-            items.append(self._origin[heappop(list_)[1]])
+        table_ = self._table.copy()
+        for _ in range(len(table_)):
+            items.append(self._origin[heappop(table_)[1]])
         return items
 
     def peekn(self, n):
         items = []
-        list_ = self._list.copy()
-        for _ in range(min(n, len(list_))):
-            items.append(self._origin[heappop(list_)[1]])
+        table_ = self._table.copy()
+        for _ in range(min(n, len(table_))):
+            items.append(self._origin[heappop(table_)[1]])
         return items
 
     # def peekn(self, n):
     #     items = []
     #     pops = []
-    #     for _ in range(min(n, len(self._list))):
-    #         pops.append(heappop(self._list))
+    #     for _ in range(min(n, len(self._table))):
+    #         pops.append(heappop(self._table))
     #         items.append(self._origin[pops[-1][1]])
     #     for _ in range(len(pops)):
-    #         heappush(self._list, pops.pop(-1))
+    #         heappush(self._table, pops.pop(-1))
     #     return items
 
 
