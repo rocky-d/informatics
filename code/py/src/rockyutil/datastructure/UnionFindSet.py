@@ -1,7 +1,8 @@
 class UnionFindSet(object):
 
-    def __init__(self, __supports_getitem):
-        self.heads = __supports_getitem
+    def __init__(self, __heads, groups_enabled = False):
+        self.heads = __heads
+        self.groups = {head: 1 for head in self.heads} if groups_enabled else None
 
     def find1(self, a):
         if a == self.heads[a]:
@@ -34,4 +35,8 @@ class UnionFindSet(object):
     find = find4
 
     def union(self, a, b):
-        self.heads[a] = self.heads[self.find(a)] = self.find(b)
+        a_head, b_head = self.find(a), self.find(b)
+        if a_head != b_head:
+            self.heads[a] = self.heads[a_head] = b_head
+            if self.groups is not None:
+                self.groups[b_head] += self.groups.pop(a_head)
