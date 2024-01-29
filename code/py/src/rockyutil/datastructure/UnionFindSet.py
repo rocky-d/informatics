@@ -1,7 +1,7 @@
 class UnionFindSet(object):
 
-    def __init__(self, __supports_index):
-        self._heads = __supports_index
+    def __init__(self, __supports_getitem):
+        self._heads = __supports_getitem
 
     def find1(self, a):
         if a == self._heads[a]:
