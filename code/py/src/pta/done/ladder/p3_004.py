@@ -1,9 +1,9 @@
 class UnionFindSet(object):
-    def __init__(self, __heads, groups_enabled = False):
+    def __init__(self, __heads: dict[tuple[int, int, int], tuple[int, int, int]], groups_enabled: bool = False) -> None:
         self.heads = __heads
         self.groups = {head: 1 for head in self.heads} if groups_enabled else None
 
-    def find(self, a):
+    def find(self, a: tuple[int, int, int]) -> tuple[int, int, int]:
         a_old = a
         cnt = 0
         while a != self.heads[a]:
@@ -15,7 +15,7 @@ class UnionFindSet(object):
             a = self.heads[a]
         return head
 
-    def union(self, a, b):
+    def union(self, a: tuple[int, int, int], b: tuple[int, int, int]) -> None:
         a_head, b_head = self.find(a), self.find(b)
         if a_head != b_head:
             self.heads[a] = self.heads[a_head] = b_head
