@@ -1,20 +1,20 @@
 #include <iostream>
 using namespace std;
 
-int n, tree[31];
+int n, tree[30];
 
 void fill(int index) {
-    if (n < index)
+    if (n <= index)
         return;
-    fill(2 * index);
     fill(2 * index + 1);
+    fill(2 * index + 2);
     cin >> tree[index];
 }
 
 int main() {
     cin >> n;
-    fill(1);
-    for (int i = 1; i <= n; i += 1){
+    fill(0);
+    for (int i = 0; i < n; i += 1){
         cout << tree[i] << ' ';
     }
     return 0;
