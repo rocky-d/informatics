@@ -1,7 +1,7 @@
 class UnionFindSet(object):
-    def __init__(self):
-        self.heads = {}
-        self.groups = {}
+    def __init__(self, __heads, groups_enabled = False):
+        self.heads = __heads
+        self.groups = {head: 1 for head in self.heads} if groups_enabled else None
 
     def find(self, a):
         a_old = a
@@ -30,7 +30,7 @@ def main() -> None:
         for _ in range(m):
             slices[-1].append(input().split())
 
-    ufs = UnionFindSet()
+    ufs = UnionFindSet({}, groups_enabled = True)
     for i in range(l):
         for j in range(m):
             for k in range(n):
