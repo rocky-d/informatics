@@ -1,4 +1,4 @@
-class UnionFindSets(object):
+class UnionFindSet(object):
 
     def __init__(self, size: int) -> None:
         self.parent: list[int] = [i for i in range(size)]
