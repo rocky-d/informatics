@@ -5,13 +5,13 @@ def main() -> None:
     tree = [0 for _ in range(n)]
 
     def fill(index: int) -> None:
-        if n < index:
+        if n <= index:
             return
-        fill(2 * index)
         fill(2 * index + 1)
-        tree[index - 1] = next(nums)
+        fill(2 * index + 2)
+        tree[index] = next(nums)
 
-    fill(1)
+    fill(0)
     print(*tree)
 
 
