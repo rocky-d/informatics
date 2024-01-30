@@ -2,7 +2,15 @@ class UnionFindSet(object):
 
     def __init__(self, __heads, grouped = False):
         self.heads = __heads
-        self.groups = {head: 1 for head in self.heads} if grouped else None
+        if grouped:
+            if isinstance(self.heads, list):
+                self.groups = [1 for _ in range(len(self.heads))]
+            elif isinstance(self.heads, dict):
+                self.groups = {head: 1 for head in self.heads.keys()}
+            else:
+                raise TypeError
+        else:
+            self.groups = None
 
     def find1(self, a):
         while a != self.heads[a]:
