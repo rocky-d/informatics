@@ -5,22 +5,11 @@ class UnionFindSet(object):
         self.groups = {head: 1 for head in self.heads} if groups_enabled else None
 
     def find1(self, a):
-        if a == self.heads[a]:
-            return a
-        return self.find1(self.heads[a])
-
-    def find2(self, a):
-        if a == self.heads[a]:
-            return a
-        self.heads[a] = self.find2(self.heads[a])
-        return self.heads[a]
-
-    def find3(self, a):
         while a != self.heads[a]:
             a = self.heads[a]
         return a
 
-    def find4(self, a):
+    def find2(self, a):
         a_old = a
         cnt = 0
         while a != self.heads[a]:
@@ -32,7 +21,18 @@ class UnionFindSet(object):
             a = self.heads[a]
         return head
 
-    find = find2
+    def find3(self, a):
+        if a == self.heads[a]:
+            return a
+        return self.find3(self.heads[a])
+
+    def find4(self, a):
+        if a == self.heads[a]:
+            return a
+        self.heads[a] = self.find4(self.heads[a])
+        return self.heads[a]
+
+    find = find4
 
     def union(self, a, b):
         a_head, b_head = self.find(a), self.find(b)
