@@ -1,8 +1,8 @@
 class UnionFindSet(object):
 
-    def __init__(self, __heads, groups_enabled = False):
+    def __init__(self, __heads, grouped = False):
         self.heads = __heads
-        self.groups = {head: 1 for head in self.heads} if groups_enabled else None
+        self.groups = {head: 1 for head in self.heads} if grouped else None
 
     def find1(self, a):
         while a != self.heads[a]:
