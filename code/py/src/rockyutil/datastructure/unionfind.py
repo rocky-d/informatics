@@ -7,11 +7,11 @@ class UnionFindList(object):
     def __len__(self):
         return len(self._heads), len(self._groups)
 
-    # def find1(self, a):
-    #     if a == self._heads[a]:
-    #         return a
-    #     self._heads[a] = self.find1(self._heads[a])
-    #     return self._heads[a]
+    def find1(self, a):
+        if a == self._heads[a]:
+            return a
+        self._heads[a] = self.find1(self._heads[a])
+        return self._heads[a]
 
     def find1(self, a):
         a_ = a
@@ -36,10 +36,10 @@ class UnionFindList(object):
                 if self._groups is not None:
                     self._groups[a_head] += self._groups.pop(b_head)
 
-    # def find2(self, a):
-    #     if a == self._heads[a]:
-    #         return a
-    #     return self.find2(self._heads[a])
+    def find2(self, a):
+        if a == self._heads[a]:
+            return a
+        return self.find2(self._heads[a])
 
     def find2(self, a):
         while a != self._heads[a]:
