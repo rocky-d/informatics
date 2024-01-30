@@ -7,11 +7,11 @@ def main() -> None:
     def dfs(index: int) -> None:
         if n <= index:
             return
-        dfs(2 * index + 1)
-        dfs(2 * index + 2)
+        dfs(index = 2 * index + 1)
+        dfs(index = 2 * index + 2)
         tree[index] = next(nums)
 
-    dfs(0)
+    dfs(index = 0)
     print(*tree)
 
 
