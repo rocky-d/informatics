@@ -12,6 +12,7 @@ class UnionFindList(object):
     #         return a
     #     self._heads[a] = self.find1(self._heads[a])
     #     return self._heads[a]
+
     def find1(self, a):
         a_ = a
         cnt = 0
@@ -39,6 +40,7 @@ class UnionFindList(object):
     #     if a == self._heads[a]:
     #         return a
     #     return self.find2(self._heads[a])
+
     def find2(self, a):
         while a != self._heads[a]:
             a = self._heads[a]
