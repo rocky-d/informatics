@@ -19,13 +19,13 @@ class UnionFindList(object):
             a = self._heads[a]
         return head
 
-    def find2(self, a):
-        if a == self._heads[a]:
-            return a
-        self._heads[a] = self.find2(self._heads[a])
-        return self._heads[a]
+    # def find1(self, a):
+    #     if a == self._heads[a]:
+    #         return a
+    #     self._heads[a] = self.find1(self._heads[a])
+    #     return self._heads[a]
 
-    def union(self, a, b):
+    def union1(self, a, b):
         a_head, b_head = self.find1(a), self.find1(b)
         if a_head != b_head:
             if len(self._groups[a_head]) < len(self._groups[b_head]):
@@ -37,15 +37,18 @@ class UnionFindList(object):
                 if self._groups is not None:
                     self._groups[a_head] += self._groups.pop(b_head)
 
-    def find3(self, a):
+    def find2(self, a):
         while a != self._heads[a]:
             a = self._heads[a]
         return a
 
-    def find4(self, a):
-        if a == self._heads[a]:
-            return a
-        return self.find4(self._heads[a])
+    # def find2(self, a):
+    #     if a == self._heads[a]:
+    #         return a
+    #     return self.find2(self._heads[a])
+
+    def union2(self, a, b):
+        a_head, b_head = self.find2(a), self.find2(b)
 
 
 class UnionFindDict(object):
