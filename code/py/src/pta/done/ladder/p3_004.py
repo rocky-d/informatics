@@ -1,21 +1,3 @@
-class UnionFindSet(object):
-    def __init__(self, __heads: dict[tuple[int, int, int], tuple[int, int, int]]) -> None:
-        self.heads = __heads
-        self.groups = {head: 1 for head in self.heads}
-
-    def find(self, a):
-        if a == self.heads[a]:
-            return a
-        self.heads[a] = self.find(self.heads[a])
-        return self.heads[a]
-
-    def union(self, a: tuple[int, int, int], b: tuple[int, int, int]) -> None:
-        a_head, b_head = self.find(a), self.find(b)
-        if a_head != b_head:
-            self.heads[a] = self.heads[a_head] = b_head
-            self.groups[b_head] += self.groups.pop(a_head)
-
-
 def main() -> None:
     m, n, l, t = map(int, input().split())
     slices = []
@@ -24,20 +6,34 @@ def main() -> None:
         for _ in range(m):
             slices[-1].append(input().split())
 
-    ufs = UnionFindSet({})
+    ans = 0
+    seen = set()
     for i in range(l):
         for j in range(m):
             for k in range(n):
-                if '1' == slices[i][j][k]:
-                    ufs.heads[i, j, k] = i, j, k
-                    ufs.groups[i, j, k] = 1
-                    if 0 <= i - 1 and '1' == slices[i - 1][j][k]:
-                        ufs.union((i, j, k), (i - 1, j, k))
-                    if 0 <= j - 1 and '1' == slices[i][j - 1][k]:
-                        ufs.union((i, j, k), (i, j - 1, k))
-                    if 0 <= k - 1 and '1' == slices[i][j][k - 1]:
-                        ufs.union((i, j, k), (i, j, k - 1))
-    print(sum(vol for vol in ufs.groups.values() if t <= vol))
+                if '1' == slices[i][j][k] and (i, j, k) not in seen:
+                    vol = 0
+                    queue = [(i, j, k)]
+                    while 0 < len(queue):
+                        x, y, z = queue.pop(0)
+                        if (x, y, z) not in seen:
+                            vol += 1
+                            seen.add((x, y, z))
+                            if 0 <= x - 1 and '1' == slices[x - 1][y][z] and (x - 1, y, z) not in seen:
+                                queue.append((x - 1, y, z))
+                            if 0 <= y - 1 and '1' == slices[x][y - 1][z] and (x, y - 1, z) not in seen:
+                                queue.append((x, y - 1, z))
+                            if 0 <= z - 1 and '1' == slices[x][y][z - 1] and (x, y, z - 1) not in seen:
+                                queue.append((x, y, z - 1))
+                            if x + 1 < l and '1' == slices[x + 1][y][z] and (x + 1, y, z) not in seen:
+                                queue.append((x + 1, y, z))
+                            if y + 1 < m and '1' == slices[x][y + 1][z] and (x, y + 1, z) not in seen:
+                                queue.append((x, y + 1, z))
+                            if z + 1 < n and '1' == slices[x][y][z + 1] and (x, y, z + 1) not in seen:
+                                queue.append((x, y, z + 1))
+                    if t <= vol:
+                        ans += vol
+    print(ans)
 
 
 if __name__ == '__main__':
