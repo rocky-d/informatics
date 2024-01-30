@@ -1,4 +1,4 @@
-class UnionFindSet(object):
+class UnionFind(object):
 
     def __init__(self, __heads, grouped = False):
         self.heads = __heads
