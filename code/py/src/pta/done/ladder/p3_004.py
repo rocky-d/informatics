@@ -3,17 +3,11 @@ class UnionFindSet(object):
         self.heads = __heads
         self.groups = {head: 1 for head in self.heads} if groups_enabled else None
 
-    def find(self, a: tuple[int, int, int]) -> tuple[int, int, int]:
-        a_old = a
-        cnt = 0
-        while a != self.heads[a]:
-            cnt += 1
-            a = self.heads[a]
-        a, head = a_old, a
-        for _ in range(cnt):
-            self.heads[a] = head
-            a = self.heads[a]
-        return head
+    def find(self, a):
+        if a == self.heads[a]:
+            return a
+        self.heads[a] = self.find(self.heads[a])
+        return self.heads[a]
 
     def union(self, a: tuple[int, int, int], b: tuple[int, int, int]) -> None:
         a_head, b_head = self.find(a), self.find(b)

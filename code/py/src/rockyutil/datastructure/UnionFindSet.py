@@ -32,7 +32,7 @@ class UnionFindSet(object):
             a = self.heads[a]
         return head
 
-    find = find4
+    find = find2
 
     def union(self, a, b):
         a_head, b_head = self.find(a), self.find(b)
