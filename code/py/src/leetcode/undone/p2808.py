@@ -7,17 +7,17 @@ class Solution:
         left, right = floor((n - 1) / 2), ceil((n - 1) / 2)
         dists, nums_frozenset = {num: 0 for num in nums}, frozenset(nums)
         for i, num in enumerate(nums):
-            dists_ = {num: n for num in nums}
+            dists_i = {num: n for num in nums}
             for j in range(1, 1 + left):
                 index = i - j
                 if num != nums[index]:
-                    dists_[nums[index]] = min(dists_[nums[index]], j)
+                    dists_i[nums[index]] = min(dists_i[nums[index]], j)
             for j in range(1, 1 + right):
                 index = (i + j) % n
                 if num != nums[index]:
-                    dists_[nums[index]] = min(dists_[nums[index]], j)
-            for num_ in nums_frozenset - frozenset((num,)):
-                dists[num_] = max(dists[num_], dists_[num_])
+                    dists_i[nums[index]] = min(dists_i[nums[index]], j)
+            for target in nums_frozenset - frozenset((num,)):
+                dists[target] = max(dists[target], dists_i[target])
         return min(dists.values())
 
 
