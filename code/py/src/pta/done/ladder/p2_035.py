@@ -4,14 +4,14 @@ def main() -> None:
 
     tree = [0 for _ in range(n)]
 
-    def fill(index: int) -> None:
+    def dfs(index: int) -> None:
         if n <= index:
             return
-        fill(2 * index + 1)
-        fill(2 * index + 2)
+        dfs(2 * index + 1)
+        dfs(2 * index + 2)
         tree[index] = next(nums)
 
-    fill(0)
+    dfs(0)
     print(*tree)
 
 
