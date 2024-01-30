@@ -1,16 +1,11 @@
-class UnionFind(object):
+class UnionFindList(object):
 
-    def __init__(self, __heads, grouped = False):
-        self.heads = __heads
-        if grouped:
-            if isinstance(self.heads, list):
-                self.groups = [1 for _ in range(len(self.heads))]
-            elif isinstance(self.heads, dict):
-                self.groups = {head: 1 for head in self.heads.keys()}
-            else:
-                raise TypeError
-        else:
-            self.groups = None
+    def __init__(self, __size, *, grouped = False):
+        self.heads = [x for x in range(__size)]
+        self.groups = {x: [] for x in self.heads} if grouped else None
+
+    def __len__(self):
+        return len(self.heads), len(self.groups)
 
     def find1(self, a):
         while a != self.heads[a]:
@@ -48,3 +43,13 @@ class UnionFind(object):
             self.heads[a] = self.heads[a_head] = b_head
             if self.groups is not None:
                 self.groups[b_head] += self.groups.pop(a_head)
+
+
+class UnionFindDict(object):
+
+    def __init__(self, __iterable, *, grouped = False):
+        self.heads = {x: x for x in __iterable}
+        self.groups = {x: [] for x in self.heads} if grouped else None
+
+    def __len__(self):
+        return len(self.heads), len(self.groups)
