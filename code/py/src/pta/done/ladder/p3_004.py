@@ -1,7 +1,7 @@
 class UnionFindSet(object):
-    def __init__(self, __heads: dict[tuple[int, int, int], tuple[int, int, int]], groups_enabled: bool = False) -> None:
+    def __init__(self, __heads: dict[tuple[int, int, int], tuple[int, int, int]]) -> None:
         self.heads = __heads
-        self.groups = {head: 1 for head in self.heads} if groups_enabled else None
+        self.groups = {head: 1 for head in self.heads}
 
     def find(self, a):
         if a == self.heads[a]:
@@ -24,7 +24,7 @@ def main() -> None:
         for _ in range(m):
             slices[-1].append(input().split())
 
-    ufs = UnionFindSet({}, groups_enabled = True)
+    ufs = UnionFindSet({})
     for i in range(l):
         for j in range(m):
             for k in range(n):
