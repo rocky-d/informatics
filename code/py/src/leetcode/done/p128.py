@@ -38,12 +38,12 @@ class Solution:
         if 0 == len(nums):
             return 0
         nums = frozenset(nums)
-        ufs = UnionFindList(len(nums), grouped = True)
+        ufl = UnionFindList(len(nums), grouped = True)
         seen = dict()
         for i, num in enumerate(nums):
             if num - 1 in seen.keys():
-                ufs.union1(i, seen[num - 1])
+                ufl.union1(i, seen[num - 1])
             if num + 1 in seen.keys():
-                ufs.union1(i, seen[num + 1])
+                ufl.union1(i, seen[num + 1])
             seen[num] = i
-        return len(max(ufs._groups.values(), key = lambda value: len(value)))
+        return len(max(ufl._groups.values(), key = lambda value: len(value)))
