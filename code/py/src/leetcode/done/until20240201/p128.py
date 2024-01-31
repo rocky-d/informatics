@@ -11,8 +11,8 @@ class Solution:
         seen = dict()
         for i, num in enumerate(nums):
             if num - 1 in seen.keys():
-                ufl.union(i, seen[num - 1])
+                ufl.union(a = i, b = seen[num - 1])
             if num + 1 in seen.keys():
-                ufl.union(i, seen[num + 1])
+                ufl.union(a = i, b = seen[num + 1])
             seen[num] = i
         return len(max(ufl._groups.values(), key = lambda value: len(value)))
