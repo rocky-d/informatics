@@ -1,7 +1,7 @@
 from math import isqrt
 
 
-def is_prime_1(n: int) -> bool:
+def is_prime_plain(n: int) -> bool:
     if n < 2:
         res = False
     else:
@@ -14,7 +14,7 @@ def is_prime_1(n: int) -> bool:
     return res
 
 
-def is_prime_2(n: int) -> bool:
+def is_prime_optimized(n: int) -> bool:
     if n < 2:
         res = False
     else:
@@ -27,7 +27,7 @@ def is_prime_2(n: int) -> bool:
     return res
 
 
-def primes_before_1(n: int) -> list[int]:
+def primes_before_eratosthenes(n: int) -> list[int]:
     res = []
     tags = [False for _ in range(2)] + [True for _ in range(2, n)]
     for i in range(2, n):
@@ -38,7 +38,7 @@ def primes_before_1(n: int) -> list[int]:
     return res
 
 
-def primes_before_2(n: int) -> list[int]:
+def primes_before_euler(n: int) -> list[int]:
     res = []
     tags = [False for _ in range(2)] + [True for _ in range(2, n)]
     for i in range(2, n):
@@ -62,10 +62,10 @@ if __name__ == '__main__':
     which = 4
     match which:
         case 1:
-            print(timeit(lambda: list(filter(is_prime_1, range(eg_n))), number = repeats))
+            print(timeit(lambda: list(filter(is_prime_plain, range(eg_n))), number = repeats))
         case 2:
-            print(timeit(lambda: list(filter(is_prime_2, range(eg_n))), number = repeats))
+            print(timeit(lambda: list(filter(is_prime_optimized, range(eg_n))), number = repeats))
         case 3:
-            print(timeit(lambda: primes_before_1(n = eg_n), number = repeats))
+            print(timeit(lambda: primes_before_eratosthenes(n = eg_n), number = repeats))
         case 4:
-            print(timeit(lambda: primes_before_2(n = eg_n), number = repeats))
+            print(timeit(lambda: primes_before_euler(n = eg_n), number = repeats))
