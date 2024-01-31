@@ -1,7 +1,8 @@
 class UnionFind(object):
 
-    def __init__(self, __heads, *, grouped = False):
+    def __init__(self, __heads, *, compressed = True, grouped = False, recursive = False):
         self._heads = __heads
+        self._ranks = ... if not compressed else None
         self._groups = {x: [x] for x in self._heads} if grouped else None
 
     def __len__(self):
@@ -52,11 +53,11 @@ class UnionFind(object):
 
 class UnionFindList(UnionFind):
 
-    def __init__(self, __size, *, grouped = False):
-        super().__init__([x for x in range(__size)], grouped = grouped)
+    def __init__(self, __size, *, compressed = True, grouped = False, recursive = False):
+        super().__init__([x for x in range(__size)], compressed = compressed, grouped = grouped, recursive = recursive)
 
 
 class UnionFindDict(UnionFind):
 
-    def __init__(self, __iterable, *, grouped = False):
-        super().__init__({x: x for x in __iterable}, grouped = grouped)
+    def __init__(self, __iterable, *, compressed = True, grouped = False, recursive = False):
+        super().__init__({x: x for x in __iterable}, compressed = compressed, grouped = grouped, recursive = recursive)
