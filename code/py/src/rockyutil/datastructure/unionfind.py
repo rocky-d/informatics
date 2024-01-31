@@ -50,13 +50,13 @@ class UnionFind(object):
         a_head, b_head = self.find2(a), self.find2(b)
 
 
-class UnionFindList(object):
+class UnionFindList(UnionFind):
 
     def __init__(self, __size, *, grouped = False):
         super().__init__([x for x in range(__size)], grouped = grouped)
 
 
-class UnionFindDict(object):
+class UnionFindDict(UnionFind):
 
     def __init__(self, __iterable, *, grouped = False):
         super().__init__({x: x for x in __iterable}, grouped = grouped)
