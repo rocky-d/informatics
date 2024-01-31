@@ -1,7 +1,7 @@
-class UnionFindList(object):
+class UnionFind(object):
 
-    def __init__(self, __size, *, grouped = False):
-        self._heads = [x for x in range(__size)]
+    def __init__(self, __heads, *, grouped = False):
+        self._heads = __heads
         self._groups = {x: [x] for x in self._heads} if grouped else None
 
     def __len__(self):
@@ -50,11 +50,13 @@ class UnionFindList(object):
         a_head, b_head = self.find2(a), self.find2(b)
 
 
+class UnionFindList(object):
+
+    def __init__(self, __size, *, grouped = False):
+        super().__init__([x for x in range(__size)], grouped = grouped)
+
+
 class UnionFindDict(object):
 
     def __init__(self, __iterable, *, grouped = False):
-        self._heads = {x: x for x in __iterable}
-        self._groups = {x: [x] for x in self._heads} if grouped else None
-
-    def __len__(self):
-        return len(self._heads), len(self._groups)
+        super().__init__({x: x for x in __iterable}, grouped = grouped)
