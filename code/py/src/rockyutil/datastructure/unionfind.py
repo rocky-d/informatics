@@ -10,14 +10,14 @@ class UnionFind(object):
         if recursive:
             self._find_c = self._find_c_r
             self._find_r = self._find_r_r
-        else:
+        else:  # iterative
             self._find_c = self._find_c_i
             self._find_r = self._find_r_i
         if compressed:
             self._ranks = None
             self.find = self._find_c
             self.union = self._union_c
-        else:
+        else:  # ranked
             if self._generic:
                 self._ranks = {x: 0 for x in self._heads}
             else:
