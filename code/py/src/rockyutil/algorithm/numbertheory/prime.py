@@ -1,5 +1,4 @@
 from math import isqrt
-from timeit import timeit
 
 
 def is_prime_1(n: int) -> bool:
@@ -57,6 +56,8 @@ def primes_before_2(n: int) -> list[int]:
 
 
 if __name__ == '__main__':
+    from timeit import timeit
+
     eg_n, repeats = int(1e7), int(1e1)
     which = 4
     match which:
