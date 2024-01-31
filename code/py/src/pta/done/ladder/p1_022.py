@@ -2,11 +2,7 @@ def main() -> None:
     n = int(input())
     nums = map(int, input().split())
 
-    odds = 0
-    for num in nums:
-        if 0b1 == 0b1 & num:
-            odds += 1
-    print(odds, n - odds)
+    print(*(lambda odds: (odds, n - odds))(len([num for num in nums if 0b1 == 0b1 & num])))
 
 
 if __name__ == '__main__':
