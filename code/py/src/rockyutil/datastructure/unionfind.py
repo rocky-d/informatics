@@ -18,7 +18,10 @@ class UnionFind(object):
             self.find = self.find_c
             self.union = self.union_c
         else:
-            self._ranks = {} if self._generic else []
+            if self._generic:
+                self._ranks = {x: 0 for x in self._heads}
+            else:
+                self._ranks = [0 for _ in self._heads]
             self.find = self.find_r
             self.union = self.union_r
 
@@ -68,22 +71,28 @@ class UnionFind(object):
         a_head, b_head = self.find_r(a), self.find_r(b)
         if a_head != b_head:
             if self._ranks[a_head] < self._ranks[b_head]:
-                ...
-            elif self._ranks[b_head] < self._ranks[a_head]:
-                ...
+                self._heads[a_head] = b_head
+                if self._groups is not None:
+                    self._groups[b_head] += self._groups.pop(a_head)
             else:
-                ...
+                self._heads[b_head] = a_head
+                if self._groups is not None:
+                    self._groups[a_head] += self._groups.pop(b_head)
+                if self._ranks[a_head] == self._ranks[b_head]:
+                    self._ranks[a_head] += 1
+                    if self._generic:
+                        self._ranks.pop(b_head)
 
 
 class UnionFindList(UnionFind):
 
     def __init__(self, __size, *, compressed = True, grouped = False, recursive = False):
-        super().__init__([x for x in range(__size)], generic = False,
-                         compressed = compressed, grouped = grouped, recursive = recursive)
+        super().__init__([x for x in range(__size)], generic = False, grouped = grouped, recursive = recursive,
+                         compressed = compressed)
 
 
 class UnionFindDict(UnionFind):
 
     def __init__(self, __iterable, *, compressed = True, grouped = False, recursive = False):
-        super().__init__({x: x for x in __iterable}, generic = True,
-                         compressed = compressed, grouped = grouped, recursive = recursive)
+        super().__init__({x: x for x in __iterable}, generic = True, grouped = grouped, recursive = recursive,
+                         compressed = compressed)
