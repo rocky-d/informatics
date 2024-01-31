@@ -26,7 +26,7 @@ class UnionFind(object):
             self.union = self._union_rank
 
     def __len__(self):
-        return len(self._heads), len(self._groups)
+        return len(self._heads), len(self._groups) if self._groups is not None else None
 
     def _find_comp_recu(self, a):
         if a == self._heads[a]:
