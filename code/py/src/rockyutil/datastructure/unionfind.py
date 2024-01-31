@@ -8,11 +8,11 @@ class UnionFind(object):
         else:
             self._groups = None
         if recursive:
-            self._find_c = self._find_cr
-            self._find_r = self._find_rr
+            self._find_c = self._find_c_r
+            self._find_r = self._find_r_r
         else:
-            self._find_c = self._find_ci
-            self._find_r = self._find_ri
+            self._find_c = self._find_c_i
+            self._find_r = self._find_r_i
         if compressed:
             self._ranks = None
             self.find = self._find_c
@@ -28,13 +28,13 @@ class UnionFind(object):
     def __len__(self):
         return len(self._heads), len(self._groups)
 
-    def _find_cr(self, a):
+    def _find_c_r(self, a):
         if a == self._heads[a]:
             return a
-        self._heads[a] = self._find_cr(self._heads[a])
+        self._heads[a] = self._find_c_r(self._heads[a])
         return self._heads[a]
 
-    def _find_ci(self, a):
+    def _find_c_i(self, a):
         a_ = a
         cnt = 0
         while a != self._heads[a]:
@@ -57,12 +57,12 @@ class UnionFind(object):
                 if self._groups is not None:
                     self._groups[a_head] += self._groups.pop(b_head)
 
-    def _find_rr(self, a):
+    def _find_r_r(self, a):
         if a == self._heads[a]:
             return a
-        return self._find_rr(self._heads[a])
+        return self._find_r_r(self._heads[a])
 
-    def _find_ri(self, a):
+    def _find_r_i(self, a):
         while a != self._heads[a]:
             a = self._heads[a]
         return a
@@ -101,9 +101,12 @@ class UnionFindDict(UnionFind):
 if __name__ == '__main__':
     import random
 
-    ufl = UnionFindList(1_000, grouped = True, recursive = True, compressed = False)
-    ufd = UnionFindDict((-i for i in range(1_000)), grouped = True, recursive = True, compressed = False)
+    ufl = UnionFindList(100, grouped = True, recursive = True, compressed = False)
+    ufd = UnionFindDict((-i for i in range(100)), grouped = True, recursive = True, compressed = False)
 
-    for _ in range(200):
-        x, y = random.randint(a = 0, b = 999), random.randint(a = 0, b = 999)
-        ufl.union
+    for _ in range(50):
+        x, y = random.randint(a = 0, b = 99), random.randint(a = 0, b = 99)
+        ufl.union(a = x, b = y)
+        ufd.union(a = -x, b = -y)
+    print(ufl._groups)
+    print(ufd._groups)
