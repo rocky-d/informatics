@@ -16,9 +16,11 @@ class UnionFind(object):
         if compressed:
             self._ranks = None
             self.find = self.find_c
+            self.union = self.union_c
         else:
-            self._ranks = ... if self._generic else ...
+            self._ranks = {} if self._generic else []
             self.find = self.find_r
+            self.union = self.union_r
 
     def __len__(self):
         return len(self._heads), len(self._groups)
@@ -64,6 +66,13 @@ class UnionFind(object):
 
     def union_r(self, a, b):
         a_head, b_head = self.find_r(a), self.find_r(b)
+        if a_head != b_head:
+            if self._ranks[a_head] < self._ranks[b_head]:
+                ...
+            elif self._ranks[b_head] < self._ranks[a_head]:
+                ...
+            else:
+                ...
 
 
 class UnionFindList(UnionFind):
