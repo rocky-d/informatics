@@ -1,9 +1,24 @@
 class UnionFind(object):
 
-    def __init__(self, __heads, *, compressed = True, grouped = False, recursive = False):
+    def __init__(self, __heads, generic, *, grouped = False, recursive = False, compressed = True):
         self._heads = __heads
-        self._ranks = ... if not compressed else None
-        self._groups = {x: [x] for x in self._heads} if grouped else None
+        self._generic = generic
+        if grouped:
+            self._groups = {x: [x] for x in self._heads}
+        else:
+            self._groups = None
+        if recursive:
+            self.find_c = self.find_cr
+            self.find_r = self.find_rr
+        else:
+            self.find_c = self.find_ci
+            self.find_r = self.find_ri
+        if compressed:
+            self._ranks = None
+            self.find = self.find_c
+        else:
+            self._ranks = ... if self._generic else ...
+            self.find = self.find_r
 
     def __len__(self):
         return len(self._heads), len(self._groups)
@@ -54,10 +69,12 @@ class UnionFind(object):
 class UnionFindList(UnionFind):
 
     def __init__(self, __size, *, compressed = True, grouped = False, recursive = False):
-        super().__init__([x for x in range(__size)], compressed = compressed, grouped = grouped, recursive = recursive)
+        super().__init__([x for x in range(__size)], generic = False,
+                         compressed = compressed, grouped = grouped, recursive = recursive)
 
 
 class UnionFindDict(UnionFind):
 
     def __init__(self, __iterable, *, compressed = True, grouped = False, recursive = False):
-        super().__init__({x: x for x in __iterable}, compressed = compressed, grouped = grouped, recursive = recursive)
+        super().__init__({x: x for x in __iterable}, generic = True,
+                         compressed = compressed, grouped = grouped, recursive = recursive)
