@@ -8,33 +8,33 @@ class UnionFind(object):
         else:
             self._groups = None
         if recursive:
-            self._find_c = self._find_c_r
-            self._find_r = self._find_r_r
+            self._find_comp = self._find_comp_recu
+            self._find_rank = self._find_rank_recu
         else:  # iterative
-            self._find_c = self._find_c_i
-            self._find_r = self._find_r_i
+            self._find_comp = self._find_comp_iter
+            self._find_rank = self._find_rank_iter
         if compressed:
             self._ranks = None
-            self.find = self._find_c
-            self.union = self._union_c
+            self.find = self._find_comp
+            self.union = self._union_comp
         else:  # ranked
             if self._generic:
                 self._ranks = {x: 0 for x in self._heads}
             else:
                 self._ranks = [0 for _ in self._heads]
-            self.find = self._find_r
-            self.union = self._union_r
+            self.find = self._find_rank
+            self.union = self._union_rank
 
     def __len__(self):
         return len(self._heads), len(self._groups)
 
-    def _find_c_r(self, a):
+    def _find_comp_recu(self, a):
         if a == self._heads[a]:
             return a
-        self._heads[a] = self._find_c_r(self._heads[a])
+        self._heads[a] = self._find_comp_recu(self._heads[a])
         return self._heads[a]
 
-    def _find_c_i(self, a):
+    def _find_comp_iter(self, a):
         a_ = a
         cnt = 0
         while a != self._heads[a]:
@@ -45,8 +45,8 @@ class UnionFind(object):
             a_ = self._heads[a_]
         return a
 
-    def _union_c(self, a, b):
-        a_head, b_head = self._find_c(a), self._find_c(b)
+    def _union_comp(self, a, b):
+        a_head, b_head = self._find_comp(a), self._find_comp(b)
         if a_head != b_head:
             if len(self._groups[a_head]) < len(self._groups[b_head]):
                 self._heads[a] = self._heads[a_head] = b_head
@@ -57,18 +57,18 @@ class UnionFind(object):
                 if self._groups is not None:
                     self._groups[a_head] += self._groups.pop(b_head)
 
-    def _find_r_r(self, a):
+    def _find_rank_recu(self, a):
         if a == self._heads[a]:
             return a
-        return self._find_r_r(self._heads[a])
+        return self._find_rank_recu(self._heads[a])
 
-    def _find_r_i(self, a):
+    def _find_rank_iter(self, a):
         while a != self._heads[a]:
             a = self._heads[a]
         return a
 
-    def _union_r(self, a, b):
-        a_head, b_head = self._find_r(a), self._find_r(b)
+    def _union_rank(self, a, b):
+        a_head, b_head = self._find_rank(a), self._find_rank(b)
         if a_head != b_head:
             if self._ranks[a_head] < self._ranks[b_head]:
                 self._heads[a_head] = b_head
