@@ -86,13 +86,18 @@ class UnionFind(object):
 
 class UnionFindList(UnionFind):
 
-    def __init__(self, __size, *, compressed = True, grouped = False, recursive = False):
-        super().__init__([x for x in range(__size)], generic = False, grouped = grouped, recursive = recursive,
-                         compressed = compressed)
+    def __init__(self, __size, *, grouped = False, recursive = False, compressed = True):
+        super().__init__([x for x in range(__size)], generic = False,
+                         grouped = grouped, recursive = recursive, compressed = compressed)
 
 
 class UnionFindDict(UnionFind):
 
-    def __init__(self, __iterable, *, compressed = True, grouped = False, recursive = False):
-        super().__init__({x: x for x in __iterable}, generic = True, grouped = grouped, recursive = recursive,
-                         compressed = compressed)
+    def __init__(self, __iterable, *, grouped = False, recursive = False, compressed = True):
+        super().__init__({x: x for x in __iterable}, generic = True,
+                         grouped = grouped, recursive = recursive, compressed = compressed)
+
+
+if __name__ == '__main__':
+    ufl = UnionFindList(1_000, grouped = True, recursive = True, compressed = False)
+    ufd = UnionFindDict((-i for i in range(1_000)), grouped = True, recursive = True, compressed = False)
