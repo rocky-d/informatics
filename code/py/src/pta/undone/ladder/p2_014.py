@@ -1,3 +1,6 @@
+from bisect import bisect
+
+
 def main() -> None:
     n = int(input())
     nums = map(int, input().split())
@@ -20,13 +23,11 @@ def main() -> None:
                 else:
                     break
         else:
-            for queue_dec in queues:
-                if num < queue_dec[-1]:
-                    queue_dec.append(num)
-                    break
-            else:
+            if 0 == len(queues) or queues[-1][-1] < num:
                 queues.append([num])
                 queues_len_max = max(queues_len_max, len(queues))
+            else:
+                queues[bisect(queues, num, key = lambda queue_dec: queue_dec[-1])].append(num)
     print(1 + queues_len_max)
 
 
