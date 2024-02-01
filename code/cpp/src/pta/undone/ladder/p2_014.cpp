@@ -45,15 +45,15 @@ int main() {
                 break;
             }
         } else {
-            bool loopelse = true;
+            bool loopelse1 = true;
             for (int j = 0; j != queues_len; j += 1) {
                 if (nums[i] < queues[j][q_tails[j] - 1]) {
                     queues[j][q_tails[j]] = nums[i];
                     q_tails[j] = (1 + q_tails[j]) % N_MAX;
-                    loopelse = false;
+                    loopelse1 = false;
                     break;
                 }
-            } if (loopelse) {
+            } if (loopelse1) {
                 q_heads[queues_len] = 0;
                 q_tails[queues_len] = 0;
                 queues[queues_len][q_tails[queues_len]] = nums[i];
