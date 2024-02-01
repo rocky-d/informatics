@@ -44,12 +44,10 @@ class ListNode:
 
     @staticmethod
     def ln_to_list(head):
-        res = []
         node = head
         while node is not None:
-            res.append(node.val)
+            yield node.val
             node = node.next
-        return res
 
 
 # Definition for a binary tree node.
