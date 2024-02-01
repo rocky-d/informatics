@@ -15,7 +15,7 @@ int main() {
     cin >> n;
     dfs(0);
     cout << tree[0];
-    for (int i = 1; i < n; i += 1){
+    for (int i = 1; i < n; i += 1) {
         cout << ' ' << tree[i];
     }
     return 0;
