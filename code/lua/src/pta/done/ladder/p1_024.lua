@@ -1,5 +1,4 @@
 local function main()
-    local d
     d = io.read('n')
 
     local ans

@@ -1,5 +1,4 @@
 local function main()
-    local n, char
     n, _, char = io.read('n', 1, 1)
 
     local shape, spaces
