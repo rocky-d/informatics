@@ -16,4 +16,4 @@ class Solution:
 
 
 eg_head = ListNode.list_to_ln([5, 2, 13, 3, 8])
-print(ListNode.ln_to_list(head = Solution().removeNodes(head = eg_head)))
+print(ListNode.ln_to_list(Solution().removeNodes(head = eg_head)))
