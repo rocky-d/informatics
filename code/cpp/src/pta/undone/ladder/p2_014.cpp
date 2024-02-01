@@ -18,8 +18,9 @@ int main() {
     for (int i = 0; i != n; i += 1) {
         if (waiting == nums[i]) {
             waiting -= 1;
+            bool loopelse1 = true;
             while (1 <= waiting) {
-                bool loopelse = true;
+                bool loopelse2 = true;
                 for (int j = 0; j != queues_len; j += 1) {
                     if (waiting == queues[j][q_heads[j]]) {
                         if (1 == (q_tails[j] - q_heads[j] + N_MAX) % N_MAX) {
@@ -33,12 +34,15 @@ int main() {
                             q_heads[j] = (1 + q_heads[j]) % N_MAX;
                         }
                         waiting -= 1;
-                        loopelse = false;
+                        loopelse2 = false;
                         break;
                     }
-                } if (loopelse) {
+                } if (loopelse2) {
+                    loopelse1 = false;
                     break;
                 }
+            } if (loopelse1) {
+                break;
             }
         } else {
             bool loopelse = true;
