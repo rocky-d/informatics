@@ -5,6 +5,7 @@ import copy
 import datetime
 import functools
 import heapq
+import itertools
 import math
 import random
 import sys
@@ -16,6 +17,7 @@ from copy import *
 from datetime import *
 from functools import *
 from heapq import *
+from itertools import *
 from math import *
 from random import *
 from sys import *
