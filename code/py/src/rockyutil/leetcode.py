@@ -34,20 +34,20 @@ class ListNode:
         self.val = val
         self.next = next
 
-    @staticmethod
-    def link(__iterable):
-        dummy = node = ListNode()
-        for item in __iterable:
-            node.next = ListNode(val = item, next = None)
-            node = node.next
-        return dummy.next
 
-    @staticmethod
-    def unlink(__head):
-        node = __head
-        while node is not None:
-            yield node.val
-            node = node.next
+def link(__iterable):
+    dummy = node = ListNode()
+    for item in __iterable:
+        node.next = ListNode(val = item, next = None)
+        node = node.next
+    return dummy.next
+
+
+def unlink(__head):
+    node = __head
+    while node is not None:
+        yield node.val
+        node = node.next
 
 
 # Definition for a binary tree node.

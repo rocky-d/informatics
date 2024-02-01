@@ -15,5 +15,5 @@ class Solution:
         return decreasing_stack[1]
 
 
-eg_head = ListNode.link([5, 2, 13, 3, 8])
-print(ListNode.unlink(Solution().removeNodes(head = eg_head)))
+eg_head = link([5, 2, 13, 3, 8])
+print(unlink(Solution().removeNodes(head = eg_head)))

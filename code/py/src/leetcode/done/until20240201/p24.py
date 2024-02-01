@@ -27,4 +27,4 @@ class Solution:
 sol = Solution()
 
 ls = [1, 2, 3, 4, 5]
-print(ListNode.unlink(sol.swapPairs(ListNode.link(ls))))
+print(unlink(sol.swapPairs(link(ls))))
