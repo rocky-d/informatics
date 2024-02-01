@@ -7,8 +7,8 @@ def main() -> None:
 
     queues = []
     queues_len_max = 0
-    waiting = n
     q_heads = dict()
+    waiting = n
     for num in nums:
         if waiting == num:
             waiting -= 1
