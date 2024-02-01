@@ -1,7 +1,7 @@
 local function main()
-    for _ = 1, 3 do
-        print('I\'m gonna WIN!')
-    end
+    print('I\'m gonna WIN!')
+    print('I\'m gonna WIN!')
+    print('I\'m gonna WIN!')
 end
 
 main()
