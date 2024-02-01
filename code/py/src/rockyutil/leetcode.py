@@ -35,21 +35,21 @@ class ListNode:
         self.next = next
 
     @staticmethod
-    def list_to_ln(ls: List[Any]) -> Optional['ListNode']:
+    def list_to_ln(iterable):
         dummy = node = ListNode()
-        for num in ls:
-            node.next = ListNode(val = num, next = None)
+        for item in iterable:
+            node.next = ListNode(val = item, next = None)
             node = node.next
         return dummy.next
 
     @staticmethod
-    def ln_to_list(head: Optional['ListNode']) -> List[Any]:
-        ls = []
+    def ln_to_list(head):
+        res = []
         node = head
         while node is not None:
-            ls.append(node.val)
+            res.append(node.val)
             node = node.next
-        return ls
+        return res
 
 
 # Definition for a binary tree node.
