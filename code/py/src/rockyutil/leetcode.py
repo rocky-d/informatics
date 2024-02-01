@@ -35,7 +35,7 @@ class ListNode:
         self.next = next
 
     @staticmethod
-    def list_to_ln(__iterable):
+    def link(__iterable):
         dummy = node = ListNode()
         for item in __iterable:
             node.next = ListNode(val = item, next = None)
@@ -43,7 +43,7 @@ class ListNode:
         return dummy.next
 
     @staticmethod
-    def ln_to_list(__head):
+    def unlink(__head):
         node = __head
         while node is not None:
             yield node.val
