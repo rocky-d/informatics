@@ -35,16 +35,16 @@ class ListNode:
         self.next = next
 
     @staticmethod
-    def list_to_ln(iterable):
+    def list_to_ln(__iterable):
         dummy = node = ListNode()
-        for item in iterable:
+        for item in __iterable:
             node.next = ListNode(val = item, next = None)
             node = node.next
         return dummy.next
 
     @staticmethod
-    def ln_to_list(head):
-        node = head
+    def ln_to_list(__head):
+        node = __head
         while node is not None:
             yield node.val
             node = node.next
