@@ -5,23 +5,24 @@ const int N_MAX = 100000;
 
 int n, nums[N_MAX];
 
+int q_heads[N_MAX], q_tails[N_MAX], queues[N_MAX][N_MAX], queues_len, queues_len_max, waiting;
+bool loopelse1, loopelse2;
+
 int main() {
     cin >> n;
     for (int i = 0; i < n; i += 1) {
         cin >> nums[i];
     }
 
-    int q_heads[N_MAX], q_tails[N_MAX], queues[N_MAX][N_MAX], queues_len, queues_len_max;
     queues_len = 0;
     queues_len_max = 0;
-    int waiting;
     waiting = n;
     for (int i = 0; i < n; i += 1) {
         if (waiting == nums[i]) {
             waiting -= 1;
-            bool loopelse1 = true;
+            loopelse1 = true;
             while (1 <= waiting) {
-                bool loopelse2 = true;
+                loopelse2 = true;
                 for (int j = 0; j < queues_len; j += 1) {
                     if (waiting == queues[j][q_heads[j]]) {
                         if (1 == (q_tails[j] - q_heads[j] + N_MAX) % N_MAX) {
@@ -46,7 +47,7 @@ int main() {
                 break;
             }
         } else {
-            bool loopelse1 = true;
+            loopelse1 = true;
             for (int j = 0; j < queues_len; j += 1) {
                 if (nums[i] < queues[j][q_tails[j] - 1]) {
                     queues[j][q_tails[j]] = nums[i];
