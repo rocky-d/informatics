@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 const int N_MAX = 30;
