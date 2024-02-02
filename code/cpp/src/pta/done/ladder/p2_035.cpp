@@ -20,5 +20,6 @@ int main() {
     for (int i = 1; i < n; i += 1) {
         cout << ' ' << tree[i];
     }
+    cout << endl;
     return 0;
 }
