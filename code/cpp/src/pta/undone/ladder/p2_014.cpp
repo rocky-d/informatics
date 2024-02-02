@@ -11,9 +11,10 @@ int main() {
         cin >> nums[i];
     }
 
-    int q_heads[N_MAX], q_tails[N_MAX], queues[N_MAX][N_MAX], queues_len, queues_len_max, waiting;
+    int q_heads[N_MAX], q_tails[N_MAX], queues[N_MAX][N_MAX], queues_len, queues_len_max;
     queues_len = 0;
     queues_len_max = 0;
+    int waiting;
     waiting = n;
     for (int i = 0; i < n; i += 1) {
         if (waiting == nums[i]) {
