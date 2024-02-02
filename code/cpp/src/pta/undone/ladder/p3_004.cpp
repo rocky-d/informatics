@@ -19,6 +19,7 @@ int main() {
     }
 
     int ans;
+    ans = 0;
     bool seen[L_MAX][M_MAX][N_MAX];
     for (int i = 0; i < l; i += 1) {
         for (int j = 0; j < m; j += 1) {
