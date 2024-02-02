@@ -1,7 +1,9 @@
 #include <iostream>
 using namespace std;
 
-int n, tree[30];
+const int N_MAX = 30;
+
+int n, tree[N_MAX];
 
 void dfs(int index) {
     if (n <= index)
