@@ -9,7 +9,6 @@ typedef struct {
 const int M_MAX = 1 + 1286 + 1;
 const int N_MAX = 1 + 128 + 1;
 const int L_MAX = 1 + 60 + 1;
-
 const int OFFSETS[6][3] = {{-1, 0, 0}, {0, -1, 0}, {0, 0, -1}, {1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
 
 int m, n, l, t;
