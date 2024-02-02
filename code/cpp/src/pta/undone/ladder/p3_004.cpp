@@ -31,7 +31,7 @@ int main() {
     for (int i = 0; i < l; i += 1) {
         for (int j = 0; j < m; j += 1) {
             for (int k = 0; k < n; k += 1) {
-                if ('1' == slices[i][j][k] && !seen[i][j][k]) {
+                if ('1' == slices[i][j][k] && false == seen[i][j][k]) {
                     int vol;
                     vol = 0;
                     int stack[100][3], stack_len;
@@ -46,40 +46,40 @@ int main() {
                         x = stack[stack_len][0];
                         y = stack[stack_len][1];
                         z = stack[stack_len][2];
-                        if (!seen[x][y][z]) {
+                        if (false == seen[x][y][z]) {
                             vol += 1;
                             seen[x][y][z] = true;
-                            if (0 <= x - 1 && '1' == slices[x - 1][y][z] && !seen[x - 1][y][z]) {
+                            if (0 <= x - 1 && '1' == slices[x - 1][y][z] && false == seen[x - 1][y][z]) {
                                 stack[stack_len][0] = x - 1;
                                 stack[stack_len][1] = y;
                                 stack[stack_len][2] = z;
                                 stack_len += 1;
                             }
-                            if (0 <= y - 1 && '1' == slices[x][y - 1][z] && !seen[x][y - 1][z]) {
+                            if (0 <= y - 1 && '1' == slices[x][y - 1][z] && false == seen[x][y - 1][z]) {
                                 stack[stack_len][0] = x;
                                 stack[stack_len][1] = y - 1;
                                 stack[stack_len][2] = z;
                                 stack_len += 1;
                             }
-                            if (0 <= z - 1 && '1' == slices[x][y][z - 1] && !seen[x][y][z - 1]) {
+                            if (0 <= z - 1 && '1' == slices[x][y][z - 1] && false == seen[x][y][z - 1]) {
                                 stack[stack_len][0] = x;
                                 stack[stack_len][1] = y;
                                 stack[stack_len][2] = z - 1;
                                 stack_len += 1;
                             }
-                            if (x + 1 < l && '1' == slices[x + 1][y][z] && !seen[x + 1][y][z]) {
+                            if (x + 1 < l && '1' == slices[x + 1][y][z] && false == seen[x + 1][y][z]) {
                                 stack[stack_len][0] = x + 1;
                                 stack[stack_len][1] = y;
                                 stack[stack_len][2] = z;
                                 stack_len += 1;
                             }
-                            if (y + 1 < m && '1' == slices[x][y + 1][z] && !seen[x][y + 1][z]) {
+                            if (y + 1 < m && '1' == slices[x][y + 1][z] && false == seen[x][y + 1][z]) {
                                 stack[stack_len][0] = x;
                                 stack[stack_len][1] = y + 1;
                                 stack[stack_len][2] = z;
                                 stack_len += 1;
                             }
-                            if (z + 1 < n && '1' == slices[x][y][z + 1] && !seen[x][y][z + 1]) {
+                            if (z + 1 < n && '1' == slices[x][y][z + 1] && false == seen[x][y][z + 1]) {
                                 stack[stack_len][0] = x;
                                 stack[stack_len][1] = y;
                                 stack[stack_len][2] = z + 1;
