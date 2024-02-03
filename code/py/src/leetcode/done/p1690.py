@@ -3,17 +3,19 @@ from rockyutil.leetcode import *
 
 class Solution:
     def stoneGameVII(self, stones: List[int]) -> int:
-        pres = [0]
-        for stone in stones:
-            pres.append(pres[-1] + stone)
-        dp = [0 for _ in range(len(stones))]
-        for i in range(2, 1 + len(stones)):
+        n = len(stones)
+        dp = [0 for _ in range(n)]
+        pre, p = 0, 0
+        for i in range(2, 1 + n):
             dp_last, dp = dp, []
-            for j in range(1 + len(stones) - i):
-                dp.append(max(pres[j + i - 1] - pres[j] - dp_last[j],
-                              pres[j + i] - pres[j + 1] - dp_last[j + 1]))
+            pre += stones[p]
+            p += 1
+            pre2 = pre
+            for j in range(0, 1 + n - i):
+                pre1, pre2 = pre2, pre2 - stones[j] + stones[j + i - 1]
+                dp.append(max(pre1 - dp_last[j], pre2 - dp_last[j + 1]))
         return dp[0]
 
 
-eg_stones = [5, 3, 1, 4, 2]
+eg_stones = [7, 90, 5, 1, 100, 10, 10, 2]
 print(Solution().stoneGameVII(eg_stones))
