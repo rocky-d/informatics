@@ -12,9 +12,9 @@ class Solution:
                     ufd._heads[i, j] = i, j
                     ufd._groups[i, j] = i, j
                     if 0 <= i - 1 and '1' == grid[i - 1][j]:
-                        ufd.union(a = (i, j), b = (i - 1, j))
+                        ufd.union((i, j), (i - 1, j))
                     if 0 <= j - 1 and '1' == grid[i][j - 1]:
-                        ufd.union(a = (i, j), b = (i, j - 1))
+                        ufd.union((i, j), (i, j - 1))
         return len(ufd._groups)
 
 
