@@ -110,7 +110,7 @@ if __name__ == '__main__':
 
     for _ in range(50):
         x, y = random.randint(a = 0, b = 99), random.randint(a = 0, b = 99)
-        ufl.union(a = x, b = y)
-        ufd.union(a = -x, b = -y)
+        ufl.union(x, y)
+        ufd.union(-x, -y)
     print(ufl._groups)
     print(ufd._groups)
