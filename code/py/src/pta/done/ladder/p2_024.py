@@ -42,7 +42,7 @@ def main() -> None:
             if pi not in ufd.heads:
                 ufd.heads[pi] = pi
                 ufd.groups[pi] = 1
-            ufd.union(p0, pi)
+            ufd.union(a = p0, b = pi)
     print(len(ufd.heads), len(ufd.groups))
     for x, y in qs:
         print('Y' if ufd.find(x) == ufd.find(y) else 'N')
