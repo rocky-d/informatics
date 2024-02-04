@@ -1,15 +1,10 @@
-from rockyutil.leetcode import *
-
-
 class Solution:
     def minimumTimeToInitialState(self, word: str, k: int) -> int:
-        ans = 0
-        w = word
-        while True:
+        ans = 1
+        w = word[k:]
+        while not word.startswith(w):
             ans += 1
             w = w[k:]
-            if word.startswith(w):
-                break
         return ans
 
 
