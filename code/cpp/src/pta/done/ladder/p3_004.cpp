@@ -38,8 +38,7 @@ int main() {
             cod.y = j;
             for (int k = 1; k < 1 + n; k += 1) {
                 cod.z = k;
-                if ('1' == slices[cod.x][cod.y][cod.z]
-                        && !seen[cod.x][cod.y][cod.z]) {
+                if ('1' == slices[cod.x][cod.y][cod.z] && !seen[cod.x][cod.y][cod.z]) {
                     que.push(cod);
                     seen[cod.x][cod.y][cod.z] = true;
                     vol = 1;
@@ -50,8 +49,7 @@ int main() {
                             cod_next.x = cod.x + OFFSETS[offset_i][0];
                             cod_next.y = cod.y + OFFSETS[offset_i][1];
                             cod_next.z = cod.z + OFFSETS[offset_i][2];
-                            if ('1' == slices[cod_next.x][cod_next.y][cod_next.z]
-                                    && !seen[cod_next.x][cod_next.y][cod_next.z]) {
+                            if ('1' == slices[cod_next.x][cod_next.y][cod_next.z] && !seen[cod_next.x][cod_next.y][cod_next.z]) {
                                 que.push(cod_next);
                                 seen[cod_next.x][cod_next.y][cod_next.z] = true;
                                 vol += 1;
