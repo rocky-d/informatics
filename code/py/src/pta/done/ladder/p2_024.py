@@ -1,15 +1,15 @@
 class UnionFindDict(object):
-    def __init__(self):
+    def __init__(self) -> None:
         self.heads = {}
         self.groups = {}
 
-    def find(self, a):
+    def find(self, a: str) -> str:
         if a == self.heads[a]:
             return a
         self.heads[a] = self.find(self.heads[a])
         return self.heads[a]
 
-    def union(self, a, b):
+    def union(self, a: str, b: str) -> None:
         a_head, b_head = self.find(a), self.find(b)
         if a_head != b_head:
             if self.groups[a_head] < self.groups[b_head]:
