@@ -6,7 +6,7 @@ class Solution:
         dp = deque([nums[0]])
         que = deque([0])
         for i in range(1, len(nums)):
-            while que[0] < i - k:
+            if que[0] < i - k:
                 que.popleft()
             dp.append(dp[que[0]] + nums[i])
             while 0 < len(que) and dp[que[-1]] <= dp[-1]:
