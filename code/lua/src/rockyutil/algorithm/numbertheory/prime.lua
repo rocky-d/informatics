@@ -1,11 +1,11 @@
-local function is_prime_1(n)
+local function is_prime_1(num)
     local res
-    if n < 2 then
+    if num < 2 then
         res = false
     else
         res = true
-        for i = 2, n - 1 do
-            if 0 == n % i then
+        for i = 2, num - 1 do
+            if 0 == num % i then
                 res = false
                 break
             end
@@ -14,14 +14,14 @@ local function is_prime_1(n)
     return res
 end
 
-local function is_prime_2(n)
+local function is_prime_2(num)
     local res
-    if n < 2 then
+    if num < 2 then
         res = false
     else
         res = true
-        for i = 2, math.floor(math.sqrt(n)) do
-            if 0 == n % i then
+        for i = 2, math.floor(math.sqrt(num)) do
+            if 0 == num % i then
                 res = false
                 break
             end
