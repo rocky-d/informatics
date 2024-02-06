@@ -28,14 +28,15 @@ def is_prime_optimized(n: int) -> bool:
 
 
 def primes_before_eratosthenes(n: int) -> list[int]:
-    res = []
+    # res = []
     tags = [False for _ in range(2)] + [True for _ in range(2, n)]
     for i in range(2, n):
         if tags[i]:
-            res.append(i)
+            # res.append(i)
+            yield i
             for composite in range(i * i, n, i):
                 tags[composite] = False
-    return res
+    # return res
 
 
 def primes_before_euler(n: int) -> list[int]:
@@ -44,6 +45,7 @@ def primes_before_euler(n: int) -> list[int]:
     for i in range(2, n):
         if tags[i]:
             res.append(i)
+            yield i
         for prime in res:
             composite = i * prime
             if composite < n:
@@ -52,7 +54,7 @@ def primes_before_euler(n: int) -> list[int]:
                     break
             else:
                 break
-    return res
+    # return res
 
 
 if __name__ == '__main__':
@@ -62,10 +64,10 @@ if __name__ == '__main__':
     which = 4
     match which:
         case 1:
-            print(timeit(lambda: list(filter(is_prime_plain, range(eg_n))), number = repeats))
+            print(timeit(lambda: tuple(filter(is_prime_plain, range(eg_n))), number = repeats))
         case 2:
-            print(timeit(lambda: list(filter(is_prime_optimized, range(eg_n))), number = repeats))
+            print(timeit(lambda: tuple(filter(is_prime_optimized, range(eg_n))), number = repeats))
         case 3:
-            print(timeit(lambda: primes_before_eratosthenes(n = eg_n), number = repeats))
+            print(timeit(lambda: tuple(primes_before_eratosthenes(n = eg_n)), number = repeats))
         case 4:
-            print(timeit(lambda: primes_before_euler(n = eg_n), number = repeats))
+            print(timeit(lambda: tuple(primes_before_euler(n = eg_n)), number = repeats))
