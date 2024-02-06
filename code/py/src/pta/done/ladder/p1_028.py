@@ -1,12 +1,12 @@
 from math import isqrt
 
 
-def is_prime_optimized(n: int) -> bool:
-    if n < 2:
+def is_prime_optimized(num: int) -> bool:
+    if num < 2:
         res = False
     else:
-        for i in range(2, isqrt(n) + 1):
-            if 0 == n % i:
+        for i in range(2, isqrt(num) + 1):
+            if 0 == num % i:
                 res = False
                 break
         else:
@@ -21,7 +21,7 @@ def main() -> None:
         nums.append(int(input()))
 
     for num in nums:
-        print('Yes' if is_prime_optimized(num) else 'No')
+        print('Yes' if is_prime_optimized(num = num) else 'No')
 
 
 if __name__ == '__main__':
