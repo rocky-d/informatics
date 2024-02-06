@@ -1,12 +1,12 @@
 from math import isqrt
 
 
-def is_prime_plain(n: int) -> bool:
-    if n < 2:
+def is_prime_plain(num: int) -> bool:
+    if num < 2:
         res = False
     else:
-        for i in range(2, n):
-            if 0 == n % i:
+        for i in range(2, num):
+            if 0 == num % i:
                 res = False
                 break
         else:
@@ -14,12 +14,12 @@ def is_prime_plain(n: int) -> bool:
     return res
 
 
-def is_prime_optimized(n: int) -> bool:
-    if n < 2:
+def is_prime_optimized(num: int) -> bool:
+    if num < 2:
         res = False
     else:
-        for i in range(2, isqrt(n) + 1):
-            if 0 == n % i:
+        for i in range(2, isqrt(num) + 1):
+            if 0 == num % i:
                 res = False
                 break
         else:
@@ -30,11 +30,11 @@ def is_prime_optimized(n: int) -> bool:
 def primes_before_eratosthenes(n: int) -> list[int]:
     # res = []
     tags = [False for _ in range(2)] + [True for _ in range(2, n)]
-    for i in range(2, n):
-        if tags[i]:
-            # res.append(i)
-            yield i
-            for composite in range(i * i, n, i):
+    for num in range(2, n):
+        if tags[num]:
+            # res.append(num)
+            yield num
+            for composite in range(num * num, n, num):
                 tags[composite] = False
     # return res
 
@@ -42,15 +42,15 @@ def primes_before_eratosthenes(n: int) -> list[int]:
 def primes_before_euler(n: int) -> list[int]:
     res = []
     tags = [False for _ in range(2)] + [True for _ in range(2, n)]
-    for i in range(2, n):
-        if tags[i]:
-            res.append(i)
-            yield i
+    for num in range(2, n):
+        if tags[num]:
+            res.append(num)
+            yield num
         for prime in res:
-            composite = i * prime
+            composite = num * prime
             if composite < n:
                 tags[composite] = False
-                if 0 == i % prime:
+                if 0 == num % prime:
                     break
             else:
                 break
