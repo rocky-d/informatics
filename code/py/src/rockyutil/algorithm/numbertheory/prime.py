@@ -1,7 +1,7 @@
 from math import isqrt
 
 
-def is_prime_plain(num: int) -> bool:
+def is_prime_plain(num):
     if num < 2:
         res = False
     else:
@@ -14,7 +14,7 @@ def is_prime_plain(num: int) -> bool:
     return res
 
 
-def is_prime_optimized(num: int) -> bool:
+def is_prime_optimized(num):
     if num < 2:
         res = False
     else:
@@ -27,26 +27,23 @@ def is_prime_optimized(num: int) -> bool:
     return res
 
 
-def primes_before_eratosthenes(n: int) -> list[int]:
-    # res = []
+def primes_before_eratosthenes(n):
     tags = [False, False] + [True for _ in range(2, n)]
     for num in range(2, n):
         if tags[num]:
-            # res.append(num)
             yield num
             for composite in range(num * num, n, num):
                 tags[composite] = False
-    # return res
 
 
-def primes_before_euler(n: int) -> list[int]:
-    res = []
+def primes_before_euler(n):
+    primes = []
     tags = [False, False] + [True for _ in range(2, n)]
     for num in range(2, n):
         if tags[num]:
-            res.append(num)
             yield num
-        for prime in res:
+            primes.append(num)
+        for prime in primes:
             composite = num * prime
             if composite < n:
                 tags[composite] = False
@@ -54,7 +51,6 @@ def primes_before_euler(n: int) -> list[int]:
                     break
             else:
                 break
-    # return res
 
 
 if __name__ == '__main__':
