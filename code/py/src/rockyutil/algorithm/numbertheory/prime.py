@@ -57,7 +57,7 @@ if __name__ == '__main__':
     from timeit import timeit
 
     eg_n, repeats = int(1e7), int(1e1)
-    which = 4
+    which = 3
     match which:
         case 1:
             print(timeit(lambda: tuple(filter(is_prime_plain, range(eg_n))), number = repeats))
