@@ -28,7 +28,7 @@ def is_prime_optimized(num):
 
 
 def primes_before_eratosthenes(n):
-    tags = [False, False] + [True for _ in range(2, n)]
+    tags = [False for _ in range(min(2, n))] + [True for _ in range(2, n)]
     for num in range(2, n):
         if tags[num]:
             yield num
@@ -38,7 +38,7 @@ def primes_before_eratosthenes(n):
 
 def primes_before_euler(n):
     primes = []
-    tags = [False, False] + [True for _ in range(2, n)]
+    tags = [False for _ in range(min(2, n))] + [True for _ in range(2, n)]
     for num in range(2, n):
         if tags[num]:
             yield num
