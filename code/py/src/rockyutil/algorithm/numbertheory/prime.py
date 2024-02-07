@@ -29,7 +29,7 @@ def is_prime_optimized(num: int) -> bool:
 
 def primes_before_eratosthenes(n: int) -> list[int]:
     # res = []
-    tags = [False for _ in range(2)] + [True for _ in range(2, n)]
+    tags = [False, False] + [True for _ in range(2, n)]
     for num in range(2, n):
         if tags[num]:
             # res.append(num)
@@ -41,7 +41,7 @@ def primes_before_eratosthenes(n: int) -> list[int]:
 
 def primes_before_euler(n: int) -> list[int]:
     res = []
-    tags = [False for _ in range(2)] + [True for _ in range(2, n)]
+    tags = [False, False] + [True for _ in range(2, n)]
     for num in range(2, n):
         if tags[num]:
             res.append(num)
