@@ -3,8 +3,8 @@ from rockyutil.leetcode import *
 
 class Solution:
     def maxResult(self, nums: List[int], k: int) -> int:
-        dp = deque([nums[0]])
-        que_dec = deque([0])
+        dp = deque((nums[0],))
+        que_dec = deque((0,))
         for i in range(1, len(nums)):
             if que_dec[0] < i - k:
                 que_dec.popleft()
