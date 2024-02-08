@@ -1,14 +1,14 @@
+from rockyutil.leetcode import *
+
+
 class Solution:
     def numSquares(self, n: int) -> int:
-        n1 = n + 1
-        dp = [_i for _i in range(n1)]
-        for perfect_square in [_i ** 2 for _i in range(int(n ** 0.5), 1, -1)]:
-            for j in range(perfect_square, n1):
-                dp[j] = min(dp[j], 1 + dp[j - perfect_square])
+        dp = [i for i in range(1 + n)]
+        for i in (i * i for i in range(isqrt(n), 1, -1)):
+            for j in range(i, 1 + n):
+                dp[j] = min(dp[j], 1 + dp[j - i])
         return dp[-1]
 
 
-sol = Solution()
-
 eg_n = 13
-print(sol.numSquares(eg_n))
+print(Solution().numSquares(eg_n))
