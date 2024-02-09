@@ -14,15 +14,9 @@ class Solution:
             elif left and right:
                 res = node
             elif left or right:
-                if p.val == node.val or q.val == node.val:
-                    res = node
-                else:
-                    res = True
+                res = node if p.val == node.val or q.val == node.val else True
             else:
-                if p.val == node.val or q.val == node.val:
-                    res = True
-                else:
-                    res = False
+                res = True if p.val == node.val or q.val == node.val else False
             return res
 
         return dfs(node = root)
