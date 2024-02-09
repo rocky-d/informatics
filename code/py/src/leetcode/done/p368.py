@@ -3,8 +3,8 @@ from rockyutil.leetcode import *
 
 class Solution:
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
-        ans = []
-        dp = deque(((1, -1),))
+        ans = deque(maxlen = len(nums))
+        dp = deque(((1, -1),), maxlen = len(nums))
         start = 1, 0
         nums.sort()
         for i in range(1, len(nums)):
@@ -19,7 +19,7 @@ class Solution:
         while -1 != index:
             ans.append(nums[index])
             index = dp[index][1]
-        return ans
+        return list(ans)
 
 
 eg_nums = [1, 2, 4, 8]
