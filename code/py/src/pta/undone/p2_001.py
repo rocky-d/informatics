@@ -9,30 +9,28 @@ def main() -> None:
     for _ in range(m):
         freeways.append(tuple(map(int, input().split())))
 
-    graph = [[None for _ in range(n)] for _ in range(n)]
+    graph = [{} for _ in range(n)]
     for city1, city2, length in freeways:
         graph[city1][city2] = graph[city2][city1] = length
     table = [[float('inf'), 0, ..., 0] for _ in range(n)]
     table[s] = [0, nums[s], None, 1]
+    seen = {s}
     heap_min = [(0, -nums[s], s)]
-    seen = set()
-    for _ in range(n):
+    while 0 < len(heap_min):
         _, _, city = heappop(heap_min)
-        for nb in range(n):
-            if graph[city][nb] is None:
-                continue
-            if table[city][0] + graph[city][nb] < table[nb][0]:
-                table[nb][0] = table[city][0] + graph[city][nb]
+        for nb, length in graph[city].items():
+            if table[city][0] + length < table[nb][0]:
+                table[nb][0] = table[city][0] + length
                 table[nb][1] = table[city][1] + nums[nb]
                 table[nb][2] = city
                 table[nb][3] = table[city][3]
                 if nb not in seen:
                     seen.add(nb)
                     heappush(heap_min, (table[nb][0], -table[nb][1], nb))
-            elif table[city][0] + graph[city][nb] == table[nb][0]:
+            elif table[city][0] + length == table[nb][0]:
                 table[nb][3] += table[city][3]
                 if table[nb][1] < table[city][1] + nums[nb]:
-                    table[nb][0] = table[city][0] + graph[city][nb]
+                    table[nb][0] = table[city][0] + length
                     table[nb][1] = table[city][1] + nums[nb]
                     table[nb][2] = city
                     if nb not in seen:
