@@ -5,7 +5,7 @@ from heapq import heappop, heappush
 def main() -> None:
     n, m, s, d = map(int, input().split())
     nums = tuple(map(int, input().split()))
-    freeways = []
+    freeways = deque(maxlen = m)
     for _ in range(m):
         freeways.append(tuple(map(int, input().split())))
 
