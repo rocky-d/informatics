@@ -19,7 +19,8 @@ def main() -> None:
     for _ in range(n):
         _, _, city = heappop(heap_min)
         for nb, length in graph[city].items():
-            table_city_0__length, table_city_1__nums_nb = table[city][0] + length, table[city][1] + nums[nb]
+            table_city_0__length = table[city][0] + length
+            table_city_1__nums_nb = table[city][1] + nums[nb]
             if table_city_0__length < table[nb][0]:
                 table[nb][0] = table_city_0__length
                 table[nb][1] = table_city_1__nums_nb
