@@ -17,12 +17,12 @@ def main() -> None:
     seen = {s}
     heap_min = [(0, -nums[s], s)]
     for _ in range(n):
-        table_city_0, _table_city_1, city = heappop(heap_min)
+        _, _, city = heappop(heap_min)
         for nb, length in graph[city].items():
-            table_city_0__length = table_city_0 + length
+            table_city_0__length, table_city_1__nums_nb = table[city][0] + length, table[city][1] + nums[nb]
             if table_city_0__length < table[nb][0]:
                 table[nb][0] = table_city_0__length
-                table[nb][1] = table[city][1] + nums[nb]
+                table[nb][1] = table_city_1__nums_nb
                 table[nb][2] = city
                 table[nb][3] = table[city][3]
                 if nb not in seen:
@@ -30,9 +30,9 @@ def main() -> None:
                     heappush(heap_min, (table[nb][0], -table[nb][1], nb))
             elif table_city_0__length == table[nb][0]:
                 table[nb][3] += table[city][3]
-                if table[nb][1] < table[city][1] + nums[nb]:
+                if table[nb][1] < table_city_1__nums_nb:
                     table[nb][0] = table_city_0__length
-                    table[nb][1] = table[city][1] + nums[nb]
+                    table[nb][1] = table_city_1__nums_nb
                     table[nb][2] = city
                     if nb not in seen:
                         seen.add(nb)
