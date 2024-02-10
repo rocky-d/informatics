@@ -1,5 +1,5 @@
 from collections import deque
-from heapq import heappop, heappush
+from heapq import heappop, heappush, heappushpop
 
 
 def main() -> None:
@@ -15,12 +15,14 @@ def main() -> None:
     table = [[float('inf'), 0, ..., 0] for _ in range(n)]
     table[s] = [0, nums[s], None, 1]
     seen = {s}
-    heap_min = [(0, -nums[s], s)]
+    heap_min = [(0, -nums[s], None, s)]
     for _ in range(n):
-        _, _, city = heappop(heap_min)
+        table_city_0, _table_city_1, table_city_2, city = heappop(heap_min)
+        while table[city][2] != table_city_2:
+            table_city_0, _table_city_1, table_city_2, city = heappushpop(heap_min, (table[city][0], -table[city][1], table[city][2], city))
         for nb, length in graph[city].items():
-            table_city_0__length = table[city][0] + length
-            table_city_1__nums_nb = table[city][1] + nums[nb]
+            table_city_0__length = table_city_0 + length
+            table_city_1__nums_nb = -_table_city_1 + nums[nb]
             if table_city_0__length < table[nb][0]:
                 table[nb][0] = table_city_0__length
                 table[nb][1] = table_city_1__nums_nb
@@ -28,7 +30,7 @@ def main() -> None:
                 table[nb][3] = table[city][3]
                 if nb not in seen:
                     seen.add(nb)
-                    heappush(heap_min, (table[nb][0], -table[nb][1], nb))
+                    heappush(heap_min, (table[nb][0], -table[nb][1], table[nb][2], nb))
             elif table_city_0__length == table[nb][0]:
                 table[nb][3] += table[city][3]
                 if table[nb][1] < table_city_1__nums_nb:
@@ -37,7 +39,7 @@ def main() -> None:
                     table[nb][2] = city
                     if nb not in seen:
                         seen.add(nb)
-                        heappush(heap_min, (table[nb][0], -table[nb][1], nb))
+                        heappush(heap_min, (table[nb][0], -table[nb][1], table[nb][2], nb))
     route = deque(maxlen = n)
     city = d
     while city is not None:
