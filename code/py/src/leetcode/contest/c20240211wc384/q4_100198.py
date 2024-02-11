@@ -5,10 +5,10 @@ class Solution:
     def countMatchingSubarrays(self, nums: List[int], pattern: List[int]) -> int:
         target = ''
         for i in range(len(nums) - 1):
-            target += '2' if nums[i] < nums[i + 1] else '1' if nums[i] == nums[i + 1] else '0'
+            target += 'A' if nums[i] < nums[i + 1] else 'B' if nums[i] == nums[i + 1] else 'C'
         patt = ''
-        for num in pattern:
-            patt += str(1 + num)
+        for index in pattern:
+            patt += ['B', 'A', 'C'][index]
         return len(findall(f"(?={patt})", target))
 
 
