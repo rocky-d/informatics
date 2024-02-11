@@ -1,19 +1,19 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
         m, n = len(haystack), len(needle)
-        nexts = [0]
-        left, right = 0, 1
-        while right < n:
-            if needle[left] == needle[right]:
-                left += 1
-                right += 1
-                nexts.append(left)
+        nxts = [0]
+        lft, rit = 0, 1
+        while rit < n:
+            if needle[lft] == needle[rit]:
+                lft += 1
+                rit += 1
+                nxts.append(lft)
             else:
-                if 0 < left:
-                    left = nexts[left - 1]
+                if 0 < lft:
+                    lft = nxts[lft - 1]
                 else:
-                    right += 1
-                    nexts.append(0)
+                    rit += 1
+                    nxts.append(0)
         i, j = 0, 0
         while i < m:
             if haystack[i] == needle[j]:
@@ -24,7 +24,7 @@ class Solution:
                     break
             else:
                 if 0 < j:
-                    j = nexts[j - 1]
+                    j = nxts[j - 1]
                 else:
                     i += 1
         else:
