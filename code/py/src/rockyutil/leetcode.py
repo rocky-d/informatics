@@ -10,6 +10,7 @@ import math
 # import queue
 import random
 import re
+import string
 import sys
 import threading
 # from array import *
@@ -24,6 +25,7 @@ from math import *
 # from queue import *
 from random import *
 from re import *
+from string import *
 from sys import *
 from typing import *
 
