@@ -6,16 +6,20 @@ class Solution:
         ans = 0
         chars_cnter = Counter()
         for word in words:
-            chars_cnter.update(Counter(word))
-        odd_heap_max, even_heap_min = [], []
+            for char in word:
+                chars_cnter[char] += 1
+        odd_heap_max, evens = [], deque()
         for cnt in chars_cnter.values():
-            heappush(odd_heap_max if 0b1 == 0b1 & cnt else even_heap_min, -cnt if 0b1 == 0b1 & cnt else cnt)
+            if 0b1 == 0b1 & cnt:
+                heappush(odd_heap_max, -cnt)
+            else:
+                evens.append(cnt)
         for word_len in sorted(len(word) for word in words):
             if 0b1 == 0b1 & word_len:
                 if 0 == len(odd_heap_max):
-                    if 0 == len(even_heap_min):
+                    if 0 == len(evens):
                         break
-                    even = heappop(even_heap_min)
+                    even = evens.pop()
                     consumption = 1
                     surplus = even - consumption
                     heappush(odd_heap_max, -surplus)
@@ -24,10 +28,10 @@ class Solution:
                 consumption = min(odd, word_len)
                 surplus = odd - consumption
                 if 0 < surplus:
-                    heappush(even_heap_min, surplus)
+                    evens.append(surplus)
                 word_len -= consumption
             while 0 < word_len:
-                if 0 == len(even_heap_min):
+                if 0 == len(evens):
                     if 0 == len(odd_heap_max):
                         break
                     odd = -heappop(odd_heap_max)
@@ -36,12 +40,12 @@ class Solution:
                     heappush(odd_heap_max, -surplus)
                     if 0 == consumption:
                         break
-                    heappush(even_heap_min, consumption)
-                even = heappop(even_heap_min)
+                    evens.append(consumption)
+                even = evens.pop()
                 consumption = min(even, word_len)
                 surplus = even - consumption
                 if 0 < surplus:
-                    heappush(even_heap_min, surplus)
+                    evens.append(surplus)
                 word_len -= consumption
             else:
                 ans += 1
@@ -50,5 +54,5 @@ class Solution:
         return ans
 
 
-eg_words = ["a", "a", "caa"]
+eg_words = ['a', 'a', 'caa']
 print(Solution().maxPalindromesAfterOperations(eg_words))
