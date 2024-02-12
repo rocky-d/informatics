@@ -7,22 +7,24 @@ class Solution:
             return nums
         ans = []
         dque_dec = deque((0,), maxlen = k)
-
-        def dque_dec_append(_i):
+        for i in range(1, k - 1):
             if 0 < len(dque_dec):
-                if nums[dque_dec[0]] <= nums[_i]:
+                if nums[dque_dec[0]] <= nums[i]:
                     dque_dec.clear()
                 else:
-                    while nums[dque_dec[-1]] <= nums[_i]:
+                    while nums[dque_dec[-1]] <= nums[i]:
                         dque_dec.pop()
-            dque_dec.append(_i)
-
-        for i in range(1, k - 1):
-            dque_dec_append(i)
+            dque_dec.append(i)
         for i in range(k - 1, len(nums)):
             if dque_dec[0] <= i - k:
                 dque_dec.popleft()
-            dque_dec_append(i)
+            if 0 < len(dque_dec):
+                if nums[dque_dec[0]] <= nums[i]:
+                    dque_dec.clear()
+                else:
+                    while nums[dque_dec[-1]] <= nums[i]:
+                        dque_dec.pop()
+            dque_dec.append(i)
             ans.append(nums[dque_dec[0]])
         return ans
 
