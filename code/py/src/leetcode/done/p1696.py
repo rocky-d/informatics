@@ -9,8 +9,12 @@ class Solution:
             if dque_dec[0] < i - k:
                 dque_dec.popleft()
             dp.append(dp[dque_dec[0]] + nums[i])
-            while 0 < len(dque_dec) and dp[dque_dec[-1]] <= dp[-1]:
-                dque_dec.pop()
+            if 0 < len(dque_dec):
+                if dp[dque_dec[0]] <= dp[i]:
+                    dque_dec.clear()
+                else:
+                    while dp[dque_dec[-1]] <= dp[i]:
+                        dque_dec.pop()
             dque_dec.append(i)
         return dp[-1]
 
