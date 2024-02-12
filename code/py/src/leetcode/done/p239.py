@@ -8,14 +8,22 @@ class Solution:
         ans = []
         dque_dec = deque((0,), maxlen = k)
         for i in range(1, k - 1):
-            while 0 < len(dque_dec) and nums[dque_dec[-1]] < nums[i]:
-                dque_dec.pop()
+            if 0 < len(dque_dec):
+                if nums[dque_dec[0]] < nums[i]:
+                    dque_dec.clear()
+                else:
+                    while nums[dque_dec[-1]] < nums[i]:
+                        dque_dec.pop()
             dque_dec.append(i)
         for i in range(k - 1, len(nums)):
             if dque_dec[0] < i - k + 1:
                 dque_dec.popleft()
-            while 0 < len(dque_dec) and nums[dque_dec[-1]] < nums[i]:
-                dque_dec.pop()
+            if 0 < len(dque_dec):
+                if nums[dque_dec[0]] < nums[i]:
+                    dque_dec.clear()
+                else:
+                    while nums[dque_dec[-1]] < nums[i]:
+                        dque_dec.pop()
             dque_dec.append(i)
             ans.append(nums[dque_dec[0]])
         return ans
