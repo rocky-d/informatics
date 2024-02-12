@@ -8,7 +8,7 @@ class Solution:
         ans = []
         dque_dec = deque((0,), maxlen = k)
 
-        def append(index):
+        def dque_dec_append(index):
             if 0 < len(dque_dec):
                 if nums[dque_dec[0]] < nums[index]:
                     dque_dec.clear()
@@ -18,11 +18,11 @@ class Solution:
             dque_dec.append(index)
 
         for i in range(1, k - 1):
-            append(index = i)
+            dque_dec_append(index = i)
         for i in range(k - 1, len(nums)):
             if dque_dec[0] < i - k + 1:
                 dque_dec.popleft()
-            append(index = i)
+            dque_dec_append(index = i)
             ans.append(nums[dque_dec[0]])
         return ans
 
