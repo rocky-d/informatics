@@ -3,11 +3,9 @@ from rockyutil.leetcode import *
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        if 1 == k:
-            return nums
         ans = []
         dque_dec = deque((0,), maxlen = k)
-        for i in range(1, k - 1):
+        for i in range(1, k):
             if 0 < len(dque_dec):
                 if nums[dque_dec[0]] <= nums[i]:
                     dque_dec.clear()
@@ -15,7 +13,8 @@ class Solution:
                     while nums[dque_dec[-1]] <= nums[i]:
                         dque_dec.pop()
             dque_dec.append(i)
-        for i in range(k - 1, len(nums)):
+        ans.append(nums[dque_dec[0]])
+        for i in range(k, len(nums)):
             if dque_dec[0] <= i - k:
                 dque_dec.popleft()
             if 0 < len(dque_dec):
