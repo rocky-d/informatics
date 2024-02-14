@@ -7,10 +7,15 @@ class UnionFindList(object):
         self._groups = {x: 1 for x in self._heads}
 
     def find(self, a) -> int:
-        if a == self._heads[a]:
-            return a
-        self._heads[a] = self.find(self._heads[a])
-        return self._heads[a]
+        a_ = a
+        cnt = 0
+        while a != self._heads[a]:
+            cnt += 1
+            a = self._heads[a]
+        for _ in range(cnt):
+            self._heads[a_] = a
+            a_ = self._heads[a_]
+        return a
 
     def union(self, a, b) -> None:
         a_head, b_head = self.find(a), self.find(b)
