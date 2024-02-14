@@ -30,18 +30,18 @@ class UnionFindList(object):
 
 def main() -> None:
     n, m = map(int, input().split())
-    z, x, y = deque(), deque(), deque()
+    z, x, y = [], [], []
     for _ in range(m):
         zi, xi, yi = input().split()
         z.append(zi), x.append(int(xi)), y.append(int(yi))
 
     ans = deque()
     ufl = UnionFindList(n + 1)
-    for zi, xi, yi in zip(z, x, y):
-        if '1' == zi:
-            ufl.union(xi, yi)
-        else:  # elif '2' == zi:
-            ans.append('Y' if ufl.find(xi) == ufl.find(yi) else 'N')
+    for i in range(m):
+        if '1' == z[i]:
+            ufl.union(x[i], y[i])
+        else:  # elif '2' == z[i]:
+            ans.append('Y' if ufl.find(x[i]) == ufl.find(y[i]) else 'N')
     print(*ans, sep = '\n')
 
 
