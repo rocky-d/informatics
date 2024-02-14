@@ -4,32 +4,24 @@ from rockyutil.leetcode import *
 class Solution:
     def countMatchingSubarrays(self, nums: List[int], pattern: List[int]) -> int:
         ans = 0
-        target = tuple(1 if a < b else 0 if a == b else -1 for a, b in pairwise(nums))
-        m, n = len(target), len(pattern)
+        m = len(pattern)
         nxts = [0]
-        lft, rit = 0, 1
-        while rit < n:
-            if pattern[lft] == pattern[rit]:
+        lft = 0
+        for rit in range(1, m):
+            patt_rit = pattern[rit]
+            while pattern[lft] != patt_rit and 0 < lft:
+                lft = nxts[lft - 1]
+            if pattern[lft] == patt_rit:
                 lft += 1
-                rit += 1
-                nxts.append(lft)
-            else:
-                if 0 < lft:
-                    lft = nxts[lft - 1]
-                else:
-                    rit += 1
-                    nxts.append(0)
-        i, j = 0, 0
-        while i < m:
-            if target[i] == pattern[j]:
-                i += 1
+            nxts.append(lft)
+        j = 0
+        for a, b in pairwise(nums):
+            val = 1 if a < b else 0 if a == b else -1
+            while val != pattern[j] and 0 < j:
+                j = nxts[j - 1]
+            if val == pattern[j]:
                 j += 1
-                if j == n:
+                if j == m:
                     ans += 1
                     j = nxts[-1]
-            else:
-                if 0 < j:
-                    j = nxts[j - 1]
-                else:
-                    i += 1
         return ans
