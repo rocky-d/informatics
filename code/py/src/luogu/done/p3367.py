@@ -36,7 +36,7 @@ def main() -> None:
         z.append(zi), x.append(int(xi)), y.append(int(yi))
 
     ans = deque()
-    ufl = UnionFindList(n + 1)
+    ufl = UnionFindList(1 + n)
     for i in range(m):
         if '1' == z[i]:
             ufl.union(x[i], y[i])
