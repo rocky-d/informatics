@@ -4,9 +4,8 @@ from rockyutil.leetcode import *
 class Solution:
     def maxEnvelopes(self, envelopes: List[List[int]]) -> int:
         envelopes.sort(key = lambda envelope: (envelope[0], -envelope[1]))
-        dp = [envelopes[0][1]]
-        for i in range(1, len(envelopes)):
-            ht = envelopes[i][1]
+        dp = [envelopes.pop(0)[1]]
+        for _, ht in envelopes:
             if dp[-1] < ht:
                 dp.append(ht)
             else:
