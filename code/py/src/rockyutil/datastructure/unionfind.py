@@ -4,6 +4,7 @@ class _UnionFind(object):
         self._heads = __heads
         self._generic = generic
         if grouped:
+            # self._groups = {x: 1 for x in self._heads}
             self._groups = {x: [x] for x in self._heads}
         else:
             self._groups = None
