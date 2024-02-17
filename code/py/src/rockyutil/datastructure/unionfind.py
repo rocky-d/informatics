@@ -48,13 +48,14 @@ class _UnionFind(object):
     def _union_comp(self, a, b):
         a_head, b_head = self._find_comp(a), self._find_comp(b)
         if a_head != b_head:
-            if len(self._groups[a_head]) < len(self._groups[b_head]):
+            if self._groups is None:
                 self._heads[a] = self._heads[a_head] = b_head
-                if self._groups is not None:
-                    self._groups[b_head] += self._groups.pop(a_head)
             else:
-                self._heads[b] = self._heads[b_head] = a_head
-                if self._groups is not None:
+                if len(self._groups[a_head]) < len(self._groups[b_head]):
+                    self._heads[a] = self._heads[a_head] = b_head
+                    self._groups[b_head] += self._groups.pop(a_head)
+                else:
+                    self._heads[b] = self._heads[b_head] = a_head
                     self._groups[a_head] += self._groups.pop(b_head)
 
     def _find_rank_recu(self, a):
