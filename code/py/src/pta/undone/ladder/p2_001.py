@@ -40,13 +40,13 @@ def main() -> None:
                     if nb not in seen:
                         seen.add(nb)
                         heappush(heap_min, (table[nb][0], -table[nb][1], table[nb][2], nb))
-    route = deque(maxlen = n)
+    ans_path = deque(maxlen = n)
     city = d
     while city is not None:
-        route.appendleft(city)
+        ans_path.appendleft(city)
         city = table[city][2]
     print(table[d][3], table[d][1])
-    print(*route)
+    print(*ans_path)
 
 
 if __name__ == '__main__':
