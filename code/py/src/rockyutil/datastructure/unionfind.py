@@ -86,7 +86,7 @@ class _UnionFind(object):
                         self._ranks.pop(b_head)
 
 
-class UnionFindList(_UnionFind):  # TODO
+class UnionFindList(_UnionFind):  # TODO: set properties
 
     def __init__(self, __size, *, grouped = False, recursive = False, compressed = True):
         super().__init__(
@@ -95,7 +95,7 @@ class UnionFindList(_UnionFind):  # TODO
         )
 
 
-class UnionFindDict(_UnionFind):  # TODO
+class UnionFindDict(_UnionFind):  # TODO: set properties
 
     def __init__(self, __iterable, *, grouped = False, recursive = False, compressed = True):
         super().__init__(
