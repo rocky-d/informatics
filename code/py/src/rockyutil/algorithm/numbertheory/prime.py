@@ -2,29 +2,11 @@ from math import isqrt
 
 
 def is_prime_plain(num):
-    if num < 2:
-        res = False
-    else:
-        for i in range(2, num):
-            if 0 == num % i:
-                res = False
-                break
-        else:
-            res = True
-    return res
+    return all(num % i for i in range(2, num))
 
 
 def is_prime_optimized(num):
-    if num < 2:
-        res = False
-    else:
-        for i in range(2, isqrt(num) + 1):
-            if 0 == num % i:
-                res = False
-                break
-        else:
-            res = True
-    return res
+    return all(num % i for i in range(2, isqrt(num) + 1))
 
 
 def primes_before_eratosthenes(n):
