@@ -3,13 +3,13 @@ from rockyutil.leetcode import *
 
 class Solution:
     def longestCommonPrefix(self, arr1: List[int], arr2: List[int]) -> int:
-        def prefixes_set(arr: List[int]) -> Set[int]:
-            prefixes = set()
+        def prefixes(arr: List[int]) -> Set[int]:
+            res = set()
             for num in arr:
                 while 0 < num:
-                    prefixes.add(num)
+                    res.add(num)
                     num //= 10
-            return prefixes
+            return res
 
-        prefixes = prefixes_set(arr = arr1) & prefixes_set(arr = arr2)
-        return 0 if 0 == len(prefixes) else len(str(max(prefixes)))
+        common_prefixes = prefixes(arr = arr1) & prefixes(arr = arr2)
+        return 0 if 0 == len(common_prefixes) else len(str(max(common_prefixes)))
