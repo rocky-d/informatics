@@ -2,7 +2,7 @@ from rockyutil.leetcode import *
 
 
 class CountIntervals:
-    def __init__(self):
+    def __init__(self) -> None:
         self._sorted_dict = sc.SortedDict()
         self._count = 0
 

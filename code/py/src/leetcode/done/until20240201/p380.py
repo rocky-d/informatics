@@ -2,7 +2,7 @@ from rockyutil.leetcode import *
 
 
 class RandomizedSet:
-    def __init__(self):
+    def __init__(self) -> None:
         self._list = list()
         self._dict = dict()
 

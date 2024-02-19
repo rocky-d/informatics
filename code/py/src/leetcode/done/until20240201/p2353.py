@@ -2,7 +2,7 @@ from rockyutil.leetcode import *
 
 
 class FoodRatings:
-    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):
+    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]) -> None:
         self.food_dict = dict()
         self.cuisine_dict = defaultdict(lambda: sc.SortedSet())
         for food, cuisine, rating in zip(foods, cuisines, ratings):
