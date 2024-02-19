@@ -6,34 +6,34 @@ class Trie:
 
     def __init__(self) -> None:
         self.cnt: int = 0
-        self.children: List[Optional[Trie]] = [None for _ in range(26)]
+        self.children: Dict[str, Trie] = {}
 
     def insert(self, word: str) -> None:
         node = self
-        for index in map(lambda char: ord(char) - ord('a'), word):
-            if node.children[index] is None:
-                node.children[index] = Trie()
-            node = node.children[index]
+        for char in word:
+            if char not in node.children:
+                node.children[char] = Trie()
+            node = node.children[char]
         node.cnt += 1
 
     def search(self, word: str) -> bool:
         node = self
-        for index in map(lambda char: ord(char) - ord('a'), word):
-            if node.children[index] is None:
+        for char in word:
+            if char not in node.children:
                 res = False
                 break
-            node = node.children[index]
+            node = node.children[char]
         else:
             res = 0 < node.cnt
         return res
 
     def startsWith(self, prefix: str) -> bool:
         node = self
-        for index in map(lambda char: ord(char) - ord('a'), prefix):
-            if node.children[index] is None:
+        for char in prefix:
+            if char not in node.children:
                 res = False
                 break
-            node = node.children[index]
+            node = node.children[char]
         else:
             res = True
         return res
