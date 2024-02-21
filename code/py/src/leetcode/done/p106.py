@@ -8,7 +8,7 @@ class Solution:
         def build(post_lft: int, post_rit: int, in_lft: int, in_rit: int) -> Optional[TreeNode]:
             if post_rit < post_lft or in_rit < in_lft:
                 return None
-            in_root = inorder_idxes[postorder[post_lft]]
+            in_root = inorder_idxes[postorder[post_rit]]
             return TreeNode(
                 val = inorder[in_root],
                 left = build(post_lft = post_lft, post_rit = post_rit - (in_rit - in_root) - 1, in_lft = in_lft, in_rit = in_root - 1),
