@@ -17,7 +17,7 @@ def main() -> None:
     for _ in range(n * m):
         dist, (x, y) = heappop(heap_min)
         while dist != dists[x][y]:
-            dist, (x, y) = heappushpop(heap_min, (dist, (x, y)))
+            dist, (x, y) = heappushpop(heap_min, (dists[x][y], (x, y)))
         for ofst_x, ofst_y in (0, 1), (1, 0), (0, -1), (-1, 0):
             nb_x, nb_y = x + ofst_x, y + ofst_y
             if 1 <= nb_x <= n and 1 <= nb_y <= m:
