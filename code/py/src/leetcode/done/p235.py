@@ -3,20 +3,12 @@ from rockyutil.leetcode import *
 
 class Solution:
     def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
-        def dfs(node: Optional[TreeNode]) -> Union[bool, TreeNode]:
-            if node is None:
-                return False
-            left, right = dfs(node = node.left), dfs(node = node.right)
-            if isinstance(left, TreeNode):
-                res = left
-            elif isinstance(right, TreeNode):
-                res = right
-            elif left and right:
-                res = node
-            elif left or right:
-                res = node if p.val == node.val or q.val == node.val else True
+        min_pq_val, max_pq_val = min(p.val, q.val), max(p.val, q.val)
+        while True:
+            if root.val < min_pq_val:
+                root = root.right
+            elif max_pq_val < root.val:
+                root = root.left
             else:
-                res = True if p.val == node.val or q.val == node.val else False
-            return res
-
-        return dfs(node = root)
+                break
+        return root
