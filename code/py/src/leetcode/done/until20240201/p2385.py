@@ -6,9 +6,9 @@ class Solution:
         ans = 0
 
         def dfs(node: Optional[TreeNode]) -> Tuple[Optional[int], Optional[int]]:
+            nonlocal ans
             if node is None:
                 return 0, None
-            nonlocal ans
             left, right = dfs(node = node.left), dfs(node = node.right)
             if left[1] is not None:
                 ans = max(ans, right[0] + left[1])
