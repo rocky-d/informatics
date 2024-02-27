@@ -61,4 +61,4 @@ eg_root = TreeNode(
     ),
 )
 eg_start = 3
-print(Solution().amountOfTime(root = eg_root, start = eg_start))
+print(Solution().amountOfTime(eg_root, eg_start))
