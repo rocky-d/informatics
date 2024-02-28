@@ -27,8 +27,7 @@ def main() -> None:
             right = build(pre_lft = pre_lft + (in_root - in_lft) + 1, pre_rit = pre_rit, in_lft = in_root + 1, in_rit = in_rit),
         )
 
-    root = build(pre_lft = 0, pre_rit = n - 1, in_lft = 0, in_rit = n - 1)
-    que = deque((root,))
+    que = deque((build(pre_lft = 0, pre_rit = n - 1, in_lft = 0, in_rit = n - 1),))
     while 0 < len(que):
         node = que.popleft()
         ans.append(node.val)
