@@ -3,8 +3,13 @@ from itertools import pairwise
 
 class _Prefs(object):
 
-    def __init__(self):
+    def __init__(self, __start):
+        self._start = __start
         self._prefs = None
+
+    @property
+    def start(self):
+        return self._start
 
     @property
     def prefs(self):
@@ -13,8 +18,13 @@ class _Prefs(object):
 
 class _Diffs(object):
 
-    def __init__(self):
+    def __init__(self, __start):
+        self._start = __start
         self._diffs = None
+
+    @property
+    def start(self):
+        return self._start
 
     @property
     def diffs(self):
@@ -24,8 +34,8 @@ class _Diffs(object):
 class Prefs1D(_Prefs):
 
     def __init__(self, tensor1, start = 0):
-        super().__init__()
-        self._prefs = [start]
+        super().__init__(start)
+        self._prefs = [self._start]
         for i, x in enumerate(tensor1, 1):
             self._prefs.append(x + self._prefs[i - 1])
 
@@ -33,8 +43,8 @@ class Prefs1D(_Prefs):
 class Diffs1D(_Diffs):
 
     def __init__(self, tensor1, start = 0):
-        super().__init__()
-        self._diffs = [tensor1[0] - start]
+        super().__init__(start)
+        self._diffs = [tensor1[0] - self._start]
         for lst, nxt in pairwise(tensor1):
             self._diffs.append(nxt - lst)
 
@@ -42,8 +52,8 @@ class Diffs1D(_Diffs):
 class Prefs2D(_Prefs):
 
     def __init__(self, tensor2, start = 0):
-        super().__init__()
-        self._prefs = [[start] + [start for _ in tensor2[0]]] + [[start] for _ in tensor2]
+        super().__init__(start)
+        self._prefs = [[self._start] + [self._start for _ in tensor2[0]]] + [[self._start] for _ in tensor2]
         for i, x1 in enumerate(tensor2, 1):
             for j, x in enumerate(x1, 1):
                 self._prefs[i].append(x - self._prefs[i - 1][j - 1] + self._prefs[i - 1][j] + self._prefs[i][j - 1])
@@ -52,8 +62,8 @@ class Prefs2D(_Prefs):
 class Diffs2D(_Diffs):
 
     def __init__(self, tensor2, start = 0):
-        super().__init__()
-        self._diffs = [[tensor2[0][0] - start]]
+        super().__init__(start)
+        self._diffs = [[tensor2[0][0] - self._start]]
         for lst, nxt in pairwise(tensor2[0]):
             self._diffs[0].append(nxt - lst)
         for lst1, nxt1 in pairwise(tensor2):
