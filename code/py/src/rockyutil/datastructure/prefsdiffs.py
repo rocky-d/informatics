@@ -76,8 +76,8 @@ if __name__ == '__main__':
     tensor1 = [1, 2, 3, 4, 5]
     print(Prefs1D(tensor1, 0).prefs)
     print(Diffs1D(tensor1, 0).diffs)
-    print(Diffs1D(Prefs1D(tensor1).prefs, 0).diffs, 0)
-    print(Prefs1D(Diffs1D(tensor1).diffs, 0).prefs, 0)
+    print(Diffs1D(Prefs1D(tensor1, 0).prefs, 0).diffs)
+    print(Prefs1D(Diffs1D(tensor1, 0).diffs, 0).prefs)
     print('------')
 
     tensor2 = [
