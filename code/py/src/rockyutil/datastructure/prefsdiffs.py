@@ -74,6 +74,7 @@ class Diffs2D(_Diffs):
 
 if __name__ == '__main__':
     tensor1 = [1, 2, 3, 4, 5]
+    print(tensor1)
     print(Prefs1D(tensor1, 0).prefs)
     print(Diffs1D(tensor1, 0).diffs)
     print(Diffs1D(Prefs1D(tensor1, 0).prefs, 0).diffs)
@@ -85,6 +86,7 @@ if __name__ == '__main__':
         [5, 5, 3],
         [8, 2, 4],
     ]
+    print(*tensor2, sep = '\n', end = '\n\n')
     print(*Prefs2D(tensor2, 0).prefs, sep = '\n', end = '\n\n')
     print(*Diffs2D(tensor2, 0).diffs, sep = '\n', end = '\n\n')
     print(*Diffs2D(Prefs2D(tensor2, 0).prefs, 0).diffs, sep = '\n', end = '\n\n')
