@@ -73,20 +73,20 @@ class Diffs2D(_Diffs):
 
 
 if __name__ == '__main__':
-    nums = [1, 2, 3, 4, 5]
-    print(Prefs1D(nums).prefs)
-    print(Diffs1D(nums).diffs)
-    print(Diffs1D(Prefs1D(nums).prefs).diffs)
-    print(Prefs1D(Diffs1D(nums).diffs).prefs)
+    tensor1 = [1, 2, 3, 4, 5]
+    print(Prefs1D(tensor1, 0).prefs)
+    print(Diffs1D(tensor1, 0).diffs)
+    print(Diffs1D(Prefs1D(tensor1).prefs, 0).diffs, 0)
+    print(Prefs1D(Diffs1D(tensor1).diffs, 0).prefs, 0)
     print('------')
 
-    matrix = [
+    tensor2 = [
         [1, 2, 3],
         [5, 5, 3],
         [8, 2, 4],
     ]
-    print(*Prefs2D(matrix).prefs, sep = '\n', end = '\n\n')
-    print(*Diffs2D(matrix).diffs, sep = '\n', end = '\n\n')
-    print(*Diffs2D(Prefs2D(matrix).prefs).diffs, sep = '\n', end = '\n\n')
-    print(*Prefs2D(Diffs2D(matrix).diffs).prefs, sep = '\n', end = '\n\n')
+    print(*Prefs2D(tensor2, 0).prefs, sep = '\n', end = '\n\n')
+    print(*Diffs2D(tensor2, 0).diffs, sep = '\n', end = '\n\n')
+    print(*Diffs2D(Prefs2D(tensor2, 0).prefs, 0).diffs, sep = '\n', end = '\n\n')
+    print(*Prefs2D(Diffs2D(tensor2, 0).diffs, 0).prefs, sep = '\n', end = '\n\n')
     print('------')
