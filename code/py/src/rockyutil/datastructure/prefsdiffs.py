@@ -1,30 +1,32 @@
 from itertools import pairwise
 
 
-class _Prefs(object):
+class _PrefsDiffs(object):
 
     def __init__(self, __start):
         self._start = __start
-        self._prefs = None
 
     @property
     def start(self):
         return self._start
+
+
+class _Prefs(_PrefsDiffs):
+
+    def __init__(self, __start):
+        super().__init__(__start)
+        self._prefs = None
 
     @property
     def prefs(self):
         return self._prefs
 
 
-class _Diffs(object):
+class _Diffs(_PrefsDiffs):
 
     def __init__(self, __start):
-        self._start = __start
+        super().__init__(__start)
         self._diffs = None
-
-    @property
-    def start(self):
-        return self._start
 
     @property
     def diffs(self):
