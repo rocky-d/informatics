@@ -1,14 +1,14 @@
 from itertools import pairwise
 
 
-class _Pres(object):
+class _Prefs(object):
 
     def __init__(self):
-        self._pres = None
+        self._prefs = None
 
     @property
-    def pres(self):
-        return self._pres
+    def prefs(self):
+        return self._prefs
 
 
 class _Diffs(object):
@@ -21,13 +21,13 @@ class _Diffs(object):
         return self._diffs
 
 
-class Pres1D(_Pres):
+class Prefs1D(_Prefs):
 
     def __init__(self, tensor, start = 0):
         super().__init__()
-        self._pres = [start]
+        self._prefs = [start]
         for i, x in enumerate(tensor, 1):
-            self._pres.append(x + self._pres[i - 1])
+            self._prefs.append(x + self._prefs[i - 1])
 
 
 class Diffs1D(_Diffs):
@@ -39,14 +39,14 @@ class Diffs1D(_Diffs):
             self._diffs.append(nxt - lst)
 
 
-class Pres2D(_Pres):
+class Prefs2D(_Prefs):
 
     def __init__(self, tensor, start = 0):
         super().__init__()
-        self._pres = [[start] + [start for _ in tensor[0]]] + [[start] for _ in tensor]
+        self._prefs = [[start] + [start for _ in tensor[0]]] + [[start] for _ in tensor]
         for i, x1 in enumerate(tensor, 1):
             for j, x in enumerate(x1, 1):
-                self._pres[i].append(x - self._pres[i - 1][j - 1] + self._pres[i - 1][j] + self._pres[i][j - 1])
+                self._prefs[i].append(x - self._prefs[i - 1][j - 1] + self._prefs[i - 1][j] + self._prefs[i][j - 1])
 
 
 class Diffs2D(_Diffs):
@@ -64,10 +64,10 @@ class Diffs2D(_Diffs):
 
 if __name__ == '__main__':
     nums = [1, 2, 3, 4, 5]
-    print(Pres1D(nums).pres)
+    print(Prefs1D(nums).prefs)
     print(Diffs1D(nums).diffs)
-    print(Diffs1D(Pres1D(nums).pres).diffs)
-    print(Pres1D(Diffs1D(nums).diffs).pres)
+    print(Diffs1D(Prefs1D(nums).prefs).diffs)
+    print(Prefs1D(Diffs1D(nums).diffs).prefs)
     print('======')
 
     matrix = [
@@ -75,8 +75,8 @@ if __name__ == '__main__':
         [5, 5, 3],
         [8, 2, 4],
     ]
-    print(*Pres2D(matrix).pres, sep = '\n', end = '\n\n')
+    print(*Prefs2D(matrix).prefs, sep = '\n', end = '\n\n')
     print(*Diffs2D(matrix).diffs, sep = '\n', end = '\n\n')
-    print(*Diffs2D(Pres2D(matrix).pres).diffs, sep = '\n', end = '\n\n')
-    print(*Pres2D(Diffs2D(matrix).diffs).pres, sep = '\n', end = '\n\n')
+    print(*Diffs2D(Prefs2D(matrix).prefs).diffs, sep = '\n', end = '\n\n')
+    print(*Prefs2D(Diffs2D(matrix).diffs).prefs, sep = '\n', end = '\n\n')
     print('======')
