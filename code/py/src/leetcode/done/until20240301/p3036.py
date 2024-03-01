@@ -15,8 +15,8 @@ class Solution:
                 lft += 1
             nxts.append(lft)
         j = 0
-        for a, b in pairwise(nums):
-            val = 1 if a < b else 0 if a == b else -1
+        for lst, nxt in pairwise(nums):
+            val = 1 if lst < nxt else 0 if lst == nxt else -1
             while val != pattern[j] and 0 < j:
                 j = nxts[j - 1]
             if val == pattern[j]:

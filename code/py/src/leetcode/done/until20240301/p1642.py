@@ -4,8 +4,8 @@ from rockyutil.leetcode import *
 class Solution:
     def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
         heap_min = []
-        for i, (a, b) in enumerate(pairwise(heights)):
-            diff = b - a
+        for i, (lst, nxt) in enumerate(pairwise(heights)):
+            diff = nxt - lst
             if 0 < diff:
                 heappush(heap_min, diff)
                 if ladders < len(heap_min):
