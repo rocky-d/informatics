@@ -1,9 +1,9 @@
-def kmp(target: str, pattern: str) -> int:
-    m, n = len(target), len(pattern)
+def kmp(s: str, patt: str) -> int:
+    m, n = len(s), len(patt)
     nxts = [0]
     lft, rit = 0, 1
     while rit < n:
-        if pattern[lft] == pattern[rit]:
+        if patt[lft] == patt[rit]:
             lft += 1
             rit += 1
             nxts.append(lft)
@@ -15,7 +15,7 @@ def kmp(target: str, pattern: str) -> int:
                 nxts.append(0)
     i, j = 0, 0
     while i < m:
-        if target[i] == pattern[j]:
+        if s[i] == patt[j]:
             i += 1
             j += 1
             if j == n:
