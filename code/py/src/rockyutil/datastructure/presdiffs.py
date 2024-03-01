@@ -63,10 +63,12 @@ class Diffs2D(_Diffs):
 
 
 if __name__ == '__main__':
-    nums = [1, 2, 5, 1]
+    nums = [1, 2, 3, 4, 5]
     print(Pres1D(nums).pres)
     print(Diffs1D(nums).diffs)
-    print()
+    print(Diffs1D(Pres1D(nums).pres).diffs)
+    print(Pres1D(Diffs1D(nums).diffs).pres)
+    print('======')
 
     matrix = [
         [1, 2, 3],
@@ -77,4 +79,4 @@ if __name__ == '__main__':
     print(*Diffs2D(matrix).diffs, sep = '\n', end = '\n\n')
     print(*Diffs2D(Pres2D(matrix).pres).diffs, sep = '\n', end = '\n\n')
     print(*Pres2D(Diffs2D(matrix).diffs).pres, sep = '\n', end = '\n\n')
-    print()
+    print('======')
