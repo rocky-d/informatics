@@ -78,11 +78,3 @@ if __name__ == '__main__':
     print(*Diffs2D(Pres2D(matrix).pres).diffs, sep = '\n', end = '\n\n')
     print(*Pres2D(Diffs2D(matrix).diffs).pres, sep = '\n', end = '\n\n')
     print()
-
-    # matrix = [
-    #     [100, 200, 300],
-    #     [200, 301, 403],
-    #     [300, 405, 512],
-    # ]
-    # print(*Diffs2D(matrix, 100).diffs, sep = '\n', end = '\n\n')
-    # print()
