@@ -1,3 +1,6 @@
+from itertools import pairwise
+
+
 class _Pres(object):
 
     def __init__(self):
@@ -20,47 +23,43 @@ class _Diffs(object):
 
 class Pres1D(_Pres):
 
-    def __init__(self, __iterable, start = 0):
+    def __init__(self, tensor, start = 0):
         super().__init__()
         self._pres = [start]
-        for i, x in enumerate(__iterable, 1):
+        for i, x in enumerate(tensor, 1):
             self._pres.append(x + self._pres[i - 1])
 
 
 class Diffs1D(_Diffs):
 
-    def __init__(self, __iterable, start = 0):
+    def __init__(self, tensor, start = 0):
         super().__init__()
-        self._diffs = []
-        lst_x = start
-        for x in __iterable:
-            self._diffs.append(x - lst_x)
-            lst_x = x
+        self._diffs = [tensor[0] - start]
+        for lst, nxt in pairwise(tensor):
+            self._diffs.append(nxt - lst)
 
 
 class Pres2D(_Pres):
 
-    def __init__(self, __iterable, start = 0):
+    def __init__(self, tensor, start = 0):
         super().__init__()
-        self._pres = [[start] + [start for _ in __iterable[0]]] + [[start] for _ in __iterable]
-        for i, row in enumerate(__iterable, 1):
+        self._pres = [[start] + [start for _ in tensor[0]]] + [[start] for _ in tensor]
+        for i, row in enumerate(tensor, 1):
             for j, x in enumerate(row, 1):
                 self._pres[i].append(x - self._pres[i - 1][j - 1] + self._pres[i - 1][j] + self._pres[i][j - 1])
 
 
 class Diffs2D(_Diffs):
 
-    def __init__(self, __iterable, start = 0):
+    def __init__(self, tensor, start = 0):
         super().__init__()
-        self._diffs = []
-        lst_row = [start] + [start for _ in __iterable]
-        for row in __iterable:
-            self._diffs.append([])
-            lst_x = start
-            for x in row:
-                self._diffs[-1].append(x + lst_row.pop(0) - lst_row[0] - lst_x)
-                lst_x = x
-            lst_row = [start] + [x for x in row]
+        self._diffs = [[tensor[0][0] - start]]
+        for lst, nxt in pairwise(tensor[0]):
+            self._diffs[0].append(nxt - lst)
+        for lst1, nxt1 in pairwise(tensor):
+            self._diffs.append([nxt1[0] - lst1[0]])
+            for (lst_lst, lst_nxt), (nxt_lst, nxt_nxt) in zip(pairwise(lst1), pairwise(nxt1)):
+                self._diffs[-1].append(nxt_nxt + lst_lst - lst_nxt - nxt_lst)
 
 
 if __name__ == '__main__':
@@ -79,3 +78,11 @@ if __name__ == '__main__':
     print(*Diffs2D(Pres2D(matrix).pres).diffs, sep = '\n', end = '\n\n')
     print(*Pres2D(Diffs2D(matrix).diffs).pres, sep = '\n', end = '\n\n')
     print()
+
+    # matrix = [
+    #     [100, 200, 300],
+    #     [200, 301, 403],
+    #     [300, 405, 512],
+    # ]
+    # print(*Diffs2D(matrix, 100).diffs, sep = '\n', end = '\n\n')
+    # print()
