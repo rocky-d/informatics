@@ -68,7 +68,7 @@ if __name__ == '__main__':
     print(Diffs1D(nums).diffs)
     print(Diffs1D(Prefs1D(nums).prefs).diffs)
     print(Prefs1D(Diffs1D(nums).diffs).prefs)
-    print('======')
+    print('------')
 
     matrix = [
         [1, 2, 3],
@@ -79,4 +79,4 @@ if __name__ == '__main__':
     print(*Diffs2D(matrix).diffs, sep = '\n', end = '\n\n')
     print(*Diffs2D(Prefs2D(matrix).prefs).diffs, sep = '\n', end = '\n\n')
     print(*Prefs2D(Diffs2D(matrix).diffs).prefs, sep = '\n', end = '\n\n')
-    print('======')
+    print('------')
