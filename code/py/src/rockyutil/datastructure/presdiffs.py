@@ -44,8 +44,8 @@ class Pres2D(_Pres):
     def __init__(self, tensor, start = 0):
         super().__init__()
         self._pres = [[start] + [start for _ in tensor[0]]] + [[start] for _ in tensor]
-        for i, row in enumerate(tensor, 1):
-            for j, x in enumerate(row, 1):
+        for i, x1 in enumerate(tensor, 1):
+            for j, x in enumerate(x1, 1):
                 self._pres[i].append(x - self._pres[i - 1][j - 1] + self._pres[i - 1][j] + self._pres[i][j - 1])
 
 
