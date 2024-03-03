@@ -1,22 +1,25 @@
+from rockyutil.leetcode import *
+
+
 class MyQueue:
     def __init__(self) -> None:
-        self.stack1 = []
-        self.stack2 = []
+        self.stk1 = deque()
+        self.stk2 = deque()
 
     def push(self, x: int) -> None:
-        self.stack1.append(x)
+        self.stk1.append(x)
 
     def pop(self) -> int:
-        if 0 == len(self.stack2):
-            for _ in range(len(self.stack1)):
-                self.stack2.append(self.stack1.pop(-1))
-        return self.stack2.pop(-1)
+        if 0 == len(self.stk2):
+            for _ in range(len(self.stk1)):
+                self.stk2.append(self.stk1.pop())
+        return self.stk2.pop()
 
     def peek(self) -> int:
-        if 0 == len(self.stack2):
-            for _ in range(len(self.stack1)):
-                self.stack2.append(self.stack1.pop(-1))
-        return self.stack2[-1]
+        if 0 == len(self.stk2):
+            for _ in range(len(self.stk1)):
+                self.stk2.append(self.stk1.pop())
+        return self.stk2[-1]
 
     def empty(self) -> bool:
-        return 0 == len(self.stack1) and 0 == len(self.stack2)
+        return 0 == len(self.stk1) == len(self.stk2)
