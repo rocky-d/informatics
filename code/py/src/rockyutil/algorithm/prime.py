@@ -38,7 +38,7 @@ def primes_before_euler(n):
 if __name__ == '__main__':
     from timeit import timeit
 
-    eg_n, repeats = int(1e7), int(1e1)
+    eg_n, repeats = 10 ** 7, 10 ** 1
     which = 3
     match which:
         case 1:
