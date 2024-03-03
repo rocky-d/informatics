@@ -14,4 +14,4 @@ def primefactors(num):
 
 
 if __name__ == '__main__':
-    print(*primefactors(10 ** 12), sep = '\n')
+    print(*primefactors(49), sep = '\n')
