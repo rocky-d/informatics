@@ -21,6 +21,9 @@ class _Prefs(_PrefsDiffs):
     def prefs(self):
         return self._prefs
 
+    def sum(self, *args, **kwargs):
+        pass
+
 
 class _Diffs(_PrefsDiffs):
 
@@ -31,6 +34,9 @@ class _Diffs(_PrefsDiffs):
     @property
     def diffs(self):
         return self._diffs
+
+    def add(self, *args, **kwargs):
+        pass
 
 
 class Prefs1D(_Prefs):
