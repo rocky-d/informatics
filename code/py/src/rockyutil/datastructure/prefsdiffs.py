@@ -47,9 +47,9 @@ class Prefs1D(_Prefs):
         for i, x in enumerate(tensor1d, 1):
             self._prefs.append(x + self._prefs[i - 1])
 
-    def sum(self, __fr, __to):
-        __to = __to + 1
-        return self._prefs[__to] - self._prefs[__fr]
+    def sum(self, fr, to):
+        to = to + 1
+        return self._prefs[to] - self._prefs[fr]
 
 
 class Diffs1D(_Diffs):
@@ -60,11 +60,11 @@ class Diffs1D(_Diffs):
         for lst, nxt in pairwise(tensor1d):
             self._diffs.append(nxt - lst)
 
-    def add(self, __fr, __to, __val):
-        self._diffs[__fr] += __val
-        __to = __to + 1
-        if __to != len(self._diffs):
-            self._diffs[__to] -= __val
+    def add(self, fr, to, val):
+        self._diffs[fr] += val
+        to = to + 1
+        if to != len(self._diffs):
+            self._diffs[to] -= val
 
 
 class Prefs2D(_Prefs):
@@ -76,9 +76,9 @@ class Prefs2D(_Prefs):
             for j, x in enumerate(x1d, 1):
                 self._prefs[i].append(x - self._prefs[i - 1][j - 1] + self._prefs[i - 1][j] + self._prefs[i][j - 1])
 
-    def sum(self, __fr, __to):
-        __to = __to[0] + 1, __to[1] + 1
-        return self._prefs[__to[0]][__to[1]] + self._prefs[__fr[0]][__fr[1]] - self._prefs[__fr[0]][__to[1]] - self._prefs[__to[0]][__fr[1]]
+    def sum(self, fr, to):
+        to = to[0] + 1, to[1] + 1
+        return self._prefs[to[0]][to[1]] + self._prefs[fr[0]][fr[1]] - self._prefs[fr[0]][to[1]] - self._prefs[to[0]][fr[1]]
 
 
 class Diffs2D(_Diffs):
@@ -93,15 +93,15 @@ class Diffs2D(_Diffs):
             for (lst_lst, lst_nxt), (nxt_lst, nxt_nxt) in zip(pairwise(lst1d), pairwise(nxt1d)):
                 self._diffs[-1].append(nxt_nxt + lst_lst - lst_nxt - nxt_lst)
 
-    def add(self, __fr, __to, __val):
-        self._diffs[__fr[0]][__fr[1]] += __val
-        __to = __to[0] + 1, __to[1] + 1
-        if __to[0] != len(self._diffs) and __to[1] != len(self._diffs[0]):
-            self._diffs[__to[0]][__to[1]] += __val
-        if __to[0] != len(self._diffs):
-            self._diffs[__to[0]][__fr[1]] -= __val
-        if __to[1] != len(self._diffs):
-            self._diffs[__fr[0]][__to[1]] -= __val
+    def add(self, fr, to, val):
+        self._diffs[fr[0]][fr[1]] += val
+        to = to[0] + 1, to[1] + 1
+        if to[0] != len(self._diffs) and to[1] != len(self._diffs[0]):
+            self._diffs[to[0]][to[1]] += val
+        if to[0] != len(self._diffs):
+            self._diffs[to[0]][fr[1]] -= val
+        if to[1] != len(self._diffs):
+            self._diffs[fr[0]][to[1]] -= val
 
 
 if __name__ == '__main__':
