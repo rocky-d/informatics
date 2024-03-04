@@ -41,6 +41,10 @@ class Prefs1D(_Prefs):
         for i, x in enumerate(tensor1d, 1):
             self._prefs.append(x + self._prefs[i - 1])
 
+    def sum(self, __from, __to):
+        __to = __to + 1
+        return self._prefs[__to] - self._prefs[__from]
+
 
 class Diffs1D(_Diffs):
 
@@ -59,6 +63,10 @@ class Prefs2D(_Prefs):
         for i, x1d in enumerate(tensor2d, 1):
             for j, x in enumerate(x1d, 1):
                 self._prefs[i].append(x - self._prefs[i - 1][j - 1] + self._prefs[i - 1][j] + self._prefs[i][j - 1])
+
+    def sum(self, __from, __to):
+        __to = __to[0] + 1, __to[1] + 1
+        return self._prefs[__to[0]][__to[1]] + self._prefs[__from[0]][__from[1]] - self._prefs[__from[0]][__to[1]] - self._prefs[__to[0]][__from[1]]
 
 
 class Diffs2D(_Diffs):
