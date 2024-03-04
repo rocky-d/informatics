@@ -54,6 +54,12 @@ class Diffs1D(_Diffs):
         for lst, nxt in pairwise(tensor1d):
             self._diffs.append(nxt - lst)
 
+    def add(self, __fr, __to, __val):
+        self._diffs[__fr] += __val
+        __to = __to + 1
+        if __to != len(self._diffs):
+            self._diffs[__to] -= __val
+
 
 class Prefs2D(_Prefs):
 
@@ -81,6 +87,16 @@ class Diffs2D(_Diffs):
             for (lst_lst, lst_nxt), (nxt_lst, nxt_nxt) in zip(pairwise(lst1d), pairwise(nxt1d)):
                 self._diffs[-1].append(nxt_nxt + lst_lst - lst_nxt - nxt_lst)
 
+    def add(self, __fr, __to, __val):
+        self._diffs[__fr[0]][__fr[1]] += __val
+        __to = __to[0] + 1, __to[1] + 1
+        if __to[0] != len(self._diffs) and __to[1] != len(self._diffs[0]):
+            self._diffs[__to[0]][__to[1]] += __val
+        if __to[0] != len(self._diffs):
+            self._diffs[__to[0]][__fr[1]] -= __val
+        if __to[1] != len(self._diffs):
+            self._diffs[__fr[0]][__to[1]] -= __val
+
 
 if __name__ == '__main__':
     tensor_1d = [1, 2, 3, 4, 5]
@@ -102,3 +118,7 @@ if __name__ == '__main__':
     print(*Diffs2D(Prefs2D(tensor_2d, 0).prefs, 0).diffs, sep = '\n', end = '\n\n')
     print(*Prefs2D(Diffs2D(tensor_2d, 0).diffs, 0).prefs, sep = '\n', end = '\n\n')
     print('------')
+
+    tensor_2d_diff = Diffs2D(tensor_2d)
+    tensor_2d_diff.add((0, 1), (2, 2), 100)
+    print(*Prefs2D(tensor_2d_diff.diffs).prefs, sep = '\n', end = '\n\n')
