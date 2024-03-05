@@ -10,8 +10,9 @@ class Solution:
                 prefs[i].append(val - prefs[i - 1][j - 1] + prefs[i - 1][j] + prefs[i][j - 1])
         diffs = [[0 for _ in range(n)] for _ in range(m)]
         for x1 in range(m - stampHeight + 1):
+            x2 = x1 + stampHeight
             for y1 in range(n - stampWidth + 1):
-                x2, y2 = x1 + stampHeight, y1 + stampWidth
+                y2 = y1 + stampWidth
                 if 0 == prefs[x2][y2] + prefs[x1][y1] - prefs[x1][y2] - prefs[x2][y1]:
                     diffs[x1][y1] += 1
                     if x2 < m and y2 < n:
