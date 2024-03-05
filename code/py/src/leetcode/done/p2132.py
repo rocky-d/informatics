@@ -14,11 +14,11 @@ class Solution:
                 x2, y2 = x1 + stampHeight, y1 + stampWidth
                 if 0 == prefs[x2][y2] + prefs[x1][y1] - prefs[x1][y2] - prefs[x2][y1]:
                     diffs[x1][y1] += 1
-                    if x2 != len(diffs) and y2 != len(diffs[0]):
+                    if x2 != m and y2 != n:
                         diffs[x2][y2] += 1
-                    if x2 != len(diffs):
+                    if x2 != m:
                         diffs[x2][y1] -= 1
-                    if y2 != len(diffs[0]):
+                    if y2 != n:
                         diffs[x1][y2] -= 1
         cover = [[0] + [0 for _ in range(n)]] + [[0] for _ in range(m)]
         for i, row in enumerate(diffs, 1):
