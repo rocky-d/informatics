@@ -9,7 +9,6 @@ def main() -> None:
     ans = deque(maxlen = n)
     stk = deque()
     heap1, heap2 = [0], [100_001]
-    cnt = -1
 
     def _adjust() -> None:
         while len(heap2) < len(heap1):
@@ -40,15 +39,13 @@ def main() -> None:
     for operation in operations:
         if operation.startswith('Pu'):
             push(int(operation.split()[1]))
-            cnt += 1
         elif operation.startswith('Po'):
-            if -1 == cnt:
+            if 0 == len(stk):
                 ans.append('Invalid')
             else:
                 ans.append(pop())
-                cnt -= 1
         else:  # elif operations.startswith('Pe'):
-            if -1 == cnt:
+            if 0 == len(stk):
                 ans.append('Invalid')
             else:
                 ans.append(peek_median())
