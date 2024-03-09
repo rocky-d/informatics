@@ -7,16 +7,16 @@ def main() -> None:
     operations = [input() for _ in range(n)]
 
     ans = deque(maxlen = n)
-    stack = deque()
+    stk = deque()
     heap = []
     cnt = -1
 
     def push(num: int) -> None:
-        stack.append(num)
+        stk.append(num)
         insort_right(heap, num)
 
     def pop() -> int:
-        res = stack.pop()
+        res = stk.pop()
         heap.pop(bisect_left(heap, res))
         return res
 
