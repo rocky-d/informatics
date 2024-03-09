@@ -1,7 +1,8 @@
 def main() -> None:
     n = int(input())
+    h = [input().split(maxsplit = 1)[1].split() for _ in range(n)]
+
     heads, groups = {}, {}
-    hobbies = {}
 
     def find(a: int) -> int:
         if a == heads[a]:
@@ -19,14 +20,14 @@ def main() -> None:
                 heads[b] = heads[b_head] = a_head
                 groups[a_head] += groups.pop(b_head)
 
-    for person in range(1, 1 + n):
-        heads[person] = person
-        groups[person] = 1
-        for h in input().split(maxsplit = 1)[1].split():
-            if h in hobbies:
-                union(person, hobbies[h])
+    hobbies = {}
+    for person, hi in enumerate(h, 1):
+        heads[person], groups[person] = person, 1
+        for hobby in hi:
+            if hobby in hobbies:
+                union(a = person, b = hobbies[hobby])
             else:
-                hobbies[h] = person
+                hobbies[hobby] = person
     print(len(groups))
     print(*sorted(groups.values(), reverse = True), sep = ' ')
 
