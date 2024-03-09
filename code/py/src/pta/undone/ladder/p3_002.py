@@ -8,20 +8,34 @@ def main() -> None:
 
     ans = deque(maxlen = n)
     stk = deque()
-    heap = []
+    heap1, heap2 = [0], [100_001]
     cnt = -1
+
+    def _adjust() -> None:
+        while len(heap2) < len(heap1):
+            heap2.insert(0, heap1.pop(-1))
+        while len(heap1) < len(heap2):
+            heap1.append(heap2.pop(0))
 
     def push(num: int) -> None:
         stk.append(num)
-        insort_right(heap, num)
+        if num < heap2[0]:
+            insort_right(heap1, num)
+        else:
+            insort_right(heap2, num)
+        _adjust()
 
     def pop() -> int:
         res = stk.pop()
-        heap.pop(bisect_left(heap, res))
+        if res < heap2[0]:
+            del heap1[bisect_left(heap1, res)]
+        else:
+            del heap2[bisect_left(heap2, res)]
+        _adjust()
         return res
 
     def peek_median() -> int:
-        return heap[cnt // 2]
+        return heap1[-1]
 
     for operation in operations:
         if operation.startswith('Pu'):
