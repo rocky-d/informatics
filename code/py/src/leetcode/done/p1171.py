@@ -4,8 +4,7 @@ from rockyutil.leetcode import *
 class Solution:
     def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode(val = 0, next = head)
-        jump = {}
-        pref = 0
+        pref, jump = 0, {}
         node = dummy
         while node is not None:
             pref += node.val
