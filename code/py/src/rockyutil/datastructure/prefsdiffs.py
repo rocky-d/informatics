@@ -41,7 +41,7 @@ class _Diffs(_PrefsDiffs):
 
 class Prefs1D(_Prefs):
 
-    def __init__(self, __tensor1d, *, start = 0):
+    def __init__(self, __tensor1d, start = 0):
         super().__init__(start)
         self._prefs = [self._start]
         for i, x in enumerate(__tensor1d, 1):
@@ -54,7 +54,7 @@ class Prefs1D(_Prefs):
 
 class Diffs1D(_Diffs):
 
-    def __init__(self, __tensor1d, *, start = 0):
+    def __init__(self, __tensor1d, start = 0):
         super().__init__(start)
         self._diffs = [__tensor1d[0] - self._start]
         for lst, nxt in pairwise(__tensor1d):
@@ -69,7 +69,7 @@ class Diffs1D(_Diffs):
 
 class Prefs2D(_Prefs):
 
-    def __init__(self, __tensor2d, *, start = 0):
+    def __init__(self, __tensor2d, start = 0):
         super().__init__(start)
         self._prefs = [[self._start] + [self._start for _ in __tensor2d[0]]] + [[self._start] for _ in __tensor2d]
         for i, x1d in enumerate(__tensor2d, 1):
@@ -83,7 +83,7 @@ class Prefs2D(_Prefs):
 
 class Diffs2D(_Diffs):
 
-    def __init__(self, __tensor2d, *, start = 0):
+    def __init__(self, __tensor2d, start = 0):
         super().__init__(start)
         self._diffs = [[__tensor2d[0][0] - self._start]]
         for lst, nxt in pairwise(__tensor2d[0]):
