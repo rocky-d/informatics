@@ -1,4 +1,4 @@
-def kmp(s: str, patt: str) -> int:
+def kmp(s, patt):
     m, n = len(s), len(patt)
     nxts = [0]
     lft, rit = 0, 1
@@ -32,4 +32,4 @@ def kmp(s: str, patt: str) -> int:
 
 
 if __name__ == '__main__':
-    pass
+    print(kmp(s = 'abbcd', patt = 'bc'))
