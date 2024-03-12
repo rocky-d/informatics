@@ -1,6 +1,6 @@
 class _UnionFind(object):
 
-    def __init__(self, __heads, generic, *, grouped = False, recursive = False, compressed = True):
+    def __init__(self, __heads, *, generic, grouped = False, recursive = False, compressed = True):
         self._heads = __heads
         self._generic = generic
         if grouped:
