@@ -2,11 +2,11 @@ from math import isqrt
 
 
 def is_prime_plain(num):
-    return all(num % divisor for divisor in range(2, num))
+    return all(0 != num % divisor for divisor in range(2, num))
 
 
 def is_prime_optimized(num):
-    return all(num % divisor for divisor in range(2, isqrt(num) + 1))
+    return all(0 != num % divisor for divisor in range(2, isqrt(num) + 1))
 
 
 def primes_before_eratosthenes(n):
