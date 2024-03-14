@@ -1,7 +1,7 @@
 from math import isqrt
 
 
-def primefactors(num):
+def prime_factors(num):
     for factor in range(2, isqrt(num) + 1):
         times = 0
         while 0 == num % factor:
@@ -14,4 +14,4 @@ def primefactors(num):
 
 
 if __name__ == '__main__':
-    print(*primefactors(49), sep = '\n')
+    print(*prime_factors(49), sep = '\n')
