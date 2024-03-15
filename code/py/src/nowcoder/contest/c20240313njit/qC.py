@@ -11,8 +11,7 @@ def main() -> None:
     a.insert(0, 0)
 
     class TreeNode(object):
-        def __init__(self, extent: Tuple[int, int], val: int, left: Optional['TreeNode'],
-                     right: Optional['TreeNode']) -> None:
+        def __init__(self, extent: Tuple[int, int], val: int, left: Optional['TreeNode'], right: Optional['TreeNode']) -> None:
             self.extent = extent
             self.val = val
             self.left = left
