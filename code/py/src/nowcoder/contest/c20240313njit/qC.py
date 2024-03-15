@@ -11,18 +11,18 @@ def main() -> None:
     a.insert(0, 0)
 
     class TreeNode(object):
-        def __init__(self, extent: Tuple[int, int], val: int, left: Optional['TreeNode'], right: Optional['TreeNode']) -> None:
-            self.extent = extent
+        def __init__(self, val: int, left: Optional['TreeNode'], right: Optional['TreeNode'], extent: Tuple[int, int]) -> None:
             self.val = val
             self.left = left
             self.right = right
+            self.extent = extent
 
     def build(lft: int, rit: int) -> TreeNode:
         if lft == rit:
-            return TreeNode(extent = (lft, rit), val = a[lft], left = None, right = None)
+            return TreeNode(val = a[lft], left = None, right = None, extent = (lft, rit))
         mid = (lft + rit) // 2
         left, right = build(lft, mid), build(mid + 1, rit)
-        return TreeNode(extent = (lft, rit), val = max(left.val, right.val), left = left, right = right)
+        return TreeNode(val = max(left.val, right.val), left = left, right = right, extent = (lft, rit))
 
     root = build(lft = 1, rit = n)
 
