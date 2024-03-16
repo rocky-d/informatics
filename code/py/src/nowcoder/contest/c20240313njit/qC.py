@@ -11,31 +11,31 @@ def main() -> None:
     a.insert(0, 0)
 
     class SegmentTreeNode(object):
-        def __init__(self, segment: Tuple[int, int], val: int, left: Optional['SegmentTreeNode'], right: Optional['SegmentTreeNode']) -> None:
+        def __init__(self, segment: Tuple[int, int], val: int, lft: Optional['SegmentTreeNode'], rit: Optional['SegmentTreeNode']) -> None:
             self.segment = segment
             self.val = val
-            self.left = left
-            self.right = right
+            self.lft = lft
+            self.rit = rit
 
-    def build(lft: int, rit: int) -> SegmentTreeNode:
-        if lft == rit:
-            return SegmentTreeNode(val = a[lft], left = None, right = None, segment = (lft, rit))
-        mid = (lft + rit) // 2
-        left, right = build(lft, mid), build(mid + 1, rit)
-        return SegmentTreeNode(val = max(left.val, right.val), left = left, right = right, segment = (lft, rit))
+    def build(segment: Tuple[int, int]) -> SegmentTreeNode:
+        if segment[0] == segment[1]:
+            return SegmentTreeNode(val = a[segment[0]], lft = None, rit = None, segment = segment)
+        mid = sum(segment) // 2
+        lft, rit = build((segment[0], mid)), build((mid + 1, segment[1]))
+        return SegmentTreeNode(val = max(lft.val, rit.val), lft = lft, rit = rit, segment = segment)
 
-    root = build(lft = 1, rit = n)
+    root = build(segment = (1, n))
 
     def max_in(segment: Tuple[int, int], node: SegmentTreeNode) -> int:
         if segment == node.segment:
             return node.val
         mid = sum(node.segment) // 2
         if segment[1] <= mid:
-            res = max_in(segment, node.left)
+            res = max_in(segment, node.lft)
         elif mid + 1 <= segment[0]:
-            res = max_in(segment, node.right)
+            res = max_in(segment, node.rit)
         else:
-            res = max(max_in((segment[0], mid), node.left), max_in((mid + 1, segment[1]), node.right))
+            res = max(max_in((segment[0], mid), node.lft), max_in((mid + 1, segment[1]), node.rit))
         return res
 
     for l, r in queries:
