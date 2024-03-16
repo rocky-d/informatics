@@ -1,11 +1,11 @@
-class SinglyListNode(object):
+class SinglyLinkedListNode(object):
 
     def __init__(self, val, nxt):
         self.val = val
         self.nxt = nxt
 
 
-class DoublyListNode(object):
+class DoublyLinkedListNode(object):
 
     def __init__(self, val, lst, nxt):
         self.val = val
@@ -23,8 +23,8 @@ class BinaryTreeNode(object):
 
 class SegmentTreeNode(object):
 
-    def __init__(self, segment, val, lft, rit):
-        self.segment = segment
+    def __init__(self, seg, val, lft, rit):
+        self.seg = seg
         self.val = val
         self.lft = lft
         self.rit = rit
