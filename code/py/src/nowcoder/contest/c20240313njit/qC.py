@@ -29,13 +29,13 @@ def main() -> None:
     def max_in(l: int, r: int, node: SegmentTreeNode) -> int:
         if (l, r) == node.segment:
             return node.val
-        mid = (node.segment[0] + node.segment[1]) // 2
-        if r <= mid:
+        node_segment_mid = (node.segment[0] + node.segment[1]) // 2
+        if r <= node_segment_mid:
             res = max_in(l, r, node.lft)
-        elif mid + 1 <= l:
+        elif node_segment_mid + 1 <= l:
             res = max_in(l, r, node.rit)
         else:
-            res = max(max_in(l, mid, node.lft), max_in(mid + 1, r, node.rit))
+            res = max(max_in(l, node_segment_mid, node.lft), max_in(node_segment_mid + 1, r, node.rit))
         return res
 
     for l, r in queries:
