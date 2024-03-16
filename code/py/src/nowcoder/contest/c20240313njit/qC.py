@@ -26,20 +26,20 @@ def main() -> None:
 
     root = build(l = 1, r = n)
 
-    def max_in(segment: Tuple[int, int], node: SegmentTreeNode) -> int:
-        if segment == node.segment:
+    def max_in(l: int, r: int, node: SegmentTreeNode) -> int:
+        if (l, r) == node.segment:
             return node.val
-        node_mid = (node.segment[0] + node.segment[1]) // 2
-        if segment[1] <= node_mid:
-            res = max_in(segment, node.lft)
-        elif node_mid + 1 <= segment[0]:
-            res = max_in(segment, node.rit)
+        mid = (node.segment[0] + node.segment[1]) // 2
+        if r <= mid:
+            res = max_in(l, r, node.lft)
+        elif mid + 1 <= l:
+            res = max_in(l, r, node.rit)
         else:
-            res = max(max_in((segment[0], node_mid), node.lft), max_in((node_mid + 1, segment[1]), node.rit))
+            res = max(max_in(l, mid, node.lft), max_in(mid + 1, r, node.rit))
         return res
 
-    for segment in map(tuple, queries):
-        segment_max = max_in(segment = segment, node = root)
+    for l, r in queries:
+        segment_max = max_in(l = l, r = r, node = root)
         ans.append(str(segment_max) + ' ' + ('NO' if segment_max < q else 'YES'))
     print(*ans, sep = '\n')
 
