@@ -39,8 +39,8 @@ def main() -> None:
         return res
 
     for l, r in queries:
-        lr_max = max_in(segment = (l, r), node = root)
-        ans.append(str(lr_max) + (' NO' if lr_max < q else ' YES'))
+        segment_max = max_in(segment = (l, r), node = root)
+        ans.append(str(segment_max) + (' NO' if segment_max < q else ' YES'))
     print(*ans, sep = '\n')
 
 
