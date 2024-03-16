@@ -10,36 +10,36 @@ def main() -> None:
     ans = deque(maxlen = t)
     a.insert(0, 0)
 
-    class TreeNode(object):
-        def __init__(self, val: int, left: Optional['TreeNode'], right: Optional['TreeNode'], extent: Tuple[int, int]) -> None:
+    class SegmentTreeNode(object):
+        def __init__(self, segment: Tuple[int, int], val: int, left: Optional['SegmentTreeNode'], right: Optional['SegmentTreeNode']) -> None:
+            self.segment = segment
             self.val = val
             self.left = left
             self.right = right
-            self.extent = extent
 
-    def build(lft: int, rit: int) -> TreeNode:
+    def build(lft: int, rit: int) -> SegmentTreeNode:
         if lft == rit:
-            return TreeNode(val = a[lft], left = None, right = None, extent = (lft, rit))
+            return SegmentTreeNode(val = a[lft], left = None, right = None, segment = (lft, rit))
         mid = (lft + rit) // 2
         left, right = build(lft, mid), build(mid + 1, rit)
-        return TreeNode(val = max(left.val, right.val), left = left, right = right, extent = (lft, rit))
+        return SegmentTreeNode(val = max(left.val, right.val), left = left, right = right, segment = (lft, rit))
 
     root = build(lft = 1, rit = n)
 
-    def max_in(extent: Tuple[int, int], node: TreeNode) -> int:
-        if extent == node.extent:
+    def max_in(segment: Tuple[int, int], node: SegmentTreeNode) -> int:
+        if segment == node.segment:
             return node.val
-        mid = sum(node.extent) // 2
-        if extent[1] <= mid:
-            res = max_in(extent, node.left)
-        elif mid + 1 <= extent[0]:
-            res = max_in(extent, node.right)
+        mid = sum(node.segment) // 2
+        if segment[1] <= mid:
+            res = max_in(segment, node.left)
+        elif mid + 1 <= segment[0]:
+            res = max_in(segment, node.right)
         else:
-            res = max(max_in((extent[0], mid), node.left), max_in((mid + 1, extent[1]), node.right))
+            res = max(max_in((segment[0], mid), node.left), max_in((mid + 1, segment[1]), node.right))
         return res
 
     for l, r in queries:
-        lr_max = max_in(extent = (l, r), node = root)
+        lr_max = max_in(segment = (l, r), node = root)
         ans.append(str(lr_max) + (' NO' if lr_max < q else ' YES'))
     print(*ans, sep = '\n')
 
