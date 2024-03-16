@@ -40,7 +40,7 @@ def main() -> None:
 
     for l, r in queries:
         segment_max = max_in(segment = (l, r), node = root)
-        ans.append(str(segment_max) + (' NO' if segment_max < q else ' YES'))
+        ans.append(str(segment_max) + ' ' + ('NO' if segment_max < q else 'YES'))
     print(*ans, sep = '\n')
 
 
