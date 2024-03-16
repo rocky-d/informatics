@@ -11,36 +11,36 @@ def main() -> None:
     a.insert(0, 0)
 
     class SegmentTreeNode(object):
-        def __init__(self, segment: Tuple[int, int], val: int, lft: Optional['SegmentTreeNode'], rit: Optional['SegmentTreeNode']) -> None:
-            self.segment = segment
+        def __init__(self, seg: Tuple[int, int], val: int, lft: Optional['SegmentTreeNode'], rit: Optional['SegmentTreeNode']) -> None:
+            self.seg = seg
             self.val = val
             self.lft = lft
             self.rit = rit
 
     def build(l: int, r: int) -> SegmentTreeNode:
         if l == r:
-            return SegmentTreeNode(segment = (l, r), val = a[l], lft = None, rit = None)
+            return SegmentTreeNode(seg = (l, r), val = a[l], lft = None, rit = None)
         mid = (l + r) // 2
         lft, rit = build(l, mid), build(mid + 1, r)
-        return SegmentTreeNode(segment = (l, r), val = max(lft.val, rit.val), lft = lft, rit = rit)
+        return SegmentTreeNode(seg = (l, r), val = max(lft.val, rit.val), lft = lft, rit = rit)
 
     root = build(l = 1, r = n)
 
     def max_in(l: int, r: int, node: SegmentTreeNode) -> int:
-        if (l, r) == node.segment:
+        if (l, r) == node.seg:
             return node.val
-        node_segment_mid = (node.segment[0] + node.segment[1]) // 2
-        if r <= node_segment_mid:
+        node_seg_mid = (node.seg[0] + node.seg[1]) // 2
+        if r <= node_seg_mid:
             res = max_in(l, r, node.lft)
-        elif node_segment_mid + 1 <= l:
+        elif node_seg_mid + 1 <= l:
             res = max_in(l, r, node.rit)
         else:
-            res = max(max_in(l, node_segment_mid, node.lft), max_in(node_segment_mid + 1, r, node.rit))
+            res = max(max_in(l, node_seg_mid, node.lft), max_in(node_seg_mid + 1, r, node.rit))
         return res
 
     for l, r in queries:
-        segment_max = max_in(l = l, r = r, node = root)
-        ans.append(str(segment_max) + ' ' + ('NO' if segment_max < q else 'YES'))
+        seg_max = max_in(l = l, r = r, node = root)
+        ans.append(str(seg_max) + ' ' + ('NO' if seg_max < q else 'YES'))
     print(*ans, sep = '\n')
 
 
