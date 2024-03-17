@@ -6,7 +6,7 @@ def topological_sort(graph):
     for tos in graph.values():
         for to in tos:
             ins[to] += 1
-    dque = deque(fr for fr in graph.keys() if 0 == ins[fr])
+    dque = deque((fr for fr in graph.keys() if 0 == ins[fr]))
     while 0 < len(dque):
         fr = dque.popleft()
         yield fr
