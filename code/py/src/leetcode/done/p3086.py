@@ -25,7 +25,7 @@ class Solution:
                 ans = (1 if oneone else 2) + 2 * (k - 2)
             else:  # elif 3 == sum3:
                 ans = 2 + 2 * (k - 3)
-        else:  # k∈[sum3 + maxChanges + 1, +∞)
+        else:  # k∈[sum3 + maxChanges + 1, sum(nums) + maxChanges]
             prefs = list(accumulate(idxes, initial = 0))
             window_len = k - maxChanges
             lft, rit = window_len // 2, (window_len - 1) // 2
