@@ -14,9 +14,9 @@ class Solution:
             sum3_tmp -= nums[i - 2]
             if not oneone:
                 oneone = 1 == nums[i - 1] == nums[i]
-        if k <= sum3:
+        if k <= sum3:  # k∈[1, sum3]
             ans = k if 2 == k and not oneone else k - 1
-        elif k <= sum3 + maxChanges:  # elif sum3 < k <= sum3 + maxChanges:
+        elif k <= sum3 + maxChanges:  # k∈[sum3 + 1, sum3 + maxChanges]
             if 0 == sum3:
                 ans = 2 * k
             elif 1 == sum3:
@@ -25,7 +25,7 @@ class Solution:
                 ans = (1 if oneone else 2) + 2 * (k - 2)
             else:  # elif 3 == sum3:
                 ans = 2 + 2 * (k - 3)
-        else:  # elif sum3 + maxChanges < k:
+        else:  # k∈[sum3 + maxChanges + 1, +∞)
             prefs = list(accumulate(idxes, initial = 0))
             window_len = k - maxChanges
             lft, rit = window_len // 2, (window_len - 1) // 2
