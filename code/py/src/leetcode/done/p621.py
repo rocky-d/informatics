@@ -9,14 +9,15 @@ class Solution:
         while 0 < len(heap1):
             heap2 = []
             while 0 < len(heap1) and heap1[0][0] <= ans:
-                item = heappop(heap1)
-                heappush(heap2, (item[1], item[0]))
+                cd, _val = heappop(heap1)
+                heappush(heap2, (_val, cd))
             if 0 < len(heap2):
-                item = heap2.pop(0)
-                if 0 < -item[0] - 1:
-                    heappush(heap1, (item[1] + n + 1, item[0] + 1))
-                for item in heap2:
-                    heappush(heap1, (item[1], item[0]))
+                _val, cd = heap2.pop(0)
+                val = -_val - 1
+                if 0 < val:
+                    heappush(heap1, (cd + n + 1, -val))
+                for _val, cd in heap2:
+                    heappush(heap1, (cd, _val))
             ans += 1
         return ans
 
