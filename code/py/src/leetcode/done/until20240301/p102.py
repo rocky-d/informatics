@@ -3,10 +3,10 @@ from rockyutil.leetcode import *
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if root is None:
-            return []
         ans = []
-        que = deque([(root, 0)])
+        que = deque()
+        if root is not None:
+            que.append((root, 0))
         while 0 < len(que):
             node, level = que.popleft()
             if level == len(ans):
