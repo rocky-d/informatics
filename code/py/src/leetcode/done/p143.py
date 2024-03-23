@@ -17,7 +17,7 @@ class Solution:
             node = node.next
             node.next = node2
             node = node.next
-        if len(dque1) > len(dque2):
+        if len(dque1) == len(dque2) + 1:
             node.next = dque1[-1]
             node = node.next
         node.next = None
