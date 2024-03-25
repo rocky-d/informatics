@@ -5,10 +5,11 @@ class Solution:
     def mostFrequentIDs(self, nums: List[int], freq: List[int]) -> List[int]:
         ans = []
         cnter = Counter()
-        fqs = [0 for _ in nums]
+        fqs = []
         for num, fq in zip(nums, freq):
-            fqs.pop(bisect_left(fqs, cnter[num]))
             cnter[num] += fq
-            insort(fqs, cnter[num])
-            ans.append(fqs[-1])
+            heappush(fqs, (-cnter[num], num))
+            while -fqs[0][0] != cnter[fqs[0][1]]:
+                heappop(fqs)
+            ans.append(-fqs[0][0])
         return ans
