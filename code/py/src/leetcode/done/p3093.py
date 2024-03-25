@@ -12,8 +12,8 @@ class Solution:
                 self.children = children
 
         def add(node: TrieNode, w: int, c: int) -> None:
-            if len(word) < node.val1:
-                node.val1 = len(word)
+            if word_len < node.val1:
+                node.val1 = word_len
                 node.val2 = w
             if c < 0:
                 return
@@ -24,7 +24,8 @@ class Solution:
 
         root = TrieNode(val1 = 5001, val2 = 10000, children = {})
         for w, word in enumerate(wordsContainer):
-            add(node = root, w = w, c = len(word) - 1)
+            word_len = len(word)
+            add(node = root, w = w, c = word_len - 1)
 
         def dfs(node: TrieNode, word: str, c: int) -> int:
             if c < 0:
