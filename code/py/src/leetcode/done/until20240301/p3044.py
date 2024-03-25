@@ -4,7 +4,7 @@ from rockyutil.leetcode import *
 class Solution:
     def mostFrequentPrime(self, mat: List[List[int]]) -> int:
         @cache
-        def is_prime(num: int):
+        def is_prime(num: int) -> bool:
             return all(0 != num % divisor for divisor in range(2, isqrt(num) + 1))
 
         cnter = Counter()
