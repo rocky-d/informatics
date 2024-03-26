@@ -13,6 +13,8 @@ class Solution:
                 self.val2 = val2
                 self.nxts = nxts
 
+        root = TrieNode(val1 = 5001, val2 = 10000, nxts = {})
+
         def update(node: TrieNode, w: int, c: int) -> None:
             if word_len < node.val1:
                 node.val1 = word_len
@@ -24,7 +26,6 @@ class Solution:
                 node.nxts[char] = TrieNode(val1 = 5001, val2 = 10000, nxts = {})
             update(node.nxts[char], w, c - 1)
 
-        root = TrieNode(val1 = 5001, val2 = 10000, nxts = {})
         for w, word in enumerate(wordsContainer):
             word_len = len(word)
             update(node = root, w = w, c = word_len - 1)
