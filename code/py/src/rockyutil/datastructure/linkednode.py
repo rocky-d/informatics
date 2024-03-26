@@ -37,5 +37,12 @@ class NaryTreeNode(object):
         self.nxts = nxts
 
 
+class TrieNode(object):
+
+    def __init__(self, val, nxts):
+        self.val = val
+        self.nxts = nxts
+
+
 if __name__ == '__main__':
     ...
