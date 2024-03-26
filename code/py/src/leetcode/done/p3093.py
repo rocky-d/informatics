@@ -33,7 +33,7 @@ class Solution:
             if c < 0:
                 return node.val2
             char = word[c]
-            return query(node.children[char], word, c - 1) if char in node.children.keys() else node.val2
+            return node.val2 if char not in node.children.keys() else query(node.children[char], word, c - 1)
 
         for word in wordsQuery:
             ans.append(query(node = root, word = word, c = len(word) - 1))
