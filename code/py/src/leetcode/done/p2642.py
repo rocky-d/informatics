@@ -21,8 +21,13 @@ class Graph:
             while node in seen and 0 < len(heap):
                 dst, node = heappop(heap)
             seen.add(node)
+            if node == node2:
+                res = dst
+                break
             for nxt, cost in self.graph[node]:
                 if dst + cost < dsts[nxt]:
                     dsts[nxt] = dst + cost
                     heappush(heap, (dsts[nxt], nxt))
-        return -1 if isinf(dsts[node2]) else dsts[node2]
+        else:
+            res = -1
+        return res
