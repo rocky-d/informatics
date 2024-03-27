@@ -3,7 +3,7 @@ from rockyutil.leetcode import *
 
 class Solution:
     def countWays(self, ranges: List[List[int]]) -> int:
-        ranges.sort(key = lambda rang: (rang[0], rang[1]))
+        ranges.sort()
         groups = 0
         rit_max = -1
         for lft, rit in ranges:
