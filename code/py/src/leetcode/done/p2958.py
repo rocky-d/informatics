@@ -4,22 +4,20 @@ from rockyutil.leetcode import *
 class Solution:
     def maxSubarrayLength(self, nums: List[int], k: int) -> int:
         ans = 1
-        cnter = Counter([nums[0]])
+        n = len(nums)
         lft, rit = 0, 0
-        while True:
+        cnter = Counter([nums[0]])
+        while rit < n:
             while k < cnter[nums[rit]]:
                 cnter[nums[lft]] -= 1
                 lft += 1
             while cnter[nums[rit]] <= k:
                 rit += 1
-                if rit == len(nums):
+                if rit == n:
                     ans = max(ans, rit - lft)
                     break
                 cnter[nums[rit]] += 1
-            else:
-                ans = max(ans, rit - lft)
-                continue
-            break
+            ans = max(ans, rit - lft)
         return ans
 
 
