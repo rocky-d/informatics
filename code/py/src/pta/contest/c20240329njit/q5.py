@@ -3,7 +3,7 @@ from collections import Counter, deque
 
 def main() -> None:
     n, m = map(int, input().split())
-    photos = [frozenset(input().split(maxsplit = 1)[1].split()) for _ in range(m)]
+    photos = [input().split(maxsplit = 1)[1].split() for _ in range(m)]
     a, b = input().split()
 
     ans = deque()
