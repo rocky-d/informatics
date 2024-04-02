@@ -3,7 +3,7 @@ class Solution:
         dct, vals = dict(), set()
         for si, ti in zip(s, t):
             if si in dct.keys():
-                if dct[si] == ti:
+                if dct[si] != ti:
                     ans = False
                     break
             else:
