@@ -10,21 +10,21 @@ class Solution:
             if node.left is None and node.right is None:
                 res = node.val, node.val
             elif node.left is not None and node.right is None:
-                min_, max_ = dfs(node = node.left)
-                ans = max(ans, abs(min_ - node.val), abs(max_ - node.val))
-                res = min(min_, node.val), max(max_, node.val)
+                mini, maxi = dfs(node.left)
+                ans = max(ans, abs(mini - node.val), abs(maxi - node.val))
+                res = min(mini, node.val), max(maxi, node.val)
             elif node.left is None and node.right is not None:
-                min_, max_ = dfs(node = node.right)
-                ans = max(ans, abs(min_ - node.val), abs(max_ - node.val))
-                res = min(min_, node.val), max(max_, node.val)
+                mini, maxi = dfs(node.right)
+                ans = max(ans, abs(mini - node.val), abs(maxi - node.val))
+                res = min(mini, node.val), max(maxi, node.val)
             else:  # elif node.left is not None and node.right is not None:
-                left_min, left_max = dfs(node = node.left)
-                right_min, right_max = dfs(node = node.right)
-                min_, max_ = min(left_min, right_min), max(left_max, right_max)
-                ans = max(ans, abs(min_ - node.val), abs(max_ - node.val))
-                res = min(min_, node.val), max(max_, node.val)
+                left_min, left_max = dfs(node.left)
+                right_min, right_max = dfs(node.right)
+                mini, maxi = min(left_min, right_min), max(left_max, right_max)
+                ans = max(ans, abs(mini - node.val), abs(maxi - node.val))
+                res = min(mini, node.val), max(maxi, node.val)
             return res
 
-        min_, max_ = dfs(node = root)
-        ans = max(ans, abs(min_ - root.val), abs(max_ - root.val))
+        mini, maxi = dfs(node = root)
+        ans = max(ans, abs(mini - root.val), abs(maxi - root.val))
         return ans
