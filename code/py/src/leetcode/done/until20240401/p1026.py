@@ -18,13 +18,12 @@ class Solution:
                 ans = max(ans, abs(mini - node.val), abs(maxi - node.val))
                 res = min(mini, node.val), max(maxi, node.val)
             else:  # elif node.left is not None and node.right is not None:
-                left_min, left_max = dfs(node.left)
-                right_min, right_max = dfs(node.right)
-                mini, maxi = min(left_min, right_min), max(left_max, right_max)
+                mini_lft, maxi_lft = dfs(node.left)
+                mini_rit, maxi_rit = dfs(node.right)
+                mini, maxi = min(mini_lft, mini_rit), max(maxi_lft, maxi_rit)
                 ans = max(ans, abs(mini - node.val), abs(maxi - node.val))
                 res = min(mini, node.val), max(maxi, node.val)
             return res
 
-        mini, maxi = dfs(node = root)
-        ans = max(ans, abs(mini - root.val), abs(maxi - root.val))
+        dfs(node = root)
         return ans
