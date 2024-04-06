@@ -3,28 +3,25 @@ from rockyutil.leetcode import *
 
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
-        seen1, seen2 = set(), set()
+        parts = [0 for _ in graph]
 
-        def dfs(node: int, is_set1: bool) -> bool:
-            if is_set1:
-                seen1.add(node)
-            else:
-                seen2.add(node)
+        def dfs(node: int, is_part1: bool) -> bool:
+            parts[node] = 1 if is_part1 else 2
             for nxt in graph[node]:
-                if nxt in seen1:
-                    if is_set1:
+                if 1 == parts[nxt]:
+                    if is_part1:
                         res = True
                         break
-                elif nxt in seen2:
-                    if not is_set1:
+                elif 2 == parts[nxt]:
+                    if not is_part1:
                         res = True
                         break
                 else:
-                    if dfs(nxt, not is_set1):
+                    if dfs(nxt, not is_part1):
                         res = True
                         break
             else:
                 res = False
             return res
 
-        return not any(dfs(node = i, is_set1 = True) for i in range(len(graph)) if i not in seen1 and i not in seen2)
+        return not any(dfs(node = node, is_part1 = True) for node in range(len(graph)) if 0 == parts[node])
