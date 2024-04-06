@@ -7,17 +7,18 @@ class Solution:
 
         def dfs(node: int, is_part1: bool) -> bool:
             parts[node] = 1 if is_part1 else 2
+            is_part1_nxt = not is_part1
             for nxt in graph[node]:
                 if 1 == parts[nxt]:
-                    if is_part1:
+                    if not is_part1_nxt:
                         res = True
                         break
                 elif 2 == parts[nxt]:
-                    if not is_part1:
+                    if is_part1_nxt:
                         res = True
                         break
                 else:
-                    if dfs(nxt, not is_part1):
+                    if dfs(nxt, is_part1_nxt):
                         res = True
                         break
             else:
