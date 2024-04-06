@@ -3,12 +3,13 @@ from rockyutil.leetcode import *
 
 class Solution:
     def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
-        min_pq_val, max_pq_val = min(p.val, q.val), max(p.val, q.val)
+        mini, maxi = (p.val, q.val) if p.val < q.val else (q.val, p.val)
+        node = root
         while True:
-            if root.val < min_pq_val:
-                root = root.right
-            elif max_pq_val < root.val:
-                root = root.left
+            if node.val < mini:
+                node = node.right
+            elif maxi < node.val:
+                node = node.left
             else:
                 break
-        return root
+        return node
