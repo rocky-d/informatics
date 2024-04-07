@@ -11,8 +11,8 @@ class Solution:
             else:  # elif '*' == char:
                 lo -= 1
                 hi += 1
-            if lo < 0:
-                lo = 0
             if hi < 0:
                 break
-        return lo <= 0 <= hi
+            if lo < 0:
+                lo = 0
+        return 0 == lo
