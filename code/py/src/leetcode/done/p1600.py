@@ -3,6 +3,8 @@ from rockyutil.leetcode import *
 
 class ThroneInheritance:
     class Person(object):
+        __slots__ = ['name', 'children']
+
         def __init__(self, name: str, children: List['ThroneInheritance.Person']) -> None:
             self.name = name
             self.children = children
@@ -22,9 +24,10 @@ class ThroneInheritance:
 
     def getInheritanceOrder(self) -> List[str]:
         res = []
+        people = self.people
 
         def dfs(person: ThroneInheritance.Person) -> None:
-            if person.name in self.people.keys():
+            if person.name in people.keys():
                 res.append(person.name)
             for child in person.children:
                 dfs(child)
