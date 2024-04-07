@@ -1,39 +1,34 @@
-from rockyutil.leetcode import *
-
-
 class Trie:
-    __slots__ = 'cnt', 'children'
-
     def __init__(self) -> None:
-        self.cnt: int = 0
-        self.children: Dict[str, Trie] = {}
+        self.val = 0
+        self.nxts = {}
 
     def insert(self, word: str) -> None:
         node = self
         for char in word:
-            if char not in node.children:
-                node.children[char] = Trie()
-            node = node.children[char]
-        node.cnt += 1
+            if char not in node.nxts.keys():
+                node.nxts[char] = Trie()
+            node = node.nxts[char]
+        node.val += 1
 
     def search(self, word: str) -> bool:
         node = self
         for char in word:
-            if char not in node.children:
+            if char not in node.nxts.keys():
                 res = False
                 break
-            node = node.children[char]
+            node = node.nxts[char]
         else:
-            res = 0 < node.cnt
+            res = 0 < node.val
         return res
 
     def startsWith(self, prefix: str) -> bool:
         node = self
         for char in prefix:
-            if char not in node.children:
+            if char not in node.nxts.keys():
                 res = False
                 break
-            node = node.children[char]
+            node = node.nxts[char]
         else:
             res = True
         return res
