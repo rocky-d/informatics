@@ -13,9 +13,9 @@ class ThroneInheritance:
         self.people = {kingName: king}
 
     def birth(self, parentName: str, childName: str) -> None:
-        person = ThroneInheritance.Person(name = childName, children = [])
-        self.people[parentName].children.append(person)
-        self.people[childName] = person
+        child = ThroneInheritance.Person(name = childName, children = [])
+        self.people[parentName].children.append(child)
+        self.people[childName] = child
 
     def death(self, name: str) -> None:
         del self.people[name]
