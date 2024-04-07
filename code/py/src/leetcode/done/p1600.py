@@ -3,7 +3,7 @@ from rockyutil.leetcode import *
 
 class ThroneInheritance:
     class Person(object):
-        __slots__ = ['name', 'children']
+        __slots__ = 'name', 'children',
 
         def __init__(self, name: str, children: List['ThroneInheritance.Person']) -> None:
             self.name = name
@@ -25,12 +25,11 @@ class ThroneInheritance:
     def getInheritanceOrder(self) -> List[str]:
         res = []
         people = self.people
-
-        def dfs(person: ThroneInheritance.Person) -> None:
+        stk = deque([self.king])
+        while 0 < len(stk):
+            person = stk.pop()
             if person.name in people.keys():
                 res.append(person.name)
-            for child in person.children:
-                dfs(child)
-
-        dfs(person = self.king)
+            for child in reversed(person.children):
+                stk.append(child)
         return res
