@@ -5,9 +5,7 @@ class Solution:
     def minOperations(self, nums: List[int]) -> int:
         n = len(nums)
         nums = sorted(frozenset(nums))
-        interval = 0, 1
-        idx, nums_len = 0, len(nums)
-        while idx < nums_len:
-            interval = max(interval, (idx, bisect_right(nums, nums[idx] + n - 1)), key = lambda item: item[1] - item[0])
-            idx += 1
+        interval = 0, 0
+        for i in range(len(nums)):
+            interval = max(interval, (i, bisect_right(nums, nums[i] + n - 1)), key = lambda item: item[1] - item[0])
         return n - (interval[1] - interval[0])
