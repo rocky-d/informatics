@@ -8,8 +8,8 @@ class Solution:
         nums = sorted(frozenset(nums))
         interval = 0, 0
         lo, nums_len = 0, len(nums)
-        for i in range(nums_len):
-            lo = bisect_right(nums, nums[i] + n_1, lo = lo)
+        for i, num in enumerate(nums):
+            lo = bisect_right(nums, num + n_1, lo = lo)
             interval = max(interval, (i, lo), key = lambda item: item[1] - item[0])
             if lo == nums_len:
                 break
