@@ -12,7 +12,7 @@ class Solution:
             heads[node] = find(heads[node])
             return heads[node]
 
-        weights = {node: 0b11111111111111111 for node in range(n)}
+        weights = {node: -0b1 for node in range(n)}
         for u, v, w in edges:
             u_head, v_head = find(node = u), find(node = v)
             if u_head != v_head:
