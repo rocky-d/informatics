@@ -3,10 +3,10 @@ from rockyutil.leetcode import *
 
 class Solution:
     def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
-        ans = []
         deck.sort()
+        dque = deque()
         for _ in range(len(deck)):
-            ans.insert(0, deck.pop(-1))
-            ans.insert(0, ans.pop(-1))
-        ans.append(ans.pop(0))
-        return ans
+            dque.appendleft(deck.pop(-1))
+            dque.appendleft(dque.pop())
+        dque.append(dque.popleft())
+        return list(dque)
