@@ -22,10 +22,11 @@ class Solution:
             node = que.popleft()
             order.append(node)
             for i in range(stamp_len):
-                if not seen[node + i]:
-                    seen[node + i] = True
-                    for edge in graph[node + i]:
-                        ins[edge] -= 1
-                        if ins[edge] == 0:
-                            que.append(edge)
+                node_i = node + i
+                if not seen[node_i]:
+                    seen[node_i] = True
+                    for nxt in graph[node_i]:
+                        ins[nxt] -= 1
+                        if 0 == ins[nxt]:
+                            que.append(nxt)
         return order[::-1] if nodes == len(order) else []
