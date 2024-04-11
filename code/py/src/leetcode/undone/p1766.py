@@ -5,7 +5,7 @@ class Solution:
     def getCoprimes(self, nums: List[int], edges: List[List[int]]) -> List[int]:
         ans = [-1 for _ in nums]
         valid_pairs = set((i, j) for i in range(1, 51) for j in range(1, 51) if 1 == gcd(i, j))
-        graph = [[] for _ in nums]
+        graph = [deque() for _ in nums]
         for u, v in edges:
             graph[u].append(v), graph[v].append(u)
         ancestors = deque()
