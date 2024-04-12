@@ -6,4 +6,8 @@ class Solution:
         n = len(grid)
         for i, row in enumerate(grid):
             if n - 1 == row.count(1):
-                return i
+                ans = i
+                break
+        else:
+            ans = -1
+        return ans
