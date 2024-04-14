@@ -7,6 +7,7 @@ import functools
 import heapq
 import itertools
 import math
+import operator
 # import queue
 import random
 import re
@@ -22,6 +23,7 @@ from functools import *
 from heapq import *
 from itertools import *
 from math import *
+from operator import *
 # from queue import *
 from random import *
 from re import *
