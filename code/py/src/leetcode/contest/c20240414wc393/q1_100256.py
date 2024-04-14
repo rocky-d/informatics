@@ -1,16 +1,16 @@
 class Solution:
     def findLatestTime(self, s: str) -> str:
         ans = ''
-        h, m = s.split(':')
-        if '?' == h[0]:
-            ans += '1' if '0' == h[1] or '1' == h[1] or '?' == h[1] else '0'
+        hh, mm = s.split(':')
+        if '?' == hh[0]:
+            ans += '1' if '0' == hh[1] or '1' == hh[1] or '?' == hh[1] else '0'
         else:
-            ans += h[0]
-        if '?' == h[1]:
-            ans += '1' if '1' == h[0] or '?' == h[0] else '9'
+            ans += hh[0]
+        if '?' == hh[1]:
+            ans += '1' if '1' == hh[0] or '?' == hh[0] else '9'
         else:
-            ans += h[1]
+            ans += hh[1]
         ans += ':'
-        ans += '5' if '?' == m[0] else m[0]
-        ans += '9' if '?' == m[1] else m[1]
+        ans += '5' if '?' == mm[0] else mm[0]
+        ans += '9' if '?' == mm[1] else mm[1]
         return ans
