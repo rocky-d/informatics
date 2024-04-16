@@ -5,7 +5,6 @@ class Solution:
     def minMalwareSpread(self, graph: List[List[int]], initial: List[int]) -> int:
         n = len(graph)
         heads = [node for node in range(n)]
-        groups = {node: {node} for node in range(n)}
 
         def find(node: int) -> int:
             if node == heads[node]:
@@ -13,6 +12,7 @@ class Solution:
             heads[node] = find(heads[node])
             return heads[node]
 
+        groups = {node: {node} for node in range(n)}
         for a, row in enumerate(graph):
             for b in range(a + 1, n):
                 if 1 == row[b]:
