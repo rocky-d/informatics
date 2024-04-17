@@ -23,5 +23,5 @@ class Solution:
             dfs(x = m - 1, y = y)
         for x, row in enumerate(board):
             for y, val in enumerate(row):
-                if 'O' == val and (x, y) not in seen:
+                if 'X' != val and (x, y) not in seen:
                     row[y] = 'X'
