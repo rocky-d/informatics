@@ -3,7 +3,7 @@ from rockyutil.leetcode import *
 
 class Solution:
     def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
-        ans = chr(1 + ord('z'))
+        ans = chr(ord('z') + 1)
         oft = ord('a')
 
         def dfs(node: TreeNode, s: str) -> None:
