@@ -26,13 +26,15 @@ class Solution:
                     num //= factor
                     times += 1
                 if 1 <= times:
-                    if factor not in heads.keys():
-                        heads[factor] = factor
-                    union(a = a, b = factor)
+                    b = factor
+                    if b not in heads.keys():
+                        heads[b] = b
+                    union(a = a, b = b)
             if 1 < num:
-                if num not in heads.keys():
-                    heads[num] = num
-                union(a = a, b = num)
+                b = num
+                if b not in heads.keys():
+                    heads[b] = b
+                union(a = a, b = b)
         return max(Counter(find(x = num) for num in nums).values())
 
 
