@@ -29,22 +29,22 @@ class _UnionFind(object):
     def __len__(self):  # TODO
         return len(self._heads), len(self._groups) if self._groups is not None else None
 
-    def _find_comp_recu(self, a):
-        if a == self._heads[a]:
-            return a
-        self._heads[a] = self._find_comp_recu(self._heads[a])
-        return self._heads[a]
+    def _find_comp_recu(self, x):
+        if x == self._heads[x]:
+            return x
+        self._heads[x] = self._find_comp_recu(self._heads[x])
+        return self._heads[x]
 
-    def _find_comp_iter(self, a):
-        a_ = a
+    def _find_comp_iter(self, x):
+        x_ = x
         cnt = 0
-        while a != self._heads[a]:
+        while x != self._heads[x]:
             cnt += 1
-            a = self._heads[a]
+            x = self._heads[x]
         for _ in range(cnt):
-            self._heads[a_] = a
-            a_ = self._heads[a_]
-        return a
+            self._heads[x_] = x
+            x_ = self._heads[x_]
+        return x
 
     def _union_comp(self, a, b):
         a_head, b_head = self._find_comp(a), self._find_comp(b)
@@ -59,15 +59,15 @@ class _UnionFind(object):
                     self._heads[b] = self._heads[b_head] = a_head
                     self._groups[a_head] += self._groups.pop(b_head)
 
-    def _find_rank_recu(self, a):
-        if a == self._heads[a]:
-            return a
-        return self._find_rank_recu(self._heads[a])
+    def _find_rank_recu(self, x):
+        if x == self._heads[x]:
+            return x
+        return self._find_rank_recu(self._heads[x])
 
-    def _find_rank_iter(self, a):
-        while a != self._heads[a]:
-            a = self._heads[a]
-        return a
+    def _find_rank_iter(self, x):
+        while x != self._heads[x]:
+            x = self._heads[x]
+        return x
 
     def _union_rank(self, a, b):
         a_head, b_head = self._find_rank(a), self._find_rank(b)
