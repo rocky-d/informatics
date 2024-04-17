@@ -7,12 +7,12 @@ class Solution:
         seen = set()
 
         def dfs(x: int, y: int) -> None:
-            if 'X' == board[x][y]:
+            if 'X' == board[x][y] or (x, y) in seen:
                 return
             seen.add((x, y))
             for oft_a, oft_b in (0, 1), (1, 0), (0, -1), (-1, 0):
                 a, b = x + oft_a, y + oft_b
-                if 0 <= a < m and 0 <= b < n and (a, b) not in seen:
+                if 0 <= a < m and 0 <= b < n:
                     dfs(a, b)
 
         for x in range(m):
