@@ -8,7 +8,7 @@ def prime_factors(num):
         while 0 == num % factor:
             num //= factor
             times += 1
-        if 1 <= times:
+        if 0 < times:
             yield factor, times
 
 
