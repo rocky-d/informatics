@@ -5,6 +5,7 @@ import copy
 # import csv
 import datetime
 import functools
+# import hashlib
 import heapq
 import itertools
 import json
@@ -25,6 +26,7 @@ from copy import *
 # from csv import *
 from datetime import *
 from functools import *
+# from hashlib import *
 from heapq import *
 from itertools import *
 from json import *
