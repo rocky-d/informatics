@@ -46,18 +46,18 @@ class _UnionFind(object):
             x_ = self._heads[x_]
         return x
 
-    def _union_comp(self, a, b):
-        a_head, b_head = self._find_comp(a), self._find_comp(b)
-        if a_head != b_head:
+    def _union_comp(self, u, v):
+        u_head, v_head = self._find_comp(u), self._find_comp(v)
+        if u_head != v_head:
             if self._groups is None:
-                self._heads[a] = self._heads[a_head] = b_head
+                self._heads[u] = self._heads[u_head] = v_head
             else:
-                if len(self._groups[a_head]) < len(self._groups[b_head]):
-                    self._heads[a] = self._heads[a_head] = b_head
-                    self._groups[b_head] += self._groups.pop(a_head)
+                if len(self._groups[u_head]) < len(self._groups[v_head]):
+                    self._heads[u] = self._heads[u_head] = v_head
+                    self._groups[v_head] += self._groups.pop(u_head)
                 else:
-                    self._heads[b] = self._heads[b_head] = a_head
-                    self._groups[a_head] += self._groups.pop(b_head)
+                    self._heads[v] = self._heads[v_head] = u_head
+                    self._groups[u_head] += self._groups.pop(v_head)
 
     def _find_rank_recu(self, x):
         if x == self._heads[x]:
@@ -69,21 +69,21 @@ class _UnionFind(object):
             x = self._heads[x]
         return x
 
-    def _union_rank(self, a, b):
-        a_head, b_head = self._find_rank(a), self._find_rank(b)
-        if a_head != b_head:
-            if self._ranks[a_head] < self._ranks[b_head]:
-                self._heads[a_head] = b_head
+    def _union_rank(self, u, v):
+        u_head, v_head = self._find_rank(u), self._find_rank(v)
+        if u_head != v_head:
+            if self._ranks[u_head] < self._ranks[v_head]:
+                self._heads[u_head] = v_head
                 if self._groups is not None:
-                    self._groups[b_head] += self._groups.pop(a_head)
+                    self._groups[v_head] += self._groups.pop(u_head)
             else:
-                self._heads[b_head] = a_head
+                self._heads[v_head] = u_head
                 if self._groups is not None:
-                    self._groups[a_head] += self._groups.pop(b_head)
-                if self._ranks[a_head] == self._ranks[b_head]:
-                    self._ranks[a_head] += 1
+                    self._groups[u_head] += self._groups.pop(v_head)
+                if self._ranks[u_head] == self._ranks[v_head]:
+                    self._ranks[u_head] += 1
                     if self._generic:
-                        self._ranks.pop(b_head)
+                        self._ranks.pop(v_head)
 
 
 class UnionFindList(_UnionFind):  # TODO: set properties
