@@ -26,7 +26,6 @@ class Solution:
             for nxt, cost in graph[node]:
                 if dst + cost == dsts[nxt]:
                     ancestors[nxt].append(node)
-                    heappush(heap, (dsts[nxt], nxt))
                 elif dst + cost < dsts[nxt]:
                     ancestors[nxt].clear()
                     ancestors[nxt].append(node)
