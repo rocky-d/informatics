@@ -3,18 +3,21 @@ from rockyutil.leetcode import *
 
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        combinations = set()
+        ans = []
+        combination = []
+        n = len(candidates)
 
-        def dfs(last: int, combination: Dict[int, int]) -> None:
-            if last < 0:
+        def dfs(idx: int, vol: int) -> None:
+            if 0 == vol:
+                ans.append(combination.copy())
                 return
-            if 0 == last:
-                combinations.add(tuple(combination.items()))
-                return
-            for candidate in candidates:
-                combination[candidate] += 1
-                dfs(last = last - candidate, combination = combination)
-                combination[candidate] -= 1
+            if idx + 1 < n:
+                dfs(idx + 1, vol)
+            candidate = candidates[idx]
+            if 0 <= vol - candidate:
+                combination.append(candidate)
+                dfs(idx, vol - candidate)
+                combination.pop(-1)
 
-        dfs(last = target, combination = {candidate: 0 for candidate in candidates})
-        return [reduce(lambda x, y: x + y, [[num for _ in range(cnt)] for num, cnt in combination]) for combination in combinations]
+        dfs(idx = 0, vol = target)
+        return ans
