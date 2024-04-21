@@ -11,8 +11,8 @@ class Solution:
             heads[x] = find(heads[x])
             return heads[x]
 
-        for a, b in edges:
-            a_head, b_head = find(x = a), find(x = b)
-            if a_head != b_head:
-                heads[a] = heads[a_head] = b_head
+        for u, v in edges:
+            u_head, v_head = find(x = u), find(x = v)
+            if u_head != v_head:
+                heads[u] = heads[u_head] = v_head
         return find(x = source) == find(x = destination)
