@@ -7,18 +7,18 @@ class Solution:
         combination = deque()
         n = len(candidates)
 
-        def dfs(idx: int, vol: int) -> None:
+        def dfs(vol: int, idx: int) -> None:
             if 0 == vol:
                 ans.append(list(combination))
                 return
             candidate = candidates[idx]
             if 0 <= vol - candidate:
                 combination.append(candidate)
-                dfs(idx, vol - candidate)
+                dfs(vol - candidate, idx)
                 combination.pop()
             idx += 1
             if idx < n:
-                dfs(idx, vol)
+                dfs(vol, idx)
 
-        dfs(idx = 0, vol = target)
+        dfs(vol = target, idx = 0)
         return ans
