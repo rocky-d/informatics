@@ -11,13 +11,14 @@ class Solution:
             if 0 == vol:
                 ans.append(list(combination))
                 return
-            if idx + 1 < n:
-                dfs(idx + 1, vol)
             candidate = candidates[idx]
             if 0 <= vol - candidate:
                 combination.append(candidate)
                 dfs(idx, vol - candidate)
                 combination.pop()
+            idx += 1
+            if idx < n:
+                dfs(idx, vol)
 
         dfs(idx = 0, vol = target)
         return ans
