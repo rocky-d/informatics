@@ -4,20 +4,20 @@ from rockyutil.leetcode import *
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         ans = []
-        combination = deque()
+        combo = deque()
         candidates.sort()
         n = len(candidates)
 
         def dfs(vol: int, idx: int) -> None:
             if 0 == vol:
-                ans.append(list(combination))
+                ans.append(list(combo))
                 return
             for i in range(idx, n):
                 candidate = candidates[i]
                 if 0 <= vol - candidate:
-                    combination.append(candidate)
+                    combo.append(candidate)
                     dfs(vol - candidate, i)
-                    combination.pop()
+                    combo.pop()
                 else:
                     break
 

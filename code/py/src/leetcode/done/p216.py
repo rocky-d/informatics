@@ -4,18 +4,18 @@ from rockyutil.leetcode import *
 class Solution:
     def combinationSum3(self, k: int, n: int) -> List[List[int]]:
         ans = []
-        combination = deque()
+        combo = deque()
 
         def dfs(vol: int, fr: int) -> None:
-            if 0 == vol:
-                if k == len(combination):
-                    ans.append(list(combination))
+            if k == len(combo) or 0 == vol:
+                if k == len(combo) and 0 == vol:
+                    ans.append(list(combo))
                 return
             for num in range(fr, 10):
                 if 0 <= vol - num:
-                    combination.append(num)
+                    combo.append(num)
                     dfs(vol - num, num + 1)
-                    combination.pop()
+                    combo.pop()
                 else:
                     break
 
