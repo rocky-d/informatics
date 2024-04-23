@@ -10,14 +10,14 @@ class Solution:
             graph[b].append(a)
             ins[a] += 1
             ins[b] += 1
-        que_lst, que = [0], [fr for fr, in_ in ins.items() if 1 == in_]
+        que_lst, que = [0], [node for node, cnt in ins.items() if 1 == cnt]
         while 0 < len(que):
             que_lst, que = que, []
-            for fr in que_lst:
-                for to in graph[fr]:
-                    ins[to] -= 1
-                    if 1 == ins[to]:
-                        que.append(to)
+            for node in que_lst:
+                for nxt in graph[node]:
+                    ins[nxt] -= 1
+                    if 1 == ins[nxt]:
+                        que.append(nxt)
         return que_lst
 
 
