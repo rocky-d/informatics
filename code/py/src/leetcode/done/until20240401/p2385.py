@@ -9,18 +9,18 @@ class Solution:
             nonlocal ans
             if node is None:
                 return 0, None
-            left, right = dfs(node = node.left), dfs(node = node.right)
-            if left[1] is not None:
-                ans = max(ans, right[0] + left[1])
-                res = 1 + right[0], 1 + left[1]
-            elif right[1] is not None:
-                ans = max(ans, left[0] + right[1])
-                res = 1 + left[0], 1 + right[1]
+            lft, rit = dfs(node.left), dfs(node.right)
+            if lft[1] is not None:
+                ans = max(ans, rit[0] + lft[1])
+                res = 1 + rit[0], 1 + lft[1]
+            elif rit[1] is not None:
+                ans = max(ans, lft[0] + rit[1])
+                res = 1 + lft[0], 1 + rit[1]
             elif start == node.val:
-                ans = max(left[0], right[0])
+                ans = max(lft[0], rit[0])
                 res = None, 1
             else:
-                res = 1 + max(left[0], right[0]), None
+                res = 1 + max(lft[0], rit[0]), None
             return res
 
         dfs(node = root)
