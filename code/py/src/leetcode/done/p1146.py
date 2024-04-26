@@ -7,7 +7,10 @@ class SnapshotArray:
         self.snap_array = [[(self.snap_id, 0)] for _ in range(length)]
 
     def set(self, index: int, val: int) -> None:
-        self.snap_array[index].append((self.snap_id, val))
+        if self.snap_array[index][-1][0] == self.snap_id:
+            self.snap_array[index][-1] = (self.snap_id, val)
+        else:
+            self.snap_array[index].append((self.snap_id, val))
 
     def snap(self) -> int:
         res = self.snap_id
