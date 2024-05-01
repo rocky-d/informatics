@@ -4,7 +4,7 @@ from rockyutil.leetcode import *
 class Solution:
     def totalCost(self, costs: List[int], k: int, candidates: int) -> int:
         if len(costs) < k + candidates + candidates:
-            return sum(nsmallest(k, costs))
+            return sum(sorted(costs)[:k])
         ans = 0
         heap_lft, heap_rit = costs[:candidates], costs[-candidates:]
         heapify(heap_lft), heapify(heap_rit)
