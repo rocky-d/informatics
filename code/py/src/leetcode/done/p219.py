@@ -3,20 +3,12 @@ from rockyutil.leetcode import *
 
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-        window = set()
-        length = min(len(nums), k + 1)
-        for rit in range(length):
-            if nums[rit] in window:
+        idxes = {}
+        for idx, num in enumerate(nums):
+            if num in idxes.keys() and idx - idxes[num] <= k:
                 ans = True
                 break
-            window.add(nums[rit])
+            idxes[num] = idx
         else:
-            for lft, rit in zip(range(len(nums) - length), range(length, len(nums))):
-                window.remove(nums[lft])
-                if nums[rit] in window:
-                    ans = True
-                    break
-                window.add(nums[rit])
-            else:
-                ans = False
+            ans = False
         return ans
