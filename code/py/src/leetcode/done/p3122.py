@@ -12,5 +12,5 @@ class Solution:
         for col in cols:
             dp_lst, dp = sorted(enumerate(dp), key = lambda item: item[1]), []
             for val in range(10):
-                dp.append(m - col[val] + dp_lst[1 if val == dp_lst[0][0] else 0][1])
+                dp.append(dp_lst[1 if val == dp_lst[0][0] else 0][1] + (m - col[val]))
         return min(dp)
