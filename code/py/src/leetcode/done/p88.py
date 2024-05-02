@@ -15,6 +15,6 @@ class Solution:
                 p1 -= 1
                 p -= 1
         if 0 <= p1:
-            nums1[:p + 1] = nums2[:p1 + 1]
+            nums1[:p + 1] = nums1[:p1 + 1]
         else:  # elif 0 <= p2:
-            nums1[:p + 1] = nums1[:p2 + 1]
+            nums1[:p + 1] = nums2[:p2 + 1]
