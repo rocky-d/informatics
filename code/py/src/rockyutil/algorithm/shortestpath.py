@@ -12,7 +12,7 @@ def dijkstra(graph, start):
     heappush(heap, (dsts[start], start))
     while 0 < len(heap):
         dst, node = heappop(heap)
-        if dst != dsts[node] or seen[node]:
+        if seen[node] or dst != dsts[node]:
             continue
         seen[node] = True
         for nxt, cost in graph[node]:
