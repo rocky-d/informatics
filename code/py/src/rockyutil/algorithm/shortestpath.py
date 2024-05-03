@@ -12,13 +12,12 @@ def dijkstra(graph, start):
     heappush(heap, (dsts[start], start))
     while 0 < len(heap):
         dst, node = heappop(heap)
-        while 0 < len(heap) and seen[node]:
-            dst, node = heappop(heap)
+        if dst != dsts[node] or seen[node]:
+            continue
         seen[node] = True
         for nxt, cost in graph[node]:
             if dst + cost < dsts[nxt]:
-                dsts[nxt] = dst + cost
-                pres[nxt] = node
+                dsts[nxt], pres[nxt] = dst + cost, node
                 heappush(heap, (dsts[nxt], nxt))
 
 
