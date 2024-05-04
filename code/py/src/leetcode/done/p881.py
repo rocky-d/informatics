@@ -9,8 +9,6 @@ class Solution:
         while lft <= rit:
             if people[lft] + people[rit] <= limit:
                 lft += 1
-                rit -= 1
-            else:
-                rit -= 1
+            rit -= 1
             ans += 1
         return ans
