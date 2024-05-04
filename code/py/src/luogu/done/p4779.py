@@ -9,7 +9,7 @@ def main() -> None:
         u, v, w = map(int, input().split())
         graph[u].append((v, w))
 
-    dsts = [inf] * n
+    dsts = [inf] * (1 + n)
     dsts[s] = 0
     heap = []
     heappush(heap, (dsts[s], s))
