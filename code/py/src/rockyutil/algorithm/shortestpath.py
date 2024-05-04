@@ -11,7 +11,7 @@ def dijkstra(graph, start):
     heappush(heap, (dsts[start], start))
     while 0 < len(heap):
         dst, node = heappop(heap)
-        if dst > dsts[node]:
+        if dst > dsts[node]:  # if dst != dsts[node]:
             continue
         for nxt, cost in graph[node]:
             if dst + cost < dsts[nxt]:
