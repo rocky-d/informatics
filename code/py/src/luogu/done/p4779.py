@@ -9,7 +9,6 @@ def main() -> None:
         u, v, w = map(int, input().split())
         graph[u].append((v, w))
 
-    n = len(graph)
     dsts = [inf] * n
     dsts[s] = 0
     heap = []
