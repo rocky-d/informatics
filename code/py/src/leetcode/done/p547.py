@@ -18,4 +18,4 @@ class Solution:
                     u_head, v_head = find(x = u), find(x = v)
                     if u_head != v_head:
                         heads[u] = heads[u_head] = v_head
-        return len(frozenset(find(x = head) for head in heads))
+        return len(frozenset(find(x = x_head) for x_head in heads))
