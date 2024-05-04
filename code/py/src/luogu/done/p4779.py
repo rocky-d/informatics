@@ -1,11 +1,10 @@
-from collections import deque
 from heapq import heappop, heappush
 from math import inf
 
 
 def main() -> None:
     n, m, s = map(int, input().split())
-    graph = [deque() for _ in range(1 + n)]
+    graph = [[] for _ in range(1 + n)]
     for _ in range(m):
         u, v, w = map(int, input().split())
         graph[u].append((v, w))
