@@ -5,11 +5,11 @@ class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
         ans = []
         stk = deque()
-        n = len(graph)
+        dest = len(graph) - 1
 
         def dfs(node: int) -> None:
             stk.append(node)
-            if node == n - 1:
+            if dest == node:
                 ans.append(list(stk))
             else:
                 for nxt in graph[node]:
