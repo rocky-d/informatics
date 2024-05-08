@@ -3,9 +3,9 @@ class Solution:
         prefs = [[0] * 26]
         oft = ord('a')
         for char in s:
-            cnt = prefs[-1].copy()
-            cnt[ord(char) - oft] += 1
-            prefs.append(cnt)
+            cnter = prefs[-1].copy()
+            cnter[ord(char) - oft] += 1
+            prefs.append(cnter)
         n = len(s)
         for length in range(1, n):
             if 0 != n % length:
