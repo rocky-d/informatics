@@ -5,7 +5,7 @@ class Solution:
     def getMaximumGold(self, grid: List[List[int]]) -> int:
         m, n = len(grid), len(grid[0])
 
-        def dfs(x: int, y: int):
+        def dfs(x: int, y: int) -> int:
             if 0 == grid[x][y]:
                 return 0
             val, grid[x][y] = grid[x][y], 0
