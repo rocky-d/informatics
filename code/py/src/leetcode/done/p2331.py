@@ -9,6 +9,6 @@ class Solution:
             return True
         if 2 == root.val:
             res = self.evaluateTree(root.left) or self.evaluateTree(root.right)
-        elif 3 == root.val:
+        else:  # elif 3 == root.val:
             res = self.evaluateTree(root.left) and self.evaluateTree(root.right)
         return res
