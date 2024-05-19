@@ -5,7 +5,7 @@ class Solution:
     def waysToReachStair(self, k: int) -> int:
         @cache
         def dfs(stair: int, jump: int, down: bool) -> int:
-            if k < stair - 10:
+            if k < stair - 1:
                 return 0
             res = 0
             if k == stair:
