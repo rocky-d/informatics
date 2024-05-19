@@ -2,7 +2,7 @@
 
 [This repository](https://github.com/rocky-d/informatics) is meant to serve as a record of my code for solving informatics problems. 📝
 
-### Tree (2024/05/19)
+### tree informatics -L 5 --dirsfirst (2024-05-19)
 
 ```
 informatics
@@ -55,48 +55,48 @@ informatics
 │   │           ├── algorithm
 │   │           └── tutorial.lua
 │   ├── py
-│   │   ├── requirements.txt
-│   │   └── src
-│   │       ├── codeforces
-│   │       │   └── contest
-│   │       ├── dotcpp
-│   │       │   └── done
-│   │       ├── lanqiao
-│   │       │   ├── contest
-│   │       │   ├── done
-│   │       │   └── undone
-│   │       ├── leetcode
-│   │       │   ├── contest
-│   │       │   ├── done
-│   │       │   └── undone
-│   │       ├── luogu
-│   │       │   ├── contest
-│   │       │   ├── done
-│   │       │   └── undone
-│   │       ├── nowcoder
-│   │       │   ├── contest
-│   │       │   └── done
-│   │       ├── pta
-│   │       │   ├── contest
-│   │       │   ├── done
-│   │       │   └── undone
-│   │       ├── rockyutil
-│   │       │   ├── algorithm
-│   │       │   ├── compiling
-│   │       │   ├── cryptography
-│   │       │   ├── datastructure
-│   │       │   ├── leetcode.py
-│   │       │   ├── nowcoder.py
-│   │       │   └── systemoperating
-│   │       └── skoj
-│   │           ├── contest
-│   │           └── done
+│   │   ├── src
+│   │   │   ├── codeforces
+│   │   │   │   └── contest
+│   │   │   ├── dotcpp
+│   │   │   │   └── done
+│   │   │   ├── lanqiao
+│   │   │   │   ├── contest
+│   │   │   │   ├── done
+│   │   │   │   └── undone
+│   │   │   ├── leetcode
+│   │   │   │   ├── contest
+│   │   │   │   ├── done
+│   │   │   │   └── undone
+│   │   │   ├── luogu
+│   │   │   │   ├── contest
+│   │   │   │   ├── done
+│   │   │   │   └── undone
+│   │   │   ├── nowcoder
+│   │   │   │   ├── contest
+│   │   │   │   └── done
+│   │   │   ├── pta
+│   │   │   │   ├── contest
+│   │   │   │   ├── done
+│   │   │   │   └── undone
+│   │   │   ├── rockyutil
+│   │   │   │   ├── algorithm
+│   │   │   │   ├── compiling
+│   │   │   │   ├── cryptography
+│   │   │   │   ├── datastructure
+│   │   │   │   ├── systemoperating
+│   │   │   │   ├── leetcode.py
+│   │   │   │   └── nowcoder.py
+│   │   │   └── skoj
+│   │   │       ├── contest
+│   │   │       └── done
+│   │   └── requirements.txt
 │   └── ts
-│       ├── package.json
-│       ├── package-lock.json
 │       ├── src
 │       │   └── leetcode
 │       │       └── done
+│       ├── package.json
+│       ├── package-lock.json
 │       └── tsconfig.json
 ├── cpprun.cmd
 ├── crun.cmd
