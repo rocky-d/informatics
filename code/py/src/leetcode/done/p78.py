@@ -3,8 +3,4 @@ from rockyutil.leetcode import *
 
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        ans = [[]]
-        for num in nums:
-            for i in range(len(ans)):
-                ans.append(ans[i] + [num])
-        return ans
+        return reduce(lambda x, y: x + y, (list(combinations(nums, size)) for size in range(1 + len(nums))))
