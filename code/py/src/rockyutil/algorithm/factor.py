@@ -4,10 +4,10 @@ from math import isqrt
 
 def factors(num):
     num_isqrt = isqrt(num)
-    for divisor in range(1, num_isqrt):
-        if 0 == num % divisor:
-            yield divisor
-            yield num // divisor
+    for factor in range(1, num_isqrt):
+        if 0 == num % factor:
+            yield factor
+            yield num // factor
     if 0 == num % num_isqrt:
         yield num_isqrt
         if num // num_isqrt != num_isqrt:
