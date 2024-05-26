@@ -9,7 +9,7 @@ class Solution:
                 else:  # elif cnt == 9:
                     ans += '9' + char
                     cnt = 1
-            else:
+            else:  # elif lst != char:
                 ans += str(cnt) + lst
                 lst, cnt = char, 1
         ans += str(cnt) + lst
