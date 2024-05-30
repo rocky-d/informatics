@@ -7,8 +7,7 @@ class Solution:
         prefs = list(accumulate(arr, func = xor, initial = 0))
         n = len(arr)
         for i in range(n):
-            for j in range(i + 1, n):
-                for k in range(j, n):
-                    if prefs[i] == prefs[k + 1]:  # if prefs[i] ^ prefs[j] == prefs[j] ^ prefs[k + 1]:
-                        ans += 1
+            for k in range(i + 1, n):
+                if prefs[i] == prefs[k + 1]:  # if prefs[i] ^ prefs[j] == prefs[j] ^ prefs[k + 1]:
+                    ans += k - i
         return ans
