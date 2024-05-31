@@ -20,7 +20,7 @@ def main() -> None:
     def build(l: int, r: int) -> SegmentTreeNode:
         if l == r:
             return SegmentTreeNode(seg = (l, r), val = a[l], lft = None, rit = None)
-        mid = (l + r) // 2
+        mid = l + r >> 1
         lft, rit = build(l, mid), build(mid + 1, r)
         return SegmentTreeNode(seg = (l, r), val = max(lft.val, rit.val), lft = lft, rit = rit)
 
@@ -29,7 +29,7 @@ def main() -> None:
     def max_in(l: int, r: int, node: SegmentTreeNode) -> int:
         if (l, r) == node.seg:
             return node.val
-        node_seg_mid = (node.seg[0] + node.seg[1]) // 2
+        node_seg_mid = node.seg[0] + node.seg[1] >> 1
         if r <= node_seg_mid:
             res = max_in(l, r, node.lft)
         elif node_seg_mid + 1 <= l:
