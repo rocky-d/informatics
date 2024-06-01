@@ -15,12 +15,12 @@ def factors(num):
 
 def prime_factors(num):
     for factor in range(2, isqrt(num) + 1):
-        times = 0
+        exponents = 0
         while 0 == num % factor:
             num //= factor
-            times += 1
-        if 0 < times:
-            yield factor, times
+            exponents += 1
+        if 0 < exponents:
+            yield factor, exponents
     if 1 < num:
         yield num, 1
 
