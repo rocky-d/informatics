@@ -26,5 +26,5 @@ def prime_factors(num):
 
 
 if __name__ == '__main__':
-    print(*factors(num = 36))
-    print(*prime_factors(num = 36))
+    print(*factors(num = 444))
+    print(*prime_factors(num = 444))
