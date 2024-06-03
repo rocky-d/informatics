@@ -1,4 +1,4 @@
-package nowcoder.contest.cows20230724;
+package nowcoder.contest.c20230724sqdx3;
 
 import java.util.ArrayList;
 import java.util.List;

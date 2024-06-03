@@ -1,4 +1,4 @@
-package nowcoder.contest.cows20230717;
+package nowcoder.contest.c20230717sqdx1;
 
 class Fraction {
     private int numerator;

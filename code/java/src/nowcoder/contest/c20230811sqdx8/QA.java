@@ -1,4 +1,4 @@
-package nowcoder.contest.cows20230811;
+package nowcoder.contest.c20230811sqdx8;
 
 import java.util.Scanner;
 import java.util.Set;

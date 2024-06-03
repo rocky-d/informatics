@@ -1,4 +1,4 @@
-package luogu.contest.c20230731;
+package luogu.contest.c20230731njit;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package nowcoder.contest.cows20230731;
+package nowcoder.contest.c20230731sqdx5;
 
 import java.util.Scanner;
 

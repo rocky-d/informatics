@@ -1,4 +1,4 @@
-package nowcoder.contest.week20230723;
+package nowcoder.contest.c20230723nkzs4;
 
 import java.util.Arrays;
 import java.util.Scanner;
