@@ -10,10 +10,14 @@ class Solution:
             nk = n * k
             while prefs[rit] < nk:
                 rit += 1
-            val = prefs[rit] - nk
-            if val in prefs_idxes.keys() and 2 <= rit - prefs_idxes[val]:
-                ans = True
-                break
+            for r in range(rit, len(prefs)):
+                val = prefs[r] - nk
+                if val in prefs_idxes.keys() and 2 <= r - prefs_idxes[val]:
+                    ans = True
+                    break
+            else:
+                continue
+            break
         else:
             ans = False
         return ans
