@@ -3,4 +3,14 @@ from rockyutil.leetcode import *
 
 class Solution:
     def heightChecker(self, heights: List[int]) -> int:
-        return sum(1 for x, y in zip(heights, sorted(heights)) if x != y)
+        ans = 0
+        cnter = [0] * (1 + max(heights))
+        for height in heights:
+            cnter[height] += 1
+        idx = 0
+        for height, cnt in enumerate(cnter):
+            for _ in range(cnt):
+                if height != heights[idx]:
+                    ans += 1
+                idx += 1
+        return ans
