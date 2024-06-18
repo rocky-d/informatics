@@ -10,8 +10,8 @@ class Solution:
         while i < n and 0 < len(workers):
             idx = bisect_left(workers, works[i][0])
             if idx < len(workers):
-                ans += works[i][1]
                 workers.pop(idx)
+                ans += works[i][1]
             else:
                 i += 1
         return ans
