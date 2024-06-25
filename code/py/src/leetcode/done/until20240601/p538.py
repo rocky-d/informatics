@@ -2,17 +2,18 @@ from rockyutil.leetcode import *
 
 
 class Solution:
-    max_value = 0
-
     def convertBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        def go_through(node: TreeNode) -> int:
+        val = 0
+
+        def dfs(node: TreeNode) -> int:
+            nonlocal val
             if node is None:
                 return 0
-            go_through(node.right)
-            node.val += self.max_value
-            self.max_value = node.val
-            go_through(node.left)
+            dfs(node.right)
+            node.val += val
+            val = node.val
+            dfs(node.left)
             return node.val
 
-        go_through(root)
+        dfs(node = root)
         return root
