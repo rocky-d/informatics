@@ -5,7 +5,7 @@ class Solution:
     def convertBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         val = 0
 
-        def dfs(node: TreeNode) -> int:
+        def dfs(node: Optional[TreeNode]) -> int:
             nonlocal val
             if node is None:
                 return 0

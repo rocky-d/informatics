@@ -5,7 +5,7 @@ class Solution:
     def bstToGst(self, root: TreeNode) -> TreeNode:
         val = 0
 
-        def dfs(node: TreeNode) -> int:
+        def dfs(node: Optional[TreeNode]) -> int:
             nonlocal val
             if node is None:
                 return 0
