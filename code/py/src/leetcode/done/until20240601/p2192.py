@@ -9,7 +9,7 @@ class Solution:
         for fr, to in edges:
             graph[fr].append(to)
             ins[to] += 1
-        que = deque([idx for idx, val in enumerate(ins) if 0 == val])
+        que = deque(idx for idx, val in enumerate(ins) if 0 == val)
         while 0 < len(que):
             node = que.popleft()
             for nxt in graph[node]:
