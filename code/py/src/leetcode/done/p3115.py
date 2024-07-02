@@ -3,13 +3,15 @@ from rockyutil.leetcode import *
 
 class Solution:
     def maximumPrimeDifference(self, nums: List[int]) -> int:
-        def is_prime(num: int) -> bool:
-            return 2 <= num and all(0 != num % divisor for divisor in range(2, isqrt(num) + 1))
-
+        is_composite = [True] * 2 + [False] * 99
+        for num in range(2, 101):
+            if not is_composite[num]:
+                for composite in range(num * num, 101, num):
+                    is_composite[composite] = True
         lft = 0
-        while not is_prime(nums[lft]):
+        while is_composite[nums[lft]]:
             lft += 1
         rit = len(nums) - 1
-        while not is_prime(nums[rit]):
+        while is_composite[nums[rit]]:
             rit -= 1
         return rit - lft
