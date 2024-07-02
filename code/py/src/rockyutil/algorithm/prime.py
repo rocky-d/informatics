@@ -10,25 +10,25 @@ def is_prime_optimized(num):
 
 
 def primes_before_eratosthenes(n):
-    tags = [False] * min(2, n) + [True] * max(0, n - 2)
+    is_prime = [False] * min(2, n) + [True] * max(0, n - 2)
     for num in range(2, n):
-        if tags[num]:
+        if is_prime[num]:
             yield num
             for composite in range(num * num, n, num):
-                tags[composite] = False
+                is_prime[composite] = False
 
 
 def primes_before_euler(n):
     primes = []
-    tags = [False] * min(2, n) + [True] * max(0, n - 2)
+    is_prime = [False] * min(2, n) + [True] * max(0, n - 2)
     for num in range(2, n):
-        if tags[num]:
+        if is_prime[num]:
             yield num
             primes.append(num)
         for prime in primes:
             composite = num * prime
             if composite < n:
-                tags[composite] = False
+                is_prime[composite] = False
                 if 0 == num % prime:
                     break
             else:
