@@ -1,11 +1,7 @@
-from typing import Tuple
-
-
 def main() -> None:
     n, m, q = map(int, input().split())
     uvw = (tuple(map(int, input().split())) for _ in range(m))
     lr = (map(int, input().split()) for _ in range(q))
-
     ans = []
     heads = list(range(1 + n))
 
@@ -28,36 +24,23 @@ def main() -> None:
                 groups[u_head] += groups.pop(v_head)
             vals[len(groups)] = w
 
-    class SegmentTreeNode(object):
-        def __init__(self, seg: Tuple[int, int], val: int, lft: 'SegmentTreeNode', rit: 'SegmentTreeNode') -> None:
-            self.seg = seg
-            self.val = val
-            self.lft = lft
-            self.rit = rit
+    class SparseTable:
+        def __init__(self, data, func = max):
+            self.func = func
+            self.st = st = [data]
+            i, N = 1, len(st[0])
+            while 2 * i <= N:
+                pre = st[-1]
+                st.append([func(pre[j], pre[j + i]) for j in range(N - 2 * i + 1)])
+                i <<= 1
 
-    def build(l: int, r: int) -> SegmentTreeNode:
-        if l == r:
-            return SegmentTreeNode(seg = (l, r), val = vals[l], lft = None, rit = None)
-        mid = l + r >> 1
-        lft, rit = build(l, mid), build(mid + 1, r)
-        return SegmentTreeNode(seg = (l, r), val = max(lft.val, rit.val), lft = lft, rit = rit)
+        def query(self, begin: int, end: int):
+            lg = (end - begin + 1).bit_length() - 1
+            return self.func(self.st[lg][begin], self.st[lg][end - (1 << lg) + 1])
 
-    root = build(l = 1, r = n - 1)
-
-    def query(l: int, r: int, node: SegmentTreeNode) -> int:
-        if (l, r) == node.seg:
-            return node.val
-        mid = node.seg[0] + node.seg[1] >> 1
-        if r <= mid:
-            res = query(l, r, node.lft)
-        elif mid + 1 <= l:
-            res = query(l, r, node.rit)
-        else:
-            res = max(query(l, mid, node.lft), query(mid + 1, r, node.rit))
-        return res
-
+    st = SparseTable(vals)
     for l, r in lr:
-        res = query(l = l, r = r, node = root)
+        res = st.query(l, r)
         ans.append('NO ANSWER' if -1_000_000_001 == res else res)
     print(*ans, sep = '\n')
 
