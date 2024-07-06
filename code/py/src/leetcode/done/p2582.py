@@ -1,6 +1,3 @@
-from rockyutil.leetcode import *
-
-
 class Solution:
     def passThePillow(self, n: int, time: int) -> int:
         quotient, remainder = divmod(time, n - 1)
