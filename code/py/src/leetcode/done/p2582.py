@@ -1,4 +1,5 @@
 class Solution:
     def passThePillow(self, n: int, time: int) -> int:
-        quotient, remainder = divmod(time, n - 1)
-        return 1 + remainder if 0b0 == 0b1 & quotient else n - remainder
+        n2 = n + n
+        cnt = time % (n2 - 2)
+        return 1 + cnt if cnt < n else n2 - cnt - 1
