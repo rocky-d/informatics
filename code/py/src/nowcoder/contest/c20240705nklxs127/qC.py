@@ -15,7 +15,7 @@ def main() -> None:
     vals = ['NO ANSWER'] * n
     groups = {x: 1 for x in range(1, 1 + n)}
     for u, v, w in sorted(uvw, key = lambda item: item[-1], reverse = True):
-        u_head, v_head = find(u), find(v)
+        u_head, v_head = find(x = u), find(x = v)
         if u_head != v_head:
             if groups[u_head] < groups[v_head]:
                 heads[u] = heads[u_head] = v_head
