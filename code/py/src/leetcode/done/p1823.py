@@ -1,6 +1,3 @@
-from rockyutil.leetcode import *
-
-
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
         ans = 1
