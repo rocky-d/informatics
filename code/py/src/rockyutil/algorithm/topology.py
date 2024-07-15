@@ -10,7 +10,7 @@ def topological_sort(graph):
     while 0 < len(dque):
         fr = dque.popleft()
         yield fr
-        for to in graph[fr] if fr in graph else ():
+        for to in graph.get(fr, []):
             ins[to] -= 1
             if 0 == ins[to]:
                 dque.append(to)
