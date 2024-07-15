@@ -15,4 +15,4 @@ class Solution:
                 nodes[parent].left = nodes[child]
             else:  # elif 0 == isleft:
                 nodes[parent].right = nodes[child]
-        return [val for key, val in nodes.items() if True is roots[key]][0]
+        return [val for key, val in nodes.items() if roots[key]][0]
