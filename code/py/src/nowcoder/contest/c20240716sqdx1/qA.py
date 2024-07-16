@@ -1,7 +1,7 @@
 from array import array
 
 
-def main():
+def main() -> None:
     n, m, q = map(int, input().split())
 
     ans = 0
