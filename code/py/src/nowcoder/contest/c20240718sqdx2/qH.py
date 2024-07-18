@@ -35,7 +35,7 @@ def main() -> None:
         if val not in prefs_y_is.keys():
             prefs_y_is[val] = []
         prefs_y_is[val].append(i)
-    for i in range(1, n + 1):
+    for i in range(1, 1 + n):
         diff_x, diff_y = prefs_x[i] - x, prefs_y[i] - y
         if diff_x in prefs_x_is.keys() and diff_y in prefs_y_is.keys():
             ans += (n + 1 - i) * len({j for j in prefs_x_is[diff_x] if j < i} & {j for j in prefs_y_is[diff_y] if j < i})
