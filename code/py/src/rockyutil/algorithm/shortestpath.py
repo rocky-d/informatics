@@ -18,10 +18,11 @@ def dijkstra(graph, start, start_dst = 0):
             if v_dst < dsts[v]:
                 dsts[v], pres[v] = v_dst, u
                 heappush(heap, (v_dst, v))
+    return dsts, pres
 
 
 if __name__ == '__main__':
-    dijkstra(
+    print(*dijkstra(
         graph = [
             [],
             [(2, 2), (3, 5), (4, 4)],
@@ -31,4 +32,4 @@ if __name__ == '__main__':
         ],
         start = 1,
         start_dst = 0,
-    )
+    ), sep = '\n')
