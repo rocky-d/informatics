@@ -1,25 +1,25 @@
-from collections import Counter, deque
+from collections import deque
 
 
 def topological_sort(graph):
-    ins = Counter()
-    for tos in graph.values():
-        for to in tos:
-            ins[to] += 1
-    dque = deque((fr for fr in graph.keys() if 0 == ins[fr]))
+    n = len(graph)
+    ins = [0] * n
+    for vs in graph:
+        for v in vs:
+            ins[v] += 1
+    dque = deque((x for x, cnt in enumerate(ins) if 0 == cnt))
     while 0 < len(dque):
-        fr = dque.popleft()
-        yield fr
-        for to in graph.get(fr, []):
-            ins[to] -= 1
-            if 0 == ins[to]:
-                dque.append(to)
+        u = dque.popleft()
+        yield u
+        for v in graph[u]:
+            ins[v] -= 1
+            if 0 == ins[v]:
+                dque.append(v)
 
 
 if __name__ == '__main__':
-    print(*topological_sort(
-        {
-            1: [2, 3],
-            2: [3],
-        }
-    ))
+    print(*topological_sort(graph = [
+        [1, 2],
+        [2],
+        [],
+    ]))
