@@ -10,13 +10,14 @@ def dijkstra(graph, start):
     heap = []
     heappush(heap, (dsts[start], start))
     while 0 < len(heap):
-        dst, node = heappop(heap)
-        if dst != dsts[node]:  # if dst > dsts[node]:
+        u_dst, u = heappop(heap)
+        if u_dst != dsts[u]:  # if u_dst > dsts[u]:
             continue
-        for nxt, cost in graph[node]:
-            if dst + cost < dsts[nxt]:
-                dsts[nxt], pres[nxt] = dst + cost, node
-                heappush(heap, (dsts[nxt], nxt))
+        for v, w in graph[u]:
+            v_dst = u_dst + w
+            if v_dst < dsts[v]:
+                dsts[v], pres[v] = v_dst, u
+                heappush(heap, (v_dst, v))
 
 
 if __name__ == '__main__':
