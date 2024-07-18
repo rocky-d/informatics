@@ -2,10 +2,10 @@ from heapq import heappop, heappush
 from math import inf
 
 
-def dijkstra(graph, start):
+def dijkstra(graph, start, start_dst = 0):
     n = len(graph)
     dsts = [inf] * n
-    dsts[start] = 0
+    dsts[start] = start_dst
     pres = [None] * n
     heap = []
     heappush(heap, (dsts[start], start))
@@ -22,12 +22,13 @@ def dijkstra(graph, start):
 
 if __name__ == '__main__':
     dijkstra(
-        [
+        graph = [
             [],
             [(2, 2), (3, 5), (4, 4)],
             [(3, 2), (4, 1)],
             [(4, 3)],
             [],
         ],
-        1,
+        start = 1,
+        start_dst = 0,
     )
