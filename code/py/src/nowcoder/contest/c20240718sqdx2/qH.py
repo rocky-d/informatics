@@ -26,19 +26,19 @@ def main() -> None:
         else:  # elif 'D' == char:
             prefs_x[i] = prefs_x[i - 1] + 1
             prefs_y[i] = prefs_y[i - 1]
-    prefs_x_idxes, prefs_y_idxes = {}, {}
-    for idx, val in enumerate(prefs_x):
-        if val not in prefs_x_idxes.keys():
-            prefs_x_idxes[val] = []
-        prefs_x_idxes[val].append(idx)
-    for idx, val in enumerate(prefs_y):
-        if val not in prefs_y_idxes.keys():
-            prefs_y_idxes[val] = []
-        prefs_y_idxes[val].append(idx)
+    prefs_x_is, prefs_y_is = {}, {}
+    for i, val in enumerate(prefs_x):
+        if val not in prefs_x_is.keys():
+            prefs_x_is[val] = []
+        prefs_x_is[val].append(i)
+    for i, val in enumerate(prefs_y):
+        if val not in prefs_y_is.keys():
+            prefs_y_is[val] = []
+        prefs_y_is[val].append(i)
     for i in range(1, n + 1):
         diff_x, diff_y = prefs_x[i] - x, prefs_y[i] - y
-        if diff_x in prefs_x_idxes.keys() and diff_y in prefs_y_idxes.keys():
-            ans += (n + 1 - i) * len({idx for idx in prefs_x_idxes[diff_x] if idx < i} & {idx for idx in prefs_y_idxes[diff_y] if idx < i})
+        if diff_x in prefs_x_is.keys() and diff_y in prefs_y_is.keys():
+            ans += (n + 1 - i) * len({j for j in prefs_x_is[diff_x] if j < i} & {j for j in prefs_y_is[diff_y] if j < i})
     print(ans)
 
 
