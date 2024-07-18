@@ -1,3 +1,6 @@
+from bisect import bisect_left
+
+
 def main() -> None:
     n, x, y = map(int, input().split())
     s = input()
@@ -38,7 +41,8 @@ def main() -> None:
     for i in range(1, 1 + n):
         diff_x, diff_y = prefs_x[i] - x, prefs_y[i] - y
         if diff_x in prefs_x_is.keys() and diff_y in prefs_y_is.keys():
-            ans += (n + 1 - i) * len({j for j in prefs_x_is[diff_x] if j < i} & {j for j in prefs_y_is[diff_y] if j < i})
+            ls_x, ls_y = prefs_x_is[diff_x], prefs_y_is[diff_y]
+            ans += (n + 1 - i) * len(frozenset(ls_x[:bisect_left(ls_x, i)]) & frozenset(ls_y[:bisect_left(ls_y, i)]))
     print(ans)
 
 
