@@ -7,15 +7,10 @@ def main() -> None:
 
     cnter = Counter(ai for ai in a if 0 <= ai)
     for num in list(cnter.keys()):
-        cnter[num] %= 2
-        if 0 == cnter[num]:
+        if 0b0 == 0b1 & cnter[num]:
             del cnter[num]
-    ns = sum(1 for ai in a if ai < 0)
-    ps = len(cnter)
-    if ps >= ns:
-        print(ps - ns)
-    else:
-        print(0b1 & (ns - ps))
+    ps, ns = len(cnter), sum(1 for ai in a if ai < 0)
+    print(0b1 & (ns - ps) if ps < ns else ps - ns)
 
 
 if __name__ == '__main__':
