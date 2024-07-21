@@ -6,9 +6,9 @@ class Solution:
         n = bin(n)[2:]
         k = bin(k)[2:].zfill(len(n))
         for i in range(len(n)):
-            if '0' == n[i] and '1' == k[i]:
-                ans = -1
-                break
             if '1' == n[i] and '0' == k[i]:
                 ans += 1
+            elif '0' == n[i] and '1' == k[i]:
+                ans = -1
+                break
         return ans
