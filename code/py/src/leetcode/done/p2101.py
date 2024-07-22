@@ -17,8 +17,7 @@ class Solution:
             seen = [False] * start + [True] + [False] * (n - start - 1)
             que = deque([start])
             while 0 < len(que):
-                u = que.popleft()
-                for v in graph[u]:
+                for v in graph[que.popleft()]:
                     if seen[v]:
                         continue
                     seen[v] = True
