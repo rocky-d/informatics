@@ -13,17 +13,17 @@ class Solution:
                 graph[v].append(u)
 
         def bfs(start: int) -> int:
-            res = 0
-            seen = [False] * n
+            res = 1
+            seen = [False] * start + [True] + [False] * (n - start - 1)
             que = deque([start])
             while 0 < len(que):
                 u = que.popleft()
-                if seen[u]:
-                    continue
-                seen[u] = True
-                res += 1
                 for v in graph[u]:
+                    if seen[v]:
+                        continue
+                    seen[v] = True
                     que.append(v)
+                    res += 1
             return res
 
         return max(bfs(start = x) for x in range(n))
