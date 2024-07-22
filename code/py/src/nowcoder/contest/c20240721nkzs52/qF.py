@@ -1,5 +1,4 @@
-from functools import reduce
-from operator import mul
+from math import comb
 
 
 def main() -> None:
@@ -22,7 +21,7 @@ def main() -> None:
     if x == 0:
         print(1)
         return
-    print(reduce(mul, range(x + y, y, -1)) // reduce(mul, range(x, 0, -1)) % 1_000_000_007)
+    print(comb(x + y, x) % 1_000_000_007)
 
 
 if __name__ == '__main__':
