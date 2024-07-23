@@ -25,7 +25,9 @@ def combinations1d(n, k, mod = None):
 
 
 def combinations0d(n, k, mod = None):
-    assert 0 <= k <= n
+    assert 0 <= n and 0 <= k
+    if n < k:
+        return 0
     return combinations1d(n, k, mod)[-1]
 
 
