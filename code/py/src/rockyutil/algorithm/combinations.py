@@ -32,7 +32,7 @@ def combinations0d(n, k, mod = None):
 
 
 if __name__ == '__main__':
-    print(combinations2d(100, 24, 10007)[-1])
-    print(combinations1d(100, 24, 10007))
-    print(combinations0d(100, 24, 10007))
+    print(combinations2d(n = 100, k = 24, mod = 10007)[-1])
+    print(combinations1d(n = 100, k = 24, mod = 10007))
+    print(combinations0d(n = 100, k = 24, mod = 10007))
     print(comb(100, 24) % 10007)
