@@ -11,4 +11,4 @@ class Solution:
             for u in range_n:
                 for v in range_n:
                     dp[u][v] = min(dp[u][v], dp[u][k] + dp[k][v])
-        return max((sum(-1 for v in chain(range(u), range(u + 1, n)) if dp[u][v] <= distanceThreshold), u) for u in range_n)[1]
+        return max((sum(-1 for v in range_n if u != v and dp[u][v] <= distanceThreshold), u) for u in range_n)[1]
