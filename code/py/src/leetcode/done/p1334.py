@@ -3,7 +3,7 @@ from rockyutil.leetcode import *
 
 class Solution:
     def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
-        dp = [[inf] * i + [0] + [inf] * (n - i - 1) for i in range(n)]
+        dp = [[inf] * n for _ in range(n)]
         for u, v, w in edges:
             dp[u][v] = dp[v][u] = w
         for k in range(n):
