@@ -21,6 +21,19 @@ def dijkstra(graph, start, start_dst = 0):
     return dsts, pres
 
 
+def floyd(graph):
+    n = len(graph)
+    dp = [[inf] * n for _ in range(n)]
+    for u, vs in enumerate(graph):
+        for v, w in vs:
+            dp[u][v] = w
+    for k in range(n):
+        for u in range(n):
+            for v in range(n):
+                dp[u][v] = min(dp[u][v], dp[u][k] + dp[k][v])
+    return dp
+
+
 if __name__ == '__main__':
     print(*dijkstra(
         graph = [
