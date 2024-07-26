@@ -35,14 +35,14 @@ def floyd(graph):
 
 
 if __name__ == '__main__':
-    print(*dijkstra(
-        graph = [
-            [],
-            [(2, 2), (3, 5), (4, 4)],
-            [(3, 2), (4, 1)],
-            [(4, 3)],
-            [],
-        ],
-        start = 1,
-        start_dst = 0,
-    ), sep = '\n')
+    graph = [
+        [],
+        [(2, 2), (3, 5), (4, 4)],
+        [(3, 2), (4, 1)],
+        [(4, 3)],
+        [],
+    ]
+    for start in range(len(graph)):
+        print(*dijkstra(graph = graph, start = start, start_dst = 0), sep = '\n')
+        print()
+    print(*floyd(graph = graph), sep = '\n')
