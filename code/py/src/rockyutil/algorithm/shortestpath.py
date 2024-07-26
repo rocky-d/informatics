@@ -23,13 +23,14 @@ def dijkstra(graph, start, start_dst = 0):
 
 def floyd(graph):
     n = len(graph)
-    dp = [[inf] * n for _ in range(n)]
+    range_n = range(n)
+    dp = [[inf] * n for _ in range_n]
     for u, vs in enumerate(graph):
         for v, w in vs:
             dp[u][v] = w
-    for k in range(n):
-        for u in range(n):
-            for v in range(n):
+    for k in range_n:
+        for u in range_n:
+            for v in range_n:
                 dp[u][v] = min(dp[u][v], dp[u][k] + dp[k][v])
     return dp
 
