@@ -3,8 +3,8 @@ from itertools import accumulate
 
 
 def main() -> None:
-    s = input()
     mod = 1_000_000_007
+    s = input()
 
     ans = 0
     n = len(s)
