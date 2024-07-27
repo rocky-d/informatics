@@ -1,37 +1,37 @@
-def binary_search_cc(lft, rit, check):  # [lft, rit]
-    while lft <= rit:
-        mid = lft + rit >> 1
+def binary_search_cc(lo, hi, check):  # [lo, hi]
+    while lo <= hi:
+        mid = lo + hi >> 1
         if check(mid):
-            lft = mid + 1
+            lo = mid + 1
         else:
-            rit = mid - 1
-    return lft
+            hi = mid - 1
+    return lo
 
 
-def binary_search_co(lft, rit, check):  # [lft, rit)
-    while lft < rit:
-        mid = lft + rit >> 1
+def binary_search_co(lo, hi, check):  # [lo, hi)
+    while lo < hi:
+        mid = lo + hi >> 1
         if check(mid):
-            lft = mid + 1
+            lo = mid + 1
         else:
-            rit = mid
-    return lft  # return rit
+            hi = mid
+    return lo  # return hi
 
 
-def binary_search_oo(lft, rit, check):  # (lft, rit)
-    while lft + 1 < rit:
-        mid = lft + rit >> 1
+def binary_search_oo(lo, hi, check):  # (lo, hi)
+    while lo + 1 < hi:
+        mid = lo + hi >> 1
         if check(mid):
-            lft = mid
+            lo = mid
         else:
-            rit = mid
-    return rit
+            hi = mid
+    return hi
 
 
 if __name__ == '__main__':
     nums = [0, 1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 9]
     n = len(nums)
     check = lambda idx: nums[idx] <= 5
-    print(binary_search_cc(lft = 0, rit = n - 1, check = check))
-    print(binary_search_co(lft = 0, rit = n, check = check))
-    print(binary_search_oo(lft = -1, rit = n, check = check))
+    print(binary_search_cc(lo = 0, hi = n - 1, check = check))
+    print(binary_search_co(lo = 0, hi = n, check = check))
+    print(binary_search_oo(lo = -1, hi = n, check = check))
