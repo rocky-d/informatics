@@ -18,8 +18,10 @@ class Solution:
             tmp = (b - a) * (b - a + 1)
             if n < tmp:
                 continue
-            for x in a_ls:
-                for y in reversed(b_ls):
+            for y in reversed(b_ls):
+                if y < tmp:
+                    break
+                for x in a_ls:
                     if x == y:
                         continue
                     if tmp <= y - x:
