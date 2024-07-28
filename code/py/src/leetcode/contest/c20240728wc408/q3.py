@@ -4,7 +4,6 @@ from rockyutil.leetcode import *
 class Solution:
     def numberOfSubstrings(self, s: str) -> int:
         ans = 0
-        n = len(s)
         prefs = list(accumulate((1 if '0' == char else 0 for char in s), initial = 0))
         idxes = {}
         for idx, pref in enumerate(prefs):
@@ -16,8 +15,6 @@ class Solution:
                 a, a_ls = b, b_ls
                 b, b_ls = a, a_ls
             tmp = (b - a) * (b - a + 1)
-            if n < tmp:
-                continue
             for y in reversed(b_ls):
                 if y < tmp:
                     break
