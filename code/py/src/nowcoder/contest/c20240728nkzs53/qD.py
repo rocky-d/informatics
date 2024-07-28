@@ -3,18 +3,13 @@ def main() -> None:
     matches = [list(map(int, input().split())) for _ in range(n)]
     target = int(input())
 
-    total = 5001
-    dp = [False] * total
-    dp[0] = True
+    dp = {0}
     for match in matches:
-        dp_lst, dp = dp, [False] * total
-        for i in range(total):
-            if dp_lst[i]:
-                for num in match:
-                    num += i
-                    if num < total:
-                        dp[num] = True
-    print(min(abs(target - i) for i in range(total) if dp[i]))
+        dp_lst, dp = dp, set()
+        for lst in dp_lst:
+            for num in match:
+                dp.add(lst + num)
+    print(min(abs(target - num) for num in dp))
 
 
 if __name__ == '__main__':
