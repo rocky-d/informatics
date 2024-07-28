@@ -30,3 +30,6 @@ def query(lo, hi, node):
 
 if __name__ == '__main__':
     nums = [9, 1, 42, 5, 1, 6, 1, 45, 1, 4, 5, 6, 67, 78, 21, 1, 6, 1, 5]
+    n = len(nums)
+    root = build(lo = 0, hi = n - 1)
+    print(query(lo = 3, hi = 6, node = root))
