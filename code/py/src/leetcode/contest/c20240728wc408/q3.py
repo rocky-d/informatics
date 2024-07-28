@@ -11,21 +11,12 @@ class Solution:
                 idxes[pref] = []
             idxes[pref].append(idx)
         for (a, a_ls), (b, b_ls) in combinations_with_replacement(idxes.items(), 2):
-            if a > b:
-                a, a_ls = b, b_ls
-                b, b_ls = a, a_ls
             tmp = (b - a) * (b - a + 1)
             for y in reversed(b_ls):
                 if y < tmp:
                     break
-                for x in a_ls:
-                    if x == y:
-                        continue
-                    if tmp <= y - x:
-                        ans += 1
-                    else:
-                        break
-        return ans
+                ans += bisect_right(a_ls, y - tmp)
+        return ans - len(s) - 1
 
 
 eg_s = '00011'
