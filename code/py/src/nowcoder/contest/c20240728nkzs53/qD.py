@@ -5,8 +5,7 @@ def main() -> None:
 
     total = 5001
     dp = [False] * total
-    for num in matches.pop(0):
-        dp[num] = True
+    dp[0] = True
     for match in matches:
         dp_lst, dp = dp, [False] * total
         for i in range(total):
