@@ -21,10 +21,10 @@ def dijkstra(graph, start, start_dst = 0):
     return dsts, pres
 
 
-def floyd(graph):
+def floyd(graph, start_dst = 0):
     n = len(graph)
     range_n = range(n)
-    dp = [[inf] * n for _ in range_n]
+    dp = [[inf] * i + [start_dst] + [inf] * (n - i - 1) for i in range_n]
     for u, vs in enumerate(graph):
         for v, w in vs:
             dp[u][v] = w
