@@ -11,20 +11,16 @@ def main() -> None:
             cnter_a[ai] += 1
             ai >>= 1
         cnter_a[ai] += 1
-
-    def check(mid: int) -> bool:
+    lo, hi = 0, n + 1
+    while 1 < hi - lo:
+        mid = lo + hi >> 1
         cnter = Counter()
         for num in range(mid):
             while 0 < num:
                 cnter[num] += 1
                 num >>= 1
             cnter[num] += 1
-        return all(cnt <= cnter_a[num] for num, cnt in cnter.items())
-
-    lo, hi = 0, n + 1
-    while 1 < hi - lo:
-        mid = lo + hi >> 1
-        if check(mid = mid):
+        if all(cnt <= cnter_a[num] for num, cnt in cnter.items()):
             lo = mid
         else:
             hi = mid
