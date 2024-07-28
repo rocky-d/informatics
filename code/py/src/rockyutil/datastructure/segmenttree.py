@@ -16,7 +16,7 @@ def build(lo, hi):
 
 
 def query(lo, hi, node):
-    if lo == node.lo and hi == node.hi:
+    if node.lo == lo and node.hi == hi:
         return node.val
     mid = node.lo + node.hi >> 1
     if hi <= mid:
