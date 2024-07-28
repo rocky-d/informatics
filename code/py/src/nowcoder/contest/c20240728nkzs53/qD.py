@@ -4,8 +4,7 @@ def main() -> None:
     target = int(input())
 
     dp = {0}
-    for match in matches:
-        match = list(match)
+    for match in map(list, matches):
         dp_lst, dp = dp, set()
         for lst in dp_lst:
             for num in match:
