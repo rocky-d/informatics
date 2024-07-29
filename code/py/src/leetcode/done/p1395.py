@@ -5,24 +5,22 @@ class Solution:
     def numTeams(self, rating: List[int]) -> int:
         ans = 0
         n = len(rating)
-        dp1 = [1] * n
         dp2 = [0] * n
         for lft in range(n):
             for rit in range(lft + 1, n):
                 if rating[lft] < rating[rit]:
-                    dp2[rit] += dp1[lft]
+                    dp2[rit] += 1
         dp3 = [0] * n
         for lft in range(n):
             for rit in range(lft + 1, n):
                 if rating[lft] < rating[rit]:
                     dp3[rit] += dp2[lft]
         ans += sum(dp3)
-        dp1 = [1] * n
         dp2 = [0] * n
         for lft in range(n):
             for rit in range(lft + 1, n):
                 if rating[lft] > rating[rit]:
-                    dp2[rit] += dp1[lft]
+                    dp2[rit] += 1
         dp3 = [0] * n
         for lft in range(n):
             for rit in range(lft + 1, n):
