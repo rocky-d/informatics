@@ -1,4 +1,5 @@
 class SegmentTreeNode(object):
+
     def __init__(self, lo, hi, val, lft, rit):
         self.lo = lo
         self.hi = hi
