@@ -5,13 +5,13 @@ class Solution:
     def numberOfSubstrings(self, s: str) -> int:
         ans = 0
         n = len(s)
-        z_ls, z_i = [i for i, c in enumerate(s) if '0' == c] + [n], 0
+        z, zi = [i for i, c in enumerate(s) if '0' == c] + [n], 0
         for lft in range(n):
-            ans += z_ls[z_i] - lft
-            for zs, z_j in enumerate(range(z_i + 1, min(len(z_ls), z_i + isqrt(n - lft) + 1)), start = 1):
-                ans += min(max(0, (z_ls[z_j] - lft + 1) - (zs + zs * zs)), z_ls[z_j] - z_ls[z_j - 1])
+            ans += z[zi] - lft
+            for zs, zj in enumerate(range(zi + 1, min(len(z), zi + isqrt(n - lft) + 1)), start = 1):
+                ans += min(max(0, (z[zj] - lft + 1) - (zs + zs * zs)), z[zj] - z[zj - 1])
             if '0' == s[lft]:
-                z_i += 1
+                zi += 1
         return ans
 
 
