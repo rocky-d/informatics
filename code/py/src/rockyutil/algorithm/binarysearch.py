@@ -39,15 +39,19 @@ if __name__ == '__main__':
     key = lambda x: x
     print(bisect_left(nums, target, lo = lo, hi = hi, key = key))
     check = lambda idx: key(nums[idx]) < target
-    print(binary_search_cc(lo = lo, hi = hi, check = check))
-    print(binary_search_co(lo = lo, hi = hi, check = check))
-    print(binary_search_oo(lo = lo, hi = hi, check = check))
+    print(
+        binary_search_cc(lo = lo, hi = hi, check = check),
+        binary_search_co(lo = lo, hi = hi, check = check),
+        binary_search_oo(lo = lo, hi = hi, check = check),
+    )
 
     nums, target = [0, 1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 9], 5
     lo, hi = 0, len(nums)
     key = lambda x: x
     print(bisect_right(nums, target, lo = lo, hi = hi, key = key))
     check = lambda idx: key(nums[idx]) <= target
-    print(binary_search_cc(lo = lo, hi = hi, check = check))
-    print(binary_search_co(lo = lo, hi = hi, check = check))
-    print(binary_search_oo(lo = lo, hi = hi, check = check))
+    print(
+        binary_search_cc(lo = lo, hi = hi, check = check),
+        binary_search_co(lo = lo, hi = hi, check = check),
+        binary_search_oo(lo = lo, hi = hi, check = check),
+    )
