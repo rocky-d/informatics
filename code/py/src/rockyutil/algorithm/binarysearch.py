@@ -35,7 +35,7 @@ def binary_search_oo(lo, hi, check):
 
 if __name__ == '__main__':
     nums, target = [0, 1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 9], 5
-    lo, hi = 0, len(nums)
+    lo, hi = 0, len(nums)  # [lo, hi)
     key = lambda x: x
     print(
         bisect_left(nums, target, lo = lo, hi = hi, key = key),
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     )
 
     nums, target = [0, 1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 9], 5
-    lo, hi = 0, len(nums)
+    lo, hi = 0, len(nums)  # [lo, hi)
     key = lambda x: x
     print(
         bisect_right(nums, target, lo = lo, hi = hi, key = key),
