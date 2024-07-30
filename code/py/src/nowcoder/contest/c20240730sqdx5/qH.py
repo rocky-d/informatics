@@ -8,23 +8,18 @@ def main() -> None:
         graph[u].append(v)
         graph[v].append(u)
 
-    def dfs(u: int, cnt: int) -> None:
+    def dfs(u: int, cnt: int, seen: int) -> None:
         nonlocal ans
         cnt += 1
         ans = max(ans, cnt)
-        vs = [v for v in graph[u] if not seen[v]]
+        vs = [v for v in graph[u] if 0b0 == 0b1 << v & seen]
         for v in vs:
-            seen[v] = True
+            seen |= 0b1 << v
         for v in vs:
-            dfs(v, cnt)
-        for v in vs:
-            seen[v] = False
+            dfs(v, cnt, seen)
 
     for start in range(1, 1 + n):
-        seen = [None] + [False] * n
-        seen[start] = True
-        dfs(u = start, cnt = 0)
-        seen[start] = False
+        dfs(u = start, cnt = 0, seen = 0b1 << start)
     print(ans)
 
 
