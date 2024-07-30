@@ -1,4 +1,8 @@
+from bisect import bisect_left, bisect_right
+
+
 def binary_search_cc(lo, hi, check):
+    hi -= 1
     while lo <= hi:  # [lo, hi]
         mid = lo + hi >> 1
         if check(mid):
@@ -9,7 +13,6 @@ def binary_search_cc(lo, hi, check):
 
 
 def binary_search_co(lo, hi, check):
-    hi += 1
     while lo < hi:  # [lo, hi)
         mid = lo + hi >> 1
         if check(mid):
@@ -21,7 +24,6 @@ def binary_search_co(lo, hi, check):
 
 def binary_search_oo(lo, hi, check):
     lo -= 1
-    hi += 1
     while 1 < hi - lo:  # (lo, hi)
         mid = lo + hi >> 1
         if check(mid):
@@ -34,7 +36,20 @@ def binary_search_oo(lo, hi, check):
 if __name__ == '__main__':
     nums = [0, 1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 9]
     n = len(nums)
-    check = lambda idx: nums[idx] <= 5
-    print(binary_search_cc(lo = 0, hi = n - 1, check = check))
-    print(binary_search_co(lo = 0, hi = n - 1, check = check))
-    print(binary_search_oo(lo = 0, hi = n - 1, check = check))
+    target = 5
+
+    lo, hi = 0, n
+    key = lambda x: x
+    check = lambda idx: key(nums[idx]) < target
+    print(binary_search_cc(lo = lo, hi = hi, check = check))
+    print(binary_search_co(lo = lo, hi = hi, check = check))
+    print(binary_search_oo(lo = lo, hi = hi, check = check))
+    print(bisect_left(nums, target, lo = lo, hi = hi, key = key))
+
+    lo, hi = 0, n
+    key = lambda x: x
+    check = lambda idx: key(nums[idx]) <= target
+    print(binary_search_cc(lo = lo, hi = hi, check = check))
+    print(binary_search_co(lo = lo, hi = hi, check = check))
+    print(binary_search_oo(lo = lo, hi = hi, check = check))
+    print(bisect_right(nums, target, lo = lo, hi = hi, key = key))
