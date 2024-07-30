@@ -8,7 +8,7 @@ def main() -> None:
         graph[u].append(v)
         graph[v].append(u)
 
-    def dfs(u: int, cnt: int, seen: int) -> None:
+    def dfs(u: int, seen: int, cnt: int) -> None:
         nonlocal ans
         cnt += 1
         ans = max(ans, cnt)
@@ -16,10 +16,10 @@ def main() -> None:
         for v in vs:
             seen |= 0b1 << v
         for v in vs:
-            dfs(v, cnt, seen)
+            dfs(v, seen, cnt)
 
     for start in range(1, 1 + n):
-        dfs(u = start, cnt = 0, seen = 0b1 << start)
+        dfs(u = start, seen = 0b1 << start, cnt = 0)
     print(ans)
 
 
