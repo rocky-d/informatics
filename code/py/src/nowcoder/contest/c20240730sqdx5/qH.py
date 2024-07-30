@@ -1,3 +1,6 @@
+from functools import lru_cache
+
+
 def main() -> None:
     n, m = map(int, input().split())
     edges = (map(int, input().split()) for _ in range(m))
@@ -8,6 +11,7 @@ def main() -> None:
         graph[u].append(v)
         graph[v].append(u)
 
+    @lru_cache(maxsize = None)
     def dfs(u: int, seen: int, cnt: int) -> None:
         nonlocal ans
         cnt += 1
