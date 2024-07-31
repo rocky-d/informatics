@@ -17,5 +17,4 @@ class Solution:
                 res = min(res, dfs(i, x + book[0], y + dy, height + dy))
             return res
 
-        book = books[0]
-        return dfs(i = 1, x = book[0], y = book[1], height = 0 + book[1])
+        return dfs(i = 0, x = 0, y = 0, height = 0)
