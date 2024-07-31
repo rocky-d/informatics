@@ -1,7 +1,7 @@
 from bisect import bisect_left, bisect_right
 
 
-def binary_search_cc(lo, hi, check):
+def binary_search_cc(lo, hi, check):  # [lo, hi)
     hi -= 1
     while lo <= hi:  # [lo, hi]
         mid = lo + hi >> 1
@@ -12,7 +12,7 @@ def binary_search_cc(lo, hi, check):
     return lo
 
 
-def binary_search_co(lo, hi, check):
+def binary_search_co(lo, hi, check):  # [lo, hi)
     while lo < hi:  # [lo, hi)
         mid = lo + hi >> 1
         if check(mid):
@@ -22,7 +22,7 @@ def binary_search_co(lo, hi, check):
     return lo  # return hi
 
 
-def binary_search_oo(lo, hi, check):
+def binary_search_oo(lo, hi, check):  # [lo, hi)
     lo -= 1
     while 1 < hi - lo:  # (lo, hi)
         mid = lo + hi >> 1
@@ -35,7 +35,7 @@ def binary_search_oo(lo, hi, check):
 
 if __name__ == '__main__':
     nums, target = [0, 1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 9], 5
-    lo, hi = 0, len(nums)  # [lo, hi)
+    lo, hi = 0, len(nums)
     key = lambda x: x
     check = lambda mid: key(nums[mid]) < target
     print(
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     )
 
     nums, target = [0, 1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 9], 5
-    lo, hi = 0, len(nums)  # [lo, hi)
+    lo, hi = 0, len(nums)
     key = lambda x: x
     check = lambda mid: key(nums[mid]) <= target
     print(
