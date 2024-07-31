@@ -31,8 +31,8 @@ def query(lo, hi, node):
 
 class SegmentTree(object):
 
-    def __init__(self, __func, __iterable, *, initial = None):
-        self._func = __func
+    def __init__(self, __function, __iterable, *, initial = None):
+        self._func = __function
         self._vals = list(__iterable)
         self._init = initial
         self._root = self._build(0, len(self._vals) - 1)
@@ -40,10 +40,8 @@ class SegmentTree(object):
 
     def _build(self, lo, hi):
         if lo == hi:
-            return SegmentTreeNode(lo = lo, hi = hi,
-                                   val = self._vals[lo] if self._init is None else self._func(self._init,
-                                                                                              self._vals[lo]),
-                                   lft = None, rit = None)
+            val = self._vals[lo] if self._init is None else self._func(self._init, self._vals[lo])
+            return SegmentTreeNode(lo = lo, hi = hi, val = val, lft = None, rit = None)
         mid = lo + hi >> 1
         lft, rit = self._build(lo, mid), self._build(mid + 1, hi)
         return SegmentTreeNode(lo = lo, hi = hi, val = self._func(lft.val, rit.val), lft = lft, rit = rit)
@@ -68,7 +66,7 @@ if __name__ == '__main__':
     nums = [9, 1, 42, 5, 1, 6, 1, 45, 1, 4, 5, 6, 67, 78, 21, 1, 6, 1, 5]
 
     root = build(lo = 0, hi = len(nums) - 1)
-    print(query(lo = 3, hi = 6, node = root))
+    print(query(lo = 3, hi = 5, node = root))
 
     root = SegmentTree(max, nums)
-    print(root.query(lo = 3, hi = 7))
+    print(root.query(lo = 3, hi = 6))
