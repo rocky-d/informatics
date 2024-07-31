@@ -8,13 +8,12 @@ class Solution:
         @lru_cache(maxsize = None)
         def dfs(i: int, x: int, y: int, height: int) -> int:
             if i == n:
-                return height
-            book = books[i]
+                return height + y
+            xi, yi = books[i]
             i += 1
-            res = dfs(i, book[0], book[1], height + book[1])
-            if x + book[0] <= shelfWidth:
-                dy = max(0, book[1] - y)
-                res = min(res, dfs(i, x + book[0], y + dy, height + dy))
+            res = dfs(i, xi, yi, height + y)
+            if x + xi <= shelfWidth:
+                res = min(res, dfs(i, x + xi, max(y, yi), height))
             return res
 
         return dfs(i = 0, x = 0, y = 0, height = 0)
