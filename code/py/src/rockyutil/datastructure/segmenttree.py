@@ -10,17 +10,15 @@ class SegmentTreeNode(object):
 
 class SegmentTree(object):
 
-    def __init__(self, __function, __iterable, *, initial = None):
+    def __init__(self, __function, __iterable):
         self._func = __function
         self._vals = list(__iterable)
-        self._init = initial
         self._root = self._build(0, len(self._vals) - 1)
         del self._vals
 
     def _build(self, lo, hi):
         if lo == hi:
-            val = self._vals[lo] if self._init is None else self._func(self._init, self._vals[lo])
-            return SegmentTreeNode(lo = lo, hi = hi, val = val, lft = None, rit = None)
+            return SegmentTreeNode(lo = lo, hi = hi, val = self._vals[lo], lft = None, rit = None)
         mid = lo + hi >> 1
         lft, rit = self._build(lo, mid), self._build(mid + 1, hi)
         return SegmentTreeNode(lo = lo, hi = hi, val = self._func(lft.val, rit.val), lft = lft, rit = rit)
