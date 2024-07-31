@@ -26,8 +26,8 @@ class _UnionFind(object):
             self.find = self._find_rank
             self.union = self._union_rank
 
-    def __len__(self):  # TODO
-        return len(self._heads), len(self._groups) if self._groups is not None else None
+    # def __len__(self):  # TODO
+    #     return len(self._heads), len(self._groups) if self._groups is not None else None
 
     def _find_comp_recu(self, x):
         if x == self._heads[x]:
@@ -90,7 +90,7 @@ class UnionFindList(_UnionFind):  # TODO: set properties
 
     def __init__(self, __size, *, grouped = False, recursive = False, compressed = True):
         super().__init__(
-            [x for x in range(__size)], generic = False,
+            list(range(__size)), generic = False,
             grouped = grouped, recursive = recursive, compressed = compressed
         )
 
