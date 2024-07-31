@@ -4,20 +4,14 @@ from rockyutil.leetcode import *
 class Solution:
     def minHeightShelves(self, books: List[List[int]], shelfWidth: int) -> int:
         n = len(books)
-
-        @lru_cache(maxsize = None)
-        def dfs(i: int) -> int:
-            if i == n:
-                return 0
-            res = inf
+        dp = [0] + [inf] * n
+        for i in range(1, 1 + n):
             x, y = 0, 0
-            for i in range(i, n):
-                xi, yi = books[i]
-                x += xi
-                y = max(y, yi)
+            for j in reversed(range(i)):
+                book = books[j]
+                x += book[0]
+                y = max(y, book[1])
                 if shelfWidth < x:
                     break
-                res = min(res, dfs(i + 1) + y)
-            return res
-
-        return dfs(i = 0)
+                dp[i] = min(dp[i], dp[j] + y)
+        return dp[-1]
