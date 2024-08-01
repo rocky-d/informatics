@@ -1,8 +1,9 @@
+from operator import add
+
+
 class SegmentTreeNode(object):
 
-    def __init__(self, lo, hi, val, lft, rit):
-        self.lo = lo
-        self.hi = hi
+    def __init__(self, val, lft, rit):
         self.val = val
         self.lft = lft
         self.rit = rit
@@ -13,50 +14,59 @@ class SegmentTree(object):
     def __init__(self, __function, __iterable):
         self._func = __function
         self._vals = list(__iterable)
-        self._root = self._build(0, len(self._vals) - 1)
+        self._n = len(self._vals)
+        self._root = self._build(0, self._n - 1)
         del self._vals
 
     def _build(self, lo, hi):
         if lo == hi:
-            return SegmentTreeNode(lo = lo, hi = hi, val = self._vals[lo], lft = None, rit = None)
+            return SegmentTreeNode(val = self._vals[lo], lft = None, rit = None)
         mid = lo + hi >> 1
         lft, rit = self._build(lo, mid), self._build(mid + 1, hi)
-        return SegmentTreeNode(lo = lo, hi = hi, val = self._func(lft.val, rit.val), lft = lft, rit = rit)
+        return SegmentTreeNode(val = self._func(lft.val, rit.val), lft = lft, rit = rit)
 
-    def _query(self, lo, hi, node):  # [lo, hi]
-        if node.lo == lo and node.hi == hi:
+    def _query(self, node, node_lo, node_hi, lo, hi):  # [lo, hi]
+        if node_lo == lo and node_hi == hi:
             return node.val
-        mid = node.lo + node.hi >> 1
-        if hi <= mid:
-            res = self._query(lo, hi, node.lft)
-        elif mid + 1 <= lo:
-            res = self._query(lo, hi, node.rit)
+        mid0 = node_lo + node_hi >> 1
+        mid1 = mid0 + 1
+        if hi <= mid0:
+            res = self._query(node.lft, node_lo, mid0, lo, hi)
+        elif mid1 <= lo:
+            res = self._query(node.rit, mid1, node_hi, lo, hi)
         else:
-            res = self._func(self._query(lo, mid, node.lft), self._query(mid + 1, hi, node.rit))
+            res = self._func(
+                self._query(node.lft, node_lo, mid0, lo, mid0),
+                self._query(node.rit, mid1, node_hi, mid1, hi),
+            )
         return res
 
     def query(self, lo, hi):  # [lo, hi)
-        return self._query(lo, hi - 1, self._root)
+        return self._query(self._root, 0, self._n - 1, lo, hi - 1)
 
 
 def build(lo, hi):
     if lo == hi:
-        return SegmentTreeNode(lo = lo, hi = hi, val = nums[lo], lft = None, rit = None)
+        return SegmentTreeNode(val = nums[lo], lft = None, rit = None)
     mid = lo + hi >> 1
     lft, rit = build(lo, mid), build(mid + 1, hi)
-    return SegmentTreeNode(lo = lo, hi = hi, val = max(lft.val, rit.val), lft = lft, rit = rit)
+    return SegmentTreeNode(val = add(lft.val, rit.val), lft = lft, rit = rit)
 
 
-def query(lo, hi, node):
-    if node.lo == lo and node.hi == hi:
+def query(node, node_lo, node_hi, lo, hi):
+    if node_lo == lo and node_hi == hi:
         return node.val
-    mid = node.lo + node.hi >> 1
-    if hi <= mid:
-        res = query(lo, hi, node.lft)
-    elif mid + 1 <= lo:
-        res = query(lo, hi, node.rit)
+    mid0 = node_lo + node_hi >> 1
+    mid1 = mid0 + 1
+    if hi <= mid0:
+        res = query(node.lft, node_lo, mid0, lo, hi)
+    elif mid1 <= lo:
+        res = query(node.rit, mid1, node_hi, lo, hi)
     else:
-        res = max(query(lo, mid, node.lft), query(mid + 1, hi, node.rit))
+        res = add(
+            query(node.lft, node_lo, mid0, lo, mid0),
+            query(node.rit, mid1, node_hi, mid1, hi),
+        )
     return res
 
 
@@ -64,7 +74,7 @@ if __name__ == '__main__':
     nums = [9, 1, 42, 5, 1, 6, 1, 45, 1, 4, 5, 6, 67, 78, 21, 1, 6, 1, 5]
 
     root = build(lo = 0, hi = len(nums) - 1)
-    print(query(lo = 3, hi = 5, node = root))
+    print(query(node = root, node_lo = 0, node_hi = len(nums) - 1, lo = 3, hi = 5))
 
-    root = SegmentTree(max, nums)
+    root = SegmentTree(add, nums)
     print(root.query(lo = 3, hi = 6))
