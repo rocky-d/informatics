@@ -71,7 +71,19 @@ def query(node, lft, rit, lo, hi):  # [lo, hi]
 
 
 def update(node, lft, rit, lo, hi, key):  # [lo, hi]
-    pass
+    if lft == rit:
+        node.val = key(node.val)
+        return
+    mid0 = lft + rit >> 1
+    mid1 = mid0 + 1
+    if hi <= mid0:
+        update(node.lft, lft, mid0, lo, hi, key)
+    elif mid1 <= lo:
+        update(node.rit, mid1, rit, lo, hi, key)
+    else:
+        update(node.lft, lft, mid0, lo, mid0, key)
+        update(node.rit, mid1, rit, mid1, hi, key)
+    node.val = add(node.lft.val, node.rit.val)
 
 
 if __name__ == '__main__':
