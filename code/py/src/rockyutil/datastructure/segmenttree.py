@@ -40,7 +40,19 @@ class SegmentTree(object):
         return self._query(self._root, 0, self._n - 1, lo, hi - 1)
 
     def _update(self, node, lft, rit, lo, hi, key):  # [lo, hi]
-        pass
+        if lft == rit:
+            node.val = key(node.val)
+            return
+        mid0 = lft + rit >> 1
+        mid1 = mid0 + 1
+        if hi <= mid0:
+            self._update(node.lft, lft, mid0, lo, hi, key)
+        elif mid1 <= lo:
+            self._update(node.rit, mid1, rit, lo, hi, key)
+        else:
+            self._update(node.lft, lft, mid0, lo, mid0, key)
+            self._update(node.rit, mid1, rit, mid1, hi, key)
+        node.val = self._func(node.lft.val, node.rit.val)
 
     def update(self, lo, hi, key):  # [lo, hi)
         self._update(self._root, 0, self._n - 1, lo, hi, key)
@@ -93,6 +105,10 @@ if __name__ == '__main__':
 
     root = build(lft = 0, rit = len(nums) - 1)
     print(query(node = root, lft = 0, rit = len(nums) - 1, lo = 3, hi = 5))
+    update(node = root, lft = 0, rit = len(nums) - 1, lo = 3, hi = 5, key = lambda val: val + 1000)
+    print(query(node = root, lft = 0, rit = len(nums) - 1, lo = 3, hi = 5))
 
     root = SegmentTree(add, nums)
+    print(root.query(lo = 3, hi = 6))
+    root.update(lo = 3, hi = 6, key = lambda val: val + 1000)
     print(root.query(lo = 3, hi = 6))
