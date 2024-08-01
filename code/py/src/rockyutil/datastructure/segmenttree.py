@@ -37,7 +37,8 @@ class SegmentTree(object):
         return res
 
     def query(self, lo, hi):  # [lo, hi)
-        return self._query(self._root, 0, self._n - 1, lo, hi - 1)
+        hi -= 1
+        return self._query(self._root, 0, self._n - 1, lo, hi)
 
     def _update(self, node, lft, rit, lo, hi, key):  # [lo, hi]
         if lft == rit:
@@ -55,6 +56,7 @@ class SegmentTree(object):
         node.val = self._func(node.lft.val, node.rit.val)
 
     def update(self, lo, hi, key):  # [lo, hi)
+        hi -= 1
         self._update(self._root, 0, self._n - 1, lo, hi, key)
 
 
