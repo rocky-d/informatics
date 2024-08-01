@@ -1,12 +1,6 @@
 from operator import add
 
-
-class BinaryTreeNode(object):
-
-    def __init__(self, val, lft, rit):
-        self.val = val
-        self.lft = lft
-        self.rit = rit
+from rockyutil.datastructure.linkednode import BinaryTreeNode
 
 
 class SegmentTree(object):
@@ -43,6 +37,12 @@ class SegmentTree(object):
 
     def query(self, lo, hi):  # [lo, hi)
         return self._query(self._root, 0, self._n - 1, lo, hi - 1)
+
+    def _update(self, node, lft, rit, lo, hi, key):  # [lo, hi]
+        pass
+
+    def update(self, lo, hi, key):  # [lo, hi)
+        self._update(self._root, 0, self._n - 1, lo, hi, key)
 
 
 def build(lo, hi):  # [lo, hi]
