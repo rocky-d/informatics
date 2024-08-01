@@ -21,15 +21,6 @@ class BinaryTreeNode(object):
         self.rit = rit
 
 
-class SegmentTreeNode(object):
-
-    def __init__(self, seg, val, lft, rit):
-        self.seg = seg
-        self.val = val
-        self.lft = lft
-        self.rit = rit
-
-
 class NaryTreeNode(object):
 
     def __init__(self, val, nxts):
