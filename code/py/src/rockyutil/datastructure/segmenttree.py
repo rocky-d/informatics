@@ -15,8 +15,9 @@ class SegmentTree(object):
     def _build(self, lo, hi):  # [lo, hi]
         if lo == hi:
             return BinaryTreeNode(val = self._vals[lo], lft = None, rit = None)
-        mid = lo + hi >> 1
-        lft, rit = self._build(lo, mid), self._build(mid + 1, hi)
+        mid0 = lo + hi >> 1
+        mid1 = mid0 + 1
+        lft, rit = self._build(lo, mid0), self._build(mid1, hi)
         return BinaryTreeNode(val = self._func(lft.val, rit.val), lft = lft, rit = rit)
 
     def _query(self, node, lft, rit, lo, hi):  # [lo, hi]
@@ -48,8 +49,9 @@ class SegmentTree(object):
 def build(lo, hi):  # [lo, hi]
     if lo == hi:
         return BinaryTreeNode(val = nums[lo], lft = None, rit = None)
-    mid = lo + hi >> 1
-    lft, rit = build(lo, mid), build(mid + 1, hi)
+    mid0 = lo + hi >> 1
+    mid1 = mid0 + 1
+    lft, rit = build(lo, mid0), build(mid1, hi)
     return BinaryTreeNode(val = add(lft.val, rit.val), lft = lft, rit = rit)
 
 
