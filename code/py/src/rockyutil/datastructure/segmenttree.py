@@ -26,7 +26,7 @@ class SegmentTree(object):
         return SegmentTreeNode(val = self._func(lft.val, rit.val), lft = lft, rit = rit)
 
     def _query(self, node, l, r, lo, hi):  # [lo, hi]
-        if l == lo and r == hi:
+        if l == lo and hi == r:  # l <= lo <= hi <= r
             return node.val
         m0 = l + r >> 1
         m1 = m0 + 1
@@ -54,7 +54,7 @@ def build(lo, hi):
 
 
 def query(node, l, r, lo, hi):
-    if l == lo and r == hi:
+    if l == lo and hi == r:  # l <= lo <= hi <= r
         return node.val
     m0 = l + r >> 1
     m1 = m0 + 1
