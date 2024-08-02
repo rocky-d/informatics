@@ -6,7 +6,7 @@ def dijkstra(graph, start, start_dst = 0):
     n = len(graph)
     dsts = [inf] * n
     dsts[start] = start_dst
-    pres = [None] * n
+    pres = [set() for _ in range(n)]
     heap = []
     heappush(heap, (dsts[start], start))
     while 0 < len(heap):
@@ -16,8 +16,12 @@ def dijkstra(graph, start, start_dst = 0):
         for v, w in graph[u]:
             v_dst = u_dst + w
             if v_dst < dsts[v]:
-                dsts[v], pres[v] = v_dst, u
                 heappush(heap, (v_dst, v))
+                dsts[v] = v_dst
+                pres[v].clear()
+                pres[v].add(u)
+            elif v_dst == dsts[v]:
+                pres[v].add(u)
     return dsts, pres
 
 
