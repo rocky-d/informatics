@@ -12,6 +12,12 @@ class SegmentTree(object):
         self._root = self._build(0, self._n - 1)
         del self._vals
 
+    def _pull(self, node):
+        node.val = node.lft.val + node.rit.val
+
+    def _push(self, node):
+        pass
+
     def _build(self, lft, rit):  # [lft, rit]
         if lft == rit:
             return SegmentTreeNode(lazy = None, val = self._vals[lft], lft = None, rit = None)
