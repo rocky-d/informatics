@@ -67,56 +67,8 @@ class SegmentTree(object):
         self._update(self._root, 0, self._n - 1, lo, hi, key)
 
 
-def build(lft, rit):  # [lft, rit]
-    if lft == rit:
-        return SegmentTreeNode(lazy = None, val = nums[lft], lft = None, rit = None)
-    mid0 = lft + rit >> 1
-    mid1 = mid0 + 1
-    lft = build(lft, mid0)
-    rit = build(mid1, rit)
-    return SegmentTreeNode(lazy = None, val = add(lft.val, rit.val), lft = lft, rit = rit)
-
-
-def query(node, lft, rit, lo, hi):  # [lo, hi]
-    if lft == lo and hi == rit:  # lft <= lo <= hi <= rit
-        return node.val
-    mid0 = lft + rit >> 1
-    mid1 = mid0 + 1
-    if hi <= mid0:
-        res = query(node.lft, lft, mid0, lo, hi)
-    elif mid1 <= lo:
-        res = query(node.rit, mid1, rit, lo, hi)
-    else:
-        res = add(
-            query(node.lft, lft, mid0, lo, mid0),
-            query(node.rit, mid1, rit, mid1, hi),
-        )
-    return res
-
-
-def update(node, lft, rit, lo, hi, key):  # [lo, hi]
-    if lft == rit:
-        node.val = key(node.val)
-        return
-    mid0 = lft + rit >> 1
-    mid1 = mid0 + 1
-    if hi <= mid0:
-        update(node.lft, lft, mid0, lo, hi, key)
-    elif mid1 <= lo:
-        update(node.rit, mid1, rit, lo, hi, key)
-    else:
-        update(node.lft, lft, mid0, lo, mid0, key)
-        update(node.rit, mid1, rit, mid1, hi, key)
-    node.val = add(node.lft.val, node.rit.val)
-
-
 if __name__ == '__main__':
     nums = [9, 1, 42, 5, 1, 6, 1, 45, 1, 4, 5, 6, 67, 78, 21, 1, 6, 1, 5]
-
-    root = build(lft = 0, rit = len(nums) - 1)
-    print(query(node = root, lft = 0, rit = len(nums) - 1, lo = 3, hi = 5))
-    update(node = root, lft = 0, rit = len(nums) - 1, lo = 3, hi = 5, key = lambda val: val + 1000)
-    print(query(node = root, lft = 0, rit = len(nums) - 1, lo = 3, hi = 5))
 
     root = SegmentTree(add, nums)
     print(root.query(lo = 3, hi = 6))
