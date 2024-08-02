@@ -14,12 +14,12 @@ class SegmentTree(object):
 
     def _build(self, lft, rit):  # [lft, rit]
         if lft == rit:
-            return SegmentTreeNode(val = self._vals[lft], lft = None, rit = None, lazy = None)
+            return SegmentTreeNode(lazy = None, val = self._vals[lft], lft = None, rit = None)
         mid0 = lft + rit >> 1
         mid1 = mid0 + 1
         lft = self._build(lft, mid0)
         rit = self._build(mid1, rit)
-        return SegmentTreeNode(val = self._func(lft.val, rit.val), lft = lft, rit = rit, lazy = None)
+        return SegmentTreeNode(lazy = None, val = self._func(lft.val, rit.val), lft = lft, rit = rit)
 
     def _query(self, node, lft, rit, lo, hi):  # [lo, hi]
         if lft == lo and hi == rit:  # lft <= lo <= hi <= rit
@@ -63,12 +63,12 @@ class SegmentTree(object):
 
 def build(lft, rit):  # [lft, rit]
     if lft == rit:
-        return SegmentTreeNode(val = nums[lft], lft = None, rit = None, lazy = None)
+        return SegmentTreeNode(lazy = None, val = nums[lft], lft = None, rit = None)
     mid0 = lft + rit >> 1
     mid1 = mid0 + 1
     lft = build(lft, mid0)
     rit = build(mid1, rit)
-    return SegmentTreeNode(val = add(lft.val, rit.val), lft = lft, rit = rit, lazy = None)
+    return SegmentTreeNode(lazy = None, val = add(lft.val, rit.val), lft = lft, rit = rit)
 
 
 def query(node, lft, rit, lo, hi):  # [lo, hi]

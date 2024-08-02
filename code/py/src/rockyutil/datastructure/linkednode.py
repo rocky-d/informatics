@@ -23,11 +23,11 @@ class BinaryTreeNode(object):
 
 class SegmentTreeNode(object):
 
-    def __init__(self, val, lft, rit, lazy):
+    def __init__(self, lazy, val, lft, rit):
+        self.lazy = lazy
         self.val = val
         self.lft = lft
         self.rit = rit
-        self.lazy = lazy
 
 
 class NaryTreeNode(object):
