@@ -13,7 +13,7 @@ class SegmentTree(object):
         del self._vals
 
     def _pull(self, node):
-        node.val = node.lft.val + node.rit.val
+        pass
 
     def _push(self, node):
         pass
