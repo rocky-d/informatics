@@ -1,6 +1,6 @@
 from operator import add
 
-from rockyutil.datastructure.linkednode import BinaryTreeNode
+from rockyutil.datastructure.linkednode import SegmentTreeNode
 
 
 class SegmentTree(object):
@@ -14,11 +14,11 @@ class SegmentTree(object):
 
     def _build(self, lft, rit):  # [lft, rit]
         if lft == rit:
-            return BinaryTreeNode(val = self._vals[lft], lft = None, rit = None)
+            return SegmentTreeNode(val = self._vals[lft], lft = None, rit = None, lazy = None)
         mid0 = lft + rit >> 1
         mid1 = mid0 + 1
         lft, rit = self._build(lft, mid0), self._build(mid1, rit)
-        return BinaryTreeNode(val = self._func(lft.val, rit.val), lft = lft, rit = rit)
+        return SegmentTreeNode(val = self._func(lft.val, rit.val), lft = lft, rit = rit, lazy = None)
 
     def _query(self, node, lft, rit, lo, hi):  # [lo, hi]
         if lft == lo and hi == rit:  # lft <= lo <= hi <= rit
@@ -62,11 +62,11 @@ class SegmentTree(object):
 
 def build(lft, rit):  # [lft, rit]
     if lft == rit:
-        return BinaryTreeNode(val = nums[lft], lft = None, rit = None)
+        return SegmentTreeNode(val = nums[lft], lft = None, rit = None, lazy = None)
     mid0 = lft + rit >> 1
     mid1 = mid0 + 1
     lft, rit = build(lft, mid0), build(mid1, rit)
-    return BinaryTreeNode(val = add(lft.val, rit.val), lft = lft, rit = rit)
+    return SegmentTreeNode(val = add(lft.val, rit.val), lft = lft, rit = rit, lazy = None)
 
 
 def query(node, lft, rit, lo, hi):  # [lo, hi]
