@@ -17,7 +17,8 @@ class SegmentTree(object):
             return SegmentTreeNode(val = self._vals[lft], lft = None, rit = None, lazy = None)
         mid0 = lft + rit >> 1
         mid1 = mid0 + 1
-        lft, rit = self._build(lft, mid0), self._build(mid1, rit)
+        lft = self._build(lft, mid0)
+        rit = self._build(mid1, rit)
         return SegmentTreeNode(val = self._func(lft.val, rit.val), lft = lft, rit = rit, lazy = None)
 
     def _query(self, node, lft, rit, lo, hi):  # [lo, hi]
@@ -65,7 +66,8 @@ def build(lft, rit):  # [lft, rit]
         return SegmentTreeNode(val = nums[lft], lft = None, rit = None, lazy = None)
     mid0 = lft + rit >> 1
     mid1 = mid0 + 1
-    lft, rit = build(lft, mid0), build(mid1, rit)
+    lft = build(lft, mid0)
+    rit = build(mid1, rit)
     return SegmentTreeNode(val = add(lft.val, rit.val), lft = lft, rit = rit, lazy = None)
 
 
