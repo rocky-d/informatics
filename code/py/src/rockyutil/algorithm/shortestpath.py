@@ -49,7 +49,6 @@ if __name__ == '__main__':
         [(4, 3)],
         [],
     ]
-
     for start in range(len(graph)):
         print_(dijkstra(graph, start, initial = 0))
     print_(floyd(graph, initial = 0))

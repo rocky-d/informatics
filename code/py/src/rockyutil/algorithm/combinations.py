@@ -34,7 +34,6 @@ def combinations0d(n, k, mod = None):
 if __name__ == '__main__':
     mod = 1_000_000_007
     n, k = 100, 24
-
     print(comb(n, k) % mod)
     print(combinations0d(n, k, mod = mod))
     print(combinations1d(n, k, mod = mod)[-1])

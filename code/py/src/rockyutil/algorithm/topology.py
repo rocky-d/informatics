@@ -24,5 +24,4 @@ if __name__ == '__main__':
         [2],
         [],
     ]
-
     print(*topological_sort(graph, directed = True))

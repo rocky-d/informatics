@@ -39,7 +39,6 @@ if __name__ == '__main__':
     from timeit import timeit
 
     n, repeats = 10 ** 7, 10 ** 1
-
     match 3:
         case 1:
             print(timeit(lambda: tuple(filter(is_prime_plain, range(n))), number = repeats))

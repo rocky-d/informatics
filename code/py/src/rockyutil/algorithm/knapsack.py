@@ -15,8 +15,6 @@ def knapsack_unbounded(volume, items):
 
 
 if __name__ == '__main__':
-    volume = 6
-    items = [(1, 2), (2, 3), (3, 5), (4, 7)]
-
+    volume, items = 6, [(1, 2), (2, 3), (3, 5), (4, 7)]
     print(knapsack_01(volume, items))
     print(knapsack_unbounded(volume, items))

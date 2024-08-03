@@ -33,7 +33,6 @@ def kmp(s, sub):
 
 if __name__ == '__main__':
     s, sub = 'abbcd', 'bc'
-
     print(s.index(sub))
     print(s.find(sub))
     print(kmp(s, sub))
