@@ -51,5 +51,5 @@ if __name__ == '__main__':
     ]
 
     for start in range(len(graph)):
-        print_(dijkstra(graph = graph, start = start, start_dst = 0))
-    print_(floyd(graph = graph, start_dst = 0))
+        print_(dijkstra(graph, start, start_dst = 0))
+    print_(floyd(graph, start_dst = 0))

@@ -19,11 +19,10 @@ def topological_sort(graph, directed = True):
 
 
 if __name__ == '__main__':
-    print(*topological_sort(
-        graph = [
-            [1, 2],
-            [2],
-            [],
-        ],
-        directed = True,
-    ), sep = '\n')
+    graph = [
+        [1, 2],
+        [2],
+        [],
+    ]
+
+    print(*topological_sort(graph, directed = True))
