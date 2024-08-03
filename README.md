@@ -2,7 +2,7 @@
 
 [This repository](https://github.com/rocky-d/informatics) is meant to serve as a record of my code for solving informatics problems. 📝
 
-### Tree (2024-05-19)
+### Tree (2024-08-03)
 
 `tree informatics -L 5 --dirsfirst`
 
@@ -59,7 +59,8 @@ informatics
 │   ├── py
 │   │   ├── src
 │   │   │   ├── codeforces
-│   │   │   │   └── contest
+│   │   │   │   ├── contest
+│   │   │   │   └── done
 │   │   │   ├── dotcpp
 │   │   │   │   └── done
 │   │   │   ├── lanqiao
