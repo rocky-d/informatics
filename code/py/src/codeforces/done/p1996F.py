@@ -8,13 +8,13 @@ def main() -> None:
 
     ans = 0
     a, b = list(a), list(b)
-    least = max(0, bisect_left(range(max(a) + 1), -k, lo = 0, key = lambda mid: -sum(max(0, (ai - mid) // bi + 1) for ai, bi in zip(a, b))) - 1)
-    cnt = 0
+    lst = max(0, bisect_left(range(max(a) + 1), -k, lo = 0, key = lambda mid: -sum((ai - mid) // bi + 1 for ai, bi in zip(a, b) if mid <= ai)) - 1)
     for ai, bi in zip(a, b):
-        tmp = max(0, (ai - least) // bi + 1)
-        ans += (ai + ai - (tmp - 1) * bi) * tmp // 2
-        cnt += tmp
-    ans -= (cnt - k) * least
+        if lst <= ai:
+            cnt = (ai - lst) // bi + 1
+            k -= cnt
+            ans += cnt * (ai + ai - bi * (cnt - 1)) // 2
+    ans += k * lst
     print(ans)
 
 
