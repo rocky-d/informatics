@@ -38,7 +38,7 @@ if __name__ == '__main__':
     lo, hi = 0, len(nums)
     key = lambda x: x
     func = lambda mid: key(nums[mid])
-    check = lambda mid: key(nums[mid]) < target
+    check = lambda mid: func(mid) < target
     print(
         bisect_left(nums, target, lo = lo, hi = hi, key = key),
         bisect_left(range(hi), target, lo = lo, key = func),
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     lo, hi = 0, len(nums)
     key = lambda x: x
     func = lambda mid: key(nums[mid])
-    check = lambda mid: key(nums[mid]) <= target
+    check = lambda mid: func(mid) <= target
     print(
         bisect_right(nums, target, lo = lo, hi = hi, key = key),
         bisect_right(range(hi), target, lo = lo, key = func),
