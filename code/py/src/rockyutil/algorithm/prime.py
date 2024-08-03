@@ -38,14 +38,14 @@ def primes_before_euler(n):
 if __name__ == '__main__':
     from timeit import timeit
 
-    eg_n, repeats = 10 ** 7, 10 ** 1
+    n, repeats = 10 ** 7, 10 ** 1
     which = 3
     match which:
         case 1:
-            print(timeit(lambda: tuple(filter(is_prime_plain, range(eg_n))), number = repeats))
+            print(timeit(lambda: tuple(filter(is_prime_plain, range(n))), number = repeats))
         case 2:
-            print(timeit(lambda: tuple(filter(is_prime_optimized, range(eg_n))), number = repeats))
+            print(timeit(lambda: tuple(filter(is_prime_optimized, range(n))), number = repeats))
         case 3:
-            print(timeit(lambda: tuple(primes_before_eratosthenes(eg_n)), number = repeats))
+            print(timeit(lambda: tuple(primes_before_eratosthenes(n)), number = repeats))
         case 4:
-            print(timeit(lambda: tuple(primes_before_euler(eg_n)), number = repeats))
+            print(timeit(lambda: tuple(primes_before_euler(n)), number = repeats))
