@@ -62,7 +62,7 @@ class SegmentTree(object):
             self._update(node.rit, mid1, rit, mid1, hi, key)
         node.val = self._func(node.lft.val, node.rit.val)
 
-    def update(self, lo, hi, key):  # [lo, hi)
+    def update(self, lo, hi, *, key):  # [lo, hi)
         hi -= 1
         self._update(self._root, 0, self._n - 1, lo, hi, key)
 
@@ -72,5 +72,5 @@ if __name__ == '__main__':
 
     root = SegmentTree(add, nums)
     print(root.query(3, 6))
-    root.update(3, 6, lambda val: val + 1000)
+    root.update(3, 6, key = lambda val: val + 1000)
     print(root.query(3, 6))
