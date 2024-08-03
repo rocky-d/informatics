@@ -46,6 +46,6 @@ if __name__ == '__main__':
         case 2:
             print(timeit(lambda: tuple(filter(is_prime_optimized, range(eg_n))), number = repeats))
         case 3:
-            print(timeit(lambda: tuple(primes_before_eratosthenes(n = eg_n)), number = repeats))
+            print(timeit(lambda: tuple(primes_before_eratosthenes(eg_n)), number = repeats))
         case 4:
-            print(timeit(lambda: tuple(primes_before_euler(n = eg_n)), number = repeats))
+            print(timeit(lambda: tuple(primes_before_euler(eg_n)), number = repeats))
