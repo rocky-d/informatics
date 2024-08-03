@@ -1,4 +1,4 @@
-from bisect import bisect_left
+from bisect import bisect_right
 
 
 def main() -> None:
@@ -8,7 +8,7 @@ def main() -> None:
 
     ans = 0
     a, b = list(a), list(b)
-    lst = max(0, bisect_left(range(max(a) + 1), -k, lo = 0, key = lambda mid: -sum((ai - mid) // bi + 1 for ai, bi in zip(a, b) if mid <= ai)) - 1)
+    lst = max(0, bisect_right(range(max(a) + 1), -k, lo = 0, key = lambda mid: -sum((ai - mid) // bi + 1 for ai, bi in zip(a, b) if mid <= ai)) - 1)
     for ai, bi in zip(a, b):
         if lst <= ai:
             cnt = (ai - lst) // bi + 1
