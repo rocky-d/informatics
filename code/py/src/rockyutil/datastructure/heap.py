@@ -74,7 +74,8 @@ class Heap(object):
 
 
 if __name__ == '__main__':
-    heap = Heap([9, 13, 8, 1, 2, 3, 4, 5], reverse = True)
+    nums = [9, 13, 8, 1, 2, 3, 4, 5]
+    heap = Heap(nums, reverse = True)
 
     print(heap.peekall())
     heap.push(7)
