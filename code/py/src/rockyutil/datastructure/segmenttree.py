@@ -71,8 +71,8 @@ class SegmentTree(object):
 
 if __name__ == '__main__':
     nums = [9, 1, 42, 5, 1, 6, 1, 45, 1, 4, 5, 6, 67, 78, 21, 1, 6, 1, 5]
-
     root = SegmentTree(add, nums)
+
     print(root.query(3, 6))
     root.update(3, 6, key = lambda val: val + 1000)
     print(root.query(3, 6))
