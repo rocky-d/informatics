@@ -44,9 +44,9 @@ if __name__ == '__main__':
         lo + bisect_left(range(lo, hi), target, key = lambda mid: key(nums[mid])),
     )
     print(
-        binary_search_cc(lo = lo, hi = hi, check = check),
-        binary_search_co(lo = lo, hi = hi, check = check),
-        binary_search_oo(lo = lo, hi = hi, check = check),
+        binary_search_cc(lo, hi, check),
+        binary_search_co(lo, hi, check),
+        binary_search_oo(lo, hi, check),
     )
 
     nums, target = [0, 1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 9], 5
@@ -59,7 +59,7 @@ if __name__ == '__main__':
         lo + bisect_right(range(lo, hi), target, key = lambda mid: key(nums[mid])),
     )
     print(
-        binary_search_cc(lo = lo, hi = hi, check = check),
-        binary_search_co(lo = lo, hi = hi, check = check),
-        binary_search_oo(lo = lo, hi = hi, check = check),
+        binary_search_cc(lo, hi, check),
+        binary_search_co(lo, hi, check),
+        binary_search_oo(lo, hi, check),
     )
