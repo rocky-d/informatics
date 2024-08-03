@@ -4,17 +4,17 @@
 
 ### Online Judge
 
-- https://atcoder.jp: rocky_d
-- https://codeforces.com: rocky-d
-- https://dasai.lanqiao.cn: rocky_d
-- https://leetcode.cn: rocky_d
-- https://leetcode.com: rocky-d
-- https://oj.saikr.com: rocky_d
-- https://pintia.cn: rocky_d
-- https://vjudge.net: rockyd
-- https://www.dotcpp.com: rockyd
-- https://www.luogu.com.cn: rocky_d
-- https://www.nowcoder.com: rocky_d
+* https://atcoder.jp: rocky_d
+* https://codeforces.com: rocky-d
+* https://dasai.lanqiao.cn: rocky_d
+* https://leetcode.cn: rocky_d
+* https://leetcode.com: rocky-d
+* https://oj.saikr.com: rocky_d
+* https://pintia.cn: rocky_d
+* https://vjudge.net: rockyd
+* https://www.dotcpp.com: rockyd
+* https://www.luogu.com.cn: rocky_d
+* https://www.nowcoder.com: rocky_d
 
 ### Tree (2024-08-03)
 
