@@ -1,4 +1,4 @@
-def knapsack_01(volume, items):
+def knapsack_01(items, volume):
     dp = [0] * (1 + volume)
     for weight, value in items:
         for vol in range(volume, weight - 1, -1):
@@ -6,7 +6,7 @@ def knapsack_01(volume, items):
     return dp[-1]
 
 
-def knapsack_unbounded(volume, items):
+def knapsack_unbounded(items, volume):
     dp = [0] * (1 + volume)
     for weight, value in items:
         for vol in range(weight, volume + 1):
@@ -15,6 +15,6 @@ def knapsack_unbounded(volume, items):
 
 
 if __name__ == '__main__':
-    volume, items = 6, [(1, 2), (2, 3), (3, 5), (4, 7)]
-    print(knapsack_01(volume, items))
-    print(knapsack_unbounded(volume, items))
+    items, volume = [(1, 2), (2, 3), (3, 5), (4, 7)], 6
+    print(knapsack_01(items, volume))
+    print(knapsack_unbounded(items, volume))
