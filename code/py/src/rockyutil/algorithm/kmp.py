@@ -1,8 +1,8 @@
 def kmp(s, sub):
-    m, n = len(s), len(sub)
+    n, m = len(s), len(sub)
     nxts = [0]
     lft, rit = 0, 1
-    while rit < n:
+    while rit < m:
         if sub[lft] == sub[rit]:
             lft += 1
             rit += 1
@@ -14,11 +14,11 @@ def kmp(s, sub):
                 rit += 1
                 nxts.append(0)
     i, j = 0, 0
-    while i < m:
+    while i < n:
         if s[i] == sub[j]:
             i += 1
             j += 1
-            if j == n:
+            if j == m:
                 ans = i - j
                 break
         else:
