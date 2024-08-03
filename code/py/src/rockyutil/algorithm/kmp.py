@@ -1,9 +1,9 @@
-def kmp(s, patt):
-    m, n = len(s), len(patt)
+def kmp(s, sub):
+    m, n = len(s), len(sub)
     nxts = [0]
     lft, rit = 0, 1
     while rit < n:
-        if patt[lft] == patt[rit]:
+        if sub[lft] == sub[rit]:
             lft += 1
             rit += 1
             nxts.append(lft)
@@ -15,7 +15,7 @@ def kmp(s, patt):
                 nxts.append(0)
     i, j = 0, 0
     while i < m:
-        if s[i] == patt[j]:
+        if s[i] == sub[j]:
             i += 1
             j += 1
             if j == n:
@@ -32,4 +32,8 @@ def kmp(s, patt):
 
 
 if __name__ == '__main__':
-    print(kmp(s = 'abbcd', patt = 'bc'))
+    s, sub = 'abbcd', 'bc'
+
+    print(s.index(sub))
+    print(s.find(sub))
+    print(kmp(s, sub))
