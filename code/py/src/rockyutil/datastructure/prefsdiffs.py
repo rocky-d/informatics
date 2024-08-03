@@ -126,5 +126,5 @@ if __name__ == '__main__':
     print('------')
 
     tensor_2d_diff = Diffs2D(tensor_2d)
-    tensor_2d_diff.add(lo = (0, 1), hi = (2, 2), val = 100)
+    tensor_2d_diff.add((0, 1), (2, 2), 100)
     print(*Prefs2D(tensor_2d_diff.diffs).prefs, sep = '\n', end = '\n\n')

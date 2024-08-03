@@ -111,7 +111,7 @@ if __name__ == '__main__':
     ufd = UnionFindDict((-i for i in range(100)), grouped = True, recursive = True, compressed = False)
 
     for _ in range(50):
-        x, y = random.randint(a = 0, b = 99), random.randint(a = 0, b = 99)
+        x, y = random.randint(0, 99), random.randint(0, 99)
         ufl.union(x, y)
         ufd.union(-x, -y)
     print(ufl._groups)
