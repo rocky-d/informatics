@@ -2,6 +2,20 @@
 
 [This repository](https://github.com/rocky-d/informatics) is meant to serve as a record of my code for solving informatics problems. 📝
 
+### Online Judge
+
+- https://atcoder.jp: rocky_d
+- https://codeforces.com: rocky-d
+- https://dasai.lanqiao.cn: rocky_d
+- https://leetcode.cn: rocky_d
+- https://leetcode.com: rocky-d
+- https://oj.saikr.com: rocky_d
+- https://pintia.cn: rocky_d
+- https://vjudge.net: rockyd
+- https://www.dotcpp.com: rockyd
+- https://www.luogu.com.cn: rocky_d
+- https://www.nowcoder.com: rocky_d
+
 ### Tree (2024-08-03)
 
 `tree informatics -L 5 --dirsfirst`
