@@ -62,7 +62,9 @@ class SegmentTree(object):
             self._update(node.rit, mid1, rit, mid1, hi, key)
         node.val = self._func(node.lft.val, node.rit.val)
 
-    def update(self, lo, hi, *, key):  # [lo, hi)
+    def update(self, lo, hi, *, key = None):  # [lo, hi)
+        if key is None:
+            return
         hi -= 1
         self._update(self._root, 0, self._n - 1, lo, hi, key)
 
