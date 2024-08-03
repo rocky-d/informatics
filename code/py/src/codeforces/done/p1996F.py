@@ -14,7 +14,7 @@ def main() -> None:
         tmp = max(0, (ai - least) // bi + 1)
         ans += (ai + ai - (tmp - 1) * bi) * tmp // 2
         cnt += tmp
-    ans -= max(0, cnt - k) * least
+    ans -= (cnt - k) * least
     print(ans)
 
 
