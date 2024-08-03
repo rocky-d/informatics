@@ -2,10 +2,10 @@ from heapq import heappop, heappush
 from math import inf
 
 
-def dijkstra(graph, start, start_dst = 0):
+def dijkstra(graph, start, initial = 0):
     n = len(graph)
     dsts = [inf] * n
-    dsts[start] = start_dst
+    dsts[start] = initial
     pres = [set() for _ in range(n)]
     heap = []
     heappush(heap, (dsts[start], start))
@@ -25,10 +25,10 @@ def dijkstra(graph, start, start_dst = 0):
     return dsts, pres
 
 
-def floyd(graph, start_dst = 0):
+def floyd(graph, initial = 0):
     n = len(graph)
     range_n = range(n)
-    dp = [[inf] * i + [start_dst] + [inf] * (n - i - 1) for i in range_n]
+    dp = [[inf] * i + [initial] + [inf] * (n - i - 1) for i in range_n]
     for u, vs in enumerate(graph):
         for v, w in vs:
             dp[u][v] = w
@@ -51,5 +51,5 @@ if __name__ == '__main__':
     ]
 
     for start in range(len(graph)):
-        print_(dijkstra(graph, start, start_dst = 0))
-    print_(floyd(graph, start_dst = 0))
+        print_(dijkstra(graph, start, initial = 0))
+    print_(floyd(graph, initial = 0))
