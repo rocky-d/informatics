@@ -12,7 +12,7 @@
 * [leetcode.com](https://leetcode.com): [rocky-d](https://leetcode.com/u/rocky-d)
 * [luogu](https://www.luogu.com.cn): [rocky_d](https://www.luogu.com.cn/user/1019066)
 * [nowcoder](https://www.nowcoder.com): [rocky_d](https://www.nowcoder.com/users/575112432)
-  * [ac.nowcoder](https://ac.nowcoder.com): [rocky_d](https://ac.nowcoder.com/acm/contest/profile/575112432)
+    * [ac.nowcoder](https://ac.nowcoder.com): [rocky_d](https://ac.nowcoder.com/acm/contest/profile/575112432)
 * [pintia](https://pintia.cn): rocky_d
 * [saikr](https://oj.saikr.com): [rocky_d](https://oj.saikr.com/personal/36055)
 * [vjudge](https://vjudge.net): [rockyd](https://vjudge.net/user/rockyd)
