@@ -17,7 +17,7 @@
 * [saikr](https://oj.saikr.com): [rocky_d](https://oj.saikr.com/personal/36055)
 * [vjudge](https://vjudge.net): [rockyd](https://vjudge.net/user/rockyd)
 
-### Tree (2024-08-03)
+### Tree (2024-08-04)
 
 `tree informatics -L 5 --dirsfirst`
 
@@ -35,7 +35,7 @@ informatics
 │   │   └── src
 │   │       ├── luogu
 │   │       │   └── done
-│   │       └── pta
+│   │       └── pintia
 │   │           ├── done
 │   │           └── undone
 │   ├── java
@@ -66,7 +66,7 @@ informatics
 │   │   └── src
 │   │       ├── luogu
 │   │       │   └── done
-│   │       ├── pta
+│   │       ├── pintia
 │   │       │   └── done
 │   │       └── rockyutil
 │   │           ├── algorithm
@@ -94,7 +94,7 @@ informatics
 │   │   │   ├── nowcoder
 │   │   │   │   ├── contest
 │   │   │   │   └── done
-│   │   │   ├── pta
+│   │   │   ├── pintia
 │   │   │   │   ├── contest
 │   │   │   │   ├── done
 │   │   │   │   └── undone
@@ -106,7 +106,7 @@ informatics
 │   │   │   │   ├── systemoperating
 │   │   │   │   ├── leetcode.py
 │   │   │   │   └── nowcoder.py
-│   │   │   └── skoj
+│   │   │   └── saikr
 │   │   │       ├── contest
 │   │   │       └── done
 │   │   └── requirements.txt
