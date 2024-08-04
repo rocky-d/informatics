@@ -24,6 +24,8 @@ def main() -> None:
                 for x2 in range(x1, n):
                     for y2 in range(y1, n):
                         val = prefs2d.sum((x1, y1), (x2, y2))
+                        if val < -100_000_000:
+                            break
                         if score < val:
                             score = val
                             x11, y11, x22, y22 = x1, y1, x2, y2
