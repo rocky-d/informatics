@@ -3,29 +3,18 @@ from rockyutil.leetcode import *
 
 class Solution:
     def findIntegers(self, n: int) -> int:
-        if 1 == n:
-            return 2
-        ans = 2
-        m = n.bit_length()
-        dp = [1, 1]
-        for _ in range(2, m):
-            dp[0], dp[1] = max(dp[0], dp[1]), dp[0]
-            ans += dp[1]
-        s = bin(n)[2:]
-        dp = [0, 1]
-        tag = True
-        for i, (lst, nxt) in enumerate(pairwise(s)):
-            if '1' == lst == nxt:
-                tag = False
-            if tag:
-                if '0' == nxt:
-                    dp[0], dp[1] = max(dp[0], dp[1]), max(0, dp[0] - 1)
-                else:
-                    dp[0], dp[1] = max(dp[0], dp[1]), dp[0]
-            else:
-                dp[0], dp[1] = max(dp[0], dp[1]), dp[0]
-        ans += dp[0] + dp[1]
-        return ans
+        @lru_cache(maxsize = None)
+        def dfs(i: int, limited: bool, one: bool) -> int:
+            if 0 == i:
+                return 1
+            i -= 1
+            up = n >> i & 0b1 if limited else 1
+            res = dfs(i, limited and 0 == up, True)
+            if 1 == up and one:
+                res += dfs(i, limited, False)
+            return res
+
+        return dfs(i = n.bit_length(), limited = True, one = True)
 
 
 eg_n = 2
