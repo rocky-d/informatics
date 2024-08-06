@@ -13,16 +13,16 @@ class Solution:
             if -limit < diff and 0 < cnt0:
                 if limit < bits.bit_length():
                     res += dfs(cnt0 - 1, cnt1, diff - (-1 if 0b0 == 0b1 & (bits >> limit - 1) else +1) - 1,
-                               cover | ((bits << 1) | 0b0))
+                               cover | (bits << 1) | 0b0)
                 else:
                     res += dfs(cnt0 - 1, cnt1, diff - 1, (bits << 1) | 0b0)
             if diff < limit and 0 < cnt1:
                 if limit < bits.bit_length():
                     res += dfs(cnt0, cnt1 - 1, diff - (-1 if 0b0 == 0b1 & (bits >> limit - 1) else +1) + 1,
-                               cover | ((bits << 1) | 0b1))
+                               cover | (bits << 1) | 0b1)
                 else:
                     res += dfs(cnt0, cnt1 - 1, diff + 1, (bits << 1) | 0b1)
-            return res
+            return res % 1_000_000_007
 
         return dfs(cnt0 = zero, cnt1 = one, diff = 0, bits = 0b1)
 
