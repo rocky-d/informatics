@@ -56,8 +56,9 @@ def main() -> None:
         res = 0
         field = fields_dct[field]
         for idx in idxes[field][value]:
-            deleted.add(idx)
-            res += 1
+            if idx not in deleted:
+                deleted.add(idx)
+                res += 1
         return res
 
     def delete_in(field: str, values: Set[str]) -> int:
@@ -65,8 +66,9 @@ def main() -> None:
         field = fields_dct[field]
         for value in values:
             for idx in idxes[field][value]:
-                deleted.add(idx)
-                res += 1
+                if idx not in deleted:
+                    deleted.add(idx)
+                    res += 1
         return res
 
     for statement in statements:
