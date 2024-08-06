@@ -9,6 +9,7 @@ def main() -> None:
     fields = input().split()
     statements = (input() for _ in range(q))
 
+    statements = list(statements)
     fields_dct = {field: idx for idx, field in enumerate(fields)}
     db_lst = None
     db = deque()
@@ -71,14 +72,19 @@ def main() -> None:
                     res += 1
         return res
 
-    for statement in statements:
+    for i, statement in enumerate(statements):
         if 'begin()' == statement:
-            db_lst = db
-            db = copy(db_lst)
-            idxes_lst = idxes
-            idxes = deepcopy(idxes_lst)
-            deleted_lst = deleted
-            deleted = copy(deleted_lst)
+            for j in range(i + 1, q):
+                if 'c' == statements[j][0]:
+                    break
+                elif 'a' == statements[j][0]:
+                    db_lst = db
+                    db = copy(db_lst)
+                    idxes_lst = idxes
+                    idxes = deepcopy(idxes_lst)
+                    deleted_lst = deleted
+                    deleted = copy(deleted_lst)
+                    break
         elif 'commit()' == statement:
             pass
         elif 'abort()' == statement:
