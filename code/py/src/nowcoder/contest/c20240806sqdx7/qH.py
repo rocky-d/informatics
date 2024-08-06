@@ -13,7 +13,7 @@ def main() -> None:
     db_lst = None
     db = deque()
     idxes_lst = None
-    idxes = [defaultdict(lambda: array('B')) for _ in fields]
+    idxes = [defaultdict(lambda: array('I')) for _ in fields]
     deleted_lst = None
     deleted = set()
 
