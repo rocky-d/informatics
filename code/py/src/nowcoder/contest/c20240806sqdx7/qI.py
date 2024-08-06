@@ -1,3 +1,6 @@
+from bisect import bisect_left
+
+
 def main() -> None:
     m, k, h = map(int, input().split())
 
@@ -7,20 +10,8 @@ def main() -> None:
     if m <= k:
         print(m)
         return
-
-    def check(mid: int) -> bool:
-        res = 0
-        ...
-        return res < h
-
-    lo, hi = -1, 755740
-    while 1 < hi - lo:
-        mid = lo + hi >> 1
-        if check(mid):
-            lo = mid
-        else:
-            hi = mid
-    print(hi)
+    diff = m - k
+    print(bisect_left(range(h + 1), h, lo = m, key = lambda mid: mid + k * (1 + (mid - m) // diff)))
 
 
 if __name__ == '__main__':
