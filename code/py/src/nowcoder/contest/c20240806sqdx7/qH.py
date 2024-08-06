@@ -12,8 +12,8 @@ def main() -> None:
     fields_dct = {field: idx for idx, field in enumerate(fields)}
     db_lst = None
     db = []
-    idxes_dcts_lst = None
-    idxes_dcts_table = [defaultdict(lambda: array('I')) for _ in fields]
+    idxes_lst = None
+    idxes = [defaultdict(lambda: array('B')) for _ in fields]
     deleted_lst = None
     deleted = set()
 
@@ -21,13 +21,13 @@ def main() -> None:
         idx = len(db)
         db.append(values)
         for field, value in enumerate(values):
-            idxes_dcts_table[field][value].append(idx)
+            idxes[field][value].append(idx)
 
     def select(target: str, field: str, value: str) -> List[str]:
         res = list()
         target = fields_dct[target]
         field = fields_dct[field]
-        for idx in idxes_dcts_table[field][value]:
+        for idx in idxes[field][value]:
             if idx not in deleted:
                 res.append(db[idx][target])
         return res
@@ -37,7 +37,7 @@ def main() -> None:
         target = fields_dct[target]
         field = fields_dct[field]
         for value in values:
-            for idx in idxes_dcts_table[field][value]:
+            for idx in idxes[field][value]:
                 if idx not in deleted:
                     res.add(db[idx][target])
         return res
@@ -47,7 +47,7 @@ def main() -> None:
         target = fields_dct[target]
         field = fields_dct[field]
         for value in values:
-            for idx in idxes_dcts_table[field][value]:
+            for idx in idxes[field][value]:
                 if idx not in deleted:
                     res.append(db[idx][target])
         return res
@@ -55,7 +55,7 @@ def main() -> None:
     def delete(field: str, value: str) -> int:
         res = 0
         field = fields_dct[field]
-        for idx in idxes_dcts_table[field][value]:
+        for idx in idxes[field][value]:
             deleted.add(idx)
             res += 1
         return res
@@ -64,7 +64,7 @@ def main() -> None:
         res = 0
         field = fields_dct[field]
         for value in values:
-            for idx in idxes_dcts_table[field][value]:
+            for idx in idxes[field][value]:
                 deleted.add(idx)
                 res += 1
         return res
@@ -73,15 +73,15 @@ def main() -> None:
         if 'begin()' == statement:
             db_lst = db
             db = copy(db_lst)
-            idxes_dcts_lst = idxes_dcts_table
-            idxes_dcts_table = deepcopy(idxes_dcts_lst)
+            idxes_lst = idxes
+            idxes = deepcopy(idxes_lst)
             deleted_lst = deleted
             deleted = copy(deleted_lst)
         elif 'commit()' == statement:
             pass
         elif 'abort()' == statement:
             db = db_lst
-            idxes_dcts_table = idxes_dcts_lst
+            idxes = idxes_lst
             deleted = deleted_lst
         else:
             if 'insert(' == statement[:7]:
