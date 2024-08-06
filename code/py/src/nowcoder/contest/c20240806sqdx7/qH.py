@@ -7,12 +7,13 @@ from typing import List, Set
 def main() -> None:
     n, q = map(int, input().split())
     fields = input().split()
+    statements = (input() for _ in range(q))
 
-    fields_idxes = {field: idx for idx, field in enumerate(fields)}
+    fields_dct = {field: idx for idx, field in enumerate(fields)}
     db_lst = None
     db = []
-    idx_table_lst = None
-    idx_table = [defaultdict(lambda: array('I')) for _ in range(n)]
+    idxes_dcts_lst = None
+    idxes_dcts_table = [defaultdict(lambda: array('I')) for _ in fields]
     deleted_lst = None
     deleted = set()
 
@@ -20,68 +21,67 @@ def main() -> None:
         idx = len(db)
         db.append(values)
         for field, value in enumerate(values):
-            idx_table[field][value].append(idx)
+            idxes_dcts_table[field][value].append(idx)
 
     def select(target: str, field: str, value: str) -> List[str]:
         res = list()
-        target = fields_idxes[target]
-        field = fields_idxes[field]
-        for idx in idx_table[field][value]:
+        target = fields_dct[target]
+        field = fields_dct[field]
+        for idx in idxes_dcts_table[field][value]:
             if idx not in deleted:
                 res.append(db[idx][target])
         return res
 
     def _select_in(target: str, field: str, values: Set[str]) -> Set[str]:
         res = set()
-        target = fields_idxes[target]
-        field = fields_idxes[field]
+        target = fields_dct[target]
+        field = fields_dct[field]
         for value in values:
-            for idx in idx_table[field][value]:
+            for idx in idxes_dcts_table[field][value]:
                 if idx not in deleted:
                     res.add(db[idx][target])
         return res
 
     def select_in(target: str, field: str, values: Set[str]) -> List[str]:
         res = list()
-        target = fields_idxes[target]
-        field = fields_idxes[field]
+        target = fields_dct[target]
+        field = fields_dct[field]
         for value in values:
-            for idx in idx_table[field][value]:
+            for idx in idxes_dcts_table[field][value]:
                 if idx not in deleted:
                     res.append(db[idx][target])
         return res
 
     def delete(field: str, value: str) -> int:
         res = 0
-        field = fields_idxes[field]
-        for idx in idx_table[field][value]:
+        field = fields_dct[field]
+        for idx in idxes_dcts_table[field][value]:
             deleted.add(idx)
             res += 1
         return res
 
     def delete_in(field: str, values: Set[str]) -> int:
         res = 0
-        field = fields_idxes[field]
+        field = fields_dct[field]
         for value in values:
-            for idx in idx_table[field][value]:
+            for idx in idxes_dcts_table[field][value]:
                 deleted.add(idx)
                 res += 1
         return res
 
-    for _ in range(q):
-        statement = input()
+    for statement in statements:
         if 'begin()' == statement:
             db_lst = db
             db = copy(db_lst)
-            idx_table_lst = idx_table
-            idx_table = deepcopy(idx_table_lst)
+            idxes_dcts_lst = idxes_dcts_table
+            idxes_dcts_table = deepcopy(idxes_dcts_lst)
             deleted_lst = deleted
             deleted = copy(deleted_lst)
         elif 'commit()' == statement:
             pass
         elif 'abort()' == statement:
             db = db_lst
-            idx_table = idx_table_lst
+            idxes_dcts_table = idxes_dcts_lst
             deleted = deleted_lst
         else:
             if 'insert(' == statement[:7]:
