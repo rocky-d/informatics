@@ -11,7 +11,7 @@ def main() -> None:
 
     fields_dct = {field: idx for idx, field in enumerate(fields)}
     db_lst = None
-    db = []
+    db = deque()
     idxes_lst = None
     idxes = [defaultdict(lambda: array('B')) for _ in fields]
     deleted_lst = None
