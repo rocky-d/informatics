@@ -9,6 +9,9 @@ def func(num: int) -> int:
     return 1 + func(num // 3)
 
 
+prefs = list(accumulate((func(num = num) for num in range(200_001)), initial = 0))
+
+
 def main() -> None:
     l, r = map(int, input().split())
 
@@ -16,6 +19,5 @@ def main() -> None:
 
 
 if __name__ == '__main__':
-    prefs = list(accumulate((func(num = num) for num in range(200_001)), initial = 0))
     for _ in range(int(input())):
         main()
