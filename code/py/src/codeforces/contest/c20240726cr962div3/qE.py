@@ -1,9 +1,10 @@
 from bisect import bisect_left
 from itertools import accumulate
 
+mod = 1_000_000_007
+
 
 def main() -> None:
-    mod = 1_000_000_007
     s = input()
 
     ans = 0
