@@ -1,9 +1,5 @@
-from sys import stdout
-
-
 def check(mid: int) -> bool:
-    print('?', mid, mid)
-    stdout.flush()
+    print('?', mid, mid, flush = True)
     return mid * mid == int(input())
 
 
