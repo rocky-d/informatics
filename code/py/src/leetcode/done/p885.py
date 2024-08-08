@@ -5,10 +5,11 @@ class Solution:
     def spiralMatrixIII(self, rows: int, cols: int, rStart: int, cStart: int) -> List[List[int]]:
         ans = [[rStart, cStart]]
         vis = {(rStart, cStart)}
+        row, col = rStart, cStart
         dirs1 = cycle(((0, +1), (+1, 0), (0, -1), (-1, 0)))
         dirs2 = cycle(((+1, 0), (0, -1), (-1, 0), (0, +1)))
-        row, col = rStart, cStart
-        while len(ans) < rows * cols:
+        cells = rows * cols
+        while len(ans) < cells:
             dx1, dy1 = next(dirs1)
             dx2, dy2 = next(dirs2)
             row += dx1
