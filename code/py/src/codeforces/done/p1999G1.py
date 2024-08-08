@@ -2,10 +2,10 @@ from sys import stdout
 
 
 def main() -> None:
-    def check(mid):
+    def check(mid: int) -> bool:
         print('?', mid, mid)
         stdout.flush()
-        return int(input()) == mid * mid
+        return mid * mid == int(input())
 
     lo, hi = 1, 1000
     while 1 < hi - lo:
