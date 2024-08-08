@@ -1,16 +1,17 @@
 from sys import stdout
 
 
-def main() -> None:
-    def check(mid: int) -> bool:
-        print('?', mid, mid)
-        stdout.flush()
-        return mid * mid == int(input())
+def check(mid: int) -> bool:
+    print('?', mid, mid)
+    stdout.flush()
+    return mid * mid == int(input())
 
+
+def main() -> None:
     lo, hi = 1, 1000
     while 1 < hi - lo:
         mid = hi + lo >> 1
-        if check(mid):
+        if check(mid = mid):
             lo = mid
         else:
             hi = mid
