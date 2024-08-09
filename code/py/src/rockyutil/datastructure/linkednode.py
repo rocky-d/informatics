@@ -30,6 +30,15 @@ class SegmentTreeNode(object):
         self.rit = rit
 
 
+class TernaryTreeNode(object):
+
+    def __init__(self, val, lft, mid, rit):
+        self.val = val
+        self.lft = lft
+        self.mid = mid
+        self.rit = rit
+
+
 class NaryTreeNode(object):
 
     def __init__(self, val, nxts):
