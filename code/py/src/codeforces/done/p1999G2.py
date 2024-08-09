@@ -13,7 +13,7 @@ def check(mid1: int, mid2: int) -> int:
 def main() -> None:
     lo, hi = 1, 1000
     diff = hi - lo
-    while 1 < hi - lo:
+    while 1 < diff:
         mid1 = lo + diff // 3
         mid2 = lo + (diff << 1) // 3
         res = check(mid1 = mid1, mid2 = mid2)
