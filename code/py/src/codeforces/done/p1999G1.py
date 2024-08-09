@@ -11,7 +11,7 @@ def main() -> None:
             lo = mid
         else:
             hi = mid
-    print('!', hi)
+    print('!', hi, flush = True)
 
 
 if __name__ == '__main__':
