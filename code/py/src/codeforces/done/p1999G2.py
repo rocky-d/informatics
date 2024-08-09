@@ -19,8 +19,7 @@ def main() -> None:
         if +1 == res:
             lo = mid2
         elif 0 == res:
-            lo = mid1
-            hi = mid2
+            lo, hi = mid1, mid2
         else:  # elif -1 == res:
             hi = mid1
     print('!', hi, flush = True)
