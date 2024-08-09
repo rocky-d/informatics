@@ -1,9 +1,8 @@
-def check(mid: int) -> bool:
-    print('?', mid, mid, flush = True)
-    return mid * mid == int(input())
-
-
 def main() -> None:
+    def check(mid: int) -> bool:
+        print('?', mid, mid, flush = True)
+        return mid * mid == int(input())
+
     lo, hi = 1, 1000
     while 1 < hi - lo:
         mid = hi + lo >> 1

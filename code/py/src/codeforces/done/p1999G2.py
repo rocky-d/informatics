@@ -1,16 +1,15 @@
-def check(mid1: int, mid2: int) -> int:
-    print('?', mid1, mid2, flush = True)
-    x = int(input())
-    if x == mid1 * mid2:
-        res = +1
-    elif x == mid1 * (mid2 + 1):
-        res = 0
-    else:  # elif x == (mid1 + 1) * (mid2 + 1):
-        res = -1
-    return res
-
-
 def main() -> None:
+    def check(mid1: int, mid2: int) -> int:
+        print('?', mid1, mid2, flush = True)
+        x = int(input())
+        if x == mid1 * mid2:
+            res = +1
+        elif x == mid1 * (mid2 + 1):
+            res = 0
+        else:  # elif x == (mid1 + 1) * (mid2 + 1):
+            res = -1
+        return res
+
     lo, hi = 1, 1000
     diff = hi - lo
     while 1 < diff:
