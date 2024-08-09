@@ -15,7 +15,7 @@ from bisect import bisect_left, bisect_right
 #     return lo
 def binary_search_cc(lo, hi, check):  # [lo, hi)
     hi -= 1
-    while lo <= hi:
+    while lo <= hi:  # while -1 < hi - lo:
         mid = lo + hi >> 1
         if check(mid):
             lo = mid + 1
@@ -36,7 +36,7 @@ def binary_search_cc(lo, hi, check):  # [lo, hi)
 #         diff = hi - lo
 #     return lo  # return hi
 def binary_search_co(lo, hi, check):  # [lo, hi)
-    while lo < hi:
+    while lo < hi:  # while 0 < hi - lo:
         mid = lo + hi >> 1
         if check(mid):
             lo = mid + 1
