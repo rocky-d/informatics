@@ -24,6 +24,19 @@ def binary_search_co(lo, hi, check):  # [lo, hi)
 
 def binary_search_oo(lo, hi, check):  # [lo, hi)
     lo -= 1
+    diff = hi - lo
+    while 1 < diff:  # (lo, hi)
+        mid = lo + (diff >> 1)
+        if check(mid):
+            lo = mid
+        else:
+            hi = mid
+        diff = hi - lo
+    return hi
+
+
+def binary_search_oo(lo, hi, check):  # [lo, hi)
+    lo -= 1
     while 1 < hi - lo:  # (lo, hi)
         mid = lo + hi >> 1
         if check(mid):
