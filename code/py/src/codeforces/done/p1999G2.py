@@ -12,16 +12,19 @@ def check(mid1: int, mid2: int) -> int:
 
 def main() -> None:
     lo, hi = 1, 1000
+    diff = hi - lo
     while 1 < hi - lo:
-        diff = hi - lo
-        mid1, mid2 = lo + diff // 3, lo + (diff << 1) // 3
+        mid1 = lo + diff // 3
+        mid2 = lo + (diff << 1) // 3
         res = check(mid1 = mid1, mid2 = mid2)
         if +1 == res:
             lo = mid2
         elif 0 == res:
-            lo, hi = mid1, mid2
+            lo = mid1
+            hi = mid2
         else:  # elif -1 == res:
             hi = mid1
+        diff = hi - lo
     print('!', hi, flush = True)
 
 
