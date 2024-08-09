@@ -1,5 +1,6 @@
 def main() -> None:
-    input()
+    q = input()
+
     print('NO', flush = True)
 
 
