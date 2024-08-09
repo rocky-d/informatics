@@ -1,7 +1,8 @@
+# [lo, hi]
 def ternary_search_cc(lo, hi, check):  # [lo, hi)
     hi -= 1
     diff = hi - lo
-    while -1 < diff:  # [lo, hi]
+    while -1 < diff:
         mid1 = lo + diff // 3
         mid2 = lo + (diff << 1) // 3
         res = check(mid1, mid2)
@@ -16,9 +17,10 @@ def ternary_search_cc(lo, hi, check):  # [lo, hi)
     return lo
 
 
+# [lo, hi)
 def ternary_search_co(lo, hi, check):  # [lo, hi)
     diff = hi - lo
-    while 0 < diff:  # [lo, hi)
+    while 0 < diff:
         mid1 = lo + diff // 3
         mid2 = lo + (diff << 1) // 3
         res = check(mid1, mid2)
@@ -33,10 +35,11 @@ def ternary_search_co(lo, hi, check):  # [lo, hi)
     return lo
 
 
+# (lo, hi)
 def ternary_search_oo(lo, hi, check):  # [lo, hi)
     lo -= 1
     diff = hi - lo
-    while 1 < diff:  # (lo, hi)
+    while 1 < diff:
         mid1 = lo + diff // 3
         mid2 = lo + (diff << 1) // 3
         res = check(mid1, mid2)
