@@ -6,6 +6,7 @@ class Solution:
     def leftmostBuildingQueries(self, heights: List[int], queries: List[List[int]]) -> List[int]:
         ans = []
         n = len(heights)
+        idxes = range(n)
         root = SegmentTree(max, heights)
         for a, b in queries:
             if a > b:
@@ -14,6 +15,6 @@ class Solution:
                 ans.append(b)
                 continue
             b += 1
-            res = b + bisect_right(range(b, n), heights[a], key = lambda mid: root.query(b, mid + 1))
+            res = bisect_right(idxes, heights[a], lo = b, key = lambda mid: root.query(b, mid + 1))
             ans.append(res if res < n else -1)
         return ans
