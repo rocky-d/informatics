@@ -1,4 +1,4 @@
-package luogu.done;
+package onlinejudge.luogu.solved;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;

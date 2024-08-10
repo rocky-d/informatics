@@ -1,4 +1,4 @@
-package luogu.contest.c20230915;
+package onlinejudge.luogu.contest.c20230915;
 
 import java.util.*;
 

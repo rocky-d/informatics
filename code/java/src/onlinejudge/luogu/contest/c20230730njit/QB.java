@@ -1,4 +1,4 @@
-package luogu.contest.c20230730njit;
+package onlinejudge.luogu.contest.c20230730njit;
 
 import java.util.Scanner;
 import java.util.Set;

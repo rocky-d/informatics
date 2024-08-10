@@ -1,4 +1,4 @@
-package luogu.done;
+package onlinejudge.luogu.solved;
 
 import java.util.ArrayList;
 import java.util.List;

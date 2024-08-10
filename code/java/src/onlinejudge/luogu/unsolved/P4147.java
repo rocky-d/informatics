@@ -1,4 +1,4 @@
-package luogu.undone;
+package onlinejudge.luogu.unsolved;
 
 import java.util.Arrays;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package luogu.done;
+package onlinejudge.luogu.solved;
 
 import java.io.BufferedReader;
 import java.io.IOException;

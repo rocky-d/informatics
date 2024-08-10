@@ -1,4 +1,4 @@
-package nowcoder.contest.c20230728sqdx4;
+package onlinejudge.nowcoder.contest.c20230728sqdx4;
 
 import java.util.ArrayList;
 import java.util.Comparator;

@@ -1,4 +1,4 @@
-package nowcoder.contest.c20230804sqdx6;
+package onlinejudge.nowcoder.contest.c20230804sqdx6;
 
 import java.util.Scanner;
 

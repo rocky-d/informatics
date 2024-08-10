@@ -1,4 +1,4 @@
-package nowcoder.contest.c20230811sqdx8;
+package onlinejudge.nowcoder.contest.c20230811sqdx8;
 
 import java.io.BufferedReader;
 import java.io.IOException;
