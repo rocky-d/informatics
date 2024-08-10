@@ -18,7 +18,5 @@ class Solution:
                 continue
             b += 1
             res = b + bisect_right(range(b, n), heights[a], key = lambda mid: root.query(b, mid + 1))
-            if res == n:
-                res = -1
-            ans.append(res)
+            ans.append(res if res < n else -1)
         return ans
