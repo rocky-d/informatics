@@ -1,4 +1,6 @@
-package datastructure;
+package library.datastructure;
+
+import library.Examination;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package datastructure;
+package library;
 
 public class Examination {
     public static long concurrentTime1 = Long.MAX_VALUE;

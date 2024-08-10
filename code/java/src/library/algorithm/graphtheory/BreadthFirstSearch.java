@@ -1,4 +1,4 @@
-package algorithm.graphtheory;
+package library.algorithm.graphtheory;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

@@ -1,4 +1,4 @@
-package algorithm.graphtheory;
+package library.algorithm.graphtheory;
 
 class TopologicalSorting {
     private int[][] graph;
