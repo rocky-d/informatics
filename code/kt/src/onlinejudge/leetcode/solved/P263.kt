@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P263 {
     fun isUgly(n: Int): Boolean {

@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P2469 {
     fun convertTemperature(celsius: Double): DoubleArray {

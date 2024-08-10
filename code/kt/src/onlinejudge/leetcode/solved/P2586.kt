@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P2586 {
     fun vowelStrings(words: Array<String>, left: Int, right: Int): Int {

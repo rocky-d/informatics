@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P231 {
     fun isPowerOfTwo(n: Int): Boolean {

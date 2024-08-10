@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P2235 {
     fun sum(num1: Int, num2: Int): Int {

@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P1470 {
     fun shuffle(nums: IntArray, n: Int): IntArray {

@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P852 {
     fun peakIndexInMountainArray(arr: IntArray): Int {

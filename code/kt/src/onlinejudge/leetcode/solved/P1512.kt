@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P1512 {
     fun numIdenticalPairs(nums: IntArray): Int {

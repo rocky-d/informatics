@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P867 {
     fun transpose(matrix: Array<IntArray>): Array<IntArray> {

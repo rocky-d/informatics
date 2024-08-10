@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P1 {
     fun twoSum(nums: IntArray, target: Int): IntArray {

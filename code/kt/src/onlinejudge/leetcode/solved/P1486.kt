@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P1486 {
     fun xorOperation(n: Int, start: Int): Int {

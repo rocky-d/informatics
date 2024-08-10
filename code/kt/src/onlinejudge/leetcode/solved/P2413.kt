@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P2413 {
     fun smallestEvenMultiple(n: Int): Int {

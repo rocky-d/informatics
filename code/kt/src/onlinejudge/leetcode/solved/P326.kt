@@ -1,4 +1,4 @@
-package leetcode.done
+package onlinejudge.leetcode.solved
 
 class P326 {
     fun isPowerOfThree(n: Int): Boolean {
