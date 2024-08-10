@@ -1,4 +1,4 @@
-from datastructure.unionfind import UnionFindList
+from library.datastructure.unionfind import UnionFindList
 from onlinejudge.leetcode import *
 
 

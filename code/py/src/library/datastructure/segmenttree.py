@@ -1,6 +1,6 @@
 from operator import add
 
-from datastructure.linkednode import SegmentTreeNode
+from library.datastructure.linkednode import SegmentTreeNode
 
 
 class SegmentTree(object):

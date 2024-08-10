@@ -1,4 +1,4 @@
-from datastructure.prefsdiffs import Prefs2D
+from library.datastructure.prefsdiffs import Prefs2D
 
 inf = 1_000_000_000
 

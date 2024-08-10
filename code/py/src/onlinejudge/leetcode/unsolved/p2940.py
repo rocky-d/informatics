@@ -1,4 +1,4 @@
-from datastructure.segmenttree import SegmentTree
+from library.datastructure.segmenttree import SegmentTree
 from onlinejudge.leetcode import *
 
 
