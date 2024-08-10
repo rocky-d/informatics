@@ -1,4 +1,4 @@
-package rockyutil.datastructure;
+package datastructure;
 
 import rockyutil.Examination;
 

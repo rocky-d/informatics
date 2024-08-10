@@ -1,4 +1,4 @@
-package rockyutil.algorithm.graphtheory;
+package algorithm.graphtheory;
 
 class TopologicalSorting {
     private int[][] graph;

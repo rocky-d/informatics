@@ -1,4 +1,4 @@
-package rockyutil.algorithm.graphtheory.graphsearch;
+package algorithm.graphtheory.graphsearch;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

@@ -1,4 +1,4 @@
-package rockyutil.algorithm.graphtheory;
+package algorithm.graphtheory;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
