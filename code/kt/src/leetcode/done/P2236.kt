@@ -1,6 +1,6 @@
 package leetcode.done
 
-import rockyutil.TreeNode
+import onlinejudge.TreeNode
 
 class P2236 {
     fun checkTree(root: TreeNode?): Boolean {

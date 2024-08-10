@@ -1,4 +1,4 @@
-package rockyutil
+package onlinejudge
 
 // Definition for singly-linked list.
 class ListNode(var `val`: Int) {
