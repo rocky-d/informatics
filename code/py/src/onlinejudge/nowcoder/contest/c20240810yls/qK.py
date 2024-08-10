@@ -5,7 +5,7 @@ def main() -> None:
     n = int(input())
 
     spaces = cycle(chain(range(0, 26, +1), range(26, 0, -1)))
-    for i in range(n):
+    for _ in range(n):
         print(next(spaces) * ' ' + '鸽')
 
 
