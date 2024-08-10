@@ -8,12 +8,9 @@ class Solution:
         n = len(heights)
         root = SegmentTree(max, heights)
         for a, b in queries:
-            if a == b:
-                ans.append(b)
-                continue
             if a > b:
                 a, b = b, a
-            if heights[a] < heights[b]:
+            if a == b or heights[a] < heights[b]:
                 ans.append(b)
                 continue
             b += 1
