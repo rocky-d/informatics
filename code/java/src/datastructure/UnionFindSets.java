@@ -1,7 +1,5 @@
 package datastructure;
 
-import rockyutil.Examination;
-
 import java.util.Random;
 
 class UnionFindSets {

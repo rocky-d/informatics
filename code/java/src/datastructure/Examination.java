@@ -1,3 +1,5 @@
+package datastructure;
+
 public class Examination {
     public static long concurrentTime1 = Long.MAX_VALUE;
     public static long concurrentTime2 = Long.MIN_VALUE;
