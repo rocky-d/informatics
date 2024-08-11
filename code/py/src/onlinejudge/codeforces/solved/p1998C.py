@@ -30,9 +30,7 @@ def main() -> None:
     if 0 < len(ls0):
         ls.append(ls0[-1])
     if 0 < len(ls1):
-        ls.append(ls1[0])
-        if 1 < len(ls1):
-            ls.append(ls1[-1])
+        ls.append(ls1[-1])
     for idx in ls:
         ai, bi = ab[idx]
         if 0 == bi:
