@@ -28,9 +28,7 @@ def main() -> None:
     ls1 = [i for i in range(n) if 1 == ab[i][1]]
     ls = []
     if 0 < len(ls0):
-        ls.append(ls0[0])
-        if 1 < len(ls0):
-            ls.append(ls0[-1])
+        ls.append(ls0[-1])
     if 0 < len(ls1):
         ls.append(ls1[0])
         if 1 < len(ls1):
