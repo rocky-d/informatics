@@ -11,17 +11,17 @@ def main() -> None:
 
     def check(mid: int) -> bool:
         cnt = 0
-        total = k
+        k_ = k
         for i in reversed(range(n)):
             if i == idx:
                 continue
-            if mid <= ab[i][0]:
+            ai, bi = ab[i]
+            if mid <= ai:
                 cnt += 1
             else:
-                if 1 == ab[i][1] and ab[i][0] + total >= mid:
+                if 1 == bi and mid <= ai + k_:
                     cnt += 1
-                    total -= mid - ab[i][0]
-                    total = max(total, 0)
+                    k_ -= min(k_, mid - ai)
         return half < cnt
 
     ls0 = [i for i in range(n) if 0 == ab[i][1]]
