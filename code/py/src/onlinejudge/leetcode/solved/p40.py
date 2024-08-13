@@ -9,22 +9,22 @@ class Solution:
         if total == target:
             return [candidates]
         ans = []
-        groups = list((candidate, len(list(group))) for candidate, group in groupby(sorted(candidates)))
-        m = len(groups)
+        cnter = sorted(Counter(candidates).items(), key = lambda item: item[0])
+        m = len(cnter)
         stk = deque()
 
         def dfs(idx: int, num: int) -> bool:
             if target == num:
-                ans.append(reduce(add, ([candidate] * times for candidate, times in stk)))
+                ans.append(reduce(add, ([candidate] * cnt for candidate, cnt in stk)))
                 return True
             if target < num:
                 return True
             if idx == m:
                 return False
-            candidate, times = groups[idx]
+            candidate, cnt = cnter[idx]
             stk.append([candidate, 0])
             idx += 1
-            for _ in range(1 + times):
+            for _ in range(1 + cnt):
                 if dfs(idx, num):
                     break
                 num += candidate
