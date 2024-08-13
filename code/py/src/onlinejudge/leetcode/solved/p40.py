@@ -13,22 +13,24 @@ class Solution:
         m = len(groups)
         stk = deque()
 
-        def dfs(idx: int, num: int) -> None:
+        def dfs(idx: int, num: int) -> bool:
             if target == num:
                 ans.append(reduce(add, ([candidate] * times for candidate, times in stk)))
-                return
+                return True
             if target < num:
-                return
+                return True
             if idx == m:
-                return
+                return False
             candidate, times = groups[idx]
             stk.append([candidate, 0])
             idx += 1
             for _ in range(1 + times):
-                dfs(idx, num)
+                if dfs(idx, num):
+                    break
                 num += candidate
                 stk[-1][1] += 1
             stk.pop()
+            return False
 
         dfs(idx = 0, num = 0)
         return ans
