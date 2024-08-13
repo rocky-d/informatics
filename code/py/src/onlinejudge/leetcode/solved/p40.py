@@ -15,19 +15,19 @@ class Solution:
 
         def dfs(idx: int, num: int) -> bool:
             if target == num:
-                ans.append(reduce(add, ([candidate] * cnt for candidate, cnt in stk)))
+                ans.append(reduce(add, ([val] * cnt for val, cnt in stk)))
                 return True
             if target < num:
                 return True
             if idx == m:
                 return False
-            candidate, cnt = cnter[idx]
-            stk.append([candidate, 0])
+            val, cnt = cnter[idx]
+            stk.append([val, 0])
             idx += 1
             for _ in range(1 + cnt):
                 if dfs(idx, num):
                     break
-                num += candidate
+                num += val
                 stk[-1][1] += 1
             stk.pop()
             return False
