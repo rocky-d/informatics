@@ -17,7 +17,7 @@ set "output_dir=%~dp0code\ts\out"
 
 for %%i in ("%~1") do (
     cd "%%~dpi"
-    npx tsc "%%~nxi" --outFile "%output_dir%\%output_name%.js"
+    npx tsc --outFile "%output_dir%\%output_name%.js" "%%~nxi"
     node "%output_dir%\%output_name%.js"
 )
 
