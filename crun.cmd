@@ -17,7 +17,7 @@ set "output_dir=%~dp0code\c\out"
 
 for %%i in ("%~1") do (
     cd "%%~dpi"
-    gcc "%%~nxi" -o "%output_dir%\%output_name%.exe"
+    gcc -o "%output_dir%\%output_name%.exe" "%%~nxi"
     "%output_dir%\%output_name%.exe"
 )
 

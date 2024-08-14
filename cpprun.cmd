@@ -17,7 +17,7 @@ set "output_dir=%~dp0code\cpp\out"
 
 for %%i in ("%~1") do (
     cd "%%~dpi"
-    g++ "%%~nxi" -o "%output_dir%\%output_name%.exe"
+    g++ -o "%output_dir%\%output_name%.exe" "%%~nxi"
     "%output_dir%\%output_name%.exe"
 )
 

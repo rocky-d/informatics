@@ -17,7 +17,7 @@ set "output_dir=%~dp0code\rs\out"
 
 for %%i in ("%~1") do (
     cd "%%~dpi"
-    rustc "%%~nxi" -o "%output_dir%\%output_name%.exe"
+    rustc -o "%output_dir%\%output_name%.exe" "%%~nxi"
     "%output_dir%\%output_name%.exe"
 )
 
