@@ -19,13 +19,13 @@ def mod_inverse(a, m):
         return x % m
 
 
-def solve_congruence(x, y, P = 998244353):
+def solve_congruence(x, y, p = 998244353):
     """Solve the congruence equation xz ≡ y (mod P)."""
     # Find the modular inverse of x modulo P
-    z_inv = mod_inverse(x, P)
+    z_inv = mod_inverse(x, p)
 
     # Calculate z
-    z = (y * z_inv) % P
+    z = (y * z_inv) % p
 
     return z
 
