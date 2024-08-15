@@ -18,16 +18,10 @@ class Solution:
                     grid[row][col + 1] - grid[row][col],
                 )
         for row in range_row:
-            res = dp[row][-1] = max(
-                dp[row][-1],
-                grid[row + 1][-1] - grid[row][-1] + dp[row + 1][-1],
-            )
+            res = dp[row][-1] = max(dp[row][-1], grid[row + 1][-1] - grid[row][-1] + dp[row + 1][-1])
             ans = max(ans, res)
         for col in range_col:
-            res = dp[-1][col] = max(
-                dp[-1][col],
-                grid[-1][col + 1] - grid[-1][col] + dp[-1][col + 1],
-            )
+            res = dp[-1][col] = max(dp[-1][col], grid[-1][col + 1] - grid[-1][col] + dp[-1][col + 1])
             ans = max(ans, res)
         for row in range_row:
             for col in range_col:
