@@ -45,7 +45,7 @@ def main() -> None:
                 idx2 = min(idx2, idxes[typ][biy])
             res = (y - x) + 2 * min(x - idx1, idx2 - y)
             ans.append(-1 if isinf(res) else res)
-    print('\n'.join(map(str, ans)))
+    print(*ans, sep = '\n')
 
 
 if __name__ == '__main__':
