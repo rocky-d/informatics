@@ -20,7 +20,7 @@ def main() -> None:
         rit += a[i - 2]
         rit %= m
         cnter[rit] += 1
-        diff += m - a[i - 1] % m
+        diff -= a[i - 1] % m
         diff %= m
         ans += cnter[(m - diff) % m]
     print(ans)
