@@ -3,14 +3,23 @@ def main() -> None:
     s = input()
     t = input()
 
-    lcp, idx = 0, None
-    for i in range(n, 0, -1):
+    lcp, idx = -1, None
+    pres = {''}
+    t_sub = ''
+    for i in range(n):
+        t_sub += t[i]
+        pres.add(t_sub)
+    for i in range(1, n + 1):
         s_ = s[i - 1::-1] + s[i:]
-        if s_[:lcp] == t[:lcp]:
-            j = lcp
-            while j < n and s_[j] == t[j]:
-                j += 1
-            lcp, idx = j, i
+        lo, hi = -1, n + 1
+        while 1 < hi - lo:
+            mid = lo + hi >> 1
+            if s_[:mid] in pres:
+                lo = mid
+            else:
+                hi = mid
+        if lcp < lo:
+            lcp, idx = lo, i
     print(lcp, idx)
 
 
