@@ -2,9 +2,9 @@ def main() -> None:
     n = int(input())
     a = map(int, input().split())
 
-    a = sorted(a)
-    for i in range(n - 1, 1, -1):
-        x, y, z = a[i], a[i - 1], a[i - 2]
+    a = sorted(a, reverse = True)
+    for i in range(2, n):
+        x, y, z = a[i - 2], a[i - 1], a[i]
         if x < y + z:
             ans = x + y + z
             break
