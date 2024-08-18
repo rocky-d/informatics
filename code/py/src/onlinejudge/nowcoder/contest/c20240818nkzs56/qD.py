@@ -5,7 +5,7 @@ def main() -> None:
     a = sorted(a)
     for i in range(n - 1, 1, -1):
         x, y, z = a[i], a[i - 1], a[i - 2]
-        if x + y > z and x + z > y:
+        if x < y + z and y < x + z:
             ans = x + y + z
             break
     else:
