@@ -2,12 +2,14 @@ def main() -> None:
     n = int(input())
     a = map(int, input().split())
 
-    ans = -1
     a = sorted(a)
-    for i in range(2, n):
-        x, y, z = a[i - 2], a[i - 1], a[i]
+    for i in range(n - 1, 1, -1):
+        x, y, z = a[i], a[i - 1], a[i - 2]
         if x + y > z and x + z > y:
-            ans = max(ans, x + y + z)
+            ans = x + y + z
+            break
+    else:
+        ans = -1
     print(ans)
 
 
