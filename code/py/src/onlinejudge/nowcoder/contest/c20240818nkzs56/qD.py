@@ -4,9 +4,8 @@ def main() -> None:
 
     a = sorted(a, reverse = True)
     for i in range(2, n):
-        x, y, z = a[i - 2], a[i - 1], a[i]
-        if x < y + z:
-            ans = x + y + z
+        if a[i - 2] < a[i - 1] + a[i]:
+            ans = a[i - 2] + a[i - 1] + a[i]
             break
     else:
         ans = -1
