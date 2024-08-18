@@ -6,7 +6,7 @@ def main() -> None:
     a = sorted(a)
     for i in range(2, n):
         x, y, z = a[i - 2], a[i - 1], a[i]
-        if x + y > z and x + z > y and z + y > x:
+        if x + y > z and x + z > y:
             ans = max(ans, x + y + z)
     print(ans)
 
