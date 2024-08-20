@@ -3,7 +3,7 @@ from onlinejudge.leetcode import *
 
 class Solution:
     def waysToReachStair(self, k: int) -> int:
-        @cache
+        @lru_cache(maxsize = None)
         def dfs(stair: int, down: bool, jump: int) -> int:
             if k < stair - 1:
                 return 0
