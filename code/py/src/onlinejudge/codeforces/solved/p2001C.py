@@ -28,10 +28,11 @@ def main() -> None:
         dfs(a, res)
         dfs(b, res)
 
-    for b in range(2, n + 1):
+    a = 1
+    for b in range(2, 1 + n):
         if b in vis:
             continue
-        dfs(a = 1, b = b)
+        dfs(a = a, b = b)
     print('!', *ans, flush = True)
 
 
