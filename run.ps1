@@ -79,7 +79,12 @@ if ($targetExt -eq "c") {
 } elseif ($targetExt -eq "kt") {
     # 运行kt源文件
 } elseif ($targetExt -eq "lua") {
+    # 设置LUA_PATH环境变量
+    $env:LUA_PATH = $subSrcDir
     # 运行lua源文件
+    lua53 $targetPth
+    # 删除LUA_PATH环境变量
+    $env:LUA_PATH = ""
 } elseif ($targetExt -eq "py") {
     # 设置PYTHONPATH环境变量
     $env:PYTHONPATH = $subSrcDir
