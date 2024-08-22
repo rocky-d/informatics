@@ -25,11 +25,13 @@ $mainDir = "C:\rocky_d\code\informatics"
 Write-Output "mainDir: $mainDir"
 
 # 获取子项目目录
-$subDir = "$mainDir\code\$targetExt\src"
+$subDir = "$mainDir\code\$targetExt"
 Write-Output "subDir: $subDir"
+$subSrcDir = "$subDir\src"
+Write-Output "subSrcDir: $subSrcDir"
 
 # 添加临时环境变量PATH变量
-$tmpEnvPath = "$mainDir;$subDir;$targetDir;"
+$tmpEnvPath = "$mainDir;$subDir;$subSrcDir;$targetDir;"
 Write-Output "tmpEnvPath: $tmpEnvPath"
 $env:PATH = "$tmpEnvPath$env:PATH"
 
