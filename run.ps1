@@ -58,7 +58,7 @@ if ($targetExt -eq "c") {
     # 运行lua源文件
 } elseif ($targetExt -eq "py") {
     # 设置PYTHONPATH环境变量
-    $env:PYTHONPATH = $subDir
+    $env:PYTHONPATH = $subSrcDir
     # 运行py源文件
     python $targetPth
     # 删除PYTHONPATH环境变量
