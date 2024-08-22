@@ -1,6 +1,3 @@
-from onlinejudge.leetcode import *
-
-
 class Solution:
     def bitwiseComplement(self, n: int) -> int:
-        return int(reduce(add, ('0' if '1' == bit else '1' for bit in bin(n)[2:])), base = 2)
+        return 1 if 0 == n else ~n & (0b1 << n.bit_length() - 1) - 1
