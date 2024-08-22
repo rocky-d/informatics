@@ -2,6 +2,9 @@ param (
     [string]$pth
 )
 
+# 将当前命令行编码设置为UTF-8
+$OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
+
 # 判断源文件targetPth是否存在，如果不存在则退出脚本
 if (-not (Test-Path $pth)) {
     Write-Error "Not existing file path: $pth"
@@ -45,7 +48,8 @@ Write-Output "Get-Location: $(Get-Location)"
 Write-Output "-------------------------"
 
 if ($targetExt -eq "c") {
-    # 运行c源文件
+    gcc -o "$subOutDir\main.exe" $targetPth
+    . "$subOutDir\main.exe"
 } elseif ($targetExt -eq "cpp") {
     # 运行cpp源文件
 } elseif ($targetExt -eq "go") {
