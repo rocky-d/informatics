@@ -19,6 +19,10 @@ Write-Output "targetPth: $targetPth"
 $targetDir = [System.IO.Path]::GetDirectoryName($targetPth)
 Write-Output "targetDir: $targetDir"
 
+# 获取源文件名，不包含后缀名
+$targetNam = [System.IO.Path]::GetFileNameWithoutExtension($targetPth)
+Write-Output "targetNam: $targetNam"
+
 # 获取源文件后缀名，不包含“.”
 $targetExt = [System.IO.Path]::GetExtension($targetPth).Substring(1)
 Write-Output "targetExt: $targetExt"
@@ -36,7 +40,7 @@ $subOutDir = "$subDir\out"
 Write-Output "subOutDir: $subOutDir"
 
 # 添加临时环境变量PATH变量
-$tmpEnvPath = "$mainDir;$subDir;$subSrcDir;$targetDir;"
+$tmpEnvPath = "$mainDir;$subDir;$subSrcDir;$subOutDir;$targetDir;"
 Write-Output "tmpEnvPath: $tmpEnvPath"
 $env:PATH = "$tmpEnvPath$env:PATH"
 
@@ -48,8 +52,10 @@ Write-Output "Get-Location: $(Get-Location)"
 Write-Output "-------------------------"
 
 if ($targetExt -eq "c") {
-    gcc -o "$subOutDir\main.exe" $targetPth
-    . "$subOutDir\main.exe"
+    # 编译c源文件
+    gcc -o "$subOutDir\$targetNam.exe" $targetPth
+    # 运行输出文件
+    . "$subOutDir\$targetNam.exe"
 } elseif ($targetExt -eq "cpp") {
     # 运行cpp源文件
 } elseif ($targetExt -eq "go") {
