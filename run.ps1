@@ -54,14 +54,14 @@ Write-Output "-------------------------"
 if ($targetExt -eq "c") {
     # 设置输出文件路径
     $resultPth = "$subOutDir\$targetNam.exe"
-    # 编译c源文件
+    # 编译源文件
     gcc -o $resultPth $targetPth
     # 运行输出文件
     . $resultPth
 } elseif ($targetExt -eq "cpp") {
     # 设置输出文件路径
     $resultPth = "$subOutDir\$targetNam.exe"
-    # 编译c源文件
+    # 编译源文件
     g++ -o $resultPth $targetPth
     # 运行输出文件
     . $resultPth
