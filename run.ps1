@@ -66,7 +66,12 @@ if ($targetExt -eq "c") {
     # 运行输出文件
     . $resultPth
 } elseif ($targetExt -eq "go") {
-    # 运行go源文件
+    # 设置输出文件路径
+    $resultPth = "$subOutDir\$targetNam.exe"
+    # 编译源文件
+    go build -o $resultPth $targetPth
+    # 运行输出文件
+    . $resultPth
 } elseif ($targetExt -eq "java") {
     # 运行java源文件
 } elseif ($targetExt -eq "js") {
@@ -83,7 +88,12 @@ if ($targetExt -eq "c") {
     # 删除PYTHONPATH环境变量
     $env:PYTHONPATH = ""
 } elseif ($targetExt -eq "rs") {
-    # 运行rs源文件
+    # 设置输出文件路径
+    $resultPth = "$subOutDir\$targetNam.exe"
+    # 编译源文件
+    rustc -o $resultPth $targetPth
+    # 运行输出文件
+    . $resultPth
 } elseif ($targetExt -eq "ts") {
     # 运行ts源文件
 } else {
