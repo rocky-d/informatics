@@ -52,10 +52,12 @@ Write-Output "Get-Location: $(Get-Location)"
 Write-Output "-------------------------"
 
 if ($targetExt -eq "c") {
+    # 设置输出文件路径
+    $resultPth = "$subOutDir\$targetNam.exe"
     # 编译c源文件
-    gcc -o "$subOutDir\$targetNam.exe" $targetPth
+    gcc -o $resultPth $targetPth
     # 运行输出文件
-    . "$subOutDir\$targetNam.exe"
+    . $resultPth
 } elseif ($targetExt -eq "cpp") {
     # 运行cpp源文件
 } elseif ($targetExt -eq "go") {
