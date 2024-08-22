@@ -59,7 +59,12 @@ if ($targetExt -eq "c") {
     # 运行输出文件
     . $resultPth
 } elseif ($targetExt -eq "cpp") {
-    # 运行cpp源文件
+    # 设置输出文件路径
+    $resultPth = "$subOutDir\$targetNam.exe"
+    # 编译c源文件
+    g++ -o $resultPth $targetPth
+    # 运行输出文件
+    . $resultPth
 } elseif ($targetExt -eq "go") {
     # 运行go源文件
 } elseif ($targetExt -eq "java") {
