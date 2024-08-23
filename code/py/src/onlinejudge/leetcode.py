@@ -7,6 +7,7 @@ import copy
 # import csv
 import datetime
 # import decimal
+# import fractions
 import functools
 # import hashlib
 import heapq
@@ -32,6 +33,7 @@ from copy import *
 # from csv import *
 from datetime import *
 # from decimal import *
+# from fractions import *
 from functools import *
 # from hashlib import *
 from heapq import *
