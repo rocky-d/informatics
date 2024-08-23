@@ -13,43 +13,43 @@ if (-not (Test-Path $pth)) {
 
 # 将targetPth转换为绝对路径
 $targetPth = (Get-Item $pth).FullName
-Write-Output "targetPth: $targetPth"
+# Write-Output "targetPth: $targetPth"
 
 # 获取源文件所在目录
 $targetDir = [System.IO.Path]::GetDirectoryName($targetPth)
-Write-Output "targetDir: $targetDir"
+# Write-Output "targetDir: $targetDir"
 
 # 获取源文件名，不包含后缀名
 $targetNam = [System.IO.Path]::GetFileNameWithoutExtension($targetPth)
-Write-Output "targetNam: $targetNam"
+# Write-Output "targetNam: $targetNam"
 
 # 获取源文件后缀名，不包含“.”
 $targetExt = [System.IO.Path]::GetExtension($targetPth).Substring(1)
-Write-Output "targetExt: $targetExt"
+# Write-Output "targetExt: $targetExt"
 
 # 获取主项目目录
 $mainDir = "C:\rocky_d\code\informatics"
-Write-Output "mainDir: $mainDir"
+# Write-Output "mainDir: $mainDir"
 
 # 获取子项目目录
 $subDir = "$mainDir\code\$targetExt"
-Write-Output "subDir: $subDir"
+# Write-Output "subDir: $subDir"
 $subSrcDir = "$subDir\src"
-Write-Output "subSrcDir: $subSrcDir"
+# Write-Output "subSrcDir: $subSrcDir"
 $subOutDir = "$subDir\out"
-Write-Output "subOutDir: $subOutDir"
+# Write-Output "subOutDir: $subOutDir"
 
 # 添加临时环境变量PATH变量
 $tmpEnvPath = "$mainDir;$subDir;$subSrcDir;$subOutDir;$targetDir;"
-Write-Output "tmpEnvPath: $tmpEnvPath"
+# Write-Output "tmpEnvPath: $tmpEnvPath"
 $ENV:PATH = "$tmpEnvPath$ENV:PATH"
 
 # 切换当前工作目录
 Set-Location $targetDir
-Write-Output "Get-Location: $(Get-Location)"
+# Write-Output "Get-Location: $(Get-Location)"
 
 # Clear-Host
-Write-Output "-------------------------"
+# Write-Output "-------------------------"
 
 if ($targetExt -eq "c") {
     # 设置输出文件路径
