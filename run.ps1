@@ -42,7 +42,7 @@ $subOutDir = "$subDir\out"
 # 添加临时环境变量PATH变量
 $tmpEnvPath = "$mainDir;$subDir;$subSrcDir;$subOutDir;$targetDir;"
 # Write-Output "tmpEnvPath: $tmpEnvPath"
-$ENV:PATH = "$tmpEnvPath$ENV:PATH"
+$env:PATH = "$tmpEnvPath$env:PATH"
 
 # 切换当前工作目录
 Set-Location $targetDir
@@ -110,4 +110,4 @@ if ($targetExt -eq "c") {
 Set-Location $mainDir
 
 # 删除临时环境变量PATH变量
-$ENV:PATH = $ENV:PATH.Replace($tmpEnvPath, "")
+$env:PATH = $env:PATH.Replace($tmpEnvPath, "")
