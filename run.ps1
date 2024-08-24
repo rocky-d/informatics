@@ -45,6 +45,8 @@ $tmpEnvPath = "$mainDir;$subDir;$subSrcDir;$subOutDir;$targetDir;"
 $env:PATH = "$tmpEnvPath$env:PATH"
 
 # 切换当前工作目录
+$originalDir = Get-Location
+# Write-Output "originalDir: $originalDir"
 Set-Location $targetDir
 # Write-Output "Get-Location: $(Get-Location)"
 
@@ -119,7 +121,7 @@ try {
 }
 finally {
     # 切换回原目录
-    Set-Location $mainDir
+    Set-Location $originalDir
     # 删除临时环境变量PATH变量
     $env:PATH = $env:PATH.Replace($tmpEnvPath, "")
 }
