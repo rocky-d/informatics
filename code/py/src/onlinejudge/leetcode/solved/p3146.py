@@ -1,6 +1,3 @@
-from onlinejudge.leetcode import *
-
-
 class Solution:
     def findPermutationDifference(self, s: str, t: str) -> int:
         s_idxes = {}
