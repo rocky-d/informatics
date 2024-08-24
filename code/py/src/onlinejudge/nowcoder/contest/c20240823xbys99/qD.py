@@ -1,9 +1,10 @@
 primes = []
-tags = [False] * 2 + [True] * 9_999_999
-for num in range(2, 10_000_001):
+n = 2_750_161 + 1
+tags = [False] * 2 + [True] * (n - 2)
+for num in range(2, n):
     if tags[num]:
         primes.append(num)
-        for composite in range(num * num, 10_000_001, num):
+        for composite in range(num * num, n, num):
             tags[composite] = False
 
 
