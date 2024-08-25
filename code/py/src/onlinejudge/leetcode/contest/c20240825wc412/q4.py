@@ -10,9 +10,9 @@ class Solution:
         for (x, x_cnt), (y, y_cnt) in combinations(cnter.items(), r=2):
             x, y = str(x), str(y)
             if len(x) < len(y):
-                x = "0" * (len(y) - len(x)) + x
+                x = '0' * (len(y) - len(x)) + x
             elif len(y) < len(x):
-                y = "0" * (len(x) - len(y)) + y
+                y = '0' * (len(x) - len(y)) + y
             ls = []
             for xi, yi in zip(x, y):
                 if xi != yi:
