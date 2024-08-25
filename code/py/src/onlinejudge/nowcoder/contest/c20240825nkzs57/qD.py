@@ -4,7 +4,7 @@ def main() -> None:
 
     ans = []
     lo, mid, hi = [], [], []
-    for i, (x, y) in enumerate(xy):
+    for i, (x, y) in enumerate(xy, start=1):
         yi = k * x + b
         if yi < y:
             hi.append(i)
@@ -21,10 +21,10 @@ def main() -> None:
         lo, hi = hi, lo
     ans.append(len(lo))
     for i in range(0, len(hi) - len(lo), 2):
-        ans.append(f"{hi[i]+1} {hi[i + 1]+1} N")
+        ans.append(f"{hi[i]} {hi[i + 1]} N")
     i = len(hi) - len(lo)
     for j in range(len(lo)):
-        ans.append(f"{lo[j]+1} {hi[i]+1} Y")
+        ans.append(f"{lo[j]} {hi[i]} Y")
         i += 1
     print(*ans, sep='\n')
 
