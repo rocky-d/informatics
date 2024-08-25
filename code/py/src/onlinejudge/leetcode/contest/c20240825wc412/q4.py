@@ -5,8 +5,7 @@ class Solution:
     def countPairs(self, nums: List[int]) -> int:
         ans = 0
         cnter = Counter(nums)
-        for cnt in cnter.values():
-            ans += comb(cnt, 2)
+        ans += sum(comb(cnt, 2) for cnt in cnter.values())
         for (x, x_cnt), (y, y_cnt) in combinations(cnter.items(), r=2):
             x, y = str(x), str(y)
             if len(x) < len(y):
