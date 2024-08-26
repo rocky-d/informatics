@@ -17,6 +17,7 @@ class Solution:
         employees = employees_dct
 
         def dfs(id: int) -> int:
-            return employees[id].importance + sum(dfs(subordinate) for subordinate in employees[id].subordinates)
+            employee = employees[id]
+            return employee.importance + sum(dfs(subordinate) for subordinate in employee.subordinates)
 
         return dfs(id=id)
