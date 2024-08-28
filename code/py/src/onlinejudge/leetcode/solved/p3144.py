@@ -4,9 +4,10 @@ from onlinejudge.leetcode import *
 class Solution:
     def minimumSubstringsInPartition(self, s: str) -> int:
         dp = [0]
+        default_factory = lambda: 0
         for leng in range(1, 1 + len(s)):
             minm = leng
-            cnter1, cnter2 = defaultdict(lambda: 0), defaultdict(lambda: 0)
+            cnter1, cnter2 = defaultdict(default_factory), defaultdict(default_factory)
             cnter2[0] = 27
             for i in reversed(range(leng)):
                 char = s[i]
