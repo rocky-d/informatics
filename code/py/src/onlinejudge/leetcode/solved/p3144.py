@@ -5,11 +5,10 @@ class Solution:
     def minimumSubstringsInPartition(self, s: str) -> int:
         dp = [0]
         default_factory = lambda: 0
-        for leng in range(1, 1 + len(s)):
-            minm = leng
+        for minm in range(1, 1 + len(s)):
             cnter1, cnter2 = defaultdict(default_factory), defaultdict(default_factory)
             cnter2[0] = 27
-            for i in reversed(range(leng)):
+            for i in reversed(range(minm)):
                 char = s[i]
                 cnter1_char = cnter1[char]
                 cnter2[cnter1_char] -= 1
