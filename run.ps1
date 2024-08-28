@@ -40,7 +40,7 @@ $subOutDir = "$subDir\out"
 # Write-Output "subOutDir: $subOutDir"
 
 # 添加临时环境变量PATH变量
-$tmpEnvPath = "$mainDir;$subDir;$subSrcDir;$targetDir;"
+$tmpEnvPath = "$mainDir;$subDir;$targetDir;"
 # Write-Output "tmpEnvPath: $tmpEnvPath"
 $env:PATH = "$tmpEnvPath$env:PATH"
 
