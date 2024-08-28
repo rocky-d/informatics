@@ -6,7 +6,7 @@ class Solution:
         dp = [0]
         for leng in range(1, 1 + len(s)):
             minm = leng
-            cnter1, cnter2 = Counter(), Counter()
+            cnter1, cnter2 = defaultdict(lambda: 0), defaultdict(lambda: 0)
             cnter2[0] = 27
             for i in reversed(range(leng)):
                 char = s[i]
