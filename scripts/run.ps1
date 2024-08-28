@@ -30,6 +30,8 @@ $targetExt = [System.IO.Path]::GetExtension($targetPth).Substring(1)
 # 获取主项目目录
 $mainDir = "C:\rocky_d\code\informatics"
 # Write-Output "mainDir: $mainDir"
+# $scriptsDir = "$mainDir\scripts"
+# Write-Output "scriptsDir: $scriptsDir"
 
 # 获取子项目目录
 $subDir = "$mainDir\code\$targetExt"

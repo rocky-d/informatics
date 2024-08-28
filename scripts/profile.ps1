@@ -1,3 +1,4 @@
 $mainDir = "C:\rocky_d\code\informatics"
-$envPath = "$mainDir;"
+$scriptsDir = "$mainDir\scripts"
+$envPath = "$scriptsDir;"
 $env:PATH = "$envPath$env:PATH"
