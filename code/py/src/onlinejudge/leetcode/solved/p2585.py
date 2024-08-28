@@ -6,7 +6,7 @@ class Solution:
         dp = [1] + [0] * target
         for cnt, mark in types:
             if cnt * mark < target:
-                for vol in range(target, -1, -1):
+                for vol in reversed(range(target + 1)):
                     marks = 0
                     for _ in range(cnt):
                         marks += mark
