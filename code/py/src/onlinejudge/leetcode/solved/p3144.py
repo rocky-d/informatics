@@ -15,7 +15,7 @@ class Solution:
                 if 0 == cnter2[cnter1_char]:
                     del cnter2[cnter1_char]
                 cnter1[char] += 1
-                cnter2[cnter1[char]] += 1
+                cnter2[cnter1_char + 1] += 1
                 if 2 == len(cnter2):
                     minm = min(minm, dp[i] + 1)
             dp.append(minm)
