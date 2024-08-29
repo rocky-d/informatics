@@ -34,24 +34,24 @@ informatics
 │  ├─lua
 │  ├─py
 │  │  └─src
-│  │      ├─collegecourse
-│  │      │  ├─nanjing_institute_of_technology
-│  │      │  └─university_of_oulu
-│  │      ├─library
-│  │      │  ├─algorithm
-│  │      │  └─datastructure
-│  │      └─onlinejudge
-│  │         ├─acwing
-│  │         ├─atcoder
-│  │         ├─codeforces
-│  │         ├─dotcpp
-│  │         ├─lanqiao
-│  │         ├─leetcode
-│  │         ├─luogu
-│  │         ├─nowcoder
-│  │         ├─pintia
-│  │         ├─saikr
-│  │         └─vjudge
+│  │     ├─collegecourse
+│  │     │  ├─nanjing_institute_of_technology
+│  │     │  └─university_of_oulu
+│  │     ├─library
+│  │     │  ├─algorithm
+│  │     │  └─datastructure
+│  │     └─onlinejudge
+│  │        ├─acwing
+│  │        ├─atcoder
+│  │        ├─codeforces
+│  │        ├─dotcpp
+│  │        ├─lanqiao
+│  │        ├─leetcode
+│  │        ├─luogu
+│  │        ├─nowcoder
+│  │        ├─pintia
+│  │        ├─saikr
+│  │        └─vjudge
 │  ├─rs
 │  ├─scala
 │  └─ts
