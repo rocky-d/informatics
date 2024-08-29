@@ -9,16 +9,13 @@ class Solution:
             for j in range(i):
                 nxt = arr[j] + num
                 if nxt in dp.keys():
-                    dct = dp[nxt]
-                    dct[num] = 2
+                    dp[nxt][num] = 2
             for lst, leng in dp[num].items():
                 nxt = lst + num
-                leng += 1
                 if nxt in dp.keys():
-                    dct = dp[nxt]
-                    dct[num] = leng
+                    dp[nxt][num] = leng + 1
                 else:
-                    ans = max(ans, leng)
+                    ans = max(ans, leng + 1)
         return ans
 
 
