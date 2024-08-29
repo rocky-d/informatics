@@ -41,17 +41,17 @@ informatics
 │  │      │  ├─algorithm
 │  │      │  └─datastructure
 │  │      └─onlinejudge
-│  │          ├─acwing
-│  │          ├─atcoder
-│  │          ├─codeforces
-│  │          ├─dotcpp
-│  │          ├─lanqiao
-│  │          ├─leetcode
-│  │          ├─luogu
-│  │          ├─nowcoder
-│  │          ├─pintia
-│  │          ├─saikr
-│  │          └─vjudge
+│  │         ├─acwing
+│  │         ├─atcoder
+│  │         ├─codeforces
+│  │         ├─dotcpp
+│  │         ├─lanqiao
+│  │         ├─leetcode
+│  │         ├─luogu
+│  │         ├─nowcoder
+│  │         ├─pintia
+│  │         ├─saikr
+│  │         └─vjudge
 │  ├─rs
 │  ├─scala
 │  └─ts
