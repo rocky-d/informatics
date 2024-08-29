@@ -8,10 +8,9 @@ class Solution:
         for i, num in enumerate(arr):
             for j in range(i):
                 nxt = arr[j] + num
-                leng = 2
                 if nxt in dp.keys():
                     dct = dp[nxt]
-                    dct[num] = leng
+                    dct[num] = 2
             for lst, leng in dp[num].items():
                 nxt = lst + num
                 leng += 1
