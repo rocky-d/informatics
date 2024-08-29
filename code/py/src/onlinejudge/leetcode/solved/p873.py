@@ -6,20 +6,20 @@ class Solution:
         ans = 0
         dp = {num: {} for num in arr}
         for i, num in enumerate(arr):
-            for lst, leng in dp[num].items():
-                nxt = lst + num
-                leng += 1
-                if nxt in dp.keys():
-                    dct = dp[nxt]
-                    dct[num] = max(dct.get(num, 0), leng)
-                else:
-                    ans = max(ans, leng)
             for j in range(i):
                 nxt = arr[j] + num
                 leng = 2
                 if nxt in dp.keys():
                     dct = dp[nxt]
-                    dct[num] = max(dct.get(num, 0), leng)
+                    dct[num] = leng
+            for lst, leng in dp[num].items():
+                nxt = lst + num
+                leng += 1
+                if nxt in dp.keys():
+                    dct = dp[nxt]
+                    dct[num] = leng
+                else:
+                    ans = max(ans, leng)
         return ans
 
 
