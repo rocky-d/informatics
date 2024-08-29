@@ -3,7 +3,7 @@ from onlinejudge.leetcode import *
 
 class Solution:
     def lenLongestFibSubseq(self, arr: List[int]) -> int:
-        ans = 2
+        ans = 0
         dp = {num: {} for num in arr}
         for i, num in enumerate(arr):
             for lst, leng in dp[num].items():
@@ -20,7 +20,7 @@ class Solution:
                 if nxt in dp.keys():
                     dct = dp[nxt]
                     dct[num] = max(dct.get(num, 0), leng)
-        return 0 if 2 == ans else ans
+        return ans
 
 
 eg_arr = [2, 4, 8, 10, 14, 18, 32, 50]
