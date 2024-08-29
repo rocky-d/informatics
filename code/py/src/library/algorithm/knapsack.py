@@ -12,17 +12,16 @@ def knapsack_01(items, volume):
 def knapsack_bounded(items, volume):
     dp = [0] + [0] * volume
     for (weight, value), group in groupby(items):
-        count = len(list(group))
-        total = count * weight
-        if total < volume:
+        weights = len(list(group)) * weight
+        if weights < volume:
             for vol in reversed(range(volume + 1)):
-                cnt = min(total, vol) // weight
+                times = min(weights, vol) // weight
                 for w, v in zip(
-                    range(weight, weight * cnt + 1, weight),
-                    range(value, value * cnt + 1, value),
+                    range(weight, weight * times + 1, weight),
+                    range(value, value * times + 1, value),
                 ):
                     dp[vol] = max(dp[vol], dp[vol - w] + v)
-        else:  # elif total >= volume:
+        else:  # elif weights >= volume:
             for vol in range(weight, volume + 1):
                 dp[vol] = max(dp[vol], dp[vol - weight] + value)
     return dp[-1]
