@@ -20,10 +20,15 @@
 
 ### Tree (2024-08-29)
 
+* Main Directories:
+
 ```
 informatics
 ├─code
 │  ├─c
+│  │  └─src
+│  │     └─collegecourse
+│  │        └─university_of_oulu
 │  ├─cj
 │  ├─cpp
 │  ├─cs
