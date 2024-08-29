@@ -12,14 +12,22 @@ class Solution:
             heads[x] = find(heads[x])
             return heads[x]
 
-        rows, cols = defaultdict(lambda: []), defaultdict(lambda: [])
-        for i, (xi, yi) in enumerate(stones):
-            rows[xi].append(i)
-            cols[yi].append(i)
-        for ls in chain(rows.values(), cols.values()):
-            for u, v in pairwise(ls):
+        rows, cols = {}, {}
+        for u, (xi, yi) in enumerate(stones):
+            if xi in rows.keys():
+                v = rows[xi]
                 u_head, v_head = find(x=u), find(x=v)
                 if u_head != v_head:
                     heads[u] = heads[u_head] = v_head
                     ans += 1
+            else:
+                rows[xi] = u
+            if yi in cols.keys():
+                v = cols[yi]
+                u_head, v_head = find(x=u), find(x=v)
+                if u_head != v_head:
+                    heads[u] = heads[u_head] = v_head
+                    ans += 1
+            else:
+                cols[yi] = u
         return ans
