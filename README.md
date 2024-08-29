@@ -18,109 +18,23 @@
 * [saikr](https://oj.saikr.com): [rocky_d](https://oj.saikr.com/personal/36055)
 * [vjudge](https://vjudge.net): [rockyd](https://vjudge.net/user/rockyd)
 
-### Tree (2024-08-04)
-
-`tree informatics -L 5 --dirsfirst`
+### Tree (2024-08-29)
 
 ```
 informatics
-├── code
-│   ├── c
-│   │   └── src
-│   │       ├── luogu
-│   │       │   └── contest
-│   │       └── rockyutil
-│   │           ├── datastructuresandalgorithms
-│   │           └── programming1
-│   ├── cpp
-│   │   └── src
-│   │       ├── luogu
-│   │       │   └── done
-│   │       └── pintia
-│   │           ├── done
-│   │           └── undone
-│   ├── java
-│   │   └── src
-│   │       ├── luogu
-│   │       │   ├── contest
-│   │       │   ├── done
-│   │       │   └── undone
-│   │       ├── nowcoder
-│   │       │   └── contest
-│   │       └── rockyutil
-│   │           ├── algorithm
-│   │           ├── datastructure
-│   │           └── Examination.java
-│   ├── js
-│   │   └── src
-│   │       ├── leetcode
-│   │       │   └── done
-│   │       └── luogu
-│   │           └── done
-│   ├── kt
-│   │   └── src
-│   │       ├── leetcode
-│   │       │   └── done
-│   │       └── rockyutil
-│   │           └── leetcode.kt
-│   ├── lua
-│   │   └── src
-│   │       ├── luogu
-│   │       │   └── done
-│   │       ├── pintia
-│   │       │   └── done
-│   │       └── rockyutil
-│   │           ├── algorithm
-│   │           └── tutorial.lua
-│   ├── py
-│   │   ├── src
-│   │   │   ├── codeforces
-│   │   │   │   ├── contest
-│   │   │   │   ├── done
-│   │   │   │   └── undone
-│   │   │   ├── dotcpp
-│   │   │   │   └── done
-│   │   │   ├── lanqiao
-│   │   │   │   ├── contest
-│   │   │   │   ├── done
-│   │   │   │   └── undone
-│   │   │   ├── leetcode
-│   │   │   │   ├── contest
-│   │   │   │   ├── done
-│   │   │   │   └── undone
-│   │   │   ├── luogu
-│   │   │   │   ├── contest
-│   │   │   │   ├── done
-│   │   │   │   └── undone
-│   │   │   ├── nowcoder
-│   │   │   │   ├── contest
-│   │   │   │   └── done
-│   │   │   ├── pintia
-│   │   │   │   ├── contest
-│   │   │   │   ├── done
-│   │   │   │   └── undone
-│   │   │   ├── rockyutil
-│   │   │   │   ├── algorithm
-│   │   │   │   ├── compiling
-│   │   │   │   ├── cryptography
-│   │   │   │   ├── datastructure
-│   │   │   │   ├── systemoperating
-│   │   │   │   ├── leetcode.py
-│   │   │   │   └── nowcoder.py
-│   │   │   └── saikr
-│   │   │       ├── contest
-│   │   │       └── done
-│   │   └── requirements.txt
-│   └── ts
-│       ├── src
-│       │   └── leetcode
-│       │       └── done
-│       ├── package.json
-│       ├── package-lock.json
-│       └── tsconfig.json
-├── cpprun.cmd
-├── crun.cmd
-├── gitflush.cmd
-├── README.md
-└── tsrun.cmd
+├─code
+│  ├─c
+│  ├─cj
+│  ├─cpp
+│  ├─cs
+│  ├─go
+│  ├─java
+│  ├─js
+│  ├─kt
+│  ├─lua
+│  ├─py
+│  ├─rs
+│  ├─scala
+│  └─ts
+└─scripts
 ```
