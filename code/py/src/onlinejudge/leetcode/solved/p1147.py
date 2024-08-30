@@ -16,7 +16,8 @@ class Solution:
             lft, rit = mid - i, mid + i
             for j in range(1, i + 1):
                 if text[lft : lft + j] == text[rit - j : rit]:
-                    dp[lft] = max(dp[lft], dp[lft + j] + 2)
+                    dp[lft] = dp[lft + j] + 2
+                    break
         return dp[0]
 
 
