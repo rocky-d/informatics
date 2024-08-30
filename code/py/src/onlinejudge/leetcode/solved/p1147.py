@@ -9,7 +9,7 @@ class Solution:
             text = text[:mid] + text[mid + 1 :]
             n -= 1
             dp = [1] * mid + [1]
-        else:
+        else:  # elif 0b0 == 0b1 & n:
             dp = [1] * mid + [0]
         for i in range(1, mid + 1):
             lft, rit = mid - i, mid + i
