@@ -6,10 +6,9 @@ class Solution:
         n = len(text)
         mid = n >> 1
         if 0b1 == 0b1 & n:
-            text = text[:mid] + text[mid] + text[mid:]
-            n += 1
-            mid += 1
-            dp = [1] * mid + [-1]
+            text = text[:mid] + text[mid + 1 :]
+            n -= 1
+            dp = [1] * mid + [1]
         else:
             dp = [1] * mid + [0]
         for i in range(1, mid + 1):
