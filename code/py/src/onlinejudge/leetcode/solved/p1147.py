@@ -13,9 +13,9 @@ class Solution:
         else:
             dp = [1] * mid + [0]
         for i in range(1, mid + 1):
-            lft, rit = mid - i, mid + i - 1
+            lft, rit = mid - i, mid + i
             for j in range(1, i + 1):
-                if text[lft : lft + j] == text[rit - j + 1 : rit + 1]:
+                if text[lft : lft + j] == text[rit - j : rit]:
                     dp[lft] = max(dp[lft], dp[lft + j] + 2)
         return dp[0]
 
