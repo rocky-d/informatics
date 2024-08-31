@@ -23,7 +23,7 @@ def main() -> None:
 
     a = list(range(n)) + list(range(la - n))
     print(*a)
-    # sm = []
+    route = []
     for fr, to in pairwise(chain([0], t)):
         n = len(graph)
         dsts = [n] * n
@@ -45,34 +45,37 @@ def main() -> None:
                     pres[v] = u
                 elif v_dst == dsts[v]:
                     pres[v] = min(pres[v], u, key=lambda x: abs(x - fr))
-        route = []
+        ls = []
         x = to
         while fr != x:
-            route.append(x)
+            ls.append(x)
             x = pres[x]
-        idx = len(route) - 1
-        while 0 <= idx:
-            idx_lst = idx
-            lo, hi = route[idx], route[idx]
-            lo_lst, hi_lst = lo, hi
+        ls += route
+        route = ls
+    # sm = []
+    idx = len(route) - 1
+    while 0 <= idx:
+        idx_lst = idx
+        lo, hi = route[idx], route[idx]
+        lo_lst, hi_lst = lo, hi
+        idx -= 1
+        while 0 <= idx and hi - lo < lb:
+            if route[idx] < lo:
+                lo_lst, hi_lst = lo, hi
+                lo = route[idx]
+            elif hi < route[idx]:
+                lo_lst, hi_lst = lo, hi
+                hi = route[idx]
             idx -= 1
-            while 0 <= idx and hi - lo < lb:
-                if route[idx] < lo:
-                    lo_lst, hi_lst = lo, hi
-                    lo = route[idx]
-                elif hi < route[idx]:
-                    lo_lst, hi_lst = lo, hi
-                    hi = route[idx]
-                idx -= 1
-            if not hi - lo < lb:
-                lo, hi = lo_lst, hi_lst
-                idx += 1
-            hi += 1
-            # sm.append(f"s {hi - lo} {lo} {0}")
-            print('s', hi - lo, lo, 0)
-            for i in range(idx_lst, idx, -1):
-                # sm.append(f"m {route[i]}")
-                print('m', route[i])
+        if not hi - lo < lb:
+            lo, hi = lo_lst, hi_lst
+            idx += 1
+        hi += 1
+        # sm.append(f"s {hi - lo} {lo} {0}")
+        print('s', hi - lo, lo, 0)
+        for i in range(idx_lst, idx, -1):
+            # sm.append(f"m {route[i]}")
+            print('m', route[i])
     # print(*sm, sep='\n')
 
 
