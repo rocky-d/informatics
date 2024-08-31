@@ -18,12 +18,11 @@ def main() -> None:
     ans = []
     a = list(range(n)) + [0] * (la - n)
     ans.append(' '.join(map(str, a)))
-    cords = list(map(tuple, xy))
 
     def dfs(u: int) -> bool:
         if u == to:
             return True
-        for v in sorted(graph[u], key=lambda x: dist(cords[x], cords[to])):
+        for v in sorted(graph[u], key=key):
             if vis[v]:
                 continue
             vis[v] = True
@@ -37,7 +36,9 @@ def main() -> None:
             res = False
         return res
 
+    cords = list(map(tuple, xy))
     for fr, to in pairwise(chain([0], t)):
+        key = lambda x: dist(cords[x], cords[to])
         stk = deque()
         vis = [False] * n
         vis[fr] = True
