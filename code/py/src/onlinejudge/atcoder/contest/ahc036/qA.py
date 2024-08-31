@@ -15,9 +15,8 @@ def main() -> None:
     # xy = (map(int, input().split()) for _ in range(n))
 
     ans = []
-    a = list(range(n)) + [0] * (la - n)
+    a = list(range(n)) + list(range(la - n))
     ans.append(' '.join(map(str, a)))
-
     for fr, to in pairwise(chain([0], t)):
         n = len(graph)
         dsts = [n] * n
@@ -44,11 +43,40 @@ def main() -> None:
         while fr != x:
             route.append(x)
             x = pres[x]
-        for x in reversed(route):
-            ans.append(f"s 1 {x} 0")
-            ans.append(f"m {x}")
+        idx = len(route) - 1
+        while 0 <= idx:
+            idx_lst = idx
+            lo, hi = route[idx], route[idx]
+            lo_lst, hi_lst = lo, hi
+            idx -= 1
+            while 0 <= idx and hi - lo < lb:
+                if route[idx] < lo:
+                    lo_lst, hi_lst = lo, hi
+                    lo = route[idx]
+                elif hi < route[idx]:
+                    lo_lst, hi_lst = lo, hi
+                    hi = route[idx]
+                idx -= 1
+            if not hi - lo < lb:
+                lo, hi = lo_lst, hi_lst
+                idx += 1
+            hi += 1
+            ans.append(f"s {hi - lo} {lo} {0}")
+            for i in range(idx_lst, idx, -1):
+                ans.append(f"m {route[i]}")
     print(*ans, sep='\n')
 
 
 if __name__ == '__main__':
+    # import sys
+
+    # sys.stdin = open(
+    #     r'C:\rocky_d\code\informatics\code\py\src\onlinejudge\atcoder\contest\ahc036\in.txt',
+    #     'r',
+    # )
+    # sys.stdout = open(
+    #     r'C:\rocky_d\code\informatics\code\py\src\onlinejudge\atcoder\contest\ahc036\out.txt',
+    #     'w',
+    # )
+
     main()
