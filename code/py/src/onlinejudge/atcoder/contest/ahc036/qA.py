@@ -1,9 +1,6 @@
 from collections import deque
 from itertools import chain, pairwise
-
-
-def dist(a, b):
-    return (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2
+from math import dist
 
 
 def main() -> None:
