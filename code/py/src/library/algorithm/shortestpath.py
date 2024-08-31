@@ -6,7 +6,7 @@ def dijkstra(graph, start, initial = 0):
     n = len(graph)
     dsts = [inf] * n
     dsts[start] = initial
-    pres = [set() for _ in range(n)]
+    lsts = [set() for _ in range(n)]
     heap = []
     heappush(heap, (dsts[start], start))
     while 0 < len(heap):
@@ -18,11 +18,11 @@ def dijkstra(graph, start, initial = 0):
             if v_dst < dsts[v]:
                 heappush(heap, (v_dst, v))
                 dsts[v] = v_dst
-                pres[v].clear()
-                pres[v].add(u)
+                lsts[v].clear()
+                lsts[v].add(u)
             elif v_dst == dsts[v]:
-                pres[v].add(u)
-    return dsts, pres
+                lsts[v].add(u)
+    return dsts, lsts
 
 
 def floyd(graph, initial = 0):
