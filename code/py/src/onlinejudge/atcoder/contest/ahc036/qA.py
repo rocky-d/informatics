@@ -1,6 +1,5 @@
-from collections import deque
+from heapq import heappop, heappush
 from itertools import chain, pairwise
-from math import dist
 
 
 def main() -> None:
@@ -13,37 +12,39 @@ def main() -> None:
         graph[to].append(fr)
 
     t = map(int, input().split())
-    xy = (map(int, input().split()) for _ in range(n))
+    # xy = (map(int, input().split()) for _ in range(n))
 
     ans = []
     a = list(range(n)) + [0] * (la - n)
     ans.append(' '.join(map(str, a)))
 
-    def dfs(u: int) -> bool:
-        if u == to:
-            return True
-        for v in sorted(graph[u], key=key):
-            if vis[v]:
-                continue
-            vis[v] = True
-            stk.append(v)
-            if dfs(v):
-                res = True
-                break
-            stk.pop()
-            vis[v] = False
-        else:
-            res = False
-        return res
-
-    cords = list(map(tuple, xy))
     for fr, to in pairwise(chain([0], t)):
-        key = lambda x: dist(cords[x], cords[to])
-        stk = deque()
-        vis = [False] * n
-        vis[fr] = True
-        dfs(u=fr)
-        for x in stk:
+        n = len(graph)
+        dsts = [n] * n
+        dsts[fr] = 0
+        pres = [None] * n
+        heap = []
+        heappush(heap, (dsts[fr], fr))
+        while 0 < len(heap):
+            u_dst, u = heappop(heap)
+            if u_dst != dsts[u]:  # if u_dst > dsts[u]:
+                continue
+            if u == to:
+                break
+            for v in graph[u]:
+                v_dst = u_dst + 1
+                if v_dst < dsts[v]:
+                    heappush(heap, (v_dst, v))
+                    dsts[v] = v_dst
+                    pres[v] = u
+                elif v_dst == dsts[v]:
+                    pres[v] = min(pres[v], u, key=lambda x: abs(x - fr))
+        route = []
+        x = to
+        while fr != x:
+            route.append(x)
+            x = pres[x]
+        for x in reversed(route):
             ans.append(f"s 1 {x} 0")
             ans.append(f"m {x}")
     print(*ans, sep='\n')
