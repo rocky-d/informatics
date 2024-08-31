@@ -2,6 +2,10 @@ from collections import deque
 from itertools import chain, pairwise
 
 
+def dist(a, b):
+    return (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2
+
+
 def main() -> None:
     n, m, _, la, lb = map(int, input().split())
     uv = (map(int, input().split()) for _ in range(m))
@@ -12,16 +16,17 @@ def main() -> None:
         graph[to].append(fr)
 
     t = map(int, input().split())
-    # xy = (map(int, input().split()) for _ in range(n))
+    xy = (map(int, input().split()) for _ in range(n))
 
     ans = []
     a = list(range(n)) + [0] * (la - n)
     ans.append(' '.join(map(str, a)))
+    cords = list(map(tuple, xy))
 
     def dfs(u: int) -> bool:
         if u == to:
             return True
-        for v in graph[u]:
+        for v in sorted(graph[u], key=lambda x: dist(cords[x], cords[to])):
             if vis[v]:
                 continue
             vis[v] = True
