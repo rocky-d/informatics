@@ -15,13 +15,7 @@ def main() -> None:
 
     a = list(range(n)) + list(range(la - n))
     print(*a)
-    lb_l, lb_r = 1, 2  # 0 <= lb_l + lb_r <= 4
-    lb_l_p = 0.1  # 0.0 <= lb_l_p <= 1.0
-    lb_ = lb - (lb_l + lb_r)
-    lb_l_add = round(lb_ * lb_l_p)
-    lb_r_add = lb_ - lb_l_add
-    lb_l += lb_l_add
-    lb_r += lb_r_add
+    lb_l, lb_r = 1, lb - 1
 
     uv = (map(int, input().split()) for _ in range(m))
 
