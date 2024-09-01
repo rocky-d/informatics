@@ -57,7 +57,7 @@ def main() -> None:
         ls += route
         route = ls
     # sm = []
-    excludes = frozenset(x for x, _ in sorted(Counter(route).items(), key=lambda item:item[1], reverse=True)[:lb_r])
+    excludes = frozenset(x for x, _ in sorted(Counter(route).items(), key=lambda item: item[1], reverse=True)[:lb_r])
     for pb, pa in enumerate(excludes, start=lb - len(excludes)):
         # sm.append(f"s {1} {pa} {pb}")
         print('s', 1, pa, pb)
