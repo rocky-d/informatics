@@ -55,10 +55,12 @@ def main() -> None:
             x = lsts[x]
         ls += route
         route = ls
-    excludes = sorted(Counter(route).items(), key=lambda item: item[1], reverse=True)[: lb - 1]
-    for pb, (pa, _) in enumerate(excludes, start=1):
+    excludes = frozenset(x for x, _ in sorted(Counter(route).items(), key=lambda item: item[1], reverse=True)[: lb - 1])
+    for pb, pa in enumerate(excludes, start=1):
         print('s', 1, pa, pb)
     for x in reversed(route):
+        if x in excludes:
+            continue
         print('s', 1, x, 0)
         print('m', x)
 
