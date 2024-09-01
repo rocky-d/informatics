@@ -22,10 +22,10 @@ def main() -> None:
     lb_r_add = lb_ - lb_l_add
     lb_l += lb_l_add
     lb_r += lb_r_add
-    graph = [[] for _ in range(n)]
 
     uv = (map(int, input().split()) for _ in range(m))
 
+    graph = [[] for _ in range(n)]
     for fr, to in uv:
         graph[fr].append(to)
         graph[to].append(fr)
