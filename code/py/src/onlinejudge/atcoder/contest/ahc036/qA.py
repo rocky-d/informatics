@@ -28,7 +28,7 @@ def main() -> None:
         n = len(graph)
         dsts = [n] * n
         dsts[fr] = 0
-        pres = [None] * n
+        lsts = [None] * n
         heap = []
         heappush(heap, (dsts[fr], fr))
         while 0 < len(heap):
@@ -42,14 +42,14 @@ def main() -> None:
                 if v_dst < dsts[v]:
                     heappush(heap, (v_dst, v))
                     dsts[v] = v_dst
-                    pres[v] = u
+                    lsts[v] = u
                 elif v_dst == dsts[v]:
-                    pres[v] = min(pres[v], u, key=lambda x: abs(x - fr))
+                    lsts[v] = min(lsts[v], u, key=lambda x: abs(x - fr))
         ls = []
         x = to
         while fr != x:
             ls.append(x)
-            x = pres[x]
+            x = lsts[x]
         ls += route
         route = ls
     # sm = []
