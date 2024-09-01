@@ -5,6 +5,7 @@ sys.stdin = open(dir + 'in.txt', 'r')
 sys.stdout = open(dir + 'out.txt', 'w')
 
 
+from collections import Counter
 from heapq import heappop, heappush
 from itertools import chain, pairwise
 
@@ -13,6 +14,13 @@ def main() -> None:
     n, m, _, la, lb = map(int, input().split())
     uv = (map(int, input().split()) for _ in range(m))
 
+    lb_l, lb_r = 1, 2  # 0 <= lb_l + lb_r <= 4
+    lb_l_p = 0.1  # 0.0 <= lb_l_p <= 1.0
+    lb_ = lb - (lb_l + lb_r)
+    lb_l_add = round(lb_ * lb_l_p)
+    lb_r_add = lb_ - lb_l_add
+    lb_l += lb_l_add
+    lb_r += lb_r_add
     graph = [[] for _ in range(n)]
     for fr, to in uv:
         graph[fr].append(to)
@@ -53,13 +61,25 @@ def main() -> None:
         ls += route
         route = ls
     # sm = []
+    excludes = frozenset(x for x, _ in sorted(Counter(route).items(), key=lambda item:item[1], reverse=True)[:lb_r])
+    for pb, pa in enumerate(excludes, start=lb - len(excludes)):
+        # sm.append(f"s {1} {pa} {pb}")
+        print('s', 1, pa, pb)
     idx = len(route) - 1
     while 0 <= idx:
         idx_lst = idx
+        while 0 <= idx and route[idx] in excludes:
+            idx -= 1
+        if not 0 <= idx:
+            break
         lo, hi = route[idx], route[idx]
         lo_lst, hi_lst = lo, hi
         idx -= 1
-        while 0 <= idx and hi - lo < lb:
+        while 0 <= idx and hi - lo < lb_l:
+            while 0 <= idx and route[idx] in excludes:
+                idx -= 1
+            if not 0 <= idx:
+                break
             if route[idx] < lo:
                 lo_lst, hi_lst = lo, hi
                 lo = route[idx]
@@ -67,7 +87,7 @@ def main() -> None:
                 lo_lst, hi_lst = lo, hi
                 hi = route[idx]
             idx -= 1
-        if not hi - lo < lb:
+        if not hi - lo < lb_l:
             lo, hi = lo_lst, hi_lst
             idx += 1
         hi += 1
