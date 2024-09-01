@@ -12,8 +12,9 @@ from itertools import chain, pairwise
 
 def main() -> None:
     n, m, _, la, lb = map(int, input().split())
-    uv = (map(int, input().split()) for _ in range(m))
 
+    a = list(range(n)) + list(range(la - n))
+    print(*a)
     lb_l, lb_r = 1, 2  # 0 <= lb_l + lb_r <= 4
     lb_l_p = 0.1  # 0.0 <= lb_l_p <= 1.0
     lb_ = lb - (lb_l + lb_r)
@@ -22,6 +23,9 @@ def main() -> None:
     lb_l += lb_l_add
     lb_r += lb_r_add
     graph = [[] for _ in range(n)]
+
+    uv = (map(int, input().split()) for _ in range(m))
+
     for fr, to in uv:
         graph[fr].append(to)
         graph[to].append(fr)
@@ -29,8 +33,6 @@ def main() -> None:
     t = map(int, input().split())
     # xy = (map(int, input().split()) for _ in range(n))
 
-    a = list(range(n)) + list(range(la - n))
-    print(*a)
     route = []
     for fr, to in pairwise(chain([0], t)):
         n = len(graph)
