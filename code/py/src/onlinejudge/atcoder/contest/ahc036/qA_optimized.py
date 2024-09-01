@@ -24,7 +24,6 @@ def main() -> None:
         graph[to].append(fr)
 
     t = map(int, input().split())
-    # xy = (map(int, input().split()) for _ in range(n))
 
     route = []
     for fr, to in pairwise(chain([0], t)):
@@ -59,9 +58,8 @@ def main() -> None:
     for pb, pa in enumerate(excludes, start=1):
         print('s', 1, pa, pb)
     for x in reversed(route):
-        if x in excludes:
-            continue
-        print('s', 1, x, 0)
+        if x not in excludes:
+            print('s', 1, x, 0)
         print('m', x)
 
 
