@@ -1,8 +1,8 @@
 import sys
 
 dir = 'C:/rocky_d/code/informatics/code/py/src/onlinejudge/atcoder/contest/ahc036/'
-sys.stdin = open('in.txt', 'r')
-sys.stdout = open('out.txt', 'w')
+sys.stdin = open(dir + 'in.txt', 'r')
+sys.stdout = open(dir + 'out.txt', 'w')
 
 
 from heapq import heappop, heappush
@@ -44,7 +44,7 @@ def main() -> None:
                     dsts[v] = v_dst
                     lsts[v] = u
                 elif v_dst == dsts[v]:
-                    lsts[v] = min(lsts[v], u, key=lambda x: abs(x - fr))
+                    lsts[v] = min(lsts[v], u, key=lambda x: abs(x - v))
         ls = []
         x = to
         while fr != x:
