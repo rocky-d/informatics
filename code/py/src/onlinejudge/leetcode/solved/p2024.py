@@ -3,27 +3,21 @@ from onlinejudge.leetcode import *
 
 class Solution:
     def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
-        n = len(answerKey)
         prefs = list(accumulate((0 if 'F' == key else 1 for key in answerKey), initial=0))
+        n1 = len(prefs)
 
-        def check(mid: int) -> bool:
-            for i in range(n - mid + 1):
-                pref = prefs[i + mid] - prefs[i]
-                if pref <= k or mid - k <= pref:
-                    res = True
+        def func(mid: int) -> int:
+            mid_k = mid - k
+            for i in range(mid, n1):
+                pref = prefs[i] - prefs[i - mid]
+                if pref <= k or mid_k <= pref:
+                    res = 0
                     break
             else:
-                res = False
+                res = 1
             return res
 
-        lo, hi = k - 1, n + 1
-        while 1 < hi - lo:
-            mid = lo + hi >> 1
-            if check(mid=mid):
-                lo = mid
-            else:
-                hi = mid
-        return lo
+        return k + bisect_left(range(k, n1), 1, key=func) - 1
 
 
 eg_answerKey = 'TTFTTFTT'
