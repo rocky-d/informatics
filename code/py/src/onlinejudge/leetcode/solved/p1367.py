@@ -20,7 +20,7 @@ class Solution:
         que = deque([root])
         while 0 < len(que):
             node = que.popleft()
-            if dfs(0, node):
+            if dfs(idx=0, node=node):
                 ans = True
                 break
             if node is not None:
