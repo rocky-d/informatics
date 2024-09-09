@@ -23,8 +23,8 @@ def main() -> None:
         if u_dst != dsts[u][u_s]:
             continue
         for v, w in graph[u]:
-            v_dst = u_dst + w * u_s
             v_s = min(u_s, s[v])
+            v_dst = u_dst + w * u_s
             if v_dst < dsts[v][v_s]:
                 dsts[v][v_s] = v_dst
                 heappush(heap, (v_dst, v, v_s))
