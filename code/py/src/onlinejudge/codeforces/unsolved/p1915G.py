@@ -23,7 +23,7 @@ def main() -> None:
         if u_dst != dsts[u][u_s]:
             continue
         for v, w in graph[u]:
-            v_dst = dsts[u][u_s] + w * u_s
+            v_dst = u_dst + w * u_s
             v_s = min(u_s, s[v])
             if v_dst < dsts[v][v_s]:
                 dsts[v][v_s] = v_dst
