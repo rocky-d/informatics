@@ -8,9 +8,9 @@ class Solution:
         x, y = 0, 0
         vis = [[False] * n for _ in range(m)]
         while head is not None:
-            vis[x][y] = True
             ans[x][y] = head.val
             head = head.next
+            vis[x][y] = True
             vx, vy = x + dirs[d][0], y + dirs[d][1]
             if not (0 <= vx < m and 0 <= vy < n) or vis[vx][vy]:
                 d = (d + 1) % 4
