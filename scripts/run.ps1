@@ -72,6 +72,14 @@ try {
         # 运行输出文件
         . $resultPth
     }
+    elseif ($targetExt -eq "cs") {
+        # 设置输出文件路径
+        $resultPth = "$subOutDir\$targetNam.exe"
+        # 编译源文件
+        & "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\Roslyn\csc.exe" -out:$resultPth $targetPth
+        # 运行输出文件
+        . $resultPth
+    }
     elseif ($targetExt -eq "go") {
         # 设置输出文件路径
         $resultPth = "$subOutDir\$targetNam.exe"
