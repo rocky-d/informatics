@@ -49,6 +49,7 @@ void solve() {
     }
     while (0 < q--) {
         cin >> l >> r;
+
         ll = l + rits[l - 1];
         rr = r - lfts[r - 1];
         if (ll > rr) {
