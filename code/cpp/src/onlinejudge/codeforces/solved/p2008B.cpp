@@ -8,7 +8,6 @@ void solve() {
     int n; cin >> n;
     string s; cin >> s;
 
-    bool res = true;
     int side = sqrt(n);
     if (n != side * side) {
         cout << "No" << LF;
@@ -16,35 +15,35 @@ void solve() {
     }
     for (int i = 0; i < side; ++i) {
         if (!('1' == s[i])) {
-            res = false;
-            break;
+            cout << "No" << LF;
+            return;
         }
     }
     for (int row = 1; row < side - 1; ++row) {
         int lo = row * side;
         int hi = lo + side - 1;
         if (!('1' == s[lo])) {
-            res = false;
-            break;
+            cout << "No" << LF;
+            return;
         }
         for (int i = lo + 1; i < hi; ++i) {
             if (!('0' == s[i])) {
-                res = false;
-                break;
+                cout << "No" << LF;
+                return;
             }
         }
         if (!('1' == s[hi])) {
-            res = false;
-            break;
+            cout << "No" << LF;
+            return;
         }
     }
     for (int i = n - side; i < n; ++i) {
         if (!('1' == s[i])) {
-            res = false;
-            break;
+            cout << "No" << LF;
+            return;
         }
     }
-    cout << (res ? "Yes" : "No") << LF;
+    cout << "Yes" << LF;
 }
 
 int main() {
