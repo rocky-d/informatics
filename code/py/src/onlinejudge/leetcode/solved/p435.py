@@ -10,5 +10,5 @@ class Solution:
         return len(intervals) - dp[-1][1]
 
 
-eg_intervals = [[1, 2], [2, 3]]
+eg_intervals = [[1, 5], [3, 8], [6, 8], [8, 8]]
 print(Solution().eraseOverlapIntervals(eg_intervals))
