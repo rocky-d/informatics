@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 
 #define LF '\n'
+#define NO "No"
+#define YES "Yes"
 
 using namespace std;
 
@@ -10,12 +12,12 @@ void solve() {
 
     int side = sqrt(n);
     if (n != side * side) {
-        cout << "No" << LF;
+        cout << NO << LF;
         return;
     }
     for (int i = 0; i < side; ++i) {
         if (!('1' == s[i])) {
-            cout << "No" << LF;
+            cout << NO << LF;
             return;
         }
     }
@@ -23,27 +25,27 @@ void solve() {
         int lo = row * side;
         int hi = lo + side - 1;
         if (!('1' == s[lo])) {
-            cout << "No" << LF;
+            cout << NO << LF;
             return;
         }
         for (int i = lo + 1; i < hi; ++i) {
             if (!('0' == s[i])) {
-                cout << "No" << LF;
+                cout << NO << LF;
                 return;
             }
         }
         if (!('1' == s[hi])) {
-            cout << "No" << LF;
+            cout << NO << LF;
             return;
         }
     }
     for (int i = n - side; i < n; ++i) {
         if (!('1' == s[i])) {
-            cout << "No" << LF;
+            cout << NO << LF;
             return;
         }
     }
-    cout << "Yes" << LF;
+    cout << YES << LF;
 }
 
 int main() {
@@ -52,4 +54,5 @@ int main() {
     while (t--) {
         solve();
     }
+    return 0;
 }
