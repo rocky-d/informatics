@@ -15,8 +15,8 @@ void solve() {
         cout << NO << LF;
         return;
     }
-    for (int i = 0; i < side; ++i) {
-        if (!('1' == s[i])) {
+    for (int idx = 0; idx < side; ++idx) {
+        if (!('1' == s[idx])) {
             cout << NO << LF;
             return;
         }
@@ -28,8 +28,8 @@ void solve() {
             cout << NO << LF;
             return;
         }
-        for (int i = lo + 1; i < hi; ++i) {
-            if (!('0' == s[i])) {
+        for (int idx = lo + 1; idx < hi; ++idx) {
+            if (!('0' == s[idx])) {
                 cout << NO << LF;
                 return;
             }
@@ -39,8 +39,8 @@ void solve() {
             return;
         }
     }
-    for (int i = n - side; i < n; ++i) {
-        if (!('1' == s[i])) {
+    for (int idx = n - side; idx < n; ++idx) {
+        if (!('1' == s[idx])) {
             cout << NO << LF;
             return;
         }
