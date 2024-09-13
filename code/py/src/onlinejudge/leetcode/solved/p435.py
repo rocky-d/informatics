@@ -7,7 +7,7 @@ class Solution:
         dp = [(-inf, 0)]
         for lo, hi in intervals:
             insort(dp, (hi, max(dp[-1][1], dp[bisect_right(dp, (lo, inf)) - 1][1] + 1)))
-        return len(intervals) - max(cnt for _, cnt in dp)
+        return len(intervals) - dp[-1][1]
 
 
 eg_intervals = [[1, 2], [2, 3]]
