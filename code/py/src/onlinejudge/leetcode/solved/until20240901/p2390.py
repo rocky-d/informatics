@@ -3,7 +3,7 @@ from onlinejudge.leetcode import *
 
 class Solution:
     def removeStars(self, s: str) -> str:
-        stk = deque(maxlen = len(s))
+        stk = deque()
         for char in s:
             if '*' == char:
                 stk.pop()
