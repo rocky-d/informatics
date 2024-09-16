@@ -45,8 +45,8 @@ class Prefs1D(_Prefs):
         super().__init__(start)
         self._prefs = [...] + [...] * len(__tensor1d)
         self._prefs[0] = self._start
-        for i, x in enumerate(__tensor1d, start = 1):
-            self._prefs[i] = x + self._prefs[i - 1]
+        for i, x0d in enumerate(__tensor1d, start = 1):
+            self._prefs[i] = x0d + self._prefs[i - 1]
 
     def sum(self, lo, hi):  # [lo, hi]
         hi = hi + 1
@@ -59,8 +59,8 @@ class Diffs1D(_Diffs):
         super().__init__(start)
         self._diffs = [...] * len(__tensor1d)
         self._diffs[0] = __tensor1d[0] - self._start
-        for i, (lst, nxt) in enumerate(pairwise(__tensor1d), start = 1):
-            self._diffs[i] = nxt - lst
+        for i, (lst0d, nxt0d) in enumerate(pairwise(__tensor1d), start = 1):
+            self._diffs[i] = nxt0d - lst0d
 
     def add(self, lo, hi, val):  # [lo, hi]
         self._diffs[lo] += val
@@ -75,8 +75,8 @@ class Prefs2D(_Prefs):
         super().__init__(start)
         self._prefs = [[self._start] + [self._start for _ in __tensor2d[0]]] + [[self._start] for _ in __tensor2d]
         for i, x1d in enumerate(__tensor2d, start = 1):
-            for j, x in enumerate(x1d, start = 1):
-                self._prefs[i].append(x - self._prefs[i - 1][j - 1] + self._prefs[i - 1][j] + self._prefs[i][j - 1])
+            for j, x0d in enumerate(x1d, start = 1):
+                self._prefs[i].append(x0d - self._prefs[i - 1][j - 1] + self._prefs[i - 1][j] + self._prefs[i][j - 1])
 
     def sum(self, lo, hi):  # [lo, hi]
         hi = hi[0] + 1, hi[1] + 1
@@ -88,12 +88,12 @@ class Diffs2D(_Diffs):
     def __init__(self, __tensor2d, start = 0):
         super().__init__(start)
         self._diffs = [[__tensor2d[0][0] - self._start]]
-        for lst, nxt in pairwise(__tensor2d[0]):
-            self._diffs[0].append(nxt - lst)
+        for lst0d, nxt0d in pairwise(__tensor2d[0]):
+            self._diffs[0].append(nxt0d - lst0d)
         for lst1d, nxt1d in pairwise(__tensor2d):
             self._diffs.append([nxt1d[0] - lst1d[0]])
-            for (lst_lst, lst_nxt), (nxt_lst, nxt_nxt) in zip(pairwise(lst1d), pairwise(nxt1d)):
-                self._diffs[-1].append(nxt_nxt + lst_lst - lst_nxt - nxt_lst)
+            for (lst1d_lst0d, lst1d_nxt0d), (nxt1d_lst0d, nxt1d_nxt0d) in zip(pairwise(lst1d), pairwise(nxt1d)):
+                self._diffs[-1].append(nxt1d_nxt0d + lst1d_lst0d - lst1d_nxt0d - nxt1d_lst0d)
 
     def add(self, lo, hi, val):  # [lo, hi]
         self._diffs[lo[0]][lo[1]] += val
