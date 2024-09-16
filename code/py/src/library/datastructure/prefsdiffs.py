@@ -102,7 +102,7 @@ class Diffs2D(_Diffs):
             self._diffs[hi[0]][hi[1]] += val
         if hi[0] < len(self._diffs):
             self._diffs[hi[0]][lo[1]] -= val
-        if hi[1] < len(self._diffs):
+        if hi[1] < len(self._diffs[0]):
             self._diffs[lo[0]][hi[1]] -= val
 
 
