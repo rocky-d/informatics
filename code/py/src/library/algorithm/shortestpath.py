@@ -40,7 +40,7 @@ def floyd(graph, initial = 0):
 
 
 if __name__ == '__main__':
-    print_ = lambda __iterable: print(*__iterable, sep = '\n', end = '\n\n')
+    print2d = lambda __iterable: print(*__iterable, sep = '\n', end = '\n\n')
 
     graph = [
         [],
@@ -50,5 +50,5 @@ if __name__ == '__main__':
         [],
     ]
     for start in range(len(graph)):
-        print_(dijkstra(graph, start, initial = 0))
-    print_(floyd(graph, initial = 0))
+        print2d(dijkstra(graph, start, initial = 0))
+    print2d(floyd(graph, initial = 0))

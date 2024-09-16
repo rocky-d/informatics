@@ -107,28 +107,28 @@ class Diffs2D(_Diffs):
 
 
 if __name__ == '__main__':
-    print_ = lambda __iterable: print(*__iterable, sep = '\n', end = '\n\n')
+    print2d = lambda __iterable: print(*__iterable, sep = '\n', end = '\n\n')
 
-    tensor_1d = [1, 2, 3, 4, 5]
-    print(tensor_1d)
-    print(Prefs1D(tensor_1d, start = 0).prefs)
-    print(Diffs1D(tensor_1d, start = 0).diffs)
-    print(Diffs1D(Prefs1D(tensor_1d, start = 0).prefs, start = 0).diffs)
-    print(Prefs1D(Diffs1D(tensor_1d, start = 0).diffs, start = 0).prefs)
+    tensor1d = [1, 2, 3, 4, 5]
+    print(tensor1d)
+    print(Prefs1D(tensor1d, start = 0).prefs)
+    print(Diffs1D(tensor1d, start = 0).diffs)
+    print(Diffs1D(Prefs1D(tensor1d, start = 0).prefs, start = 0).diffs)
+    print(Prefs1D(Diffs1D(tensor1d, start = 0).diffs, start = 0).prefs)
     print('------')
 
-    tensor_2d = [
+    tensor2d = [
         [1, 2, 3],
         [5, 5, 3],
         [8, 2, 4],
     ]
-    print_(tensor_2d)
-    print_(Prefs2D(tensor_2d, start = 0).prefs)
-    print_(Diffs2D(tensor_2d, start = 0).diffs)
-    print_(Diffs2D(Prefs2D(tensor_2d, start = 0).prefs, start = 0).diffs)
-    print_(Prefs2D(Diffs2D(tensor_2d, start = 0).diffs, start = 0).prefs)
+    print2d(tensor2d)
+    print2d(Prefs2D(tensor2d, start = 0).prefs)
+    print2d(Diffs2D(tensor2d, start = 0).diffs)
+    print2d(Diffs2D(Prefs2D(tensor2d, start = 0).prefs, start = 0).diffs)
+    print2d(Prefs2D(Diffs2D(tensor2d, start = 0).diffs, start = 0).prefs)
     print('------')
 
-    tensor_2d_diff = Diffs2D(tensor_2d)
-    tensor_2d_diff.add((0, 1), (2, 2), 100)
-    print_(Prefs2D(tensor_2d_diff.diffs).prefs)
+    tensor2d_diff = Diffs2D(tensor2d)
+    tensor2d_diff.add((0, 1), (2, 2), 100)
+    print2d(Prefs2D(tensor2d_diff.diffs).prefs)
