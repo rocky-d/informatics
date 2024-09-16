@@ -15,6 +15,7 @@
 * [nowcoder](https://www.nowcoder.com): [rocky_d](https://www.nowcoder.com/users/575112432)
     * [ac.nowcoder](https://ac.nowcoder.com): [rocky_d](https://ac.nowcoder.com/acm/contest/profile/575112432)
 * [pintia](https://pintia.cn): rocky_d
+* [qoj](https://qoj.ac): [rocky_d](https://qoj.ac/user/profile/rocky_d)
 * [saikr](https://oj.saikr.com): [rocky_d](https://oj.saikr.com/personal/36055)
 * [vjudge](https://vjudge.net): [rockyd](https://vjudge.net/user/rockyd)
 
@@ -55,6 +56,7 @@ informatics
 │  │        ├─luogu
 │  │        ├─nowcoder
 │  │        ├─pintia
+│  │        ├─qoj
 │  │        ├─saikr
 │  │        └─vjudge
 │  ├─rs
