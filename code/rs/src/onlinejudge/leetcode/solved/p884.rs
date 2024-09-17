@@ -1,10 +1,12 @@
 struct Solution;
+
 use std::collections::HashMap;
+
 impl Solution {
     pub fn uncommon_from_sentences(s1: String, s2: String) -> Vec<String> {
         let words1: Vec<String> = s1.split(' ').map(String::from).collect();
         let words2: Vec<String> = s2.split(' ').map(String::from).collect();
-        let mut cnter = HashMap::new();
+        let mut cnter: HashMap<&String, i32> = HashMap::new();
         for word in words1.iter() {
             if let Some(cnt) = cnter.get_mut(word) {
                 *cnt += 1;
@@ -28,6 +30,7 @@ impl Solution {
         return result;
     }
 }
+
 fn main() {
     let words: Vec<String> = Solution::uncommon_from_sentences(
         "this apple is sweet".to_string(),
