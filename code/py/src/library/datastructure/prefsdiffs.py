@@ -120,10 +120,10 @@ if __name__ == '__main__':
 
     tensor1d = [1, 2, 3, 4, 5]
     print(tensor1d)
-    print(Prefs1D(tensor1d, start = 0).prefs)
-    print(Diffs1D(tensor1d, start = 0).diffs)
-    print(Diffs1D(Prefs1D(tensor1d, start = 0).prefs, start = 0).diffs)
-    print(Prefs1D(Diffs1D(tensor1d, start = 0).diffs, start = 0).prefs)
+    print(Prefs1D(tensor1d).prefs)
+    print(Diffs1D(tensor1d).diffs)
+    print(Diffs1D(Prefs1D(tensor1d).prefs).diffs)
+    print(Prefs1D(Diffs1D(tensor1d).diffs).prefs)
     print('------')
 
     tensor2d = [
@@ -132,10 +132,10 @@ if __name__ == '__main__':
         [8, 2, 4],
     ]
     print2d(tensor2d)
-    print2d(Prefs2D(tensor2d, start = 0).prefs)
-    print2d(Diffs2D(tensor2d, start = 0).diffs)
-    print2d(Diffs2D(Prefs2D(tensor2d, start = 0).prefs, start = 0).diffs)
-    print2d(Prefs2D(Diffs2D(tensor2d, start = 0).diffs, start = 0).prefs)
+    print2d(Prefs2D(tensor2d).prefs)
+    print2d(Diffs2D(tensor2d).diffs)
+    print2d(Diffs2D(Prefs2D(tensor2d).prefs).diffs)
+    print2d(Prefs2D(Diffs2D(tensor2d).diffs).prefs)
     print('------')
 
     tensor2d_diff = Diffs2D(tensor2d)
