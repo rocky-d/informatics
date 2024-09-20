@@ -2,11 +2,8 @@ def main() -> None:
     n = int(input())
     a = map(int, input().split())
 
-    a_set = frozenset(a)
-    if 1 not in a_set:
-        print(0)
-        return
     ans = 0
+    a_set = frozenset(a)
     a = sorted(a_set)
     tags = [None] + [True] * a[-1]
     for num in range(1, a[-1] + 1):
