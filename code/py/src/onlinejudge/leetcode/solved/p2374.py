@@ -6,4 +6,4 @@ class Solution:
         scores = [0] * len(edges)
         for u, v in enumerate(edges):
             scores[v] += u
-        return max(range(len(edges)), key=lambda x: scores[x])
+        return max(range(len(edges)), key=lambda x: (scores[x], -x))
