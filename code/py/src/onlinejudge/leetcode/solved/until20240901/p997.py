@@ -3,8 +3,8 @@ from onlinejudge.leetcode import *
 
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
-        trusting = {i: 0 for i in range(1, 1 + n)}
-        trusted = {i: 0 for i in range(1, 1 + n)}
+        trusting = [None] + [0] * n
+        trusted = [None] + [0] * n
         for a, b in trust:
             trusting[a] += 1
             trusted[b] += 1
