@@ -4,10 +4,8 @@ from onlinejudge.leetcode import *
 class Solution:
     def minExtraChar(self, s: str, dictionary: List[str]) -> int:
         dictionary = set(dictionary)
-        dp = [0]
-        for i in range(1, 1 + len(s)):
-            dp.append(dp[-1] + 1)
-            for j in range(i):
-                if s[j:i] in dictionary:
-                    dp[-1] = min(dp[-1], dp[j])
+        n = len(s)
+        dp = [0] + [0] * n
+        for hi in range(1, 1 + n):
+            dp[hi] = min(dp[hi - 1] + 1, min((dp[lo] for lo in range(hi) if s[lo:hi] in dictionary), default=n))
         return dp[-1]
