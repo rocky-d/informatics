@@ -3,9 +3,17 @@ from onlinejudge.leetcode import *
 
 class Solution:
     def maximumSubsequenceCount(self, text: str, pattern: str) -> int:
+        ans = 0
         x, y = pattern
-        prefs = list(accumulate((1 if x == char else 0 for char in text), initial=0))
-        return sum(prefs[i] for i in reversed(range(len(text))) if y == text[i]) + max(prefs[-1], text.count(y))
+        cnt_x, cnt_y = 0, 0
+        for char in text:
+            if y == char:
+                cnt_y += 1
+                ans += cnt_x
+            if x == char:
+                cnt_x += 1
+        ans += max(cnt_x, cnt_y)
+        return ans
 
 
 eg_text = 'fyc'
