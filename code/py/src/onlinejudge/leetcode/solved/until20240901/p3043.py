@@ -11,5 +11,5 @@ class Solution:
                     num //= 10
             return res
 
-        common_prefixes = prefixes(arr = arr1) & prefixes(arr = arr2)
+        common_prefixes = prefixes(arr=arr1) & prefixes(arr=arr2)
         return 0 if 0 == len(common_prefixes) else len(str(max(common_prefixes)))
