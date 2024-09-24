@@ -4,15 +4,15 @@ from onlinejudge.leetcode import *
 class Solution:
     def maximumSubsequenceCount(self, text: str, pattern: str) -> int:
         ans = 0
-        x, y = pattern
-        cnt_x, cnt_y = 0, 0
+        p0, p1 = pattern
+        cnt_p0, cnt_p1 = 0, 0
         for char in text:
-            if y == char:
-                cnt_y += 1
-                ans += cnt_x
-            if x == char:
-                cnt_x += 1
-        ans += max(cnt_x, cnt_y)
+            if p1 == char:
+                cnt_p1 += 1
+                ans += cnt_p0
+            if p0 == char:
+                cnt_p0 += 1
+        ans += max(cnt_p0, cnt_p1)
         return ans
 
 
