@@ -3,8 +3,7 @@ from onlinejudge.leetcode import *
 
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        dummy = ListNode(next=head)
-        lft, rit = dummy, dummy
+        dummy = lft = rit = ListNode(next=head)
         for _ in range(1 + n):
             rit = rit.next
         while rit is not None:
