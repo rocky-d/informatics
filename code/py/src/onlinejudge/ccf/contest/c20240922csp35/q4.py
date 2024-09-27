@@ -1,5 +1,4 @@
 from heapq import heappop, heappush
-from itertools import combinations
 from math import inf, isinf
 
 
@@ -8,32 +7,37 @@ def main():
     cords = (map(int, input().split()) for _ in range(n))
     stations = (map(int, input().split()) for _ in range(m))
 
-    graph = [{} for _ in range(n)]
+    a, b = [[] for _ in range(n)], [[] for _ in range(m)]
     cords = list(map(tuple, cords))
-    for x, y, r, t in stations:
-        ls = []
-        for i, cord in enumerate(cords):
+    delays = [0] * m
+    for mi, (x, y, r, t) in enumerate(stations):
+        delays[mi] = t
+        for ni, cord in enumerate(cords):
             if abs(x - cord[0]) <= r and abs(y - cord[1]) <= r:
-                ls.append(i)
-        for u, v in combinations(ls, r=2):
-            if v not in graph[u] or t < graph[u][v]:
-                graph[u][v] = t
-            if u not in graph[v] or t < graph[v][u]:
-                graph[v][u] = t
-
+                a[ni].append(mi)
+                b[mi].append(ni)
     dsts  = [inf] * n
     dsts[0] = 0
     heap = []
+    vis = [False] * n
     heappush(heap, (dsts[0], 0))
+    final = n - 1
     while heap:
         u_dst, u = heappop(heap)
         if u_dst != dsts[u]:
             continue
-        for v, w in graph[u].items():
-            v_dst = u_dst + w
-            if v_dst < dsts[v]:
-                dsts[v] = v_dst
-                heappush(heap, (v_dst, v))
+        if u == final:
+            break
+        vis[u] = True
+        for mi in a[u]:
+            w = delays[mi]
+            for v in b[mi]:
+                if u == v or vis[v]:
+                    continue
+                v_dst = u_dst + w
+                if v_dst < dsts[v]:
+                    dsts[v] = v_dst
+                    heappush(heap, (v_dst, v))
     print('Nan' if isinf(dsts[-1]) else dsts[-1])
 
 

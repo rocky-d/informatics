@@ -1,5 +1,5 @@
 import sys
-
+# sys.stdin = open(r'./patch/1.in', 'r')
 
 PATCH_IS_DAMAGED = 'Patch is damaged.'
 

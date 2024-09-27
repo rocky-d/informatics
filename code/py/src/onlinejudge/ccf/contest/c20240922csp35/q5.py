@@ -1,10 +1,21 @@
+from bisect import bisect_left, bisect_right
+
+
 def main():
     n, m, k = map(int, input().split())
     c = map(int, input().split())
     xlr = (map(int, input().split()) for _ in range(k))
 
-    ans = []
     c = [None] + list(c)
+    if all(i == c[i] for i in range(1, 1 + n)):
+        ans = []
+        woods = [[(1, n)]]
+        for x, l, r in xlr:
+            wood_lst, wood = woods[x], []
+            idx1 = bisect_left(wood_lst, (l, 0))
+            idx2 = bisect_right(wood_lst, ())
+        return
+    ans = []
     woods = [None] + [{i: c[i] for i in range(1, 1 + n)}]
     for x, l, r in xlr:
         wood_lst, wood = woods[x], {}
