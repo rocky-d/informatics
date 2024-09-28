@@ -3,8 +3,8 @@ from onlinejudge.leetcode import *
 
 class MyCircularDeque:
     def __init__(self, k: int) -> None:
-        self.que = [-1] + [-1] * k
-        self.n = len(self.que)
+        self.n = k + 1
+        self.que = [-1] * self.n
         self.lft = 0
         self.rit = 0
 
