@@ -39,14 +39,10 @@ class MyCircularDeque:
         return True
 
     def getFront(self) -> int:
-        if self.isEmpty():
-            return -1
-        return self.que[(self.rit - 1) % self.n]
+        return -1 if self.isEmpty() else self.que[(self.rit - 1) % self.n]
 
     def getRear(self) -> int:
-        if self.isEmpty():
-            return -1
-        return self.que[self.lft]
+        return -1 if self.isEmpty() else self.que[self.lft]
 
     def isEmpty(self) -> bool:
         return self.lft == self.rit
