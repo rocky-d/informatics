@@ -17,11 +17,11 @@ class Solution:
                 continue
             vis[i] = True
             for _ in range(len(idxes[pair - skill[i]])):
-                idx = idxes[pair - skill[i]].popleft()
-                if vis[idx]:
+                j = idxes[pair - skill[i]].popleft()
+                if vis[j]:
                     continue
-                vis[idx] = True
-                ans += skill[i] * skill[idx]
+                vis[j] = True
+                ans += skill[i] * skill[j]
                 break
             else:
                 ans = -1
