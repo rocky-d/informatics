@@ -6,10 +6,11 @@ class Solution:
         for i, (word1, word2) in enumerate(zip(words1, words2)):
             if word1 != word2:
                 p = len(words1) - i
+                ans = all(word1 == word2 for word1, word2 in zip(words1[-p:], words2[-p:]))
                 break
         else:
-            p = 0
-        return all(word1 == word2 for word1, word2 in zip(words1[-p:], words2[-p:]))
+            ans = True
+        return ans
 
 
 eg_sentence1 = 'My name is Haley'
