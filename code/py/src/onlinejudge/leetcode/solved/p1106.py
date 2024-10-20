@@ -12,10 +12,10 @@ class Solution:
         def logical_or(*args):
             return reduce(or_, args)
 
-        locals_dict = locals()
-        exec(
-            f"ans = {expression.replace('t', 'True').replace('f', 'False').replace('!', 'logical_not').replace('&', 'logical_and').replace('|', 'logical_or')}",
-            globals(),
-            locals_dict,
+        return eval(
+            expression.replace('t', 'True')
+            .replace('f', 'False')
+            .replace('!', 'logical_not')
+            .replace('&', 'logical_and')
+            .replace('|', 'logical_or')
         )
-        return locals_dict['ans']
