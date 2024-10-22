@@ -4,7 +4,7 @@ from onlinejudge.leetcode import *
 class Solution:
     def kthLargestLevelSum(self, root: Optional[TreeNode], k: int) -> int:
         totals = []
-        que = deque(((root, 0),))
+        que = deque([(root, 0)])
         while 0 < len(que):
             node, row = que.popleft()
             if row == len(totals):
