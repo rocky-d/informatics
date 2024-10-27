@@ -8,7 +8,7 @@ def topological_sort(graph, directed = True):
     for vs in graph:
         for v in vs:
             ins[v] += 1
-    dque = deque((x for x, cnt in enumerate(ins) if endpoint == cnt))
+    dque = deque(x for x, cnt in enumerate(ins) if endpoint == cnt)
     while 0 < len(dque):
         u = dque.popleft()  # u = dque.pop()
         yield u
