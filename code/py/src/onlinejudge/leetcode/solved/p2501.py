@@ -6,8 +6,9 @@ class Solution:
         maxm = -1
         dp = {}
         for num in sorted(nums, reverse=True):
-            if num * num in dp.keys():
-                dp[num] = dp[num * num] + 1
+            num_sq = num * num
+            if num_sq in dp.keys():
+                dp[num] = dp[num_sq] + 1
                 maxm = max(maxm, dp[num])
             elif num == isqrt(num) ** 2:
                 dp[num] = 1
