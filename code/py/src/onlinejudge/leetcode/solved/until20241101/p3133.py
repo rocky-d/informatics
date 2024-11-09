@@ -7,11 +7,11 @@ class Solution:
         s = a
         b, i = '0' * (zeros - len(b)) + b, 0
         for bit in bin(x)[2:]:
-            if '0' == bit:
+            if '1' == bit:
+                s += '1'
+            else:  # elif '0' == bit:
                 s += b[i]
                 i += 1
-            else:
-                s += '1'
         return int(s, base=2)
 
 
