@@ -12,7 +12,7 @@ class Solution:
                 i += 1
             else:
                 s += '1'
-        return int(s, base = 2)
+        return int(s, base=2)
 
 
 eg_n = 2
