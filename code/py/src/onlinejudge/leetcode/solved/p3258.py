@@ -1,6 +1,3 @@
-from onlinejudge.leetcode import *
-
-
 class Solution:
     def countKConstraintSubstrings(self, s: str, k: int) -> int:
         ans = 0
