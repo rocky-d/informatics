@@ -8,7 +8,7 @@ class Solution:
             return [0] * n
         ans = []
         lft, rit = (1, k) if 0 < k else (n + k, n - 1)
-        cnt = sum(code[lft:rit + 1])
+        cnt = sum(code[lft : rit + 1])
         for _ in range(n):
             ans.append(cnt)
             cnt -= code[lft]
