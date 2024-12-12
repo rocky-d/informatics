@@ -6,7 +6,7 @@ class Solution:
         heap = [-gift for gift in gifts]
         heapify(heap)
         for _ in range(k):
-            heappush(heap, -isqrt(-heappop(heap)))
+            heapreplace(heap, -isqrt(-heap[0]))
         return -sum(heap)
 
 
