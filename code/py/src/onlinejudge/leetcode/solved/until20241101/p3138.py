@@ -7,12 +7,12 @@ class Solution:
             cnter[ord(char) - oft] += 1
             prefs.append(cnter)
         n = len(s)
-        for length in range(1, n):
-            if 0 != n % length:
+        for leng in range(1, n):
+            if 0 != n % leng:
                 continue
-            sample = [y - x for x, y in zip(prefs[0], prefs[length])]
-            if all(sample == [y - x for x, y in zip(prefs[i], prefs[i + length])] for i in range(length, n, length)):
-                ans = length
+            sample = [y - x for x, y in zip(prefs[0], prefs[leng])]
+            if all(sample == [y - x for x, y in zip(prefs[i], prefs[i + leng])] for i in range(leng, n, leng)):
+                ans = leng
                 break
         else:
             ans = n
