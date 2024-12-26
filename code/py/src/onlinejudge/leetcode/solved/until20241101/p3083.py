@@ -3,10 +3,10 @@ from onlinejudge.leetcode import *
 
 class Solution:
     def isSubstringPresent(self, s: str) -> bool:
-        seen = set()
+        vis = set()
         for lst, nxt in pairwise(s):
-            seen.add(lst + nxt)
-            if nxt + lst in seen:
+            vis.add(lst + nxt)
+            if nxt + lst in vis:
                 ans = True
                 break
         else:
