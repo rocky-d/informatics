@@ -10,10 +10,10 @@ class Solution:
                 dec = 1
                 inc += 1
                 ans = max(ans, inc)
-            elif nxt < lst:
+            elif lst > nxt:
                 inc = 1
                 dec += 1
                 ans = max(ans, dec)
-            else:
+            else:  # elif lst == nxt:
                 inc, dec = 1, 1
         return ans
