@@ -1,6 +1,7 @@
-class SortedList:
+class SortedList(object):
+
     def __init__(self, iterable=[], _load=200):
-        """Initialize sorted list instance."""
+        '''Initialize sorted list instance.'''
         values = sorted(iterable)
         self._len = _len = len(values)
         self._load = _load
@@ -11,7 +12,7 @@ class SortedList:
         self._rebuild = True
 
     def _fen_build(self):
-        """Build a fenwick tree instance."""
+        '''Build a fenwick tree instance.'''
         self._fen_tree[:] = self._list_lens
         _fen_tree = self._fen_tree
         for i in range(len(_fen_tree)):
@@ -20,7 +21,7 @@ class SortedList:
         self._rebuild = False
 
     def _fen_update(self, index, value):
-        """Update `fen_tree[index] += value`."""
+        '''Update `fen_tree[index] += value`.'''
         if not self._rebuild:
             _fen_tree = self._fen_tree
             while index < len(_fen_tree):
@@ -28,7 +29,7 @@ class SortedList:
                 index |= index + 1
 
     def _fen_query(self, end):
-        """Return `sum(_fen_tree[:end])`."""
+        '''Return `sum(_fen_tree[:end])`.'''
         if self._rebuild:
             self._fen_build()
 
@@ -40,7 +41,7 @@ class SortedList:
         return x
 
     def _fen_findkth(self, k):
-        """Return a pair of (the largest `idx` such that `sum(_fen_tree[:idx]) <= k`, `k - sum(_fen_tree[:idx])`)."""
+        '''Return a pair of (the largest `idx` such that `sum(_fen_tree[:idx]) <= k`, `k - sum(_fen_tree[:idx])`).'''
         _list_lens = self._list_lens
         if k < _list_lens[0]:
             return 0, k
@@ -59,7 +60,7 @@ class SortedList:
         return idx + 1, k
 
     def _delete(self, pos, idx):
-        """Delete value at the given `(pos, idx)`."""
+        '''Delete value at the given `(pos, idx)`.'''
         _lists = self._lists
         _mins = self._mins
         _list_lens = self._list_lens
@@ -78,7 +79,7 @@ class SortedList:
             self._rebuild = True
 
     def _loc_left(self, value):
-        """Return an index pair that corresponds to the first position of `value` in the sorted list."""
+        '''Return an index pair that corresponds to the first position of `value` in the sorted list.'''
         if not self._len:
             return 0, 0
 
@@ -108,7 +109,7 @@ class SortedList:
         return pos, idx
 
     def _loc_right(self, value):
-        """Return an index pair that corresponds to the last position of `value` in the sorted list."""
+        '''Return an index pair that corresponds to the last position of `value` in the sorted list.'''
         if not self._len:
             return 0, 0
 
@@ -135,7 +136,7 @@ class SortedList:
         return pos, idx
 
     def add(self, value):
-        """Add `value` to sorted list."""
+        '''Add `value` to sorted list.'''
         _load = self._load
         _lists = self._lists
         _mins = self._mins
@@ -163,7 +164,7 @@ class SortedList:
             self._rebuild = True
 
     def discard(self, value):
-        """Remove `value` from sorted list if it is a member."""
+        '''Remove `value` from sorted list if it is a member.'''
         _lists = self._lists
         if _lists:
             pos, idx = self._loc_right(value)
@@ -171,49 +172,49 @@ class SortedList:
                 self._delete(pos, idx - 1)
 
     def remove(self, value):
-        """Remove `value` from sorted list; `value` must be a member."""
+        '''Remove `value` from sorted list; `value` must be a member.'''
         _len = self._len
         self.discard(value)
         if _len == self._len:
             raise ValueError('{0!r} not in list'.format(value))
 
     def pop(self, index=-1):
-        """Remove and return value at `index` in sorted list."""
+        '''Remove and return value at `index` in sorted list.'''
         pos, idx = self._fen_findkth(self._len + index if index < 0 else index)
         value = self._lists[pos][idx]
         self._delete(pos, idx)
         return value
 
     def bisect_left(self, value):
-        """Return the first index to insert `value` in the sorted list."""
+        '''Return the first index to insert `value` in the sorted list.'''
         pos, idx = self._loc_left(value)
         return self._fen_query(pos) + idx
 
     def bisect_right(self, value):
-        """Return the last index to insert `value` in the sorted list."""
+        '''Return the last index to insert `value` in the sorted list.'''
         pos, idx = self._loc_right(value)
         return self._fen_query(pos) + idx
 
     def count(self, value):
-        """Return number of occurrences of `value` in the sorted list."""
+        '''Return number of occurrences of `value` in the sorted list.'''
         return self.bisect_right(value) - self.bisect_left(value)
 
     def __len__(self):
-        """Return the size of the sorted list."""
+        '''Return the size of the sorted list.'''
         return self._len
 
     def __getitem__(self, index):
-        """Lookup value at `index` in sorted list."""
+        '''Lookup value at `index` in sorted list.'''
         pos, idx = self._fen_findkth(self._len + index if index < 0 else index)
         return self._lists[pos][idx]
 
     def __delitem__(self, index):
-        """Remove value at `index` from sorted list."""
+        '''Remove value at `index` from sorted list.'''
         pos, idx = self._fen_findkth(self._len + index if index < 0 else index)
         self._delete(pos, idx)
 
     def __contains__(self, value):
-        """Return true if `value` is an element of the sorted list."""
+        '''Return true if `value` is an element of the sorted list.'''
         _lists = self._lists
         if _lists:
             pos, idx = self._loc_left(value)
@@ -221,13 +222,13 @@ class SortedList:
         return False
 
     def __iter__(self):
-        """Return an iterator over the sorted list."""
+        '''Return an iterator over the sorted list.'''
         return (value for _list in self._lists for value in _list)
 
     def __reversed__(self):
-        """Return a reverse iterator over the sorted list."""
+        '''Return a reverse iterator over the sorted list.'''
         return (value for _list in reversed(self._lists) for value in reversed(_list))
 
     def __repr__(self):
-        """Return string representation of sorted list."""
+        '''Return string representation of sorted list.'''
         return 'SortedList({0})'.format(list(self))
