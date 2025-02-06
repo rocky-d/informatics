@@ -64,9 +64,9 @@ if __name__ == '__main__':
     func = lambda mid: key(nums[mid])
     check = lambda mid1, mid2: +1 if func(mid2) < target else 0 if func(mid1) < target else -1
     print(
-        bisect_left(nums, target, lo = lo, hi = hi, key = key),
-        bisect_left(range(hi), target, lo = lo, key = func),
-        lo + bisect_left(range(lo, hi), target, key = func),
+        bisect_left(nums, target, lo=lo, hi=hi, key=key),
+        bisect_left(range(hi), target, lo=lo, key=func),
+        lo + bisect_left(range(lo, hi), target, key=func),
     )
     print(
         ternary_search_cc(lo, hi, check),
@@ -80,9 +80,9 @@ if __name__ == '__main__':
     func = lambda mid: key(nums[mid])
     check = lambda mid1, mid2: +1 if func(mid2) <= target else 0 if func(mid1) <= target else -1
     print(
-        bisect_right(nums, target, lo = lo, hi = hi, key = key),
-        bisect_right(range(hi), target, lo = lo, key = func),
-        lo + bisect_right(range(lo, hi), target, key = func),
+        bisect_right(nums, target, lo=lo, hi=hi, key=key),
+        bisect_right(range(hi), target, lo=lo, key=func),
+        lo + bisect_right(range(lo, hi), target, key=func),
     )
     print(
         ternary_search_cc(lo, hi, check),

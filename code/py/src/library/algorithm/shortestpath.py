@@ -2,7 +2,7 @@ from heapq import heappop, heappush
 from math import inf
 
 
-def dijkstra(graph, start, initial = 0):
+def dijkstra(graph, start, initial=0):
     n = len(graph)
     dsts = [inf] * n
     dsts[start] = initial
@@ -25,7 +25,7 @@ def dijkstra(graph, start, initial = 0):
     return dsts, lsts
 
 
-def floyd(graph, initial = 0):
+def floyd(graph, initial=0):
     n = len(graph)
     range_n = range(n)
     dp = [[inf] * i + [initial] + [inf] * (n - i - 1) for i in range_n]
@@ -40,7 +40,7 @@ def floyd(graph, initial = 0):
 
 
 if __name__ == '__main__':
-    print2d = lambda __iterable: print(*__iterable, sep = '\n', end = '\n\n')
+    print2d = lambda __iterable: print(*__iterable, sep='\n', end='\n\n')
 
     graph = [
         [],
@@ -50,5 +50,5 @@ if __name__ == '__main__':
         [],
     ]
     for start in range(len(graph)):
-        print2d(dijkstra(graph, start, initial = 0))
-    print2d(floyd(graph, initial = 0))
+        print2d(dijkstra(graph, start, initial=0))
+    print2d(floyd(graph, initial=0))

@@ -75,9 +75,9 @@ if __name__ == '__main__':
     func = lambda mid: key(nums[mid])
     check = lambda mid: func(mid) < target
     print(
-        bisect_left(nums, target, lo = lo, hi = hi, key = key),
-        bisect_left(range(hi), target, lo = lo, key = func),
-        lo + bisect_left(range(lo, hi), target, key = func),
+        bisect_left(nums, target, lo=lo, hi=hi, key=key),
+        bisect_left(range(hi), target, lo=lo, key=func),
+        lo + bisect_left(range(lo, hi), target, key=func),
     )
     print(
         binary_search_cc(lo, hi, check),
@@ -91,9 +91,9 @@ if __name__ == '__main__':
     func = lambda mid: key(nums[mid])
     check = lambda mid: func(mid) <= target
     print(
-        bisect_right(nums, target, lo = lo, hi = hi, key = key),
-        bisect_right(range(hi), target, lo = lo, key = func),
-        lo + bisect_right(range(lo, hi), target, key = func),
+        bisect_right(nums, target, lo=lo, hi=hi, key=key),
+        bisect_right(range(hi), target, lo=lo, key=func),
+        lo + bisect_right(range(lo, hi), target, key=func),
     )
     print(
         binary_search_cc(lo, hi, check),

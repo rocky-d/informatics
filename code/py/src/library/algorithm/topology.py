@@ -1,7 +1,7 @@
 from collections import deque
 
 
-def topological_sort(graph, directed = True):
+def topological_sort(graph, directed=True):
     n = len(graph)
     endpoint = 0 if directed else 1
     ins = [0] * n
@@ -24,4 +24,4 @@ if __name__ == '__main__':
         [2],
         [],
     ]
-    print(*topological_sort(graph, directed = True))
+    print(*topological_sort(graph, directed=True))

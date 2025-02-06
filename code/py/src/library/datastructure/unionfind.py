@@ -1,6 +1,6 @@
 class _UnionFind(object):
 
-    def __init__(self, __heads, *, generic, grouped = False, recursive = False, compressed = True):
+    def __init__(self, __heads, *, generic, grouped=False, recursive=False, compressed=True):
         self._heads = __heads
         self._generic = generic
         if grouped:
@@ -88,27 +88,21 @@ class _UnionFind(object):
 
 class UnionFindList(_UnionFind):  # TODO: set properties
 
-    def __init__(self, __size, *, grouped = False, recursive = False, compressed = True):
-        super().__init__(
-            list(range(__size)), generic = False,
-            grouped = grouped, recursive = recursive, compressed = compressed
-        )
+    def __init__(self, __size, *, grouped=False, recursive=False, compressed=True):
+        super().__init__(list(range(__size)), generic=False, grouped=grouped, recursive=recursive, compressed=compressed)
 
 
 class UnionFindDict(_UnionFind):  # TODO: set properties
 
-    def __init__(self, __iterable, *, grouped = False, recursive = False, compressed = True):
-        super().__init__(
-            {x: x for x in __iterable}, generic = True,
-            grouped = grouped, recursive = recursive, compressed = compressed
-        )
+    def __init__(self, __iterable, *, grouped=False, recursive=False, compressed=True):
+        super().__init__({x: x for x in __iterable}, generic=True, grouped=grouped, recursive=recursive, compressed=compressed)
 
 
 if __name__ == '__main__':
     import random
 
-    ufl = UnionFindList(100, grouped = True, recursive = True, compressed = False)
-    ufd = UnionFindDict((-i for i in range(100)), grouped = True, recursive = True, compressed = False)
+    ufl = UnionFindList(100, grouped=True, recursive=True, compressed=False)
+    ufd = UnionFindDict((-i for i in range(100)), grouped=True, recursive=True, compressed=False)
 
     for _ in range(50):
         x, y = random.randint(0, 99), random.randint(0, 99)

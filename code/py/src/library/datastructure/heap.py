@@ -7,7 +7,7 @@ class Heap(object):
     def _converse(item):  # TODO
         return -item
 
-    def __init__(self, __iterable, *, key = None, reverse = False):
+    def __init__(self, __iterable, *, key=None, reverse=False):
         self._origin = list(__iterable)
         if key is None:
             if not reverse:
@@ -75,7 +75,7 @@ class Heap(object):
 
 if __name__ == '__main__':
     nums = [9, 13, 8, 1, 2, 3, 4, 5]
-    heap = Heap(nums, reverse = True)
+    heap = Heap(nums, reverse=True)
 
     print(heap.peekall())
     heap.push(7)
