@@ -13,7 +13,7 @@ class Solution:
             elif balls[idx] != color:
                 colors[balls[idx]] -= 1
                 if 0 == colors[balls[idx]]:
-                    colors.pop(balls[idx])
+                    del colors[balls[idx]]
                 balls[idx] = color
                 colors[color] += 1
             ans.append(len(colors))
