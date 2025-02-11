@@ -1,6 +1,3 @@
-from onlinejudge.leetcode import *
-
-
 class Solution:
     def removeOccurrences(self, s: str, part: str) -> str:
         ls = s.split(sep=part, maxsplit=1)
