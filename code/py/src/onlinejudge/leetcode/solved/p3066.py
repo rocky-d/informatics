@@ -6,7 +6,6 @@ class Solution:
         ans = 0
         heapify(nums)
         while nums[0] < k:
-            x = heappop(nums)
-            heapreplace(nums, (x << 1) + nums[0])
+            heapreplace(nums, (heappop(nums) << 1) + nums[0])
             ans += 1
         return ans
