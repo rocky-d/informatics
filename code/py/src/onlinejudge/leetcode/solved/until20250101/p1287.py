@@ -3,11 +3,11 @@ from onlinejudge.leetcode import *
 
 class Solution:
     def findSpecialInteger(self, arr: List[int]) -> int:
-        last_num = -1
         quarter = len(arr) / 4
+        lst = -1
         for num in arr:
-            if last_num != num:
-                last_num = num
+            if lst != num:
+                lst = num
                 times = 0
             times += 1
             if quarter < times:
