@@ -9,9 +9,10 @@ class FindElements:
             if node is None:
                 return
             self.vals.add(val)
-            dfs(node.left, 2 * val + 1), dfs(node.right, 2 * val + 2)
+            dfs(node.left, 2 * val + 1)
+            dfs(node.right, 2 * val + 2)
 
-        dfs(node = root, val = 0)
+        dfs(node=root, val=0)
 
     def find(self, target: int) -> bool:
         return target in self.vals
