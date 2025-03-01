@@ -20,5 +20,5 @@ class Solution:
                 dfs(rit, rit)
                 partition.pop()
 
-        dfs(lft = 0, rit = 0)
+        dfs(lft=0, rit=0)
         return ans
