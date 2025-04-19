@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class _UnionFind(object):
 
     def __init__(self, __heads, *, generic, grouped=False, recursive=False, compressed=True):
@@ -5,7 +8,7 @@ class _UnionFind(object):
         self._generic = generic
         if grouped:
             # self._groups = {x: 1 for x in self._heads}
-            self._groups = {x: [x] for x in self._heads}
+            self._groups = {x: deque([x]) for x in self._heads}
         else:
             self._groups = None
         if recursive:
@@ -54,10 +57,10 @@ class _UnionFind(object):
             else:
                 if len(self._groups[u_head]) < len(self._groups[v_head]):
                     self._heads[u] = self._heads[u_head] = v_head
-                    self._groups[v_head] += self._groups.pop(u_head)
+                    self._groups[v_head].extend(self._groups.pop(u_head))
                 else:
                     self._heads[v] = self._heads[v_head] = u_head
-                    self._groups[u_head] += self._groups.pop(v_head)
+                    self._groups[u_head].extend(self._groups.pop(v_head))
 
     def _find_rank_recu(self, x):
         if x == self._heads[x]:
@@ -75,11 +78,11 @@ class _UnionFind(object):
             if self._ranks[u_head] < self._ranks[v_head]:
                 self._heads[u_head] = v_head
                 if self._groups is not None:
-                    self._groups[v_head] += self._groups.pop(u_head)
+                    self._groups[v_head].extend(self._groups.pop(u_head))
             else:
                 self._heads[v_head] = u_head
                 if self._groups is not None:
-                    self._groups[u_head] += self._groups.pop(v_head)
+                    self._groups[u_head].extend(self._groups.pop(v_head))
                 if self._ranks[u_head] == self._ranks[v_head]:
                     self._ranks[u_head] += 1
                     if self._generic:
