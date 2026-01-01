@@ -10,20 +10,18 @@ fn solve(lines: &mut Lines) {
         .map(|x| x.parse().unwrap());
 
     let mut a: Vec<i32> = a.collect();
-    if Some(&-1) == a.first() {
-        if let [first, .., last] = &mut a[..] {
+    if let [first, .., last] = &mut a[..] {
+        if -1 == *first {
             *first = *last;
-        }
-    } else if Some(&-1) == a.last() {
-        if let [first, .., last] = &mut a[..] {
+        } else if -1 == *last {
             *last = *first;
         }
     }
-    for i in 0..a.len() {
-        if -1 == a[i] {
-            a[i] = 0;
+    a.iter_mut().for_each(|x| {
+        if -1 == *x {
+            *x = 0;
         }
-    }
+    });
     let (Some(first), Some(last)) = (a.first(), a.last()) else {
         return;
     };
