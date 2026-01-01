@@ -11,16 +11,12 @@ fn solve(lines: &mut Lines) {
 
     let mut a: Vec<i32> = a.collect();
     if Some(&-1) == a.first() {
-        if let Some(&last) = a.last() {
-            if let Some(first) = a.first_mut() {
-                *first = last;
-            }
+        if let [first, .., last] = &mut a[..] {
+            *first = *last;
         }
     } else if Some(&-1) == a.last() {
-        if let Some(&first) = a.first() {
-            if let Some(last) = a.last_mut() {
-                *last = first;
-            }
+        if let [first, .., last] = &mut a[..] {
+            *last = *first;
         }
     }
     for i in 0..a.len() {
@@ -28,7 +24,10 @@ fn solve(lines: &mut Lines) {
             a[i] = 0;
         }
     }
-    println!("{}", (a.last().unwrap() - a.first().unwrap()).abs());
+    let (Some(first), Some(last)) = (a.first(), a.last()) else {
+        return;
+    };
+    println!("{}", (last - first).abs());
     let out: Vec<_> = a.iter().map(|x| x.to_string()).collect();
     println!("{}", out.join(" "));
 }
