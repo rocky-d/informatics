@@ -14,11 +14,7 @@ fn solve(lines: &mut Lines) {
     let v: Vec<i32> = v.collect();
     let l = v.partition_point(|&x| x < a);
     let r = v.len() - v.partition_point(|&x| x <= a);
-    if l < r {
-        println!("{}", a + 1);
-    } else {
-        println!("{}", a - 1);
-    }
+    println!("{}", if l < r { a + 1 } else { a - 1 });
 }
 
 fn main() {
