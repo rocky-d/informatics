@@ -11,15 +11,9 @@ fn solve(lines: &mut Lines) {
         .split_whitespace()
         .map(|x| x.parse().unwrap());
 
-    let mut l = 0;
-    let mut r = 0;
-    for vi in v {
-        if vi < a {
-            l += 1;
-        } else if a < vi {
-            r += 1;
-        }
-    }
+    let v: Vec<i32> = v.collect();
+    let l = v.partition_point(|&x| x < a);
+    let r = v.len() - v.partition_point(|&x| x <= a);
     if l < r {
         println!("{}", a + 1);
     } else {
