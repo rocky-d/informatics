@@ -8,13 +8,13 @@ fn solve(lines: &mut Lines) {
     let mut ans = "YES";
     let mut a: Vec<i32> = a.map(|x| x.parse().unwrap()).collect();
     a.sort();
-    for i in (1..n - 1).step_by(2) {
-        if a[i as usize] != a[(i + 1) as usize] {
+    for i in (1..n as usize - 1).step_by(2) {
+        if a[i] != a[i + 1] {
             ans = "NO";
             break;
         }
     }
-    println!("{}", ans)
+    println!("{}", ans);
 }
 
 fn main() {
