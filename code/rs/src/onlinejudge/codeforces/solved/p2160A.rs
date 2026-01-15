@@ -1,0 +1,29 @@
+use std::io::{self, Read};
+use std::str::Lines;
+
+fn solve(lines: &mut Lines) {
+    let _n: i32 = lines.next().unwrap().parse().unwrap();
+    let a = lines.next().unwrap().split_whitespace();
+
+    let mut ans = 0;
+    let mut a: Vec<i32> = a.map(|x| x.parse().unwrap()).collect();
+    a.sort();
+    for ai in a {
+        if ans < ai {
+            break;
+        } else if ans == ai {
+            ans = ai + 1;
+        }
+    }
+    println!("{ans}");
+}
+
+fn main() {
+    let mut buf = String::new();
+    io::stdin().read_to_string(&mut buf).unwrap();
+    let mut lines = buf.lines();
+    let t: u32 = lines.next().unwrap().parse().unwrap();
+    for _ in 0..t {
+        solve(&mut lines);
+    }
+}
