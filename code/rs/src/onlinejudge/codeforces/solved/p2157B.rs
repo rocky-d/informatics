@@ -14,7 +14,7 @@ fn solve<'a>(tokens: &mut impl Iterator<Item = &'a str>) {
     }
     let f = s.chars().filter(|&c| '4' == c).count() as i32;
     let ans = if f <= x + y { "YES" } else { "NO" };
-    println!("{}", ans);
+    println!("{ans}");
 }
 
 fn main() {
