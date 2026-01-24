@@ -17,13 +17,12 @@ fn solve<'a>(tokens: &mut impl Iterator<Item = &'a str>) {
     }
     let mut x;
     for i in (0..n).step_by(2) {
-        if 0 != i {
-            x = 0.max(a[i] - (a[i - 1] - 1));
+        if 0 == i {
+            x = 0.max(a[i] - (a[i + 1] - 1));
             a[i] -= x;
             ans += x
-        }
-        if i != n - 1 {
-            x = 0.max(a[i] - (a[i + 1] - 1));
+        } else {
+            x = 0.max(a[i] - (a[i - 1] - 1));
             a[i] -= x;
             ans += x
         }
