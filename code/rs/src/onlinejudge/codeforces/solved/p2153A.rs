@@ -7,7 +7,7 @@ fn solve<'a>(tokens: &mut impl Iterator<Item = &'a str>) {
 
     let mut set = HashSet::new();
     let ans = b.filter(|&x| set.insert(x)).collect::<Vec<_>>().len();
-    println!("{ans}")
+    println!("{ans}");
 }
 
 fn main() {
