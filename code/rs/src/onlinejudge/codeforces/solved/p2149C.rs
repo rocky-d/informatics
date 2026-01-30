@@ -15,7 +15,7 @@ fn solve<'a>(tokens: &mut impl Iterator<Item = &'a str>) {
             ans += 1;
         }
     }
-    ans += 0.max(*map.entry(k).or_insert(0) - ans);
+    ans = ans.max(*map.entry(k).or_insert(0));
     println!("{}", ans);
 }
 
