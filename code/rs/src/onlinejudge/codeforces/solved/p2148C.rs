@@ -13,7 +13,7 @@ fn solve<'a>(tokens: &mut impl Iterator<Item = &'a str>) {
         a = 0b1 & ab.next().unwrap();
         b = 0b1 & ab.next().unwrap();
         if 0b0 == switch ^ a ^ b {
-            switch = 1 - switch;
+            switch ^= 0b1;
             ans -= 1;
         }
     }
